@@ -14,10 +14,17 @@ outputs
   none
 *******************************************/
 void led_toggle(int id) {
-  if(id==0)
-    HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_7);  // use built in HAL function. Easy.
-  else
-    HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_14);  // Note these params could be abstracted to the task
+    switch (id){
+        case 0:
+            HAL_GPIO_TogglePin(LD1_GPIO_PORT , LD1_GPIO_PIN);
+            break;
+        case 1:
+            HAL_GPIO_TogglePin(LD2_GPIO_PORT , LD2_GPIO_PIN);
+            break;
+        default:
+            HAL_GPIO_TogglePin(LD3_GPIO_PORT , LD3_GPIO_PIN);
+            break;
+    }
 }
 
 /*****************************************
@@ -36,7 +43,7 @@ void led_task(void *parameters)
 
         led_toggle(p->id);
 
-        vTaskDelay(wait_ms);
+        vTaskDelay(wait_ms * (p->id +1 ));
     }
 }
 
@@ -50,12 +57,11 @@ inputs
 outputs
   none
 *******************************************/
-void led_task_init(int id, char *task_name, int base_ms, int max_jitter_ms)
+void led_task_init(int id, char *task_name)
 {
   LED_PARAMS_t *p = &led_params[id];   // get pointer to THIS instance of parameters (one for each task)
   p->id = id;                           // initialize members of this structure for this task
-  p->base_ms = base_ms;
-  p->max_jitter_ms = max_jitter_ms;
+
   strncpy(p->task_name, task_name, configMAX_TASK_NAME_LEN);
-  xTaskCreate( led_task, "LED TASK2", 256, (void *)p, 2, &p->handle); // go ahead and create the task 
+  xTaskCreate( led_task, p->task_name, 256, (void *)p, 2, &p->handle); // go ahead and create the task 
 }
