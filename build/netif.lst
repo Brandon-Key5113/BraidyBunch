@@ -1,0 +1,1894 @@
+ARM GAS  /tmp/ccyg71h1.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.eabi_attribute 28, 1
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 1
+  10              		.eabi_attribute 34, 1
+  11              		.eabi_attribute 18, 4
+  12              		.file	"netif.c"
+  13              		.text
+  14              	.Ltext0:
+  15              		.cfi_sections	.debug_frame
+  16              		.section	.text.netif_issue_reports,"ax",%progbits
+  17              		.align	1
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  21              		.fpu fpv5-d16
+  23              	netif_issue_reports:
+  24              	.LFB169:
+  25              		.file 1 "Middlewares/Third_Party/LwIP/src/core/netif.c"
+   1:Middlewares/Third_Party/LwIP/src/core/netif.c **** /**
+   2:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @file
+   3:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * lwIP network interface abstraction
+   4:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * 
+   5:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @defgroup netif Network interface (NETIF)
+   6:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @ingroup callbackstyle_api
+   7:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * 
+   8:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @defgroup netif_ip4 IPv4 address handling
+   9:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @ingroup netif
+  10:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * 
+  11:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @defgroup netif_ip6 IPv6 address handling
+  12:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @ingroup netif
+  13:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * 
+  14:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @defgroup netif_cd Client data handling
+  15:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * Store data (void*) on a netif for application usage.
+  16:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @see @ref LWIP_NUM_NETIF_CLIENT_DATA
+  17:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @ingroup netif
+  18:Middlewares/Third_Party/LwIP/src/core/netif.c ****  */
+  19:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+  20:Middlewares/Third_Party/LwIP/src/core/netif.c **** /*
+  21:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * Copyright (c) 2001-2004 Swedish Institute of Computer Science.
+  22:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * All rights reserved.
+  23:Middlewares/Third_Party/LwIP/src/core/netif.c ****  *
+  24:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * Redistribution and use in source and binary forms, with or without modification,
+  25:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * are permitted provided that the following conditions are met:
+  26:Middlewares/Third_Party/LwIP/src/core/netif.c ****  *
+  27:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * 1. Redistributions of source code must retain the above copyright notice,
+  28:Middlewares/Third_Party/LwIP/src/core/netif.c ****  *    this list of conditions and the following disclaimer.
+  29:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice,
+  30:Middlewares/Third_Party/LwIP/src/core/netif.c ****  *    this list of conditions and the following disclaimer in the documentation
+  31:Middlewares/Third_Party/LwIP/src/core/netif.c ****  *    and/or other materials provided with the distribution.
+  32:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * 3. The name of the author may not be used to endorse or promote products
+  33:Middlewares/Third_Party/LwIP/src/core/netif.c ****  *    derived from this software without specific prior written permission.
+ARM GAS  /tmp/ccyg71h1.s 			page 2
+
+
+  34:Middlewares/Third_Party/LwIP/src/core/netif.c ****  *
+  35:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR IMPLIED
+  36:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+  37:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT
+  38:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  39:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT
+  40:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+  41:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+  42:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
+  43:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY
+  44:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * OF SUCH DAMAGE.
+  45:Middlewares/Third_Party/LwIP/src/core/netif.c ****  *
+  46:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * This file is part of the lwIP TCP/IP stack.
+  47:Middlewares/Third_Party/LwIP/src/core/netif.c ****  *
+  48:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * Author: Adam Dunkels <adam@sics.se>
+  49:Middlewares/Third_Party/LwIP/src/core/netif.c ****  */
+  50:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+  51:Middlewares/Third_Party/LwIP/src/core/netif.c **** #include "lwip/opt.h"
+  52:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+  53:Middlewares/Third_Party/LwIP/src/core/netif.c **** #include <string.h>
+  54:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+  55:Middlewares/Third_Party/LwIP/src/core/netif.c **** #include "lwip/def.h"
+  56:Middlewares/Third_Party/LwIP/src/core/netif.c **** #include "lwip/ip_addr.h"
+  57:Middlewares/Third_Party/LwIP/src/core/netif.c **** #include "lwip/ip6_addr.h"
+  58:Middlewares/Third_Party/LwIP/src/core/netif.c **** #include "lwip/netif.h"
+  59:Middlewares/Third_Party/LwIP/src/core/netif.c **** #include "lwip/priv/tcp_priv.h"
+  60:Middlewares/Third_Party/LwIP/src/core/netif.c **** #include "lwip/udp.h"
+  61:Middlewares/Third_Party/LwIP/src/core/netif.c **** #include "lwip/raw.h"
+  62:Middlewares/Third_Party/LwIP/src/core/netif.c **** #include "lwip/snmp.h"
+  63:Middlewares/Third_Party/LwIP/src/core/netif.c **** #include "lwip/igmp.h"
+  64:Middlewares/Third_Party/LwIP/src/core/netif.c **** #include "lwip/etharp.h"
+  65:Middlewares/Third_Party/LwIP/src/core/netif.c **** #include "lwip/stats.h"
+  66:Middlewares/Third_Party/LwIP/src/core/netif.c **** #include "lwip/sys.h"
+  67:Middlewares/Third_Party/LwIP/src/core/netif.c **** #include "lwip/ip.h"
+  68:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if ENABLE_LOOPBACK
+  69:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_NETIF_LOOPBACK_MULTITHREADING
+  70:Middlewares/Third_Party/LwIP/src/core/netif.c **** #include "lwip/tcpip.h"
+  71:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_NETIF_LOOPBACK_MULTITHREADING */
+  72:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* ENABLE_LOOPBACK */
+  73:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+  74:Middlewares/Third_Party/LwIP/src/core/netif.c **** #include "netif/ethernet.h"
+  75:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+  76:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_AUTOIP
+  77:Middlewares/Third_Party/LwIP/src/core/netif.c **** #include "lwip/autoip.h"
+  78:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_AUTOIP */
+  79:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_DHCP
+  80:Middlewares/Third_Party/LwIP/src/core/netif.c **** #include "lwip/dhcp.h"
+  81:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_DHCP */
+  82:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_IPV6_DHCP6
+  83:Middlewares/Third_Party/LwIP/src/core/netif.c **** #include "lwip/dhcp6.h"
+  84:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_IPV6_DHCP6 */
+  85:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_IPV6_MLD
+  86:Middlewares/Third_Party/LwIP/src/core/netif.c **** #include "lwip/mld6.h"
+  87:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_IPV6_MLD */
+  88:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_IPV6
+  89:Middlewares/Third_Party/LwIP/src/core/netif.c **** #include "lwip/nd6.h"
+  90:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif
+ARM GAS  /tmp/ccyg71h1.s 			page 3
+
+
+  91:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+  92:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_NETIF_STATUS_CALLBACK
+  93:Middlewares/Third_Party/LwIP/src/core/netif.c **** #define NETIF_STATUS_CALLBACK(n) do{ if (n->status_callback) { (n->status_callback)(n); }}while(0)
+  94:Middlewares/Third_Party/LwIP/src/core/netif.c **** #else
+  95:Middlewares/Third_Party/LwIP/src/core/netif.c **** #define NETIF_STATUS_CALLBACK(n)
+  96:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_NETIF_STATUS_CALLBACK */
+  97:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+  98:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_NETIF_LINK_CALLBACK
+  99:Middlewares/Third_Party/LwIP/src/core/netif.c **** #define NETIF_LINK_CALLBACK(n) do{ if (n->link_callback) { (n->link_callback)(n); }}while(0)
+ 100:Middlewares/Third_Party/LwIP/src/core/netif.c **** #else
+ 101:Middlewares/Third_Party/LwIP/src/core/netif.c **** #define NETIF_LINK_CALLBACK(n)
+ 102:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_NETIF_LINK_CALLBACK */
+ 103:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 104:Middlewares/Third_Party/LwIP/src/core/netif.c **** struct netif *netif_list;
+ 105:Middlewares/Third_Party/LwIP/src/core/netif.c **** struct netif *netif_default;
+ 106:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 107:Middlewares/Third_Party/LwIP/src/core/netif.c **** static u8_t netif_num;
+ 108:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 109:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_NUM_NETIF_CLIENT_DATA > 0
+ 110:Middlewares/Third_Party/LwIP/src/core/netif.c **** static u8_t netif_client_id;
+ 111:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif
+ 112:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 113:Middlewares/Third_Party/LwIP/src/core/netif.c **** #define NETIF_REPORT_TYPE_IPV4  0x01
+ 114:Middlewares/Third_Party/LwIP/src/core/netif.c **** #define NETIF_REPORT_TYPE_IPV6  0x02
+ 115:Middlewares/Third_Party/LwIP/src/core/netif.c **** static void netif_issue_reports(struct netif* netif, u8_t report_type);
+ 116:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 117:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_IPV6
+ 118:Middlewares/Third_Party/LwIP/src/core/netif.c **** static err_t netif_null_output_ip6(struct netif *netif, struct pbuf *p, const ip6_addr_t *ipaddr);
+ 119:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_IPV6 */
+ 120:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 121:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_HAVE_LOOPIF
+ 122:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_IPV4
+ 123:Middlewares/Third_Party/LwIP/src/core/netif.c **** static err_t netif_loop_output_ipv4(struct netif *netif, struct pbuf *p, const ip4_addr_t* addr);
+ 124:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif
+ 125:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_IPV6
+ 126:Middlewares/Third_Party/LwIP/src/core/netif.c **** static err_t netif_loop_output_ipv6(struct netif *netif, struct pbuf *p, const ip6_addr_t* addr);
+ 127:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif
+ 128:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 129:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 130:Middlewares/Third_Party/LwIP/src/core/netif.c **** static struct netif loop_netif;
+ 131:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 132:Middlewares/Third_Party/LwIP/src/core/netif.c **** /**
+ 133:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * Initialize a lwip network interface structure for a loopback interface
+ 134:Middlewares/Third_Party/LwIP/src/core/netif.c ****  *
+ 135:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @param netif the lwip network interface structure for this loopif
+ 136:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @return ERR_OK if the loopif is initialized
+ 137:Middlewares/Third_Party/LwIP/src/core/netif.c ****  *         ERR_MEM if private data couldn't be allocated
+ 138:Middlewares/Third_Party/LwIP/src/core/netif.c ****  */
+ 139:Middlewares/Third_Party/LwIP/src/core/netif.c **** static err_t
+ 140:Middlewares/Third_Party/LwIP/src/core/netif.c **** netif_loopif_init(struct netif *netif)
+ 141:Middlewares/Third_Party/LwIP/src/core/netif.c **** {
+ 142:Middlewares/Third_Party/LwIP/src/core/netif.c ****   /* initialize the snmp variables and counters inside the struct netif
+ 143:Middlewares/Third_Party/LwIP/src/core/netif.c ****    * ifSpeed: no assumption can be made!
+ 144:Middlewares/Third_Party/LwIP/src/core/netif.c ****    */
+ 145:Middlewares/Third_Party/LwIP/src/core/netif.c ****   MIB2_INIT_NETIF(netif, snmp_ifType_softwareLoopback, 0);
+ 146:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 147:Middlewares/Third_Party/LwIP/src/core/netif.c ****   netif->name[0] = 'l';
+ARM GAS  /tmp/ccyg71h1.s 			page 4
+
+
+ 148:Middlewares/Third_Party/LwIP/src/core/netif.c ****   netif->name[1] = 'o';
+ 149:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_IPV4
+ 150:Middlewares/Third_Party/LwIP/src/core/netif.c ****   netif->output = netif_loop_output_ipv4;
+ 151:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif
+ 152:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_IPV6
+ 153:Middlewares/Third_Party/LwIP/src/core/netif.c ****   netif->output_ip6 = netif_loop_output_ipv6;
+ 154:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif
+ 155:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_LOOPIF_MULTICAST
+ 156:Middlewares/Third_Party/LwIP/src/core/netif.c ****   netif->flags |= NETIF_FLAG_IGMP;
+ 157:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif
+ 158:Middlewares/Third_Party/LwIP/src/core/netif.c ****   return ERR_OK;
+ 159:Middlewares/Third_Party/LwIP/src/core/netif.c **** }
+ 160:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_HAVE_LOOPIF */
+ 161:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 162:Middlewares/Third_Party/LwIP/src/core/netif.c **** void
+ 163:Middlewares/Third_Party/LwIP/src/core/netif.c **** netif_init(void)
+ 164:Middlewares/Third_Party/LwIP/src/core/netif.c **** {
+ 165:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_HAVE_LOOPIF
+ 166:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_IPV4
+ 167:Middlewares/Third_Party/LwIP/src/core/netif.c **** #define LOOPIF_ADDRINIT &loop_ipaddr, &loop_netmask, &loop_gw,
+ 168:Middlewares/Third_Party/LwIP/src/core/netif.c ****   ip4_addr_t loop_ipaddr, loop_netmask, loop_gw;
+ 169:Middlewares/Third_Party/LwIP/src/core/netif.c ****   IP4_ADDR(&loop_gw, 127,0,0,1);
+ 170:Middlewares/Third_Party/LwIP/src/core/netif.c ****   IP4_ADDR(&loop_ipaddr, 127,0,0,1);
+ 171:Middlewares/Third_Party/LwIP/src/core/netif.c ****   IP4_ADDR(&loop_netmask, 255,0,0,0);
+ 172:Middlewares/Third_Party/LwIP/src/core/netif.c **** #else /* LWIP_IPV4 */
+ 173:Middlewares/Third_Party/LwIP/src/core/netif.c **** #define LOOPIF_ADDRINIT
+ 174:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_IPV4 */
+ 175:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 176:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if NO_SYS
+ 177:Middlewares/Third_Party/LwIP/src/core/netif.c ****   netif_add(&loop_netif, LOOPIF_ADDRINIT NULL, netif_loopif_init, ip_input);
+ 178:Middlewares/Third_Party/LwIP/src/core/netif.c **** #else  /* NO_SYS */
+ 179:Middlewares/Third_Party/LwIP/src/core/netif.c ****   netif_add(&loop_netif, LOOPIF_ADDRINIT NULL, netif_loopif_init, tcpip_input);
+ 180:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* NO_SYS */
+ 181:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 182:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_IPV6
+ 183:Middlewares/Third_Party/LwIP/src/core/netif.c ****   IP_ADDR6_HOST(loop_netif.ip6_addr, 0, 0, 0, 0x00000001UL);
+ 184:Middlewares/Third_Party/LwIP/src/core/netif.c ****   loop_netif.ip6_addr_state[0] = IP6_ADDR_VALID;
+ 185:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_IPV6 */
+ 186:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 187:Middlewares/Third_Party/LwIP/src/core/netif.c ****   netif_set_link_up(&loop_netif);
+ 188:Middlewares/Third_Party/LwIP/src/core/netif.c ****   netif_set_up(&loop_netif);
+ 189:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 190:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_HAVE_LOOPIF */
+ 191:Middlewares/Third_Party/LwIP/src/core/netif.c **** }
+ 192:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 193:Middlewares/Third_Party/LwIP/src/core/netif.c **** /**
+ 194:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @ingroup lwip_nosys
+ 195:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * Forwards a received packet for input processing with
+ 196:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * ethernet_input() or ip_input() depending on netif flags.
+ 197:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * Don't call directly, pass to netif_add() and call
+ 198:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * netif->input().
+ 199:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * Only works if the netif driver correctly sets 
+ 200:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * NETIF_FLAG_ETHARP and/or NETIF_FLAG_ETHERNET flag!
+ 201:Middlewares/Third_Party/LwIP/src/core/netif.c ****  */
+ 202:Middlewares/Third_Party/LwIP/src/core/netif.c **** err_t
+ 203:Middlewares/Third_Party/LwIP/src/core/netif.c **** netif_input(struct pbuf *p, struct netif *inp)
+ 204:Middlewares/Third_Party/LwIP/src/core/netif.c **** {
+ARM GAS  /tmp/ccyg71h1.s 			page 5
+
+
+ 205:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_ETHERNET
+ 206:Middlewares/Third_Party/LwIP/src/core/netif.c ****   if (inp->flags & (NETIF_FLAG_ETHARP | NETIF_FLAG_ETHERNET)) {
+ 207:Middlewares/Third_Party/LwIP/src/core/netif.c ****     return ethernet_input(p, inp);
+ 208:Middlewares/Third_Party/LwIP/src/core/netif.c ****   } else
+ 209:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_ETHERNET */
+ 210:Middlewares/Third_Party/LwIP/src/core/netif.c ****   return ip_input(p, inp);
+ 211:Middlewares/Third_Party/LwIP/src/core/netif.c **** }
+ 212:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 213:Middlewares/Third_Party/LwIP/src/core/netif.c **** /**
+ 214:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @ingroup netif
+ 215:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * Add a network interface to the list of lwIP netifs.
+ 216:Middlewares/Third_Party/LwIP/src/core/netif.c ****  *
+ 217:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @param netif a pre-allocated netif structure
+ 218:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @param ipaddr IP address for the new netif
+ 219:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @param netmask network mask for the new netif
+ 220:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @param gw default gateway IP address for the new netif
+ 221:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @param state opaque data passed to the new netif
+ 222:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @param init callback function that initializes the interface
+ 223:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @param input callback function that is called to pass
+ 224:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * ingress packets up in the protocol layer stack.\n
+ 225:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * It is recommended to use a function that passes the input directly
+ 226:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * to the stack (netif_input(), NO_SYS=1 mode) or via sending a
+ 227:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * message to TCPIP thread (tcpip_input(), NO_SYS=0 mode).\n
+ 228:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * These functions use netif flags NETIF_FLAG_ETHARP and NETIF_FLAG_ETHERNET
+ 229:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * to decide whether to forward to ethernet_input() or ip_input().
+ 230:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * In other words, the functions only work when the netif
+ 231:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * driver is implemented correctly!\n
+ 232:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * Most members of struct netif should be be initialized by the 
+ 233:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * netif init function = netif driver (init parameter of this function).\n
+ 234:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * IPv6: Don't forget to call netif_create_ip6_linklocal_address() after
+ 235:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * setting the MAC address in struct netif.hwaddr
+ 236:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * (IPv6 requires a link-local address).
+ 237:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * 
+ 238:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @return netif, or NULL if failed.
+ 239:Middlewares/Third_Party/LwIP/src/core/netif.c ****  */
+ 240:Middlewares/Third_Party/LwIP/src/core/netif.c **** struct netif *
+ 241:Middlewares/Third_Party/LwIP/src/core/netif.c **** netif_add(struct netif *netif,
+ 242:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_IPV4
+ 243:Middlewares/Third_Party/LwIP/src/core/netif.c ****           const ip4_addr_t *ipaddr, const ip4_addr_t *netmask, const ip4_addr_t *gw,
+ 244:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_IPV4 */
+ 245:Middlewares/Third_Party/LwIP/src/core/netif.c ****           void *state, netif_init_fn init, netif_input_fn input)
+ 246:Middlewares/Third_Party/LwIP/src/core/netif.c **** {
+ 247:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_IPV6
+ 248:Middlewares/Third_Party/LwIP/src/core/netif.c ****   s8_t i;
+ 249:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif
+ 250:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 251:Middlewares/Third_Party/LwIP/src/core/netif.c ****   LWIP_ASSERT("No init function given", init != NULL);
+ 252:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 253:Middlewares/Third_Party/LwIP/src/core/netif.c ****   /* reset new interface configuration state */
+ 254:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_IPV4
+ 255:Middlewares/Third_Party/LwIP/src/core/netif.c ****   ip_addr_set_zero_ip4(&netif->ip_addr);
+ 256:Middlewares/Third_Party/LwIP/src/core/netif.c ****   ip_addr_set_zero_ip4(&netif->netmask);
+ 257:Middlewares/Third_Party/LwIP/src/core/netif.c ****   ip_addr_set_zero_ip4(&netif->gw);
+ 258:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_IPV4 */
+ 259:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_IPV6
+ 260:Middlewares/Third_Party/LwIP/src/core/netif.c ****   for (i = 0; i < LWIP_IPV6_NUM_ADDRESSES; i++) {
+ 261:Middlewares/Third_Party/LwIP/src/core/netif.c ****     ip_addr_set_zero_ip6(&netif->ip6_addr[i]);
+ARM GAS  /tmp/ccyg71h1.s 			page 6
+
+
+ 262:Middlewares/Third_Party/LwIP/src/core/netif.c ****     netif->ip6_addr_state[i] = IP6_ADDR_INVALID;
+ 263:Middlewares/Third_Party/LwIP/src/core/netif.c ****   }
+ 264:Middlewares/Third_Party/LwIP/src/core/netif.c ****   netif->output_ip6 = netif_null_output_ip6;
+ 265:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_IPV6 */
+ 266:Middlewares/Third_Party/LwIP/src/core/netif.c ****   NETIF_SET_CHECKSUM_CTRL(netif, NETIF_CHECKSUM_ENABLE_ALL);
+ 267:Middlewares/Third_Party/LwIP/src/core/netif.c ****   netif->flags = 0;
+ 268:Middlewares/Third_Party/LwIP/src/core/netif.c **** #ifdef netif_get_client_data
+ 269:Middlewares/Third_Party/LwIP/src/core/netif.c ****   memset(netif->client_data, 0, sizeof(netif->client_data));
+ 270:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_NUM_NETIF_CLIENT_DATA */
+ 271:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_IPV6_AUTOCONFIG
+ 272:Middlewares/Third_Party/LwIP/src/core/netif.c ****   /* IPv6 address autoconfiguration not enabled by default */
+ 273:Middlewares/Third_Party/LwIP/src/core/netif.c ****   netif->ip6_autoconfig_enabled = 0;
+ 274:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_IPV6_AUTOCONFIG */
+ 275:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_IPV6_SEND_ROUTER_SOLICIT
+ 276:Middlewares/Third_Party/LwIP/src/core/netif.c ****   netif->rs_count = LWIP_ND6_MAX_MULTICAST_SOLICIT;
+ 277:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_IPV6_SEND_ROUTER_SOLICIT */
+ 278:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_NETIF_STATUS_CALLBACK
+ 279:Middlewares/Third_Party/LwIP/src/core/netif.c ****   netif->status_callback = NULL;
+ 280:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_NETIF_STATUS_CALLBACK */
+ 281:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_NETIF_LINK_CALLBACK
+ 282:Middlewares/Third_Party/LwIP/src/core/netif.c ****   netif->link_callback = NULL;
+ 283:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_NETIF_LINK_CALLBACK */
+ 284:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_IGMP
+ 285:Middlewares/Third_Party/LwIP/src/core/netif.c ****   netif->igmp_mac_filter = NULL;
+ 286:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_IGMP */
+ 287:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_IPV6 && LWIP_IPV6_MLD
+ 288:Middlewares/Third_Party/LwIP/src/core/netif.c ****   netif->mld_mac_filter = NULL;
+ 289:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_IPV6 && LWIP_IPV6_MLD */
+ 290:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if ENABLE_LOOPBACK
+ 291:Middlewares/Third_Party/LwIP/src/core/netif.c ****   netif->loop_first = NULL;
+ 292:Middlewares/Third_Party/LwIP/src/core/netif.c ****   netif->loop_last = NULL;
+ 293:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* ENABLE_LOOPBACK */
+ 294:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 295:Middlewares/Third_Party/LwIP/src/core/netif.c ****   /* remember netif specific state information data */
+ 296:Middlewares/Third_Party/LwIP/src/core/netif.c ****   netif->state = state;
+ 297:Middlewares/Third_Party/LwIP/src/core/netif.c ****   netif->num = netif_num++;
+ 298:Middlewares/Third_Party/LwIP/src/core/netif.c ****   netif->input = input;
+ 299:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 300:Middlewares/Third_Party/LwIP/src/core/netif.c ****   NETIF_SET_HWADDRHINT(netif, NULL);
+ 301:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if ENABLE_LOOPBACK && LWIP_LOOPBACK_MAX_PBUFS
+ 302:Middlewares/Third_Party/LwIP/src/core/netif.c ****   netif->loop_cnt_current = 0;
+ 303:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* ENABLE_LOOPBACK && LWIP_LOOPBACK_MAX_PBUFS */
+ 304:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 305:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_IPV4
+ 306:Middlewares/Third_Party/LwIP/src/core/netif.c ****   netif_set_addr(netif, ipaddr, netmask, gw);
+ 307:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_IPV4 */
+ 308:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 309:Middlewares/Third_Party/LwIP/src/core/netif.c ****   /* call user specified initialization function for netif */
+ 310:Middlewares/Third_Party/LwIP/src/core/netif.c ****   if (init(netif) != ERR_OK) {
+ 311:Middlewares/Third_Party/LwIP/src/core/netif.c ****     return NULL;
+ 312:Middlewares/Third_Party/LwIP/src/core/netif.c ****   }
+ 313:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 314:Middlewares/Third_Party/LwIP/src/core/netif.c ****   /* add this netif to the list */
+ 315:Middlewares/Third_Party/LwIP/src/core/netif.c ****   netif->next = netif_list;
+ 316:Middlewares/Third_Party/LwIP/src/core/netif.c ****   netif_list = netif;
+ 317:Middlewares/Third_Party/LwIP/src/core/netif.c ****   mib2_netif_added(netif);
+ 318:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ARM GAS  /tmp/ccyg71h1.s 			page 7
+
+
+ 319:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_IGMP
+ 320:Middlewares/Third_Party/LwIP/src/core/netif.c ****   /* start IGMP processing */
+ 321:Middlewares/Third_Party/LwIP/src/core/netif.c ****   if (netif->flags & NETIF_FLAG_IGMP) {
+ 322:Middlewares/Third_Party/LwIP/src/core/netif.c ****     igmp_start(netif);
+ 323:Middlewares/Third_Party/LwIP/src/core/netif.c ****   }
+ 324:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_IGMP */
+ 325:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 326:Middlewares/Third_Party/LwIP/src/core/netif.c ****   LWIP_DEBUGF(NETIF_DEBUG, ("netif: added interface %c%c IP",
+ 327:Middlewares/Third_Party/LwIP/src/core/netif.c ****     netif->name[0], netif->name[1]));
+ 328:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_IPV4
+ 329:Middlewares/Third_Party/LwIP/src/core/netif.c ****   LWIP_DEBUGF(NETIF_DEBUG, (" addr "));
+ 330:Middlewares/Third_Party/LwIP/src/core/netif.c ****   ip4_addr_debug_print(NETIF_DEBUG, ipaddr);
+ 331:Middlewares/Third_Party/LwIP/src/core/netif.c ****   LWIP_DEBUGF(NETIF_DEBUG, (" netmask "));
+ 332:Middlewares/Third_Party/LwIP/src/core/netif.c ****   ip4_addr_debug_print(NETIF_DEBUG, netmask);
+ 333:Middlewares/Third_Party/LwIP/src/core/netif.c ****   LWIP_DEBUGF(NETIF_DEBUG, (" gw "));
+ 334:Middlewares/Third_Party/LwIP/src/core/netif.c ****   ip4_addr_debug_print(NETIF_DEBUG, gw);
+ 335:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_IPV4 */
+ 336:Middlewares/Third_Party/LwIP/src/core/netif.c ****   LWIP_DEBUGF(NETIF_DEBUG, ("\n"));
+ 337:Middlewares/Third_Party/LwIP/src/core/netif.c ****   return netif;
+ 338:Middlewares/Third_Party/LwIP/src/core/netif.c **** }
+ 339:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 340:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_IPV4
+ 341:Middlewares/Third_Party/LwIP/src/core/netif.c **** /**
+ 342:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @ingroup netif_ip4
+ 343:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * Change IP address configuration for a network interface (including netmask
+ 344:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * and default gateway).
+ 345:Middlewares/Third_Party/LwIP/src/core/netif.c ****  *
+ 346:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @param netif the network interface to change
+ 347:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @param ipaddr the new IP address
+ 348:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @param netmask the new netmask
+ 349:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @param gw the new default gateway
+ 350:Middlewares/Third_Party/LwIP/src/core/netif.c ****  */
+ 351:Middlewares/Third_Party/LwIP/src/core/netif.c **** void
+ 352:Middlewares/Third_Party/LwIP/src/core/netif.c **** netif_set_addr(struct netif *netif, const ip4_addr_t *ipaddr, const ip4_addr_t *netmask,
+ 353:Middlewares/Third_Party/LwIP/src/core/netif.c ****     const ip4_addr_t *gw)
+ 354:Middlewares/Third_Party/LwIP/src/core/netif.c **** {
+ 355:Middlewares/Third_Party/LwIP/src/core/netif.c ****   if (ip4_addr_isany(ipaddr)) {
+ 356:Middlewares/Third_Party/LwIP/src/core/netif.c ****     /* when removing an address, we have to remove it *before* changing netmask/gw
+ 357:Middlewares/Third_Party/LwIP/src/core/netif.c ****        to ensure that tcp RST segment can be sent correctly */
+ 358:Middlewares/Third_Party/LwIP/src/core/netif.c ****     netif_set_ipaddr(netif, ipaddr);
+ 359:Middlewares/Third_Party/LwIP/src/core/netif.c ****     netif_set_netmask(netif, netmask);
+ 360:Middlewares/Third_Party/LwIP/src/core/netif.c ****     netif_set_gw(netif, gw);
+ 361:Middlewares/Third_Party/LwIP/src/core/netif.c ****   } else {
+ 362:Middlewares/Third_Party/LwIP/src/core/netif.c ****     netif_set_netmask(netif, netmask);
+ 363:Middlewares/Third_Party/LwIP/src/core/netif.c ****     netif_set_gw(netif, gw);
+ 364:Middlewares/Third_Party/LwIP/src/core/netif.c ****     /* set ipaddr last to ensure netmask/gw have been set when status callback is called */
+ 365:Middlewares/Third_Party/LwIP/src/core/netif.c ****     netif_set_ipaddr(netif, ipaddr);
+ 366:Middlewares/Third_Party/LwIP/src/core/netif.c ****   }
+ 367:Middlewares/Third_Party/LwIP/src/core/netif.c **** }
+ 368:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_IPV4*/
+ 369:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 370:Middlewares/Third_Party/LwIP/src/core/netif.c **** /**
+ 371:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @ingroup netif
+ 372:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * Remove a network interface from the list of lwIP netifs.
+ 373:Middlewares/Third_Party/LwIP/src/core/netif.c ****  *
+ 374:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @param netif the network interface to remove
+ 375:Middlewares/Third_Party/LwIP/src/core/netif.c ****  */
+ARM GAS  /tmp/ccyg71h1.s 			page 8
+
+
+ 376:Middlewares/Third_Party/LwIP/src/core/netif.c **** void
+ 377:Middlewares/Third_Party/LwIP/src/core/netif.c **** netif_remove(struct netif *netif)
+ 378:Middlewares/Third_Party/LwIP/src/core/netif.c **** {
+ 379:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_IPV6
+ 380:Middlewares/Third_Party/LwIP/src/core/netif.c ****   int i;
+ 381:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif
+ 382:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 383:Middlewares/Third_Party/LwIP/src/core/netif.c ****   if (netif == NULL) {
+ 384:Middlewares/Third_Party/LwIP/src/core/netif.c ****     return;
+ 385:Middlewares/Third_Party/LwIP/src/core/netif.c ****   }
+ 386:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 387:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_IPV4
+ 388:Middlewares/Third_Party/LwIP/src/core/netif.c ****   if (!ip4_addr_isany_val(*netif_ip4_addr(netif))) {
+ 389:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_TCP
+ 390:Middlewares/Third_Party/LwIP/src/core/netif.c ****     tcp_netif_ip_addr_changed(netif_ip_addr4(netif), NULL);
+ 391:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_TCP */
+ 392:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_UDP
+ 393:Middlewares/Third_Party/LwIP/src/core/netif.c ****     udp_netif_ip_addr_changed(netif_ip_addr4(netif), NULL);
+ 394:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_UDP */
+ 395:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_RAW
+ 396:Middlewares/Third_Party/LwIP/src/core/netif.c ****     raw_netif_ip_addr_changed(netif_ip_addr4(netif), NULL);
+ 397:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_RAW */
+ 398:Middlewares/Third_Party/LwIP/src/core/netif.c ****   }
+ 399:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 400:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_IGMP
+ 401:Middlewares/Third_Party/LwIP/src/core/netif.c ****   /* stop IGMP processing */
+ 402:Middlewares/Third_Party/LwIP/src/core/netif.c ****   if (netif->flags & NETIF_FLAG_IGMP) {
+ 403:Middlewares/Third_Party/LwIP/src/core/netif.c ****     igmp_stop(netif);
+ 404:Middlewares/Third_Party/LwIP/src/core/netif.c ****   }
+ 405:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_IGMP */
+ 406:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_IPV4*/
+ 407:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 408:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_IPV6
+ 409:Middlewares/Third_Party/LwIP/src/core/netif.c ****   for (i = 0; i < LWIP_IPV6_NUM_ADDRESSES; i++) {
+ 410:Middlewares/Third_Party/LwIP/src/core/netif.c ****     if (ip6_addr_isvalid(netif_ip6_addr_state(netif, i))) {
+ 411:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_TCP
+ 412:Middlewares/Third_Party/LwIP/src/core/netif.c ****       tcp_netif_ip_addr_changed(netif_ip_addr6(netif, i), NULL);
+ 413:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_TCP */
+ 414:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_UDP
+ 415:Middlewares/Third_Party/LwIP/src/core/netif.c ****       udp_netif_ip_addr_changed(netif_ip_addr6(netif, i), NULL);
+ 416:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_UDP */
+ 417:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_RAW
+ 418:Middlewares/Third_Party/LwIP/src/core/netif.c ****       raw_netif_ip_addr_changed(netif_ip_addr6(netif, i), NULL);
+ 419:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_RAW */
+ 420:Middlewares/Third_Party/LwIP/src/core/netif.c ****     }
+ 421:Middlewares/Third_Party/LwIP/src/core/netif.c ****   }
+ 422:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_IPV6_MLD
+ 423:Middlewares/Third_Party/LwIP/src/core/netif.c ****   /* stop MLD processing */
+ 424:Middlewares/Third_Party/LwIP/src/core/netif.c ****   mld6_stop(netif);
+ 425:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_IPV6_MLD */
+ 426:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_IPV6 */
+ 427:Middlewares/Third_Party/LwIP/src/core/netif.c ****   if (netif_is_up(netif)) {
+ 428:Middlewares/Third_Party/LwIP/src/core/netif.c ****     /* set netif down before removing (call callback function) */
+ 429:Middlewares/Third_Party/LwIP/src/core/netif.c ****     netif_set_down(netif);
+ 430:Middlewares/Third_Party/LwIP/src/core/netif.c ****   }
+ 431:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 432:Middlewares/Third_Party/LwIP/src/core/netif.c ****   mib2_remove_ip4(netif);
+ARM GAS  /tmp/ccyg71h1.s 			page 9
+
+
+ 433:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 434:Middlewares/Third_Party/LwIP/src/core/netif.c ****   /* this netif is default? */
+ 435:Middlewares/Third_Party/LwIP/src/core/netif.c ****   if (netif_default == netif) {
+ 436:Middlewares/Third_Party/LwIP/src/core/netif.c ****     /* reset default netif */
+ 437:Middlewares/Third_Party/LwIP/src/core/netif.c ****     netif_set_default(NULL);
+ 438:Middlewares/Third_Party/LwIP/src/core/netif.c ****   }
+ 439:Middlewares/Third_Party/LwIP/src/core/netif.c ****   /*  is it the first netif? */
+ 440:Middlewares/Third_Party/LwIP/src/core/netif.c ****   if (netif_list == netif) {
+ 441:Middlewares/Third_Party/LwIP/src/core/netif.c ****     netif_list = netif->next;
+ 442:Middlewares/Third_Party/LwIP/src/core/netif.c ****   } else {
+ 443:Middlewares/Third_Party/LwIP/src/core/netif.c ****     /*  look for netif further down the list */
+ 444:Middlewares/Third_Party/LwIP/src/core/netif.c ****     struct netif * tmp_netif;
+ 445:Middlewares/Third_Party/LwIP/src/core/netif.c ****     for (tmp_netif = netif_list; tmp_netif != NULL; tmp_netif = tmp_netif->next) {
+ 446:Middlewares/Third_Party/LwIP/src/core/netif.c ****       if (tmp_netif->next == netif) {
+ 447:Middlewares/Third_Party/LwIP/src/core/netif.c ****         tmp_netif->next = netif->next;
+ 448:Middlewares/Third_Party/LwIP/src/core/netif.c ****         break;
+ 449:Middlewares/Third_Party/LwIP/src/core/netif.c ****       }
+ 450:Middlewares/Third_Party/LwIP/src/core/netif.c ****     }
+ 451:Middlewares/Third_Party/LwIP/src/core/netif.c ****     if (tmp_netif == NULL) {
+ 452:Middlewares/Third_Party/LwIP/src/core/netif.c ****       return; /* netif is not on the list */
+ 453:Middlewares/Third_Party/LwIP/src/core/netif.c ****     }
+ 454:Middlewares/Third_Party/LwIP/src/core/netif.c ****   }
+ 455:Middlewares/Third_Party/LwIP/src/core/netif.c ****   mib2_netif_removed(netif);
+ 456:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_NETIF_REMOVE_CALLBACK
+ 457:Middlewares/Third_Party/LwIP/src/core/netif.c ****   if (netif->remove_callback) {
+ 458:Middlewares/Third_Party/LwIP/src/core/netif.c ****     netif->remove_callback(netif);
+ 459:Middlewares/Third_Party/LwIP/src/core/netif.c ****   }
+ 460:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_NETIF_REMOVE_CALLBACK */
+ 461:Middlewares/Third_Party/LwIP/src/core/netif.c ****   LWIP_DEBUGF( NETIF_DEBUG, ("netif_remove: removed netif\n") );
+ 462:Middlewares/Third_Party/LwIP/src/core/netif.c **** }
+ 463:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 464:Middlewares/Third_Party/LwIP/src/core/netif.c **** /**
+ 465:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @ingroup netif
+ 466:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * Find a network interface by searching for its name
+ 467:Middlewares/Third_Party/LwIP/src/core/netif.c ****  *
+ 468:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @param name the name of the netif (like netif->name) plus concatenated number
+ 469:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * in ascii representation (e.g. 'en0')
+ 470:Middlewares/Third_Party/LwIP/src/core/netif.c ****  */
+ 471:Middlewares/Third_Party/LwIP/src/core/netif.c **** struct netif *
+ 472:Middlewares/Third_Party/LwIP/src/core/netif.c **** netif_find(const char *name)
+ 473:Middlewares/Third_Party/LwIP/src/core/netif.c **** {
+ 474:Middlewares/Third_Party/LwIP/src/core/netif.c ****   struct netif *netif;
+ 475:Middlewares/Third_Party/LwIP/src/core/netif.c ****   u8_t num;
+ 476:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 477:Middlewares/Third_Party/LwIP/src/core/netif.c ****   if (name == NULL) {
+ 478:Middlewares/Third_Party/LwIP/src/core/netif.c ****     return NULL;
+ 479:Middlewares/Third_Party/LwIP/src/core/netif.c ****   }
+ 480:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 481:Middlewares/Third_Party/LwIP/src/core/netif.c ****   num = (u8_t)(name[2] - '0');
+ 482:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 483:Middlewares/Third_Party/LwIP/src/core/netif.c ****   for (netif = netif_list; netif != NULL; netif = netif->next) {
+ 484:Middlewares/Third_Party/LwIP/src/core/netif.c ****     if (num == netif->num &&
+ 485:Middlewares/Third_Party/LwIP/src/core/netif.c ****        name[0] == netif->name[0] &&
+ 486:Middlewares/Third_Party/LwIP/src/core/netif.c ****        name[1] == netif->name[1]) {
+ 487:Middlewares/Third_Party/LwIP/src/core/netif.c ****       LWIP_DEBUGF(NETIF_DEBUG, ("netif_find: found %c%c\n", name[0], name[1]));
+ 488:Middlewares/Third_Party/LwIP/src/core/netif.c ****       return netif;
+ 489:Middlewares/Third_Party/LwIP/src/core/netif.c ****     }
+ARM GAS  /tmp/ccyg71h1.s 			page 10
+
+
+ 490:Middlewares/Third_Party/LwIP/src/core/netif.c ****   }
+ 491:Middlewares/Third_Party/LwIP/src/core/netif.c ****   LWIP_DEBUGF(NETIF_DEBUG, ("netif_find: didn't find %c%c\n", name[0], name[1]));
+ 492:Middlewares/Third_Party/LwIP/src/core/netif.c ****   return NULL;
+ 493:Middlewares/Third_Party/LwIP/src/core/netif.c **** }
+ 494:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 495:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_IPV4
+ 496:Middlewares/Third_Party/LwIP/src/core/netif.c **** /**
+ 497:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @ingroup netif_ip4
+ 498:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * Change the IP address of a network interface
+ 499:Middlewares/Third_Party/LwIP/src/core/netif.c ****  *
+ 500:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @param netif the network interface to change
+ 501:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @param ipaddr the new IP address
+ 502:Middlewares/Third_Party/LwIP/src/core/netif.c ****  *
+ 503:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @note call netif_set_addr() if you also want to change netmask and
+ 504:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * default gateway
+ 505:Middlewares/Third_Party/LwIP/src/core/netif.c ****  */
+ 506:Middlewares/Third_Party/LwIP/src/core/netif.c **** void
+ 507:Middlewares/Third_Party/LwIP/src/core/netif.c **** netif_set_ipaddr(struct netif *netif, const ip4_addr_t *ipaddr)
+ 508:Middlewares/Third_Party/LwIP/src/core/netif.c **** {
+ 509:Middlewares/Third_Party/LwIP/src/core/netif.c ****   ip_addr_t new_addr;
+ 510:Middlewares/Third_Party/LwIP/src/core/netif.c ****   *ip_2_ip4(&new_addr) = (ipaddr ? *ipaddr : *IP4_ADDR_ANY4);
+ 511:Middlewares/Third_Party/LwIP/src/core/netif.c ****   IP_SET_TYPE_VAL(new_addr, IPADDR_TYPE_V4);
+ 512:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 513:Middlewares/Third_Party/LwIP/src/core/netif.c ****   /* address is actually being changed? */
+ 514:Middlewares/Third_Party/LwIP/src/core/netif.c ****   if (ip4_addr_cmp(ip_2_ip4(&new_addr), netif_ip4_addr(netif)) == 0) {
+ 515:Middlewares/Third_Party/LwIP/src/core/netif.c ****     LWIP_DEBUGF(NETIF_DEBUG | LWIP_DBG_STATE, ("netif_set_ipaddr: netif address being changed\n"));
+ 516:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_TCP
+ 517:Middlewares/Third_Party/LwIP/src/core/netif.c ****     tcp_netif_ip_addr_changed(netif_ip_addr4(netif), &new_addr);
+ 518:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_TCP */
+ 519:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_UDP
+ 520:Middlewares/Third_Party/LwIP/src/core/netif.c ****     udp_netif_ip_addr_changed(netif_ip_addr4(netif), &new_addr);
+ 521:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_UDP */
+ 522:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_RAW
+ 523:Middlewares/Third_Party/LwIP/src/core/netif.c ****     raw_netif_ip_addr_changed(netif_ip_addr4(netif), &new_addr);
+ 524:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_RAW */
+ 525:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 526:Middlewares/Third_Party/LwIP/src/core/netif.c ****     mib2_remove_ip4(netif);
+ 527:Middlewares/Third_Party/LwIP/src/core/netif.c ****     mib2_remove_route_ip4(0, netif);
+ 528:Middlewares/Third_Party/LwIP/src/core/netif.c ****     /* set new IP address to netif */
+ 529:Middlewares/Third_Party/LwIP/src/core/netif.c ****     ip4_addr_set(ip_2_ip4(&netif->ip_addr), ipaddr);
+ 530:Middlewares/Third_Party/LwIP/src/core/netif.c ****     IP_SET_TYPE_VAL(netif->ip_addr, IPADDR_TYPE_V4);
+ 531:Middlewares/Third_Party/LwIP/src/core/netif.c ****     mib2_add_ip4(netif);
+ 532:Middlewares/Third_Party/LwIP/src/core/netif.c ****     mib2_add_route_ip4(0, netif);
+ 533:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 534:Middlewares/Third_Party/LwIP/src/core/netif.c ****     netif_issue_reports(netif, NETIF_REPORT_TYPE_IPV4);
+ 535:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 536:Middlewares/Third_Party/LwIP/src/core/netif.c ****     NETIF_STATUS_CALLBACK(netif);
+ 537:Middlewares/Third_Party/LwIP/src/core/netif.c ****   }
+ 538:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 539:Middlewares/Third_Party/LwIP/src/core/netif.c ****   LWIP_DEBUGF(NETIF_DEBUG | LWIP_DBG_TRACE | LWIP_DBG_STATE, ("netif: IP address of interface %c%c 
+ 540:Middlewares/Third_Party/LwIP/src/core/netif.c ****     netif->name[0], netif->name[1],
+ 541:Middlewares/Third_Party/LwIP/src/core/netif.c ****     ip4_addr1_16(netif_ip4_addr(netif)),
+ 542:Middlewares/Third_Party/LwIP/src/core/netif.c ****     ip4_addr2_16(netif_ip4_addr(netif)),
+ 543:Middlewares/Third_Party/LwIP/src/core/netif.c ****     ip4_addr3_16(netif_ip4_addr(netif)),
+ 544:Middlewares/Third_Party/LwIP/src/core/netif.c ****     ip4_addr4_16(netif_ip4_addr(netif))));
+ 545:Middlewares/Third_Party/LwIP/src/core/netif.c **** }
+ 546:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ARM GAS  /tmp/ccyg71h1.s 			page 11
+
+
+ 547:Middlewares/Third_Party/LwIP/src/core/netif.c **** /**
+ 548:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @ingroup netif_ip4
+ 549:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * Change the default gateway for a network interface
+ 550:Middlewares/Third_Party/LwIP/src/core/netif.c ****  *
+ 551:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @param netif the network interface to change
+ 552:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @param gw the new default gateway
+ 553:Middlewares/Third_Party/LwIP/src/core/netif.c ****  *
+ 554:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @note call netif_set_addr() if you also want to change ip address and netmask
+ 555:Middlewares/Third_Party/LwIP/src/core/netif.c ****  */
+ 556:Middlewares/Third_Party/LwIP/src/core/netif.c **** void
+ 557:Middlewares/Third_Party/LwIP/src/core/netif.c **** netif_set_gw(struct netif *netif, const ip4_addr_t *gw)
+ 558:Middlewares/Third_Party/LwIP/src/core/netif.c **** {
+ 559:Middlewares/Third_Party/LwIP/src/core/netif.c ****   ip4_addr_set(ip_2_ip4(&netif->gw), gw);
+ 560:Middlewares/Third_Party/LwIP/src/core/netif.c ****   IP_SET_TYPE_VAL(netif->gw, IPADDR_TYPE_V4);
+ 561:Middlewares/Third_Party/LwIP/src/core/netif.c ****   LWIP_DEBUGF(NETIF_DEBUG | LWIP_DBG_TRACE | LWIP_DBG_STATE, ("netif: GW address of interface %c%c 
+ 562:Middlewares/Third_Party/LwIP/src/core/netif.c ****     netif->name[0], netif->name[1],
+ 563:Middlewares/Third_Party/LwIP/src/core/netif.c ****     ip4_addr1_16(netif_ip4_gw(netif)),
+ 564:Middlewares/Third_Party/LwIP/src/core/netif.c ****     ip4_addr2_16(netif_ip4_gw(netif)),
+ 565:Middlewares/Third_Party/LwIP/src/core/netif.c ****     ip4_addr3_16(netif_ip4_gw(netif)),
+ 566:Middlewares/Third_Party/LwIP/src/core/netif.c ****     ip4_addr4_16(netif_ip4_gw(netif))));
+ 567:Middlewares/Third_Party/LwIP/src/core/netif.c **** }
+ 568:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 569:Middlewares/Third_Party/LwIP/src/core/netif.c **** /**
+ 570:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @ingroup netif_ip4
+ 571:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * Change the netmask of a network interface
+ 572:Middlewares/Third_Party/LwIP/src/core/netif.c ****  *
+ 573:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @param netif the network interface to change
+ 574:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @param netmask the new netmask
+ 575:Middlewares/Third_Party/LwIP/src/core/netif.c ****  *
+ 576:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @note call netif_set_addr() if you also want to change ip address and
+ 577:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * default gateway
+ 578:Middlewares/Third_Party/LwIP/src/core/netif.c ****  */
+ 579:Middlewares/Third_Party/LwIP/src/core/netif.c **** void
+ 580:Middlewares/Third_Party/LwIP/src/core/netif.c **** netif_set_netmask(struct netif *netif, const ip4_addr_t *netmask)
+ 581:Middlewares/Third_Party/LwIP/src/core/netif.c **** {
+ 582:Middlewares/Third_Party/LwIP/src/core/netif.c ****   mib2_remove_route_ip4(0, netif);
+ 583:Middlewares/Third_Party/LwIP/src/core/netif.c ****   /* set new netmask to netif */
+ 584:Middlewares/Third_Party/LwIP/src/core/netif.c ****   ip4_addr_set(ip_2_ip4(&netif->netmask), netmask);
+ 585:Middlewares/Third_Party/LwIP/src/core/netif.c ****   IP_SET_TYPE_VAL(netif->netmask, IPADDR_TYPE_V4);
+ 586:Middlewares/Third_Party/LwIP/src/core/netif.c ****   mib2_add_route_ip4(0, netif);
+ 587:Middlewares/Third_Party/LwIP/src/core/netif.c ****   LWIP_DEBUGF(NETIF_DEBUG | LWIP_DBG_TRACE | LWIP_DBG_STATE, ("netif: netmask of interface %c%c set
+ 588:Middlewares/Third_Party/LwIP/src/core/netif.c ****     netif->name[0], netif->name[1],
+ 589:Middlewares/Third_Party/LwIP/src/core/netif.c ****     ip4_addr1_16(netif_ip4_netmask(netif)),
+ 590:Middlewares/Third_Party/LwIP/src/core/netif.c ****     ip4_addr2_16(netif_ip4_netmask(netif)),
+ 591:Middlewares/Third_Party/LwIP/src/core/netif.c ****     ip4_addr3_16(netif_ip4_netmask(netif)),
+ 592:Middlewares/Third_Party/LwIP/src/core/netif.c ****     ip4_addr4_16(netif_ip4_netmask(netif))));
+ 593:Middlewares/Third_Party/LwIP/src/core/netif.c **** }
+ 594:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_IPV4 */
+ 595:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 596:Middlewares/Third_Party/LwIP/src/core/netif.c **** /**
+ 597:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @ingroup netif
+ 598:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * Set a network interface as the default network interface
+ 599:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * (used to output all packets for which no specific route is found)
+ 600:Middlewares/Third_Party/LwIP/src/core/netif.c ****  *
+ 601:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @param netif the default network interface
+ 602:Middlewares/Third_Party/LwIP/src/core/netif.c ****  */
+ 603:Middlewares/Third_Party/LwIP/src/core/netif.c **** void
+ARM GAS  /tmp/ccyg71h1.s 			page 12
+
+
+ 604:Middlewares/Third_Party/LwIP/src/core/netif.c **** netif_set_default(struct netif *netif)
+ 605:Middlewares/Third_Party/LwIP/src/core/netif.c **** {
+ 606:Middlewares/Third_Party/LwIP/src/core/netif.c ****   if (netif == NULL) {
+ 607:Middlewares/Third_Party/LwIP/src/core/netif.c ****     /* remove default route */
+ 608:Middlewares/Third_Party/LwIP/src/core/netif.c ****     mib2_remove_route_ip4(1, netif);
+ 609:Middlewares/Third_Party/LwIP/src/core/netif.c ****   } else {
+ 610:Middlewares/Third_Party/LwIP/src/core/netif.c ****     /* install default route */
+ 611:Middlewares/Third_Party/LwIP/src/core/netif.c ****     mib2_add_route_ip4(1, netif);
+ 612:Middlewares/Third_Party/LwIP/src/core/netif.c ****   }
+ 613:Middlewares/Third_Party/LwIP/src/core/netif.c ****   netif_default = netif;
+ 614:Middlewares/Third_Party/LwIP/src/core/netif.c ****   LWIP_DEBUGF(NETIF_DEBUG, ("netif: setting default interface %c%c\n",
+ 615:Middlewares/Third_Party/LwIP/src/core/netif.c ****            netif ? netif->name[0] : '\'', netif ? netif->name[1] : '\''));
+ 616:Middlewares/Third_Party/LwIP/src/core/netif.c **** }
+ 617:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 618:Middlewares/Third_Party/LwIP/src/core/netif.c **** /**
+ 619:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @ingroup netif
+ 620:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * Bring an interface up, available for processing
+ 621:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * traffic.
+ 622:Middlewares/Third_Party/LwIP/src/core/netif.c ****  */
+ 623:Middlewares/Third_Party/LwIP/src/core/netif.c **** void
+ 624:Middlewares/Third_Party/LwIP/src/core/netif.c **** netif_set_up(struct netif *netif)
+ 625:Middlewares/Third_Party/LwIP/src/core/netif.c **** {
+ 626:Middlewares/Third_Party/LwIP/src/core/netif.c ****   if (!(netif->flags & NETIF_FLAG_UP)) {
+ 627:Middlewares/Third_Party/LwIP/src/core/netif.c ****     netif->flags |= NETIF_FLAG_UP;
+ 628:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 629:Middlewares/Third_Party/LwIP/src/core/netif.c ****     MIB2_COPY_SYSUPTIME_TO(&netif->ts);
+ 630:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 631:Middlewares/Third_Party/LwIP/src/core/netif.c ****     NETIF_STATUS_CALLBACK(netif);
+ 632:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 633:Middlewares/Third_Party/LwIP/src/core/netif.c ****     if (netif->flags & NETIF_FLAG_LINK_UP) {
+ 634:Middlewares/Third_Party/LwIP/src/core/netif.c ****       netif_issue_reports(netif, NETIF_REPORT_TYPE_IPV4|NETIF_REPORT_TYPE_IPV6);
+ 635:Middlewares/Third_Party/LwIP/src/core/netif.c ****     }
+ 636:Middlewares/Third_Party/LwIP/src/core/netif.c ****   }
+ 637:Middlewares/Third_Party/LwIP/src/core/netif.c **** }
+ 638:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 639:Middlewares/Third_Party/LwIP/src/core/netif.c **** /** Send ARP/IGMP/MLD/RS events, e.g. on link-up/netif-up or addr-change
+ 640:Middlewares/Third_Party/LwIP/src/core/netif.c ****  */
+ 641:Middlewares/Third_Party/LwIP/src/core/netif.c **** static void
+ 642:Middlewares/Third_Party/LwIP/src/core/netif.c **** netif_issue_reports(struct netif* netif, u8_t report_type)
+ 643:Middlewares/Third_Party/LwIP/src/core/netif.c **** {
+  26              		.loc 1 643 0
+  27              		.cfi_startproc
+  28              		@ args = 0, pretend = 0, frame = 0
+  29              		@ frame_needed = 0, uses_anonymous_args = 0
+  30              	.LVL0:
+ 644:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_IPV4
+ 645:Middlewares/Third_Party/LwIP/src/core/netif.c ****   if ((report_type & NETIF_REPORT_TYPE_IPV4) &&
+  31              		.loc 1 645 0
+  32 0000 11F0010F 		tst	r1, #1
+  33 0004 0CD0     		beq	.L4
+ 643:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_IPV4
+  34              		.loc 1 643 0 discriminator 1
+  35 0006 08B5     		push	{r3, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 8
+  38              		.cfi_offset 3, -8
+  39              		.cfi_offset 14, -4
+ARM GAS  /tmp/ccyg71h1.s 			page 13
+
+
+ 646:Middlewares/Third_Party/LwIP/src/core/netif.c ****       !ip4_addr_isany_val(*netif_ip4_addr(netif))) {
+  40              		.loc 1 646 0 discriminator 1
+  41 0008 4368     		ldr	r3, [r0, #4]
+ 645:Middlewares/Third_Party/LwIP/src/core/netif.c ****       !ip4_addr_isany_val(*netif_ip4_addr(netif))) {
+  42              		.loc 1 645 0 discriminator 1
+  43 000a 23B1     		cbz	r3, .L1
+ 647:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_ARP
+ 648:Middlewares/Third_Party/LwIP/src/core/netif.c ****     /* For Ethernet network interfaces, we would like to send a "gratuitous ARP" */
+ 649:Middlewares/Third_Party/LwIP/src/core/netif.c ****     if (netif->flags & (NETIF_FLAG_ETHARP)) {
+  44              		.loc 1 649 0
+  45 000c 90F82B30 		ldrb	r3, [r0, #43]	@ zero_extendqisi2
+  46 0010 13F0080F 		tst	r3, #8
+  47 0014 00D1     		bne	.L7
+  48              	.LVL1:
+  49              	.L1:
+  50 0016 08BD     		pop	{r3, pc}
+  51              	.LVL2:
+  52              	.L7:
+ 650:Middlewares/Third_Party/LwIP/src/core/netif.c ****       etharp_gratuitous(netif);
+  53              		.loc 1 650 0
+  54 0018 011D     		adds	r1, r0, #4
+  55              	.LVL3:
+  56 001a FFF7FEFF 		bl	etharp_request
+  57              	.LVL4:
+ 651:Middlewares/Third_Party/LwIP/src/core/netif.c ****     }
+ 652:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_ARP */
+ 653:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 654:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_IGMP
+ 655:Middlewares/Third_Party/LwIP/src/core/netif.c ****     /* resend IGMP memberships */
+ 656:Middlewares/Third_Party/LwIP/src/core/netif.c ****     if (netif->flags & NETIF_FLAG_IGMP) {
+ 657:Middlewares/Third_Party/LwIP/src/core/netif.c ****       igmp_report_groups(netif);
+ 658:Middlewares/Third_Party/LwIP/src/core/netif.c ****     }
+ 659:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_IGMP */
+ 660:Middlewares/Third_Party/LwIP/src/core/netif.c ****   }
+ 661:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_IPV4 */
+ 662:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 663:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_IPV6
+ 664:Middlewares/Third_Party/LwIP/src/core/netif.c ****   if (report_type & NETIF_REPORT_TYPE_IPV6) {
+ 665:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_IPV6_MLD
+ 666:Middlewares/Third_Party/LwIP/src/core/netif.c ****     /* send mld memberships */
+ 667:Middlewares/Third_Party/LwIP/src/core/netif.c ****     mld6_report_groups(netif);
+ 668:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_IPV6_MLD */
+ 669:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_IPV6_SEND_ROUTER_SOLICIT
+ 670:Middlewares/Third_Party/LwIP/src/core/netif.c ****     /* Send Router Solicitation messages. */
+ 671:Middlewares/Third_Party/LwIP/src/core/netif.c ****     netif->rs_count = LWIP_ND6_MAX_MULTICAST_SOLICIT;
+ 672:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_IPV6_SEND_ROUTER_SOLICIT */
+ 673:Middlewares/Third_Party/LwIP/src/core/netif.c ****   }
+ 674:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_IPV6 */
+ 675:Middlewares/Third_Party/LwIP/src/core/netif.c **** }
+  58              		.loc 1 675 0
+  59 001e FAE7     		b	.L1
+  60              	.LVL5:
+  61              	.L4:
+  62              	.LCFI1:
+  63              		.cfi_def_cfa_offset 0
+  64              		.cfi_restore 3
+  65              		.cfi_restore 14
+ARM GAS  /tmp/ccyg71h1.s 			page 14
+
+
+  66 0020 7047     		bx	lr
+  67              		.cfi_endproc
+  68              	.LFE169:
+  70              		.section	.text.netif_init,"ax",%progbits
+  71              		.align	1
+  72              		.global	netif_init
+  73              		.syntax unified
+  74              		.thumb
+  75              		.thumb_func
+  76              		.fpu fpv5-d16
+  78              	netif_init:
+  79              	.LFB158:
+ 164:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_HAVE_LOOPIF
+  80              		.loc 1 164 0
+  81              		.cfi_startproc
+  82              		@ args = 0, pretend = 0, frame = 0
+  83              		@ frame_needed = 0, uses_anonymous_args = 0
+  84              		@ link register save eliminated.
+  85 0000 7047     		bx	lr
+  86              		.cfi_endproc
+  87              	.LFE158:
+  89              		.section	.text.netif_input,"ax",%progbits
+  90              		.align	1
+  91              		.global	netif_input
+  92              		.syntax unified
+  93              		.thumb
+  94              		.thumb_func
+  95              		.fpu fpv5-d16
+  97              	netif_input:
+  98              	.LFB159:
+ 204:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_ETHERNET
+  99              		.loc 1 204 0
+ 100              		.cfi_startproc
+ 101              		@ args = 0, pretend = 0, frame = 0
+ 102              		@ frame_needed = 0, uses_anonymous_args = 0
+ 103              	.LVL6:
+ 204:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_ETHERNET
+ 104              		.loc 1 204 0
+ 105 0000 08B5     		push	{r3, lr}
+ 106              	.LCFI2:
+ 107              		.cfi_def_cfa_offset 8
+ 108              		.cfi_offset 3, -8
+ 109              		.cfi_offset 14, -4
+ 206:Middlewares/Third_Party/LwIP/src/core/netif.c ****     return ethernet_input(p, inp);
+ 110              		.loc 1 206 0
+ 111 0002 91F82B30 		ldrb	r3, [r1, #43]	@ zero_extendqisi2
+ 112 0006 13F0180F 		tst	r3, #24
+ 113 000a 02D1     		bne	.L13
+ 210:Middlewares/Third_Party/LwIP/src/core/netif.c **** }
+ 114              		.loc 1 210 0
+ 115 000c FFF7FEFF 		bl	ip4_input
+ 116              	.LVL7:
+ 211:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 117              		.loc 1 211 0
+ 118 0010 08BD     		pop	{r3, pc}
+ 119              	.LVL8:
+ 120              	.L13:
+ARM GAS  /tmp/ccyg71h1.s 			page 15
+
+
+ 207:Middlewares/Third_Party/LwIP/src/core/netif.c ****   } else
+ 121              		.loc 1 207 0
+ 122 0012 FFF7FEFF 		bl	ethernet_input
+ 123              	.LVL9:
+ 124 0016 08BD     		pop	{r3, pc}
+ 125              		.cfi_endproc
+ 126              	.LFE159:
+ 128              		.section	.text.netif_find,"ax",%progbits
+ 129              		.align	1
+ 130              		.global	netif_find
+ 131              		.syntax unified
+ 132              		.thumb
+ 133              		.thumb_func
+ 134              		.fpu fpv5-d16
+ 136              	netif_find:
+ 137              	.LFB163:
+ 473:Middlewares/Third_Party/LwIP/src/core/netif.c ****   struct netif *netif;
+ 138              		.loc 1 473 0
+ 139              		.cfi_startproc
+ 140              		@ args = 0, pretend = 0, frame = 0
+ 141              		@ frame_needed = 0, uses_anonymous_args = 0
+ 142              		@ link register save eliminated.
+ 143              	.LVL10:
+ 477:Middlewares/Third_Party/LwIP/src/core/netif.c ****     return NULL;
+ 144              		.loc 1 477 0
+ 145 0000 D0B1     		cbz	r0, .L19
+ 473:Middlewares/Third_Party/LwIP/src/core/netif.c ****   struct netif *netif;
+ 146              		.loc 1 473 0
+ 147 0002 10B4     		push	{r4}
+ 148              	.LCFI3:
+ 149              		.cfi_def_cfa_offset 4
+ 150              		.cfi_offset 4, -4
+ 151 0004 0446     		mov	r4, r0
+ 481:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 152              		.loc 1 481 0
+ 153 0006 8278     		ldrb	r2, [r0, #2]	@ zero_extendqisi2
+ 154 0008 303A     		subs	r2, r2, #48
+ 155 000a D2B2     		uxtb	r2, r2
+ 156              	.LVL11:
+ 483:Middlewares/Third_Party/LwIP/src/core/netif.c ****     if (num == netif->num &&
+ 157              		.loc 1 483 0
+ 158 000c 0B4B     		ldr	r3, .L24
+ 159 000e 1868     		ldr	r0, [r3]
+ 160              	.LVL12:
+ 161 0010 00E0     		b	.L16
+ 162              	.L17:
+ 483:Middlewares/Third_Party/LwIP/src/core/netif.c ****     if (num == netif->num &&
+ 163              		.loc 1 483 0 is_stmt 0 discriminator 2
+ 164 0012 0068     		ldr	r0, [r0]
+ 165              	.LVL13:
+ 166              	.L16:
+ 483:Middlewares/Third_Party/LwIP/src/core/netif.c ****     if (num == netif->num &&
+ 167              		.loc 1 483 0 discriminator 1
+ 168 0014 68B1     		cbz	r0, .L14
+ 484:Middlewares/Third_Party/LwIP/src/core/netif.c ****        name[0] == netif->name[0] &&
+ 169              		.loc 1 484 0 is_stmt 1
+ 170 0016 90F82E30 		ldrb	r3, [r0, #46]	@ zero_extendqisi2
+ARM GAS  /tmp/ccyg71h1.s 			page 16
+
+
+ 171 001a 9A42     		cmp	r2, r3
+ 172 001c F9D1     		bne	.L17
+ 485:Middlewares/Third_Party/LwIP/src/core/netif.c ****        name[1] == netif->name[1]) {
+ 173              		.loc 1 485 0 discriminator 1
+ 174 001e 2178     		ldrb	r1, [r4]	@ zero_extendqisi2
+ 175 0020 90F82C30 		ldrb	r3, [r0, #44]	@ zero_extendqisi2
+ 484:Middlewares/Third_Party/LwIP/src/core/netif.c ****        name[0] == netif->name[0] &&
+ 176              		.loc 1 484 0 discriminator 1
+ 177 0024 9942     		cmp	r1, r3
+ 178 0026 F4D1     		bne	.L17
+ 486:Middlewares/Third_Party/LwIP/src/core/netif.c ****       LWIP_DEBUGF(NETIF_DEBUG, ("netif_find: found %c%c\n", name[0], name[1]));
+ 179              		.loc 1 486 0
+ 180 0028 6178     		ldrb	r1, [r4, #1]	@ zero_extendqisi2
+ 181 002a 90F82D30 		ldrb	r3, [r0, #45]	@ zero_extendqisi2
+ 485:Middlewares/Third_Party/LwIP/src/core/netif.c ****        name[1] == netif->name[1]) {
+ 182              		.loc 1 485 0
+ 183 002e 9942     		cmp	r1, r3
+ 184 0030 EFD1     		bne	.L17
+ 185              	.L14:
+ 493:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 186              		.loc 1 493 0
+ 187 0032 5DF8044B 		ldr	r4, [sp], #4
+ 188              	.LCFI4:
+ 189              		.cfi_restore 4
+ 190              		.cfi_def_cfa_offset 0
+ 191              	.LVL14:
+ 192 0036 7047     		bx	lr
+ 193              	.LVL15:
+ 194              	.L19:
+ 478:Middlewares/Third_Party/LwIP/src/core/netif.c ****   }
+ 195              		.loc 1 478 0
+ 196 0038 0020     		movs	r0, #0
+ 197              	.LVL16:
+ 198 003a 7047     		bx	lr
+ 199              	.L25:
+ 200              		.align	2
+ 201              	.L24:
+ 202 003c 00000000 		.word	netif_list
+ 203              		.cfi_endproc
+ 204              	.LFE163:
+ 206              		.section	.text.netif_set_ipaddr,"ax",%progbits
+ 207              		.align	1
+ 208              		.global	netif_set_ipaddr
+ 209              		.syntax unified
+ 210              		.thumb
+ 211              		.thumb_func
+ 212              		.fpu fpv5-d16
+ 214              	netif_set_ipaddr:
+ 215              	.LFB164:
+ 508:Middlewares/Third_Party/LwIP/src/core/netif.c ****   ip_addr_t new_addr;
+ 216              		.loc 1 508 0
+ 217              		.cfi_startproc
+ 218              		@ args = 0, pretend = 0, frame = 8
+ 219              		@ frame_needed = 0, uses_anonymous_args = 0
+ 220              	.LVL17:
+ 221 0000 70B5     		push	{r4, r5, r6, lr}
+ 222              	.LCFI5:
+ARM GAS  /tmp/ccyg71h1.s 			page 17
+
+
+ 223              		.cfi_def_cfa_offset 16
+ 224              		.cfi_offset 4, -16
+ 225              		.cfi_offset 5, -12
+ 226              		.cfi_offset 6, -8
+ 227              		.cfi_offset 14, -4
+ 228 0002 82B0     		sub	sp, sp, #8
+ 229              	.LCFI6:
+ 230              		.cfi_def_cfa_offset 24
+ 510:Middlewares/Third_Party/LwIP/src/core/netif.c ****   IP_SET_TYPE_VAL(new_addr, IPADDR_TYPE_V4);
+ 231              		.loc 1 510 0
+ 232 0004 0D46     		mov	r5, r1
+ 233 0006 C1B1     		cbz	r1, .L27
+ 510:Middlewares/Third_Party/LwIP/src/core/netif.c ****   IP_SET_TYPE_VAL(new_addr, IPADDR_TYPE_V4);
+ 234              		.loc 1 510 0 is_stmt 0 discriminator 1
+ 235 0008 0A68     		ldr	r2, [r1]
+ 236 000a 0192     		str	r2, [sp, #4]
+ 237              	.L28:
+ 514:Middlewares/Third_Party/LwIP/src/core/netif.c ****     LWIP_DEBUGF(NETIF_DEBUG | LWIP_DBG_STATE, ("netif_set_ipaddr: netif address being changed\n"));
+ 238              		.loc 1 514 0 is_stmt 1
+ 239 000c 4268     		ldr	r2, [r0, #4]
+ 240 000e 0199     		ldr	r1, [sp, #4]
+ 241              	.LVL18:
+ 242 0010 9142     		cmp	r1, r2
+ 243 0012 10D0     		beq	.L26
+ 244 0014 0446     		mov	r4, r0
+ 517:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_TCP */
+ 245              		.loc 1 517 0
+ 246 0016 061D     		adds	r6, r0, #4
+ 247 0018 01A9     		add	r1, sp, #4
+ 248 001a 3046     		mov	r0, r6
+ 249              	.LVL19:
+ 250 001c FFF7FEFF 		bl	tcp_netif_ip_addr_changed
+ 251              	.LVL20:
+ 520:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_UDP */
+ 252              		.loc 1 520 0
+ 253 0020 01A9     		add	r1, sp, #4
+ 254 0022 3046     		mov	r0, r6
+ 255 0024 FFF7FEFF 		bl	udp_netif_ip_addr_changed
+ 256              	.LVL21:
+ 529:Middlewares/Third_Party/LwIP/src/core/netif.c ****     IP_SET_TYPE_VAL(netif->ip_addr, IPADDR_TYPE_V4);
+ 257              		.loc 1 529 0
+ 258 0028 5DB1     		cbz	r5, .L31
+ 529:Middlewares/Third_Party/LwIP/src/core/netif.c ****     IP_SET_TYPE_VAL(netif->ip_addr, IPADDR_TYPE_V4);
+ 259              		.loc 1 529 0 is_stmt 0 discriminator 1
+ 260 002a 2B68     		ldr	r3, [r5]
+ 261              	.L30:
+ 529:Middlewares/Third_Party/LwIP/src/core/netif.c ****     IP_SET_TYPE_VAL(netif->ip_addr, IPADDR_TYPE_V4);
+ 262              		.loc 1 529 0 discriminator 4
+ 263 002c 6360     		str	r3, [r4, #4]
+ 534:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 264              		.loc 1 534 0 is_stmt 1 discriminator 4
+ 265 002e 0121     		movs	r1, #1
+ 266 0030 2046     		mov	r0, r4
+ 267 0032 FFF7FEFF 		bl	netif_issue_reports
+ 268              	.LVL22:
+ 269              	.L26:
+ 545:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ARM GAS  /tmp/ccyg71h1.s 			page 18
+
+
+ 270              		.loc 1 545 0
+ 271 0036 02B0     		add	sp, sp, #8
+ 272              	.LCFI7:
+ 273              		.cfi_remember_state
+ 274              		.cfi_def_cfa_offset 16
+ 275              		@ sp needed
+ 276 0038 70BD     		pop	{r4, r5, r6, pc}
+ 277              	.LVL23:
+ 278              	.L27:
+ 279              	.LCFI8:
+ 280              		.cfi_restore_state
+ 510:Middlewares/Third_Party/LwIP/src/core/netif.c ****   IP_SET_TYPE_VAL(new_addr, IPADDR_TYPE_V4);
+ 281              		.loc 1 510 0 discriminator 2
+ 282 003a 034A     		ldr	r2, .L33
+ 283 003c 1268     		ldr	r2, [r2]
+ 284 003e 0192     		str	r2, [sp, #4]
+ 285 0040 E4E7     		b	.L28
+ 286              	.LVL24:
+ 287              	.L31:
+ 529:Middlewares/Third_Party/LwIP/src/core/netif.c ****     IP_SET_TYPE_VAL(netif->ip_addr, IPADDR_TYPE_V4);
+ 288              		.loc 1 529 0
+ 289 0042 0023     		movs	r3, #0
+ 290 0044 F2E7     		b	.L30
+ 291              	.L34:
+ 292 0046 00BF     		.align	2
+ 293              	.L33:
+ 294 0048 00000000 		.word	ip_addr_any
+ 295              		.cfi_endproc
+ 296              	.LFE164:
+ 298              		.section	.text.netif_set_gw,"ax",%progbits
+ 299              		.align	1
+ 300              		.global	netif_set_gw
+ 301              		.syntax unified
+ 302              		.thumb
+ 303              		.thumb_func
+ 304              		.fpu fpv5-d16
+ 306              	netif_set_gw:
+ 307              	.LFB165:
+ 558:Middlewares/Third_Party/LwIP/src/core/netif.c ****   ip4_addr_set(ip_2_ip4(&netif->gw), gw);
+ 308              		.loc 1 558 0
+ 309              		.cfi_startproc
+ 310              		@ args = 0, pretend = 0, frame = 0
+ 311              		@ frame_needed = 0, uses_anonymous_args = 0
+ 312              		@ link register save eliminated.
+ 313              	.LVL25:
+ 559:Middlewares/Third_Party/LwIP/src/core/netif.c ****   IP_SET_TYPE_VAL(netif->gw, IPADDR_TYPE_V4);
+ 314              		.loc 1 559 0
+ 315 0000 11B1     		cbz	r1, .L37
+ 559:Middlewares/Third_Party/LwIP/src/core/netif.c ****   IP_SET_TYPE_VAL(netif->gw, IPADDR_TYPE_V4);
+ 316              		.loc 1 559 0 is_stmt 0 discriminator 1
+ 317 0002 0B68     		ldr	r3, [r1]
+ 318              	.L36:
+ 559:Middlewares/Third_Party/LwIP/src/core/netif.c ****   IP_SET_TYPE_VAL(netif->gw, IPADDR_TYPE_V4);
+ 319              		.loc 1 559 0 discriminator 4
+ 320 0004 C360     		str	r3, [r0, #12]
+ 321 0006 7047     		bx	lr
+ 322              	.L37:
+ARM GAS  /tmp/ccyg71h1.s 			page 19
+
+
+ 559:Middlewares/Third_Party/LwIP/src/core/netif.c ****   IP_SET_TYPE_VAL(netif->gw, IPADDR_TYPE_V4);
+ 323              		.loc 1 559 0
+ 324 0008 0023     		movs	r3, #0
+ 325 000a FBE7     		b	.L36
+ 326              		.cfi_endproc
+ 327              	.LFE165:
+ 329              		.section	.text.netif_set_netmask,"ax",%progbits
+ 330              		.align	1
+ 331              		.global	netif_set_netmask
+ 332              		.syntax unified
+ 333              		.thumb
+ 334              		.thumb_func
+ 335              		.fpu fpv5-d16
+ 337              	netif_set_netmask:
+ 338              	.LFB166:
+ 581:Middlewares/Third_Party/LwIP/src/core/netif.c ****   mib2_remove_route_ip4(0, netif);
+ 339              		.loc 1 581 0 is_stmt 1
+ 340              		.cfi_startproc
+ 341              		@ args = 0, pretend = 0, frame = 0
+ 342              		@ frame_needed = 0, uses_anonymous_args = 0
+ 343              		@ link register save eliminated.
+ 344              	.LVL26:
+ 584:Middlewares/Third_Party/LwIP/src/core/netif.c ****   IP_SET_TYPE_VAL(netif->netmask, IPADDR_TYPE_V4);
+ 345              		.loc 1 584 0
+ 346 0000 11B1     		cbz	r1, .L40
+ 584:Middlewares/Third_Party/LwIP/src/core/netif.c ****   IP_SET_TYPE_VAL(netif->netmask, IPADDR_TYPE_V4);
+ 347              		.loc 1 584 0 is_stmt 0 discriminator 1
+ 348 0002 0B68     		ldr	r3, [r1]
+ 349              	.L39:
+ 584:Middlewares/Third_Party/LwIP/src/core/netif.c ****   IP_SET_TYPE_VAL(netif->netmask, IPADDR_TYPE_V4);
+ 350              		.loc 1 584 0 discriminator 4
+ 351 0004 8360     		str	r3, [r0, #8]
+ 352 0006 7047     		bx	lr
+ 353              	.L40:
+ 584:Middlewares/Third_Party/LwIP/src/core/netif.c ****   IP_SET_TYPE_VAL(netif->netmask, IPADDR_TYPE_V4);
+ 354              		.loc 1 584 0
+ 355 0008 0023     		movs	r3, #0
+ 356 000a FBE7     		b	.L39
+ 357              		.cfi_endproc
+ 358              	.LFE166:
+ 360              		.section	.text.netif_set_addr,"ax",%progbits
+ 361              		.align	1
+ 362              		.global	netif_set_addr
+ 363              		.syntax unified
+ 364              		.thumb
+ 365              		.thumb_func
+ 366              		.fpu fpv5-d16
+ 368              	netif_set_addr:
+ 369              	.LFB161:
+ 354:Middlewares/Third_Party/LwIP/src/core/netif.c ****   if (ip4_addr_isany(ipaddr)) {
+ 370              		.loc 1 354 0 is_stmt 1
+ 371              		.cfi_startproc
+ 372              		@ args = 0, pretend = 0, frame = 0
+ 373              		@ frame_needed = 0, uses_anonymous_args = 0
+ 374              	.LVL27:
+ 375 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 376              	.LCFI9:
+ARM GAS  /tmp/ccyg71h1.s 			page 20
+
+
+ 377              		.cfi_def_cfa_offset 24
+ 378              		.cfi_offset 3, -24
+ 379              		.cfi_offset 4, -20
+ 380              		.cfi_offset 5, -16
+ 381              		.cfi_offset 6, -12
+ 382              		.cfi_offset 7, -8
+ 383              		.cfi_offset 14, -4
+ 384 0002 0446     		mov	r4, r0
+ 385 0004 1746     		mov	r7, r2
+ 386 0006 1E46     		mov	r6, r3
+ 355:Middlewares/Third_Party/LwIP/src/core/netif.c ****     /* when removing an address, we have to remove it *before* changing netmask/gw
+ 387              		.loc 1 355 0
+ 388 0008 0D46     		mov	r5, r1
+ 389 000a 09B1     		cbz	r1, .L42
+ 355:Middlewares/Third_Party/LwIP/src/core/netif.c ****     /* when removing an address, we have to remove it *before* changing netmask/gw
+ 390              		.loc 1 355 0 is_stmt 0 discriminator 1
+ 391 000c 0B68     		ldr	r3, [r1]
+ 392              	.LVL28:
+ 393 000e 63B9     		cbnz	r3, .L43
+ 394              	.L42:
+ 358:Middlewares/Third_Party/LwIP/src/core/netif.c ****     netif_set_netmask(netif, netmask);
+ 395              		.loc 1 358 0 is_stmt 1
+ 396 0010 2946     		mov	r1, r5
+ 397              	.LVL29:
+ 398 0012 2046     		mov	r0, r4
+ 399              	.LVL30:
+ 400 0014 FFF7FEFF 		bl	netif_set_ipaddr
+ 401              	.LVL31:
+ 359:Middlewares/Third_Party/LwIP/src/core/netif.c ****     netif_set_gw(netif, gw);
+ 402              		.loc 1 359 0
+ 403 0018 3946     		mov	r1, r7
+ 404 001a 2046     		mov	r0, r4
+ 405 001c FFF7FEFF 		bl	netif_set_netmask
+ 406              	.LVL32:
+ 360:Middlewares/Third_Party/LwIP/src/core/netif.c ****   } else {
+ 407              		.loc 1 360 0
+ 408 0020 3146     		mov	r1, r6
+ 409 0022 2046     		mov	r0, r4
+ 410 0024 FFF7FEFF 		bl	netif_set_gw
+ 411              	.LVL33:
+ 412 0028 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 413              	.LVL34:
+ 414              	.L43:
+ 362:Middlewares/Third_Party/LwIP/src/core/netif.c ****     netif_set_gw(netif, gw);
+ 415              		.loc 1 362 0
+ 416 002a 1146     		mov	r1, r2
+ 417              	.LVL35:
+ 418 002c FFF7FEFF 		bl	netif_set_netmask
+ 419              	.LVL36:
+ 363:Middlewares/Third_Party/LwIP/src/core/netif.c ****     /* set ipaddr last to ensure netmask/gw have been set when status callback is called */
+ 420              		.loc 1 363 0
+ 421 0030 3146     		mov	r1, r6
+ 422 0032 2046     		mov	r0, r4
+ 423 0034 FFF7FEFF 		bl	netif_set_gw
+ 424              	.LVL37:
+ 365:Middlewares/Third_Party/LwIP/src/core/netif.c ****   }
+ 425              		.loc 1 365 0
+ARM GAS  /tmp/ccyg71h1.s 			page 21
+
+
+ 426 0038 2946     		mov	r1, r5
+ 427 003a 2046     		mov	r0, r4
+ 428 003c FFF7FEFF 		bl	netif_set_ipaddr
+ 429              	.LVL38:
+ 430 0040 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 431              		.cfi_endproc
+ 432              	.LFE161:
+ 434              		.section	.text.netif_add,"ax",%progbits
+ 435              		.align	1
+ 436              		.global	netif_add
+ 437              		.syntax unified
+ 438              		.thumb
+ 439              		.thumb_func
+ 440              		.fpu fpv5-d16
+ 442              	netif_add:
+ 443              	.LFB160:
+ 246:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_IPV6
+ 444              		.loc 1 246 0
+ 445              		.cfi_startproc
+ 446              		@ args = 12, pretend = 0, frame = 0
+ 447              		@ frame_needed = 0, uses_anonymous_args = 0
+ 448              	.LVL39:
+ 449 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 450              	.LCFI10:
+ 451              		.cfi_def_cfa_offset 24
+ 452              		.cfi_offset 4, -24
+ 453              		.cfi_offset 5, -20
+ 454              		.cfi_offset 6, -16
+ 455              		.cfi_offset 7, -12
+ 456              		.cfi_offset 8, -8
+ 457              		.cfi_offset 14, -4
+ 458 0004 0446     		mov	r4, r0
+ 459 0006 0E46     		mov	r6, r1
+ 460 0008 1746     		mov	r7, r2
+ 461 000a 9846     		mov	r8, r3
+ 462 000c 079D     		ldr	r5, [sp, #28]
+ 251:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 463              		.loc 1 251 0
+ 464 000e 15B3     		cbz	r5, .L51
+ 465              	.LVL40:
+ 466              	.L47:
+ 255:Middlewares/Third_Party/LwIP/src/core/netif.c ****   ip_addr_set_zero_ip4(&netif->netmask);
+ 467              		.loc 1 255 0
+ 468 0010 0023     		movs	r3, #0
+ 469 0012 6360     		str	r3, [r4, #4]
+ 256:Middlewares/Third_Party/LwIP/src/core/netif.c ****   ip_addr_set_zero_ip4(&netif->gw);
+ 470              		.loc 1 256 0
+ 471 0014 A360     		str	r3, [r4, #8]
+ 257:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_IPV4 */
+ 472              		.loc 1 257 0
+ 473 0016 E360     		str	r3, [r4, #12]
+ 267:Middlewares/Third_Party/LwIP/src/core/netif.c **** #ifdef netif_get_client_data
+ 474              		.loc 1 267 0
+ 475 0018 84F82B30 		strb	r3, [r4, #43]
+ 276:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_IPV6_SEND_ROUTER_SOLICIT */
+ 476              		.loc 1 276 0
+ 477 001c 0323     		movs	r3, #3
+ARM GAS  /tmp/ccyg71h1.s 			page 22
+
+
+ 478 001e 84F82030 		strb	r3, [r4, #32]
+ 296:Middlewares/Third_Party/LwIP/src/core/netif.c ****   netif->num = netif_num++;
+ 479              		.loc 1 296 0
+ 480 0022 069B     		ldr	r3, [sp, #24]
+ 481 0024 E361     		str	r3, [r4, #28]
+ 297:Middlewares/Third_Party/LwIP/src/core/netif.c ****   netif->input = input;
+ 482              		.loc 1 297 0
+ 483 0026 114A     		ldr	r2, .L52
+ 484 0028 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 485 002a 591C     		adds	r1, r3, #1
+ 486 002c 1170     		strb	r1, [r2]
+ 487 002e 84F82E30 		strb	r3, [r4, #46]
+ 298:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 488              		.loc 1 298 0
+ 489 0032 089B     		ldr	r3, [sp, #32]
+ 490 0034 2361     		str	r3, [r4, #16]
+ 306:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_IPV4 */
+ 491              		.loc 1 306 0
+ 492 0036 4346     		mov	r3, r8
+ 493 0038 3A46     		mov	r2, r7
+ 494 003a 3146     		mov	r1, r6
+ 495 003c 2046     		mov	r0, r4
+ 496 003e FFF7FEFF 		bl	netif_set_addr
+ 497              	.LVL41:
+ 310:Middlewares/Third_Party/LwIP/src/core/netif.c ****     return NULL;
+ 498              		.loc 1 310 0
+ 499 0042 2046     		mov	r0, r4
+ 500 0044 A847     		blx	r5
+ 501              	.LVL42:
+ 502 0046 68B9     		cbnz	r0, .L49
+ 315:Middlewares/Third_Party/LwIP/src/core/netif.c ****   netif_list = netif;
+ 503              		.loc 1 315 0
+ 504 0048 094B     		ldr	r3, .L52+4
+ 505 004a 1A68     		ldr	r2, [r3]
+ 506 004c 2260     		str	r2, [r4]
+ 316:Middlewares/Third_Party/LwIP/src/core/netif.c ****   mib2_netif_added(netif);
+ 507              		.loc 1 316 0
+ 508 004e 1C60     		str	r4, [r3]
+ 337:Middlewares/Third_Party/LwIP/src/core/netif.c **** }
+ 509              		.loc 1 337 0
+ 510 0050 2046     		mov	r0, r4
+ 511 0052 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 512              	.LVL43:
+ 513              	.L51:
+ 251:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 514              		.loc 1 251 0 discriminator 1
+ 515 0056 074B     		ldr	r3, .L52+8
+ 516              	.LVL44:
+ 517 0058 FB22     		movs	r2, #251
+ 518              	.LVL45:
+ 519 005a 0749     		ldr	r1, .L52+12
+ 520              	.LVL46:
+ 521 005c 0748     		ldr	r0, .L52+16
+ 522              	.LVL47:
+ 523 005e FFF7FEFF 		bl	printf
+ 524              	.LVL48:
+ 525 0062 D5E7     		b	.L47
+ARM GAS  /tmp/ccyg71h1.s 			page 23
+
+
+ 526              	.L49:
+ 311:Middlewares/Third_Party/LwIP/src/core/netif.c ****   }
+ 527              		.loc 1 311 0
+ 528 0064 0020     		movs	r0, #0
+ 338:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 529              		.loc 1 338 0
+ 530 0066 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 531              	.LVL49:
+ 532              	.L53:
+ 533 006a 00BF     		.align	2
+ 534              	.L52:
+ 535 006c 00000000 		.word	.LANCHOR0
+ 536 0070 00000000 		.word	netif_list
+ 537 0074 00000000 		.word	.LC0
+ 538 0078 30000000 		.word	.LC1
+ 539 007c 48000000 		.word	.LC2
+ 540              		.cfi_endproc
+ 541              	.LFE160:
+ 543              		.section	.text.netif_set_default,"ax",%progbits
+ 544              		.align	1
+ 545              		.global	netif_set_default
+ 546              		.syntax unified
+ 547              		.thumb
+ 548              		.thumb_func
+ 549              		.fpu fpv5-d16
+ 551              	netif_set_default:
+ 552              	.LFB167:
+ 605:Middlewares/Third_Party/LwIP/src/core/netif.c ****   if (netif == NULL) {
+ 553              		.loc 1 605 0
+ 554              		.cfi_startproc
+ 555              		@ args = 0, pretend = 0, frame = 0
+ 556              		@ frame_needed = 0, uses_anonymous_args = 0
+ 557              		@ link register save eliminated.
+ 558              	.LVL50:
+ 613:Middlewares/Third_Party/LwIP/src/core/netif.c ****   LWIP_DEBUGF(NETIF_DEBUG, ("netif: setting default interface %c%c\n",
+ 559              		.loc 1 613 0
+ 560 0000 014B     		ldr	r3, .L55
+ 561 0002 1860     		str	r0, [r3]
+ 562 0004 7047     		bx	lr
+ 563              	.L56:
+ 564 0006 00BF     		.align	2
+ 565              	.L55:
+ 566 0008 00000000 		.word	netif_default
+ 567              		.cfi_endproc
+ 568              	.LFE167:
+ 570              		.section	.text.netif_set_up,"ax",%progbits
+ 571              		.align	1
+ 572              		.global	netif_set_up
+ 573              		.syntax unified
+ 574              		.thumb
+ 575              		.thumb_func
+ 576              		.fpu fpv5-d16
+ 578              	netif_set_up:
+ 579              	.LFB168:
+ 625:Middlewares/Third_Party/LwIP/src/core/netif.c ****   if (!(netif->flags & NETIF_FLAG_UP)) {
+ 580              		.loc 1 625 0
+ 581              		.cfi_startproc
+ARM GAS  /tmp/ccyg71h1.s 			page 24
+
+
+ 582              		@ args = 0, pretend = 0, frame = 0
+ 583              		@ frame_needed = 0, uses_anonymous_args = 0
+ 584              	.LVL51:
+ 585 0000 08B5     		push	{r3, lr}
+ 586              	.LCFI11:
+ 587              		.cfi_def_cfa_offset 8
+ 588              		.cfi_offset 3, -8
+ 589              		.cfi_offset 14, -4
+ 626:Middlewares/Third_Party/LwIP/src/core/netif.c ****     netif->flags |= NETIF_FLAG_UP;
+ 590              		.loc 1 626 0
+ 591 0002 90F82B30 		ldrb	r3, [r0, #43]	@ zero_extendqisi2
+ 592 0006 13F0010F 		tst	r3, #1
+ 593 000a 06D1     		bne	.L57
+ 627:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 594              		.loc 1 627 0
+ 595 000c 43F00103 		orr	r3, r3, #1
+ 596 0010 80F82B30 		strb	r3, [r0, #43]
+ 633:Middlewares/Third_Party/LwIP/src/core/netif.c ****       netif_issue_reports(netif, NETIF_REPORT_TYPE_IPV4|NETIF_REPORT_TYPE_IPV6);
+ 597              		.loc 1 633 0
+ 598 0014 13F0040F 		tst	r3, #4
+ 599 0018 00D1     		bne	.L60
+ 600              	.LVL52:
+ 601              	.L57:
+ 602 001a 08BD     		pop	{r3, pc}
+ 603              	.LVL53:
+ 604              	.L60:
+ 634:Middlewares/Third_Party/LwIP/src/core/netif.c ****     }
+ 605              		.loc 1 634 0
+ 606 001c 0321     		movs	r1, #3
+ 607 001e FFF7FEFF 		bl	netif_issue_reports
+ 608              	.LVL54:
+ 637:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 609              		.loc 1 637 0
+ 610 0022 FAE7     		b	.L57
+ 611              		.cfi_endproc
+ 612              	.LFE168:
+ 614              		.section	.text.netif_set_down,"ax",%progbits
+ 615              		.align	1
+ 616              		.global	netif_set_down
+ 617              		.syntax unified
+ 618              		.thumb
+ 619              		.thumb_func
+ 620              		.fpu fpv5-d16
+ 622              	netif_set_down:
+ 623              	.LFB170:
+ 676:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 677:Middlewares/Third_Party/LwIP/src/core/netif.c **** /**
+ 678:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @ingroup netif
+ 679:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * Bring an interface down, disabling any traffic processing.
+ 680:Middlewares/Third_Party/LwIP/src/core/netif.c ****  */
+ 681:Middlewares/Third_Party/LwIP/src/core/netif.c **** void
+ 682:Middlewares/Third_Party/LwIP/src/core/netif.c **** netif_set_down(struct netif *netif)
+ 683:Middlewares/Third_Party/LwIP/src/core/netif.c **** {
+ 624              		.loc 1 683 0
+ 625              		.cfi_startproc
+ 626              		@ args = 0, pretend = 0, frame = 0
+ 627              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  /tmp/ccyg71h1.s 			page 25
+
+
+ 628              	.LVL55:
+ 629 0000 08B5     		push	{r3, lr}
+ 630              	.LCFI12:
+ 631              		.cfi_def_cfa_offset 8
+ 632              		.cfi_offset 3, -8
+ 633              		.cfi_offset 14, -4
+ 684:Middlewares/Third_Party/LwIP/src/core/netif.c ****   if (netif->flags & NETIF_FLAG_UP) {
+ 634              		.loc 1 684 0
+ 635 0002 90F82B30 		ldrb	r3, [r0, #43]	@ zero_extendqisi2
+ 636 0006 13F0010F 		tst	r3, #1
+ 637 000a 06D0     		beq	.L61
+ 685:Middlewares/Third_Party/LwIP/src/core/netif.c ****     netif->flags &= ~NETIF_FLAG_UP;
+ 638              		.loc 1 685 0
+ 639 000c 03F0FE03 		and	r3, r3, #254
+ 640 0010 80F82B30 		strb	r3, [r0, #43]
+ 686:Middlewares/Third_Party/LwIP/src/core/netif.c ****     MIB2_COPY_SYSUPTIME_TO(&netif->ts);
+ 687:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 688:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_IPV4 && LWIP_ARP
+ 689:Middlewares/Third_Party/LwIP/src/core/netif.c ****     if (netif->flags & NETIF_FLAG_ETHARP) {
+ 641              		.loc 1 689 0
+ 642 0014 13F0080F 		tst	r3, #8
+ 643 0018 00D1     		bne	.L64
+ 644              	.LVL56:
+ 645              	.L61:
+ 646 001a 08BD     		pop	{r3, pc}
+ 647              	.LVL57:
+ 648              	.L64:
+ 690:Middlewares/Third_Party/LwIP/src/core/netif.c ****       etharp_cleanup_netif(netif);
+ 649              		.loc 1 690 0
+ 650 001c FFF7FEFF 		bl	etharp_cleanup_netif
+ 651              	.LVL58:
+ 691:Middlewares/Third_Party/LwIP/src/core/netif.c ****     }
+ 692:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_IPV4 && LWIP_ARP */
+ 693:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 694:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_IPV6
+ 695:Middlewares/Third_Party/LwIP/src/core/netif.c ****     nd6_cleanup_netif(netif);
+ 696:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_IPV6 */
+ 697:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 698:Middlewares/Third_Party/LwIP/src/core/netif.c ****     NETIF_STATUS_CALLBACK(netif);
+ 699:Middlewares/Third_Party/LwIP/src/core/netif.c ****   }
+ 700:Middlewares/Third_Party/LwIP/src/core/netif.c **** }
+ 652              		.loc 1 700 0
+ 653 0020 FBE7     		b	.L61
+ 654              		.cfi_endproc
+ 655              	.LFE170:
+ 657              		.section	.text.netif_remove,"ax",%progbits
+ 658              		.align	1
+ 659              		.global	netif_remove
+ 660              		.syntax unified
+ 661              		.thumb
+ 662              		.thumb_func
+ 663              		.fpu fpv5-d16
+ 665              	netif_remove:
+ 666              	.LFB162:
+ 378:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_IPV6
+ 667              		.loc 1 378 0
+ 668              		.cfi_startproc
+ARM GAS  /tmp/ccyg71h1.s 			page 26
+
+
+ 669              		@ args = 0, pretend = 0, frame = 0
+ 670              		@ frame_needed = 0, uses_anonymous_args = 0
+ 671              	.LVL59:
+ 383:Middlewares/Third_Party/LwIP/src/core/netif.c ****     return;
+ 672              		.loc 1 383 0
+ 673 0000 80B3     		cbz	r0, .L74
+ 378:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_IPV6
+ 674              		.loc 1 378 0
+ 675 0002 38B5     		push	{r3, r4, r5, lr}
+ 676              	.LCFI13:
+ 677              		.cfi_def_cfa_offset 16
+ 678              		.cfi_offset 3, -16
+ 679              		.cfi_offset 4, -12
+ 680              		.cfi_offset 5, -8
+ 681              		.cfi_offset 14, -4
+ 682 0004 0446     		mov	r4, r0
+ 388:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_TCP
+ 683              		.loc 1 388 0
+ 684 0006 4368     		ldr	r3, [r0, #4]
+ 685 0008 93B9     		cbnz	r3, .L77
+ 686              	.LVL60:
+ 687              	.L67:
+ 427:Middlewares/Third_Party/LwIP/src/core/netif.c ****     /* set netif down before removing (call callback function) */
+ 688              		.loc 1 427 0
+ 689 000a 94F82B30 		ldrb	r3, [r4, #43]	@ zero_extendqisi2
+ 690 000e 13F0010F 		tst	r3, #1
+ 691 0012 17D1     		bne	.L78
+ 692              	.L68:
+ 435:Middlewares/Third_Party/LwIP/src/core/netif.c ****     /* reset default netif */
+ 693              		.loc 1 435 0
+ 694 0014 144B     		ldr	r3, .L83
+ 695 0016 1B68     		ldr	r3, [r3]
+ 696 0018 9C42     		cmp	r4, r3
+ 697 001a 17D0     		beq	.L79
+ 698              	.L69:
+ 440:Middlewares/Third_Party/LwIP/src/core/netif.c ****     netif_list = netif->next;
+ 699              		.loc 1 440 0
+ 700 001c 134B     		ldr	r3, .L83+4
+ 701 001e 1B68     		ldr	r3, [r3]
+ 702 0020 9C42     		cmp	r4, r3
+ 703 0022 17D0     		beq	.L80
+ 704              	.L70:
+ 705              	.LVL61:
+ 706              	.LBB2:
+ 445:Middlewares/Third_Party/LwIP/src/core/netif.c ****       if (tmp_netif->next == netif) {
+ 707              		.loc 1 445 0 discriminator 1
+ 708 0024 EBB1     		cbz	r3, .L81
+ 446:Middlewares/Third_Party/LwIP/src/core/netif.c ****         tmp_netif->next = netif->next;
+ 709              		.loc 1 446 0
+ 710 0026 1A68     		ldr	r2, [r3]
+ 711 0028 9442     		cmp	r4, r2
+ 712 002a 17D0     		beq	.L82
+ 445:Middlewares/Third_Party/LwIP/src/core/netif.c ****       if (tmp_netif->next == netif) {
+ 713              		.loc 1 445 0
+ 714 002c 1346     		mov	r3, r2
+ 715              	.LVL62:
+ 716 002e F9E7     		b	.L70
+ARM GAS  /tmp/ccyg71h1.s 			page 27
+
+
+ 717              	.LVL63:
+ 718              	.L77:
+ 719              	.LBE2:
+ 390:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_TCP */
+ 720              		.loc 1 390 0
+ 721 0030 051D     		adds	r5, r0, #4
+ 722 0032 0021     		movs	r1, #0
+ 723 0034 2846     		mov	r0, r5
+ 724              	.LVL64:
+ 725 0036 FFF7FEFF 		bl	tcp_netif_ip_addr_changed
+ 726              	.LVL65:
+ 393:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_UDP */
+ 727              		.loc 1 393 0
+ 728 003a 0021     		movs	r1, #0
+ 729 003c 2846     		mov	r0, r5
+ 730 003e FFF7FEFF 		bl	udp_netif_ip_addr_changed
+ 731              	.LVL66:
+ 732 0042 E2E7     		b	.L67
+ 733              	.L78:
+ 429:Middlewares/Third_Party/LwIP/src/core/netif.c ****   }
+ 734              		.loc 1 429 0
+ 735 0044 2046     		mov	r0, r4
+ 736 0046 FFF7FEFF 		bl	netif_set_down
+ 737              	.LVL67:
+ 738 004a E3E7     		b	.L68
+ 739              	.L79:
+ 437:Middlewares/Third_Party/LwIP/src/core/netif.c ****   }
+ 740              		.loc 1 437 0
+ 741 004c 0020     		movs	r0, #0
+ 742 004e FFF7FEFF 		bl	netif_set_default
+ 743              	.LVL68:
+ 744 0052 E3E7     		b	.L69
+ 745              	.L80:
+ 441:Middlewares/Third_Party/LwIP/src/core/netif.c ****   } else {
+ 746              		.loc 1 441 0
+ 747 0054 2268     		ldr	r2, [r4]
+ 748 0056 054B     		ldr	r3, .L83+4
+ 749 0058 1A60     		str	r2, [r3]
+ 750 005a 38BD     		pop	{r3, r4, r5, pc}
+ 751              	.LVL69:
+ 752              	.L82:
+ 753              	.LBB3:
+ 447:Middlewares/Third_Party/LwIP/src/core/netif.c ****         break;
+ 754              		.loc 1 447 0
+ 755 005c 2268     		ldr	r2, [r4]
+ 756 005e 1A60     		str	r2, [r3]
+ 448:Middlewares/Third_Party/LwIP/src/core/netif.c ****       }
+ 757              		.loc 1 448 0
+ 758 0060 38BD     		pop	{r3, r4, r5, pc}
+ 759              	.LVL70:
+ 760              	.L81:
+ 761 0062 38BD     		pop	{r3, r4, r5, pc}
+ 762              	.LVL71:
+ 763              	.L74:
+ 764              	.LCFI14:
+ 765              		.cfi_def_cfa_offset 0
+ 766              		.cfi_restore 3
+ARM GAS  /tmp/ccyg71h1.s 			page 28
+
+
+ 767              		.cfi_restore 4
+ 768              		.cfi_restore 5
+ 769              		.cfi_restore 14
+ 770 0064 7047     		bx	lr
+ 771              	.L84:
+ 772 0066 00BF     		.align	2
+ 773              	.L83:
+ 774 0068 00000000 		.word	netif_default
+ 775 006c 00000000 		.word	netif_list
+ 776              	.LBE3:
+ 777              		.cfi_endproc
+ 778              	.LFE162:
+ 780              		.section	.text.netif_set_link_up,"ax",%progbits
+ 781              		.align	1
+ 782              		.global	netif_set_link_up
+ 783              		.syntax unified
+ 784              		.thumb
+ 785              		.thumb_func
+ 786              		.fpu fpv5-d16
+ 788              	netif_set_link_up:
+ 789              	.LFB171:
+ 701:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 702:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_NETIF_STATUS_CALLBACK
+ 703:Middlewares/Third_Party/LwIP/src/core/netif.c **** /**
+ 704:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @ingroup netif
+ 705:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * Set callback to be called when interface is brought up/down or address is changed while up
+ 706:Middlewares/Third_Party/LwIP/src/core/netif.c ****  */
+ 707:Middlewares/Third_Party/LwIP/src/core/netif.c **** void
+ 708:Middlewares/Third_Party/LwIP/src/core/netif.c **** netif_set_status_callback(struct netif *netif, netif_status_callback_fn status_callback)
+ 709:Middlewares/Third_Party/LwIP/src/core/netif.c **** {
+ 710:Middlewares/Third_Party/LwIP/src/core/netif.c ****   if (netif) {
+ 711:Middlewares/Third_Party/LwIP/src/core/netif.c ****     netif->status_callback = status_callback;
+ 712:Middlewares/Third_Party/LwIP/src/core/netif.c ****   }
+ 713:Middlewares/Third_Party/LwIP/src/core/netif.c **** }
+ 714:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_NETIF_STATUS_CALLBACK */
+ 715:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 716:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_NETIF_REMOVE_CALLBACK
+ 717:Middlewares/Third_Party/LwIP/src/core/netif.c **** /**
+ 718:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @ingroup netif
+ 719:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * Set callback to be called when the interface has been removed
+ 720:Middlewares/Third_Party/LwIP/src/core/netif.c ****  */
+ 721:Middlewares/Third_Party/LwIP/src/core/netif.c **** void
+ 722:Middlewares/Third_Party/LwIP/src/core/netif.c **** netif_set_remove_callback(struct netif *netif, netif_status_callback_fn remove_callback)
+ 723:Middlewares/Third_Party/LwIP/src/core/netif.c **** {
+ 724:Middlewares/Third_Party/LwIP/src/core/netif.c ****   if (netif) {
+ 725:Middlewares/Third_Party/LwIP/src/core/netif.c ****     netif->remove_callback = remove_callback;
+ 726:Middlewares/Third_Party/LwIP/src/core/netif.c ****   }
+ 727:Middlewares/Third_Party/LwIP/src/core/netif.c **** }
+ 728:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_NETIF_REMOVE_CALLBACK */
+ 729:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 730:Middlewares/Third_Party/LwIP/src/core/netif.c **** /**
+ 731:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @ingroup netif
+ 732:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * Called by a driver when its link goes up
+ 733:Middlewares/Third_Party/LwIP/src/core/netif.c ****  */
+ 734:Middlewares/Third_Party/LwIP/src/core/netif.c **** void
+ 735:Middlewares/Third_Party/LwIP/src/core/netif.c **** netif_set_link_up(struct netif *netif)
+ 736:Middlewares/Third_Party/LwIP/src/core/netif.c **** {
+ARM GAS  /tmp/ccyg71h1.s 			page 29
+
+
+ 790              		.loc 1 736 0
+ 791              		.cfi_startproc
+ 792              		@ args = 0, pretend = 0, frame = 0
+ 793              		@ frame_needed = 0, uses_anonymous_args = 0
+ 794              	.LVL72:
+ 795 0000 08B5     		push	{r3, lr}
+ 796              	.LCFI15:
+ 797              		.cfi_def_cfa_offset 8
+ 798              		.cfi_offset 3, -8
+ 799              		.cfi_offset 14, -4
+ 737:Middlewares/Third_Party/LwIP/src/core/netif.c ****   if (!(netif->flags & NETIF_FLAG_LINK_UP)) {
+ 800              		.loc 1 737 0
+ 801 0002 90F82B30 		ldrb	r3, [r0, #43]	@ zero_extendqisi2
+ 802 0006 13F0040F 		tst	r3, #4
+ 803 000a 06D1     		bne	.L85
+ 738:Middlewares/Third_Party/LwIP/src/core/netif.c ****     netif->flags |= NETIF_FLAG_LINK_UP;
+ 804              		.loc 1 738 0
+ 805 000c 43F00403 		orr	r3, r3, #4
+ 806 0010 80F82B30 		strb	r3, [r0, #43]
+ 739:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 740:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_DHCP
+ 741:Middlewares/Third_Party/LwIP/src/core/netif.c ****     dhcp_network_changed(netif);
+ 742:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_DHCP */
+ 743:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 744:Middlewares/Third_Party/LwIP/src/core/netif.c **** #if LWIP_AUTOIP
+ 745:Middlewares/Third_Party/LwIP/src/core/netif.c ****     autoip_network_changed(netif);
+ 746:Middlewares/Third_Party/LwIP/src/core/netif.c **** #endif /* LWIP_AUTOIP */
+ 747:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 748:Middlewares/Third_Party/LwIP/src/core/netif.c ****     if (netif->flags & NETIF_FLAG_UP) {
+ 807              		.loc 1 748 0
+ 808 0014 13F0010F 		tst	r3, #1
+ 809 0018 00D1     		bne	.L88
+ 810              	.LVL73:
+ 811              	.L85:
+ 812 001a 08BD     		pop	{r3, pc}
+ 813              	.LVL74:
+ 814              	.L88:
+ 749:Middlewares/Third_Party/LwIP/src/core/netif.c ****       netif_issue_reports(netif, NETIF_REPORT_TYPE_IPV4|NETIF_REPORT_TYPE_IPV6);
+ 815              		.loc 1 749 0
+ 816 001c 0321     		movs	r1, #3
+ 817 001e FFF7FEFF 		bl	netif_issue_reports
+ 818              	.LVL75:
+ 750:Middlewares/Third_Party/LwIP/src/core/netif.c ****     }
+ 751:Middlewares/Third_Party/LwIP/src/core/netif.c ****     NETIF_LINK_CALLBACK(netif);
+ 752:Middlewares/Third_Party/LwIP/src/core/netif.c ****   }
+ 753:Middlewares/Third_Party/LwIP/src/core/netif.c **** }
+ 819              		.loc 1 753 0
+ 820 0022 FAE7     		b	.L85
+ 821              		.cfi_endproc
+ 822              	.LFE171:
+ 824              		.section	.text.netif_set_link_down,"ax",%progbits
+ 825              		.align	1
+ 826              		.global	netif_set_link_down
+ 827              		.syntax unified
+ 828              		.thumb
+ 829              		.thumb_func
+ 830              		.fpu fpv5-d16
+ARM GAS  /tmp/ccyg71h1.s 			page 30
+
+
+ 832              	netif_set_link_down:
+ 833              	.LFB172:
+ 754:Middlewares/Third_Party/LwIP/src/core/netif.c **** 
+ 755:Middlewares/Third_Party/LwIP/src/core/netif.c **** /**
+ 756:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * @ingroup netif
+ 757:Middlewares/Third_Party/LwIP/src/core/netif.c ****  * Called by a driver when its link goes down
+ 758:Middlewares/Third_Party/LwIP/src/core/netif.c ****  */
+ 759:Middlewares/Third_Party/LwIP/src/core/netif.c **** void
+ 760:Middlewares/Third_Party/LwIP/src/core/netif.c **** netif_set_link_down(struct netif *netif )
+ 761:Middlewares/Third_Party/LwIP/src/core/netif.c **** {
+ 834              		.loc 1 761 0
+ 835              		.cfi_startproc
+ 836              		@ args = 0, pretend = 0, frame = 0
+ 837              		@ frame_needed = 0, uses_anonymous_args = 0
+ 838              		@ link register save eliminated.
+ 839              	.LVL76:
+ 762:Middlewares/Third_Party/LwIP/src/core/netif.c ****   if (netif->flags & NETIF_FLAG_LINK_UP) {
+ 840              		.loc 1 762 0
+ 841 0000 90F82B30 		ldrb	r3, [r0, #43]	@ zero_extendqisi2
+ 842 0004 13F0040F 		tst	r3, #4
+ 843 0008 03D0     		beq	.L89
+ 763:Middlewares/Third_Party/LwIP/src/core/netif.c ****     netif->flags &= ~NETIF_FLAG_LINK_UP;
+ 844              		.loc 1 763 0
+ 845 000a 23F00403 		bic	r3, r3, #4
+ 846 000e 80F82B30 		strb	r3, [r0, #43]
+ 847              	.L89:
+ 848 0012 7047     		bx	lr
+ 849              		.cfi_endproc
+ 850              	.LFE172:
+ 852              		.comm	netif_default,4,4
+ 853              		.comm	netif_list,4,4
+ 854              		.section	.bss.netif_num,"aw",%nobits
+ 855              		.set	.LANCHOR0,. + 0
+ 858              	netif_num:
+ 859 0000 00       		.space	1
+ 860              		.section	.rodata.netif_add.str1.4,"aMS",%progbits,1
+ 861              		.align	2
+ 862              	.LC0:
+ 863 0000 4D696464 		.ascii	"Middlewares/Third_Party/LwIP/src/core/netif.c\000"
+ 863      6C657761 
+ 863      7265732F 
+ 863      54686972 
+ 863      645F5061 
+ 864 002e 0000     		.space	2
+ 865              	.LC1:
+ 866 0030 4E6F2069 		.ascii	"No init function given\000"
+ 866      6E697420 
+ 866      66756E63 
+ 866      74696F6E 
+ 866      20676976 
+ 867 0047 00       		.space	1
+ 868              	.LC2:
+ 869 0048 41737365 		.ascii	"Assertion \"%s\" failed at line %d in %s\012\000"
+ 869      7274696F 
+ 869      6E202225 
+ 869      73222066 
+ 869      61696C65 
+ARM GAS  /tmp/ccyg71h1.s 			page 31
+
+
+ 870              		.text
+ 871              	.Letext0:
+ 872              		.file 2 "/usr/include/newlib/machine/_default_types.h"
+ 873              		.file 3 "/usr/include/newlib/sys/_stdint.h"
+ 874              		.file 4 "Drivers/CMSIS/Include/core_cm7.h"
+ 875              		.file 5 "Drivers/CMSIS/Device/ST/STM32H7xx/Include/system_stm32h7xx.h"
+ 876              		.file 6 "/usr/include/newlib/sys/lock.h"
+ 877              		.file 7 "/usr/include/newlib/sys/_types.h"
+ 878              		.file 8 "/usr/lib/gcc/arm-none-eabi/6.3.1/include/stddef.h"
+ 879              		.file 9 "/usr/include/newlib/sys/reent.h"
+ 880              		.file 10 "/usr/include/newlib/math.h"
+ 881              		.file 11 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h"
+ 882              		.file 12 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash.h"
+ 883              		.file 13 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h"
+ 884              		.file 14 "/usr/include/newlib/stdlib.h"
+ 885              		.file 15 "/usr/include/newlib/time.h"
+ 886              		.file 16 "Middlewares/Third_Party/LwIP/src/include/lwip/arch.h"
+ 887              		.file 17 "Middlewares/Third_Party/LwIP/src/include/lwip/ip4_addr.h"
+ 888              		.file 18 "Middlewares/Third_Party/LwIP/src/include/lwip/ip_addr.h"
+ 889              		.file 19 "Middlewares/Third_Party/LwIP/src/include/lwip/err.h"
+ 890              		.file 20 "Middlewares/Third_Party/LwIP/src/include/lwip/pbuf.h"
+ 891              		.file 21 "Middlewares/Third_Party/LwIP/src/include/lwip/memp.h"
+ 892              		.file 22 "Middlewares/Third_Party/LwIP/src/include/lwip/priv/memp_priv.h"
+ 893              		.file 23 "Middlewares/Third_Party/LwIP/src/include/lwip/netif.h"
+ 894              		.file 24 "Middlewares/Third_Party/LwIP/src/include/lwip/prot/ip4.h"
+ 895              		.file 25 "Middlewares/Third_Party/LwIP/src/include/lwip/ip.h"
+ 896              		.file 26 "Middlewares/Third_Party/LwIP/src/include/lwip/tcp.h"
+ 897              		.file 27 "Middlewares/Third_Party/LwIP/src/include/lwip/priv/tcp_priv.h"
+ 898              		.file 28 "Middlewares/Third_Party/LwIP/src/include/lwip/prot/tcp.h"
+ 899              		.file 29 "Middlewares/Third_Party/LwIP/src/include/lwip/udp.h"
+ 900              		.file 30 "Middlewares/Third_Party/LwIP/src/include/lwip/prot/ethernet.h"
+ 901              		.file 31 "Middlewares/Third_Party/LwIP/src/include/netif/ethernet.h"
+ 902              		.file 32 "Middlewares/Third_Party/LwIP/src/include/lwip/etharp.h"
+ 903              		.file 33 "/usr/include/newlib/stdio.h"
+ 904              		.file 34 "Middlewares/Third_Party/LwIP/src/include/lwip/ip4.h"
+ARM GAS  /tmp/ccyg71h1.s 			page 32
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 netif.c
+     /tmp/ccyg71h1.s:17     .text.netif_issue_reports:0000000000000000 $t
+     /tmp/ccyg71h1.s:23     .text.netif_issue_reports:0000000000000000 netif_issue_reports
+     /tmp/ccyg71h1.s:71     .text.netif_init:0000000000000000 $t
+     /tmp/ccyg71h1.s:78     .text.netif_init:0000000000000000 netif_init
+     /tmp/ccyg71h1.s:90     .text.netif_input:0000000000000000 $t
+     /tmp/ccyg71h1.s:97     .text.netif_input:0000000000000000 netif_input
+     /tmp/ccyg71h1.s:129    .text.netif_find:0000000000000000 $t
+     /tmp/ccyg71h1.s:136    .text.netif_find:0000000000000000 netif_find
+     /tmp/ccyg71h1.s:202    .text.netif_find:000000000000003c $d
+                            *COM*:0000000000000004 netif_list
+     /tmp/ccyg71h1.s:207    .text.netif_set_ipaddr:0000000000000000 $t
+     /tmp/ccyg71h1.s:214    .text.netif_set_ipaddr:0000000000000000 netif_set_ipaddr
+     /tmp/ccyg71h1.s:294    .text.netif_set_ipaddr:0000000000000048 $d
+     /tmp/ccyg71h1.s:299    .text.netif_set_gw:0000000000000000 $t
+     /tmp/ccyg71h1.s:306    .text.netif_set_gw:0000000000000000 netif_set_gw
+     /tmp/ccyg71h1.s:330    .text.netif_set_netmask:0000000000000000 $t
+     /tmp/ccyg71h1.s:337    .text.netif_set_netmask:0000000000000000 netif_set_netmask
+     /tmp/ccyg71h1.s:361    .text.netif_set_addr:0000000000000000 $t
+     /tmp/ccyg71h1.s:368    .text.netif_set_addr:0000000000000000 netif_set_addr
+     /tmp/ccyg71h1.s:435    .text.netif_add:0000000000000000 $t
+     /tmp/ccyg71h1.s:442    .text.netif_add:0000000000000000 netif_add
+     /tmp/ccyg71h1.s:535    .text.netif_add:000000000000006c $d
+     /tmp/ccyg71h1.s:544    .text.netif_set_default:0000000000000000 $t
+     /tmp/ccyg71h1.s:551    .text.netif_set_default:0000000000000000 netif_set_default
+     /tmp/ccyg71h1.s:566    .text.netif_set_default:0000000000000008 $d
+                            *COM*:0000000000000004 netif_default
+     /tmp/ccyg71h1.s:571    .text.netif_set_up:0000000000000000 $t
+     /tmp/ccyg71h1.s:578    .text.netif_set_up:0000000000000000 netif_set_up
+     /tmp/ccyg71h1.s:615    .text.netif_set_down:0000000000000000 $t
+     /tmp/ccyg71h1.s:622    .text.netif_set_down:0000000000000000 netif_set_down
+     /tmp/ccyg71h1.s:658    .text.netif_remove:0000000000000000 $t
+     /tmp/ccyg71h1.s:665    .text.netif_remove:0000000000000000 netif_remove
+     /tmp/ccyg71h1.s:774    .text.netif_remove:0000000000000068 $d
+     /tmp/ccyg71h1.s:781    .text.netif_set_link_up:0000000000000000 $t
+     /tmp/ccyg71h1.s:788    .text.netif_set_link_up:0000000000000000 netif_set_link_up
+     /tmp/ccyg71h1.s:825    .text.netif_set_link_down:0000000000000000 $t
+     /tmp/ccyg71h1.s:832    .text.netif_set_link_down:0000000000000000 netif_set_link_down
+     /tmp/ccyg71h1.s:858    .bss.netif_num:0000000000000000 netif_num
+     /tmp/ccyg71h1.s:859    .bss.netif_num:0000000000000000 $d
+     /tmp/ccyg71h1.s:861    .rodata.netif_add.str1.4:0000000000000000 $d
+                     .debug_frame:0000000000000010 $d
+
+UNDEFINED SYMBOLS
+etharp_request
+ip4_input
+ethernet_input
+tcp_netif_ip_addr_changed
+udp_netif_ip_addr_changed
+ip_addr_any
+printf
+etharp_cleanup_netif

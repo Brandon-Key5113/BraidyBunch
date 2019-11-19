@@ -1266,12 +1266,12 @@ ARM Macro Assembler    Page 20
               00000000 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M7.fp.dp --apcs=
 interwork --depend=braidybunch\startup_stm32h743xx.d -obraidybunch\startup_stm3
-2h743xx.o -I.\RTE\_BraidyBunch -I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\A
-RM\CMSIS\5.6.0\CMSIS\Core\Include" -I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Pac
-ks\Keil\STM32H7xx_DFP\2.3.1\Drivers\CMSIS\Device\ST\STM32H7xx\Include" --predef
-ine="__EVAL SETA 1" --predefine="__MICROLIB SETA 1" --predefine="__UVISION_VERS
-ION SETA 527" --predefine="_RTE_ SETA 1" --predefine="STM32H743xx SETA 1" --lis
-t=startup_stm32h743xx.lst startup_stm32h743xx.s
+2h743xx.o -I..\Inc -I.\RTE\_BraidyBunch -I"C:\Users\MSI LAPTOP\AppData\Local\Ar
+m\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include" -I"C:\Users\MSI LAPTOP\AppData\Loca
+l\Arm\Packs\Keil\STM32H7xx_DFP\2.3.1\Drivers\CMSIS\Device\ST\STM32H7xx\Include"
+ --predefine="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 527" --pre
+define="_RTE_ SETA 1" --predefine="STM32H743xx SETA 1" --list=startup_stm32h743
+xx.lst startup_stm32h743xx.s
 
 
 
@@ -2933,4 +2933,4 @@ Symbol: __main
       At line 245 in file startup_stm32h743xx.s
 Comment: __main used once
 2 symbols
-504 symbols in table
+503 symbols in table

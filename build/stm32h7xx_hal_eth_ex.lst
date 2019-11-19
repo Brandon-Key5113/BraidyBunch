@@ -1,0 +1,1724 @@
+ARM GAS  /tmp/cchwLyXD.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.eabi_attribute 28, 1
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 1
+  10              		.eabi_attribute 34, 1
+  11              		.eabi_attribute 18, 4
+  12              		.file	"stm32h7xx_hal_eth_ex.c"
+  13              		.text
+  14              	.Ltext0:
+  15              		.cfi_sections	.debug_frame
+  16              		.section	.text.HAL_ETHEx_EnableARPOffload,"ax",%progbits
+  17              		.align	1
+  18              		.global	HAL_ETHEx_EnableARPOffload
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  22              		.fpu fpv5-d16
+  24              	HAL_ETHEx_EnableARPOffload:
+  25              	.LFB141:
+  26              		.file 1 "Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c"
+   1:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** /**
+   2:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   ******************************************************************************
+   3:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @file    stm32h7xx_hal_eth_ex.c
+   4:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @author  MCD Application Team
+   5:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @brief   ETH HAL Extended module driver.
+   6:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *
+   7:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   ******************************************************************************
+   8:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @attention
+   9:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *
+  10:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * <h2><center>&copy; Copyright (c) 2017 STMicroelectronics.
+  11:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * All rights reserved.</center></h2>
+  12:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *
+  13:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * This software component is licensed by ST under BSD 3-Clause license,
+  14:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * the "License"; You may not use this file except in compliance with the
+  15:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * License. You may obtain a copy of the License at:
+  16:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *                        opensource.org/licenses/BSD-3-Clause
+  17:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *
+  18:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   ******************************************************************************
+  19:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   */
+  20:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+  21:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** /* Includes ------------------------------------------------------------------*/
+  22:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** #include "stm32h7xx_hal.h"
+  23:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+  24:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** /** @addtogroup STM32H7xx_HAL_Driver
+  25:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @{
+  26:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   */
+  27:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+  28:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** /** @defgroup ETHEx ETHEx
+  29:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @brief ETH HAL Extended module driver
+  30:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @{
+  31:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   */
+  32:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+ARM GAS  /tmp/cchwLyXD.s 			page 2
+
+
+  33:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** #ifdef HAL_ETH_MODULE_ENABLED
+  34:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+  35:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** /* Private typedef -----------------------------------------------------------*/
+  36:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** /* Private define ------------------------------------------------------------*/
+  37:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** /** @defgroup ETHEx_Private_Constants ETHEx Private Constants
+  38:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @{
+  39:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   */
+  40:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** #define ETH_MACL4CR_MASK     (ETH_MACL3L4CR_L4PEN | ETH_MACL3L4CR_L4SPM | \
+  41:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****                               ETH_MACL3L4CR_L4SPIM | ETH_MACL3L4CR_L4DPM | \
+  42:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****                               ETH_MACL3L4CR_L4DPIM)
+  43:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+  44:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** #define ETH_MACL3CR_MASK     (ETH_MACL3L4CR_L3PEN | ETH_MACL3L4CR_L3SAM | \
+  45:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****                               ETH_MACL3L4CR_L3SAIM | ETH_MACL3L4CR_L3DAM | \
+  46:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****                               ETH_MACL3L4CR_L3DAIM | ETH_MACL3L4CR_L3HSBM | \
+  47:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****                               ETH_MACL3L4CR_L3HDBM)
+  48:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+  49:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** #define ETH_MACRXVLAN_MASK (ETH_MACVTR_EIVLRXS | ETH_MACVTR_EIVLS | \
+  50:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****                             ETH_MACVTR_ERIVLT | ETH_MACVTR_EDVLP | \
+  51:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****                             ETH_MACVTR_VTHM | ETH_MACVTR_EVLRXS | \
+  52:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****                             ETH_MACVTR_EVLS | ETH_MACVTR_DOVLTC | \
+  53:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****                             ETH_MACVTR_ERSVLM | ETH_MACVTR_ESVL | \
+  54:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****                             ETH_MACVTR_VTIM | ETH_MACVTR_ETV)
+  55:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+  56:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** #define ETH_MACTXVLAN_MASK (ETH_MACVIR_VLTI | ETH_MACVIR_CSVL | \
+  57:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****                             ETH_MACVIR_VLP | ETH_MACVIR_VLC)
+  58:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** /**
+  59:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @}
+  60:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   */
+  61:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+  62:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** /* Private macros ------------------------------------------------------------*/
+  63:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** /* Private function prototypes -----------------------------------------------*/
+  64:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** /* Exported functions ---------------------------------------------------------*/
+  65:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** /** @defgroup ETHEx_Exported_Functions ETH Extended Exported Functions
+  66:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @{
+  67:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   */
+  68:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+  69:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** /** @defgroup ETHEx_Exported_Functions_Group1 Extended features functions
+  70:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @brief    Extended features functions
+  71:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****  *
+  72:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** @verbatim
+  73:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****  ===============================================================================
+  74:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****                       ##### Extended features functions #####
+  75:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****  ===============================================================================
+  76:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****     [..] This section provides functions allowing to:
+  77:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****       (+) Configure ARP offload module
+  78:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****       (+) Configure L3 and L4 filters
+  79:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****       (+) Configure Extended VLAN features
+  80:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****       (+) Configure Energy Efficient Ethernet module
+  81:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+  82:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** @endverbatim
+  83:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @{
+  84:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   */
+  85:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+  86:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** /**
+  87:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @brief  Enables ARP Offload.
+  88:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @param  heth: pointer to a ETH_HandleTypeDef structure that contains
+  89:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *         the configuration information for ETHERNET module
+ARM GAS  /tmp/cchwLyXD.s 			page 3
+
+
+  90:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @retval None
+  91:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   */
+  92:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** void HAL_ETHEx_EnableARPOffload(ETH_HandleTypeDef *heth)
+  93:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** {
+  27              		.loc 1 93 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32              	.LVL0:
+  94:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   SET_BIT(heth->Instance->MACCR, ETH_MACCR_ARP);
+  33              		.loc 1 94 0
+  34 0000 0268     		ldr	r2, [r0]
+  35 0002 1368     		ldr	r3, [r2]
+  36 0004 43F00043 		orr	r3, r3, #-2147483648
+  37 0008 1360     		str	r3, [r2]
+  38 000a 7047     		bx	lr
+  39              		.cfi_endproc
+  40              	.LFE141:
+  42              		.section	.text.HAL_ETHEx_DisableARPOffload,"ax",%progbits
+  43              		.align	1
+  44              		.global	HAL_ETHEx_DisableARPOffload
+  45              		.syntax unified
+  46              		.thumb
+  47              		.thumb_func
+  48              		.fpu fpv5-d16
+  50              	HAL_ETHEx_DisableARPOffload:
+  51              	.LFB142:
+  95:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** }
+  96:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+  97:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** /**
+  98:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @brief  Disables ARP Offload.
+  99:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @param  heth: pointer to a ETH_HandleTypeDef structure that contains
+ 100:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *         the configuration information for ETHERNET module
+ 101:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @retval None
+ 102:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   */
+ 103:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** void HAL_ETHEx_DisableARPOffload(ETH_HandleTypeDef *heth)
+ 104:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** {
+  52              		.loc 1 104 0
+  53              		.cfi_startproc
+  54              		@ args = 0, pretend = 0, frame = 0
+  55              		@ frame_needed = 0, uses_anonymous_args = 0
+  56              		@ link register save eliminated.
+  57              	.LVL1:
+ 105:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   CLEAR_BIT(heth->Instance->MACCR, ETH_MACCR_ARP);
+  58              		.loc 1 105 0
+  59 0000 0268     		ldr	r2, [r0]
+  60 0002 1368     		ldr	r3, [r2]
+  61 0004 23F00043 		bic	r3, r3, #-2147483648
+  62 0008 1360     		str	r3, [r2]
+  63 000a 7047     		bx	lr
+  64              		.cfi_endproc
+  65              	.LFE142:
+  67              		.section	.text.HAL_ETHEx_SetARPAddressMatch,"ax",%progbits
+  68              		.align	1
+  69              		.global	HAL_ETHEx_SetARPAddressMatch
+  70              		.syntax unified
+ARM GAS  /tmp/cchwLyXD.s 			page 4
+
+
+  71              		.thumb
+  72              		.thumb_func
+  73              		.fpu fpv5-d16
+  75              	HAL_ETHEx_SetARPAddressMatch:
+  76              	.LFB143:
+ 106:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** }
+ 107:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+ 108:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** /**
+ 109:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @brief  Set the ARP Match IP address
+ 110:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @param  heth: pointer to a ETH_HandleTypeDef structure that contains
+ 111:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *         the configuration information for ETHERNET module
+ 112:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @param  IpAddress: IP Address to be matched for incoming ARP requests
+ 113:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @retval None
+ 114:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   */
+ 115:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** void HAL_ETHEx_SetARPAddressMatch(ETH_HandleTypeDef *heth, uint32_t IpAddress)
+ 116:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** {
+  77              		.loc 1 116 0
+  78              		.cfi_startproc
+  79              		@ args = 0, pretend = 0, frame = 0
+  80              		@ frame_needed = 0, uses_anonymous_args = 0
+  81              		@ link register save eliminated.
+  82              	.LVL2:
+ 117:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   WRITE_REG(heth->Instance->MACARPAR, IpAddress);
+  83              		.loc 1 117 0
+  84 0000 0368     		ldr	r3, [r0]
+  85 0002 C3F81012 		str	r1, [r3, #528]
+  86 0006 7047     		bx	lr
+  87              		.cfi_endproc
+  88              	.LFE143:
+  90              		.section	.text.HAL_ETHEx_SetL4FilterConfig,"ax",%progbits
+  91              		.align	1
+  92              		.global	HAL_ETHEx_SetL4FilterConfig
+  93              		.syntax unified
+  94              		.thumb
+  95              		.thumb_func
+  96              		.fpu fpv5-d16
+  98              	HAL_ETHEx_SetL4FilterConfig:
+  99              	.LFB144:
+ 118:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** }
+ 119:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+ 120:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** /**
+ 121:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @brief  Configures the L4 Filter, this function allow to:
+ 122:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *         set the layer 4 protocol to be matched (TCP or UDP)
+ 123:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *         enable/disable L4 source/destination port perfect/inverse match.
+ 124:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @param  heth: pointer to a ETH_HandleTypeDef structure that contains
+ 125:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *         the configuration information for ETHERNET module
+ 126:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @param  Filter: L4 filter to configured, this parameter must be one of the following
+ 127:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *           ETH_L4_FILTER_0
+ 128:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *           ETH_L4_FILTER_1
+ 129:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @param  pL4FilterConfig: pointer to a ETH_L4FilterConfigTypeDef structure
+ 130:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *         that contains L4 filter configuration.
+ 131:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @retval HAL status
+ 132:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   */
+ 133:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** HAL_StatusTypeDef HAL_ETHEx_SetL4FilterConfig(ETH_HandleTypeDef *heth, uint32_t Filter , ETH_L4Filt
+ 134:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** {
+ 100              		.loc 1 134 0
+ 101              		.cfi_startproc
+ARM GAS  /tmp/cchwLyXD.s 			page 5
+
+
+ 102              		@ args = 0, pretend = 0, frame = 0
+ 103              		@ frame_needed = 0, uses_anonymous_args = 0
+ 104              		@ link register save eliminated.
+ 105              	.LVL3:
+ 106 0000 70B4     		push	{r4, r5, r6}
+ 107              	.LCFI0:
+ 108              		.cfi_def_cfa_offset 12
+ 109              		.cfi_offset 4, -12
+ 110              		.cfi_offset 5, -8
+ 111              		.cfi_offset 6, -4
+ 135:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   __IO uint32_t *configreg = ((__IO uint32_t *)(&(heth->Instance->MACL3L4C0R) + Filter));
+ 112              		.loc 1 135 0
+ 113 0002 0568     		ldr	r5, [r0]
+ 114              	.LVL4:
+ 136:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+ 137:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   if(pL4FilterConfig == NULL)
+ 115              		.loc 1 137 0
+ 116 0004 0AB3     		cbz	r2, .L6
+ 117 0006 05F51065 		add	r5, r5, #2304
+ 118              	.LVL5:
+ 119 000a 1346     		mov	r3, r2
+ 138:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   {
+ 139:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****     return HAL_ERROR;
+ 140:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   }
+ 141:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+ 142:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   /* Write configuration to (MACL3L4C0R + filter )register */
+ 143:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   MODIFY_REG(*configreg, ETH_MACL4CR_MASK ,(pL4FilterConfig->Protocol |
+ 120              		.loc 1 143 0
+ 121 000c 55F82120 		ldr	r2, [r5, r1, lsl #2]
+ 122              	.LVL6:
+ 123 0010 22F47412 		bic	r2, r2, #3997696
+ 124 0014 1C68     		ldr	r4, [r3]
+ 125 0016 5E68     		ldr	r6, [r3, #4]
+ 126 0018 3443     		orrs	r4, r4, r6
+ 127 001a 9E68     		ldr	r6, [r3, #8]
+ 128 001c 3443     		orrs	r4, r4, r6
+ 129 001e 2243     		orrs	r2, r2, r4
+ 130 0020 45F82120 		str	r2, [r5, r1, lsl #2]
+ 144:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****                                             pL4FilterConfig->SrcPortFilterMatch |
+ 145:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****                                               pL4FilterConfig->DestPortFilterMatch));
+ 146:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+ 147:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   configreg = ((__IO uint32_t *)(&(heth->Instance->MACL4A0R) + Filter));
+ 131              		.loc 1 147 0
+ 132 0024 0268     		ldr	r2, [r0]
+ 133 0026 02F60412 		addw	r2, r2, #2308
+ 134              	.LVL7:
+ 148:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+ 149:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   /* Write configuration to (MACL4A0R + filter )register */
+ 150:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   MODIFY_REG(*configreg, (ETH_MACL4AR_L4DP | ETH_MACL4AR_L4SP) , (pL4FilterConfig->SourcePort |
+ 135              		.loc 1 150 0
+ 136 002a 52F82140 		ldr	r4, [r2, r1, lsl #2]
+ 137 002e DC68     		ldr	r4, [r3, #12]
+ 138 0030 1B69     		ldr	r3, [r3, #16]
+ 139              	.LVL8:
+ 140 0032 44EA0343 		orr	r3, r4, r3, lsl #16
+ 141 0036 42F82130 		str	r3, [r2, r1, lsl #2]
+ 151:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****                                                                                                    
+ARM GAS  /tmp/cchwLyXD.s 			page 6
+
+
+ 152:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+ 153:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   /* Enable L4 filter */
+ 154:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   SET_BIT(heth->Instance->MACPFR, ETH_MACPFR_IPFE);
+ 142              		.loc 1 154 0
+ 143 003a 0268     		ldr	r2, [r0]
+ 144              	.LVL9:
+ 145 003c 9368     		ldr	r3, [r2, #8]
+ 146 003e 43F48013 		orr	r3, r3, #1048576
+ 147 0042 9360     		str	r3, [r2, #8]
+ 155:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+ 156:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   return HAL_OK;
+ 148              		.loc 1 156 0
+ 149 0044 0020     		movs	r0, #0
+ 150              	.LVL10:
+ 151              	.L5:
+ 157:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** }
+ 152              		.loc 1 157 0
+ 153 0046 70BC     		pop	{r4, r5, r6}
+ 154              	.LCFI1:
+ 155              		.cfi_remember_state
+ 156              		.cfi_restore 6
+ 157              		.cfi_restore 5
+ 158              		.cfi_restore 4
+ 159              		.cfi_def_cfa_offset 0
+ 160 0048 7047     		bx	lr
+ 161              	.LVL11:
+ 162              	.L6:
+ 163              	.LCFI2:
+ 164              		.cfi_restore_state
+ 139:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   }
+ 165              		.loc 1 139 0
+ 166 004a 0120     		movs	r0, #1
+ 167              	.LVL12:
+ 168 004c FBE7     		b	.L5
+ 169              		.cfi_endproc
+ 170              	.LFE144:
+ 172              		.section	.text.HAL_ETHEx_GetL4FilterConfig,"ax",%progbits
+ 173              		.align	1
+ 174              		.global	HAL_ETHEx_GetL4FilterConfig
+ 175              		.syntax unified
+ 176              		.thumb
+ 177              		.thumb_func
+ 178              		.fpu fpv5-d16
+ 180              	HAL_ETHEx_GetL4FilterConfig:
+ 181              	.LFB145:
+ 158:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+ 159:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** /**
+ 160:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @brief  Configures the L4 Filter, this function allow to:
+ 161:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *         set the layer 4 protocol to be matched (TCP or UDP)
+ 162:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *         enable/disable L4 source/destination port perfect/inverse match.
+ 163:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @param  heth: pointer to a ETH_HandleTypeDef structure that contains
+ 164:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *         the configuration information for ETHERNET module
+ 165:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @param  Filter: L4 filter to configured, this parameter must be one of the following
+ 166:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *           ETH_L4_FILTER_0
+ 167:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *           ETH_L4_FILTER_1
+ 168:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @param  pL4FilterConfig: pointer to a ETH_L4FilterConfigTypeDef structure
+ 169:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *         that contains L4 filter configuration.
+ARM GAS  /tmp/cchwLyXD.s 			page 7
+
+
+ 170:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @retval HAL status
+ 171:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   */
+ 172:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** HAL_StatusTypeDef HAL_ETHEx_GetL4FilterConfig(ETH_HandleTypeDef *heth, uint32_t Filter, ETH_L4Filte
+ 173:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** {
+ 182              		.loc 1 173 0
+ 183              		.cfi_startproc
+ 184              		@ args = 0, pretend = 0, frame = 0
+ 185              		@ frame_needed = 0, uses_anonymous_args = 0
+ 186              		@ link register save eliminated.
+ 187              	.LVL13:
+ 174:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   if(pL4FilterConfig == NULL)
+ 188              		.loc 1 174 0
+ 189 0000 1346     		mov	r3, r2
+ 190 0002 3AB3     		cbz	r2, .L10
+ 175:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   {
+ 176:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****     return HAL_ERROR;
+ 177:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   }
+ 178:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+ 179:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   /* Get configuration to (MACL3L4C0R + filter )register */
+ 180:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   pL4FilterConfig->Protocol = READ_BIT(*((__IO uint32_t *)(&(heth->Instance->MACL3L4C0R) + Filter))
+ 191              		.loc 1 180 0
+ 192 0004 0268     		ldr	r2, [r0]
+ 193              	.LVL14:
+ 194 0006 02F51062 		add	r2, r2, #2304
+ 195 000a 52F82120 		ldr	r2, [r2, r1, lsl #2]
+ 196 000e 02F48032 		and	r2, r2, #65536
+ 197 0012 1A60     		str	r2, [r3]
+ 181:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   pL4FilterConfig->DestPortFilterMatch = READ_BIT(*((__IO uint32_t *)(&(heth->Instance->MACL3L4C0R)
+ 198              		.loc 1 181 0
+ 199 0014 0268     		ldr	r2, [r0]
+ 200 0016 02F51062 		add	r2, r2, #2304
+ 201 001a 52F82120 		ldr	r2, [r2, r1, lsl #2]
+ 202 001e 02F44012 		and	r2, r2, #3145728
+ 203 0022 9A60     		str	r2, [r3, #8]
+ 182:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   pL4FilterConfig->SrcPortFilterMatch = READ_BIT(*((__IO uint32_t *)(&(heth->Instance->MACL3L4C0R) 
+ 204              		.loc 1 182 0
+ 205 0024 0268     		ldr	r2, [r0]
+ 206 0026 02F51062 		add	r2, r2, #2304
+ 207 002a 52F82120 		ldr	r2, [r2, r1, lsl #2]
+ 208 002e 02F44022 		and	r2, r2, #786432
+ 209 0032 5A60     		str	r2, [r3, #4]
+ 183:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+ 184:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   /* Get configuration to (MACL3L4C0R + filter )register */
+ 185:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   pL4FilterConfig->DestinationPort = (READ_BIT(*((__IO uint32_t *)(&(heth->Instance->MACL4A0R) + Fi
+ 210              		.loc 1 185 0
+ 211 0034 0268     		ldr	r2, [r0]
+ 212 0036 02F60412 		addw	r2, r2, #2308
+ 213 003a 52F82120 		ldr	r2, [r2, r1, lsl #2]
+ 214 003e 120C     		lsrs	r2, r2, #16
+ 215 0040 1A61     		str	r2, [r3, #16]
+ 186:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   pL4FilterConfig->SourcePort = READ_BIT(*((__IO uint32_t *)(&(heth->Instance->MACL4A0R) + Filter))
+ 216              		.loc 1 186 0
+ 217 0042 0268     		ldr	r2, [r0]
+ 218 0044 02F60412 		addw	r2, r2, #2308
+ 219 0048 52F82120 		ldr	r2, [r2, r1, lsl #2]
+ 220 004c 92B2     		uxth	r2, r2
+ 221 004e DA60     		str	r2, [r3, #12]
+ARM GAS  /tmp/cchwLyXD.s 			page 8
+
+
+ 187:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+ 188:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   return HAL_OK;
+ 222              		.loc 1 188 0
+ 223 0050 0020     		movs	r0, #0
+ 224              	.LVL15:
+ 225 0052 7047     		bx	lr
+ 226              	.LVL16:
+ 227              	.L10:
+ 176:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   }
+ 228              		.loc 1 176 0
+ 229 0054 0120     		movs	r0, #1
+ 230              	.LVL17:
+ 189:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** }
+ 231              		.loc 1 189 0
+ 232 0056 7047     		bx	lr
+ 233              		.cfi_endproc
+ 234              	.LFE145:
+ 236              		.section	.text.HAL_ETHEx_SetL3FilterConfig,"ax",%progbits
+ 237              		.align	1
+ 238              		.global	HAL_ETHEx_SetL3FilterConfig
+ 239              		.syntax unified
+ 240              		.thumb
+ 241              		.thumb_func
+ 242              		.fpu fpv5-d16
+ 244              	HAL_ETHEx_SetL3FilterConfig:
+ 245              	.LFB146:
+ 190:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+ 191:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** /**
+ 192:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @brief  Configures the L3 Filter, this function allow to:
+ 193:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *         set the layer 3 protocol to be matched (IPv4 or IPv6)
+ 194:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *         enable/disable L3 source/destination port perfect/inverse match.
+ 195:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @param  heth: pointer to a ETH_HandleTypeDef structure that contains
+ 196:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *         the configuration information for ETHERNET module
+ 197:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @param  Filter: L3 filter to configured, this parameter must be one of the following
+ 198:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *           ETH_L3_FILTER_0
+ 199:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *           ETH_L3_FILTER_1
+ 200:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @param  pL3FilterConfig: pointer to a ETH_L3FilterConfigTypeDef structure
+ 201:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *         that contains L3 filter configuration.
+ 202:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @retval HAL status
+ 203:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   */
+ 204:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** HAL_StatusTypeDef HAL_ETHEx_SetL3FilterConfig(ETH_HandleTypeDef *heth, uint32_t Filter, ETH_L3Filte
+ 205:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** {
+ 246              		.loc 1 205 0
+ 247              		.cfi_startproc
+ 248              		@ args = 0, pretend = 0, frame = 0
+ 249              		@ frame_needed = 0, uses_anonymous_args = 0
+ 250              		@ link register save eliminated.
+ 251              	.LVL18:
+ 252 0000 70B4     		push	{r4, r5, r6}
+ 253              	.LCFI3:
+ 254              		.cfi_def_cfa_offset 12
+ 255              		.cfi_offset 4, -12
+ 256              		.cfi_offset 5, -8
+ 257              		.cfi_offset 6, -4
+ 206:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   __IO uint32_t *configreg = ((__IO uint32_t *)(&(heth->Instance->MACL3L4C0R) + Filter));
+ 258              		.loc 1 206 0
+ 259 0002 0568     		ldr	r5, [r0]
+ARM GAS  /tmp/cchwLyXD.s 			page 9
+
+
+ 260              	.LVL19:
+ 207:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+ 208:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   if(pL3FilterConfig == NULL)
+ 261              		.loc 1 208 0
+ 262 0004 002A     		cmp	r2, #0
+ 263 0006 3FD0     		beq	.L14
+ 264 0008 05F51065 		add	r5, r5, #2304
+ 265              	.LVL20:
+ 266 000c 1446     		mov	r4, r2
+ 209:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   {
+ 210:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****     return HAL_ERROR;
+ 211:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   }
+ 212:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+ 213:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   /* Write configuration to (MACL3L4C0R + filter )register */
+ 214:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   MODIFY_REG(*configreg, ETH_MACL3CR_MASK, (pL3FilterConfig->Protocol |
+ 267              		.loc 1 214 0
+ 268 000e 55F82130 		ldr	r3, [r5, r1, lsl #2]
+ 269 0012 1E4A     		ldr	r2, .L17
+ 270              	.LVL21:
+ 271 0014 1A40     		ands	r2, r2, r3
+ 272 0016 2368     		ldr	r3, [r4]
+ 273 0018 6668     		ldr	r6, [r4, #4]
+ 274 001a 3343     		orrs	r3, r3, r6
+ 275 001c A668     		ldr	r6, [r4, #8]
+ 276 001e 3343     		orrs	r3, r3, r6
+ 277 0020 E668     		ldr	r6, [r4, #12]
+ 278 0022 43EA8613 		orr	r3, r3, r6, lsl #6
+ 279 0026 2669     		ldr	r6, [r4, #16]
+ 280 0028 43EAC623 		orr	r3, r3, r6, lsl #11
+ 281 002c 1343     		orrs	r3, r3, r2
+ 282 002e 45F82130 		str	r3, [r5, r1, lsl #2]
+ 215:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****                                             pL3FilterConfig->SrcAddrFilterMatch |
+ 216:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****                                               pL3FilterConfig->DestAddrFilterMatch |
+ 217:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****                                                 (pL3FilterConfig->SrcAddrHigherBitsMatch << 6) |
+ 218:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****                                                   (pL3FilterConfig->DestAddrHigherBitsMatch << 11))
+ 219:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+ 220:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   /* Check if IPv6 protocol is selected */
+ 221:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   if(pL3FilterConfig->Protocol != ETH_L3_IPV4_MATCH)
+ 283              		.loc 1 221 0
+ 284 0032 2368     		ldr	r3, [r4]
+ 285 0034 73B9     		cbnz	r3, .L16
+ 222:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   {
+ 223:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****     /* Set the IPv6 address match */
+ 224:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****     /* Set Bits[31:0] of 128-bit IP addr */
+ 225:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****     *((__IO uint32_t *)(&(heth->Instance->MACL3A0R0R) + Filter)) = pL3FilterConfig->Ip6Addr[0];
+ 226:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****     /* Set Bits[63:32] of 128-bit IP addr */
+ 227:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****     *((__IO uint32_t *)(&(heth->Instance->MACL3A1R0R) + Filter)) = pL3FilterConfig->Ip6Addr[1];
+ 228:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****     /* update Bits[95:64] of 128-bit IP addr */
+ 229:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****     *((__IO uint32_t *)(&(heth->Instance->MACL3A2R0R) + Filter)) = pL3FilterConfig->Ip6Addr[2];
+ 230:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****     /* update Bits[127:96] of 128-bit IP addr */
+ 231:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****     *((__IO uint32_t *)(&(heth->Instance->MACL3A3R0R) + Filter)) = pL3FilterConfig->Ip6Addr[3];
+ 232:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   }
+ 233:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   else /* IPv4 protocol is selected */
+ 234:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   {
+ 235:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****     /* Set the IPv4 source address match */
+ 236:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****     *((__IO uint32_t *)(&(heth->Instance->MACL3A0R0R) + Filter)) = pL3FilterConfig->Ip4SrcAddr;
+ 286              		.loc 1 236 0
+ARM GAS  /tmp/cchwLyXD.s 			page 10
+
+
+ 287 0036 0368     		ldr	r3, [r0]
+ 288 0038 03F51163 		add	r3, r3, #2320
+ 289 003c 6269     		ldr	r2, [r4, #20]
+ 290 003e 43F82120 		str	r2, [r3, r1, lsl #2]
+ 237:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****     /* Set the IPv4 destination address match */
+ 238:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****     *((__IO uint32_t *)(&(heth->Instance->MACL3A1R0R) + Filter)) = pL3FilterConfig->Ip4DestAddr;
+ 291              		.loc 1 238 0
+ 292 0042 0368     		ldr	r3, [r0]
+ 293 0044 03F61413 		addw	r3, r3, #2324
+ 294 0048 A269     		ldr	r2, [r4, #24]
+ 295 004a 43F82120 		str	r2, [r3, r1, lsl #2]
+ 239:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   }
+ 240:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+ 241:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   return HAL_OK;
+ 296              		.loc 1 241 0
+ 297 004e 0020     		movs	r0, #0
+ 298              	.LVL22:
+ 299              	.L12:
+ 242:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** }
+ 300              		.loc 1 242 0
+ 301 0050 70BC     		pop	{r4, r5, r6}
+ 302              	.LCFI4:
+ 303              		.cfi_remember_state
+ 304              		.cfi_restore 6
+ 305              		.cfi_restore 5
+ 306              		.cfi_restore 4
+ 307              		.cfi_def_cfa_offset 0
+ 308 0052 7047     		bx	lr
+ 309              	.LVL23:
+ 310              	.L16:
+ 311              	.LCFI5:
+ 312              		.cfi_restore_state
+ 225:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****     /* Set Bits[63:32] of 128-bit IP addr */
+ 313              		.loc 1 225 0
+ 314 0054 0368     		ldr	r3, [r0]
+ 315 0056 03F51163 		add	r3, r3, #2320
+ 316 005a E269     		ldr	r2, [r4, #28]
+ 317 005c 43F82120 		str	r2, [r3, r1, lsl #2]
+ 227:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****     /* update Bits[95:64] of 128-bit IP addr */
+ 318              		.loc 1 227 0
+ 319 0060 0368     		ldr	r3, [r0]
+ 320 0062 03F61413 		addw	r3, r3, #2324
+ 321 0066 226A     		ldr	r2, [r4, #32]
+ 322 0068 43F82120 		str	r2, [r3, r1, lsl #2]
+ 229:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****     /* update Bits[127:96] of 128-bit IP addr */
+ 323              		.loc 1 229 0
+ 324 006c 0368     		ldr	r3, [r0]
+ 325 006e 03F61813 		addw	r3, r3, #2328
+ 326 0072 626A     		ldr	r2, [r4, #36]
+ 327 0074 43F82120 		str	r2, [r3, r1, lsl #2]
+ 231:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   }
+ 328              		.loc 1 231 0
+ 329 0078 0368     		ldr	r3, [r0]
+ 330 007a 03F61C13 		addw	r3, r3, #2332
+ 331 007e A26A     		ldr	r2, [r4, #40]
+ 332 0080 43F82120 		str	r2, [r3, r1, lsl #2]
+ 241:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** }
+ARM GAS  /tmp/cchwLyXD.s 			page 11
+
+
+ 333              		.loc 1 241 0
+ 334 0084 0020     		movs	r0, #0
+ 335              	.LVL24:
+ 336 0086 E3E7     		b	.L12
+ 337              	.LVL25:
+ 338              	.L14:
+ 210:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   }
+ 339              		.loc 1 210 0
+ 340 0088 0120     		movs	r0, #1
+ 341              	.LVL26:
+ 342 008a E1E7     		b	.L12
+ 343              	.L18:
+ 344              		.align	2
+ 345              	.L17:
+ 346 008c 0200FFFF 		.word	-65534
+ 347              		.cfi_endproc
+ 348              	.LFE146:
+ 350              		.section	.text.HAL_ETHEx_GetL3FilterConfig,"ax",%progbits
+ 351              		.align	1
+ 352              		.global	HAL_ETHEx_GetL3FilterConfig
+ 353              		.syntax unified
+ 354              		.thumb
+ 355              		.thumb_func
+ 356              		.fpu fpv5-d16
+ 358              	HAL_ETHEx_GetL3FilterConfig:
+ 359              	.LFB147:
+ 243:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+ 244:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** /**
+ 245:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @brief  Configures the L3 Filter, this function allow to:
+ 246:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *         set the layer 3 protocol to be matched (IPv4 or IPv6)
+ 247:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *         enable/disable L3 source/destination port perfect/inverse match.
+ 248:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @param  heth: pointer to a ETH_HandleTypeDef structure that contains
+ 249:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *         the configuration information for ETHERNET module
+ 250:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @param  Filter: L3 filter to configured, this parameter must be one of the following
+ 251:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *           ETH_L3_FILTER_0
+ 252:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *           ETH_L3_FILTER_1
+ 253:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @param  pL3FilterConfig: pointer to a ETH_L3FilterConfigTypeDef structure
+ 254:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *         that will contain the L3 filter configuration.
+ 255:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @retval HAL status
+ 256:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   */
+ 257:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** HAL_StatusTypeDef HAL_ETHEx_GetL3FilterConfig(ETH_HandleTypeDef *heth, uint32_t Filter, ETH_L3Filte
+ 258:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** {
+ 360              		.loc 1 258 0
+ 361              		.cfi_startproc
+ 362              		@ args = 0, pretend = 0, frame = 0
+ 363              		@ frame_needed = 0, uses_anonymous_args = 0
+ 364              		@ link register save eliminated.
+ 365              	.LVL27:
+ 259:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   if(pL3FilterConfig == NULL)
+ 366              		.loc 1 259 0
+ 367 0000 002A     		cmp	r2, #0
+ 368 0002 54D0     		beq	.L22
+ 258:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   if(pL3FilterConfig == NULL)
+ 369              		.loc 1 258 0
+ 370 0004 10B4     		push	{r4}
+ 371              	.LCFI6:
+ 372              		.cfi_def_cfa_offset 4
+ARM GAS  /tmp/cchwLyXD.s 			page 12
+
+
+ 373              		.cfi_offset 4, -4
+ 374 0006 1346     		mov	r3, r2
+ 260:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   {
+ 261:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****     return HAL_ERROR;
+ 262:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   }
+ 263:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+ 264:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   pL3FilterConfig->Protocol = READ_BIT(*((__IO uint32_t *)(&(heth->Instance->MACL3L4C0R) + Filter))
+ 375              		.loc 1 264 0
+ 376 0008 0268     		ldr	r2, [r0]
+ 377              	.LVL28:
+ 378 000a 02F51062 		add	r2, r2, #2304
+ 379 000e 52F82120 		ldr	r2, [r2, r1, lsl #2]
+ 380 0012 02F00102 		and	r2, r2, #1
+ 381 0016 1A60     		str	r2, [r3]
+ 265:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   pL3FilterConfig->SrcAddrFilterMatch = READ_BIT(*((__IO uint32_t *)(&(heth->Instance->MACL3L4C0R) 
+ 382              		.loc 1 265 0
+ 383 0018 0468     		ldr	r4, [r0]
+ 384 001a 04F51064 		add	r4, r4, #2304
+ 385 001e 54F82140 		ldr	r4, [r4, r1, lsl #2]
+ 386 0022 04F00C04 		and	r4, r4, #12
+ 387 0026 5C60     		str	r4, [r3, #4]
+ 266:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   pL3FilterConfig->DestAddrFilterMatch = READ_BIT(*((__IO uint32_t *)(&(heth->Instance->MACL3L4C0R)
+ 388              		.loc 1 266 0
+ 389 0028 0468     		ldr	r4, [r0]
+ 390 002a 04F51064 		add	r4, r4, #2304
+ 391 002e 54F82140 		ldr	r4, [r4, r1, lsl #2]
+ 392 0032 04F03004 		and	r4, r4, #48
+ 393 0036 9C60     		str	r4, [r3, #8]
+ 267:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   pL3FilterConfig->SrcAddrHigherBitsMatch = (READ_BIT(*((__IO uint32_t *)(&(heth->Instance->MACL3L4
+ 394              		.loc 1 267 0
+ 395 0038 0468     		ldr	r4, [r0]
+ 396 003a 04F51064 		add	r4, r4, #2304
+ 397 003e 54F82140 		ldr	r4, [r4, r1, lsl #2]
+ 398 0042 C4F38414 		ubfx	r4, r4, #6, #5
+ 399 0046 DC60     		str	r4, [r3, #12]
+ 268:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   pL3FilterConfig->DestAddrHigherBitsMatch = (READ_BIT(*((__IO uint32_t *)(&(heth->Instance->MACL3L
+ 400              		.loc 1 268 0
+ 401 0048 0468     		ldr	r4, [r0]
+ 402 004a 04F51064 		add	r4, r4, #2304
+ 403 004e 54F82140 		ldr	r4, [r4, r1, lsl #2]
+ 404 0052 C4F3C424 		ubfx	r4, r4, #11, #5
+ 405 0056 1C61     		str	r4, [r3, #16]
+ 269:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+ 270:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   if(pL3FilterConfig->Protocol != ETH_L3_IPV4_MATCH)
+ 406              		.loc 1 270 0
+ 407 0058 7AB9     		cbnz	r2, .L27
+ 271:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   {
+ 272:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****     pL3FilterConfig->Ip6Addr[0] = *((__IO uint32_t *)(&(heth->Instance->MACL3A0R0R) + Filter));
+ 273:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****     pL3FilterConfig->Ip6Addr[1] = *((__IO uint32_t *)(&(heth->Instance->MACL3A1R0R) + Filter));
+ 274:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****     pL3FilterConfig->Ip6Addr[2] = *((__IO uint32_t *)(&(heth->Instance->MACL3A2R0R) + Filter));
+ 275:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****     pL3FilterConfig->Ip6Addr[3] = *((__IO uint32_t *)(&(heth->Instance->MACL3A3R0R) + Filter));
+ 276:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   }
+ 277:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   else
+ 278:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   {
+ 279:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****     pL3FilterConfig->Ip4SrcAddr = *((__IO uint32_t *)(&(heth->Instance->MACL3A0R0R) + Filter));
+ 408              		.loc 1 279 0
+ 409 005a 0268     		ldr	r2, [r0]
+ARM GAS  /tmp/cchwLyXD.s 			page 13
+
+
+ 410 005c 02F51162 		add	r2, r2, #2320
+ 411 0060 52F82120 		ldr	r2, [r2, r1, lsl #2]
+ 412 0064 5A61     		str	r2, [r3, #20]
+ 280:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****     pL3FilterConfig->Ip4DestAddr = *((__IO uint32_t *)(&(heth->Instance->MACL3A1R0R) + Filter));
+ 413              		.loc 1 280 0
+ 414 0066 0268     		ldr	r2, [r0]
+ 415 0068 02F61412 		addw	r2, r2, #2324
+ 416 006c 52F82120 		ldr	r2, [r2, r1, lsl #2]
+ 417 0070 9A61     		str	r2, [r3, #24]
+ 281:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   }
+ 282:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+ 283:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   return HAL_OK;
+ 418              		.loc 1 283 0
+ 419 0072 0020     		movs	r0, #0
+ 420              	.LVL29:
+ 421              	.L20:
+ 284:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** }
+ 422              		.loc 1 284 0
+ 423 0074 5DF8044B 		ldr	r4, [sp], #4
+ 424              	.LCFI7:
+ 425              		.cfi_remember_state
+ 426              		.cfi_restore 4
+ 427              		.cfi_def_cfa_offset 0
+ 428 0078 7047     		bx	lr
+ 429              	.LVL30:
+ 430              	.L27:
+ 431              	.LCFI8:
+ 432              		.cfi_restore_state
+ 272:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****     pL3FilterConfig->Ip6Addr[1] = *((__IO uint32_t *)(&(heth->Instance->MACL3A1R0R) + Filter));
+ 433              		.loc 1 272 0
+ 434 007a 0268     		ldr	r2, [r0]
+ 435 007c 02F51162 		add	r2, r2, #2320
+ 436 0080 52F82120 		ldr	r2, [r2, r1, lsl #2]
+ 437 0084 DA61     		str	r2, [r3, #28]
+ 273:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****     pL3FilterConfig->Ip6Addr[2] = *((__IO uint32_t *)(&(heth->Instance->MACL3A2R0R) + Filter));
+ 438              		.loc 1 273 0
+ 439 0086 0268     		ldr	r2, [r0]
+ 440 0088 02F61412 		addw	r2, r2, #2324
+ 441 008c 52F82120 		ldr	r2, [r2, r1, lsl #2]
+ 442 0090 1A62     		str	r2, [r3, #32]
+ 274:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****     pL3FilterConfig->Ip6Addr[3] = *((__IO uint32_t *)(&(heth->Instance->MACL3A3R0R) + Filter));
+ 443              		.loc 1 274 0
+ 444 0092 0268     		ldr	r2, [r0]
+ 445 0094 02F61812 		addw	r2, r2, #2328
+ 446 0098 52F82120 		ldr	r2, [r2, r1, lsl #2]
+ 447 009c 5A62     		str	r2, [r3, #36]
+ 275:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   }
+ 448              		.loc 1 275 0
+ 449 009e 0268     		ldr	r2, [r0]
+ 450 00a0 02F61C12 		addw	r2, r2, #2332
+ 451 00a4 52F82120 		ldr	r2, [r2, r1, lsl #2]
+ 452 00a8 9A62     		str	r2, [r3, #40]
+ 283:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** }
+ 453              		.loc 1 283 0
+ 454 00aa 0020     		movs	r0, #0
+ 455              	.LVL31:
+ 456 00ac E2E7     		b	.L20
+ARM GAS  /tmp/cchwLyXD.s 			page 14
+
+
+ 457              	.LVL32:
+ 458              	.L22:
+ 459              	.LCFI9:
+ 460              		.cfi_def_cfa_offset 0
+ 461              		.cfi_restore 4
+ 261:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   }
+ 462              		.loc 1 261 0
+ 463 00ae 0120     		movs	r0, #1
+ 464              	.LVL33:
+ 465 00b0 7047     		bx	lr
+ 466              		.cfi_endproc
+ 467              	.LFE147:
+ 469              		.section	.text.HAL_ETHEx_EnableL3L4Filtering,"ax",%progbits
+ 470              		.align	1
+ 471              		.global	HAL_ETHEx_EnableL3L4Filtering
+ 472              		.syntax unified
+ 473              		.thumb
+ 474              		.thumb_func
+ 475              		.fpu fpv5-d16
+ 477              	HAL_ETHEx_EnableL3L4Filtering:
+ 478              	.LFB148:
+ 285:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+ 286:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** /**
+ 287:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @brief  Enables L3 and L4 filtering process.
+ 288:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @param  heth: pointer to a ETH_HandleTypeDef structure that contains
+ 289:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *         the configuration information for ETHERNET module
+ 290:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @retval None.
+ 291:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   */
+ 292:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** void HAL_ETHEx_EnableL3L4Filtering(ETH_HandleTypeDef *heth)
+ 293:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** {
+ 479              		.loc 1 293 0
+ 480              		.cfi_startproc
+ 481              		@ args = 0, pretend = 0, frame = 0
+ 482              		@ frame_needed = 0, uses_anonymous_args = 0
+ 483              		@ link register save eliminated.
+ 484              	.LVL34:
+ 294:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   /* Enable L3/L4 filter */
+ 295:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   SET_BIT(heth->Instance->MACPFR, ETH_MACPFR_IPFE);
+ 485              		.loc 1 295 0
+ 486 0000 0268     		ldr	r2, [r0]
+ 487 0002 9368     		ldr	r3, [r2, #8]
+ 488 0004 43F48013 		orr	r3, r3, #1048576
+ 489 0008 9360     		str	r3, [r2, #8]
+ 490 000a 7047     		bx	lr
+ 491              		.cfi_endproc
+ 492              	.LFE148:
+ 494              		.section	.text.HAL_ETHEx_DisableL3L4Filtering,"ax",%progbits
+ 495              		.align	1
+ 496              		.global	HAL_ETHEx_DisableL3L4Filtering
+ 497              		.syntax unified
+ 498              		.thumb
+ 499              		.thumb_func
+ 500              		.fpu fpv5-d16
+ 502              	HAL_ETHEx_DisableL3L4Filtering:
+ 503              	.LFB149:
+ 296:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** }
+ 297:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+ARM GAS  /tmp/cchwLyXD.s 			page 15
+
+
+ 298:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** /**
+ 299:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @brief  Disables L3 and L4 filtering process.
+ 300:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @param  heth: pointer to a ETH_HandleTypeDef structure that contains
+ 301:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *         the configuration information for ETHERNET module
+ 302:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @retval None.
+ 303:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   */
+ 304:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** void HAL_ETHEx_DisableL3L4Filtering(ETH_HandleTypeDef *heth)
+ 305:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** {
+ 504              		.loc 1 305 0
+ 505              		.cfi_startproc
+ 506              		@ args = 0, pretend = 0, frame = 0
+ 507              		@ frame_needed = 0, uses_anonymous_args = 0
+ 508              		@ link register save eliminated.
+ 509              	.LVL35:
+ 306:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   /* Disable L3/L4 filter */
+ 307:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   CLEAR_BIT(heth->Instance->MACPFR, ETH_MACPFR_IPFE);
+ 510              		.loc 1 307 0
+ 511 0000 0268     		ldr	r2, [r0]
+ 512 0002 9368     		ldr	r3, [r2, #8]
+ 513 0004 23F48013 		bic	r3, r3, #1048576
+ 514 0008 9360     		str	r3, [r2, #8]
+ 515 000a 7047     		bx	lr
+ 516              		.cfi_endproc
+ 517              	.LFE149:
+ 519              		.section	.text.HAL_ETHEx_GetRxVLANConfig,"ax",%progbits
+ 520              		.align	1
+ 521              		.global	HAL_ETHEx_GetRxVLANConfig
+ 522              		.syntax unified
+ 523              		.thumb
+ 524              		.thumb_func
+ 525              		.fpu fpv5-d16
+ 527              	HAL_ETHEx_GetRxVLANConfig:
+ 528              	.LFB150:
+ 308:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** }
+ 309:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+ 310:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** /**
+ 311:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @brief  Get the VLAN Configuration for Receive Packets.
+ 312:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @param  heth: pointer to a ETH_HandleTypeDef structure that contains
+ 313:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *         the configuration information for ETHERNET module
+ 314:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @param  pVlanConfig: pointer to a ETH_RxVLANConfigTypeDef structure
+ 315:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *         that will contain the VLAN filter configuration.
+ 316:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @retval HAL status
+ 317:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   */
+ 318:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** HAL_StatusTypeDef HAL_ETHEx_GetRxVLANConfig(ETH_HandleTypeDef *heth, ETH_RxVLANConfigTypeDef *pVlan
+ 319:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** {
+ 529              		.loc 1 319 0
+ 530              		.cfi_startproc
+ 531              		@ args = 0, pretend = 0, frame = 0
+ 532              		@ frame_needed = 0, uses_anonymous_args = 0
+ 533              		@ link register save eliminated.
+ 534              	.LVL36:
+ 320:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   if(pVlanConfig == NULL)
+ 535              		.loc 1 320 0
+ 536 0000 0029     		cmp	r1, #0
+ 537 0002 2DD0     		beq	.L32
+ 321:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   {
+ 322:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****     return HAL_ERROR;
+ARM GAS  /tmp/cchwLyXD.s 			page 16
+
+
+ 323:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   }
+ 324:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+ 325:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   pVlanConfig->InnerVLANTagInStatus = ((READ_BIT(heth->Instance->MACVTR, ETH_MACVTR_EIVLRXS) >> 31)
+ 538              		.loc 1 325 0
+ 539 0004 0268     		ldr	r2, [r0]
+ 540 0006 126D     		ldr	r2, [r2, #80]
+ 541 0008 D20F     		lsrs	r2, r2, #31
+ 542 000a 0A70     		strb	r2, [r1]
+ 326:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   pVlanConfig->StripInnerVLANTag  = READ_BIT(heth->Instance->MACVTR, ETH_MACVTR_EIVLS);
+ 543              		.loc 1 326 0
+ 544 000c 0268     		ldr	r2, [r0]
+ 545 000e 126D     		ldr	r2, [r2, #80]
+ 546 0010 02F04052 		and	r2, r2, #805306368
+ 547 0014 4A60     		str	r2, [r1, #4]
+ 327:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   pVlanConfig->InnerVLANTag = ((READ_BIT(heth->Instance->MACVTR, ETH_MACVTR_ERIVLT) >> 27) == 0U) ?
+ 548              		.loc 1 327 0
+ 549 0016 0268     		ldr	r2, [r0]
+ 550 0018 126D     		ldr	r2, [r2, #80]
+ 551 001a C2F3C062 		ubfx	r2, r2, #27, #1
+ 552 001e 0A72     		strb	r2, [r1, #8]
+ 328:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   pVlanConfig->DoubleVLANProcessing = ((READ_BIT(heth->Instance->MACVTR, ETH_MACVTR_EDVLP) >> 26) =
+ 553              		.loc 1 328 0
+ 554 0020 0268     		ldr	r2, [r0]
+ 555 0022 126D     		ldr	r2, [r2, #80]
+ 556 0024 C2F38062 		ubfx	r2, r2, #26, #1
+ 557 0028 4A72     		strb	r2, [r1, #9]
+ 329:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   pVlanConfig->VLANTagHashTableMatch = ((READ_BIT(heth->Instance->MACVTR, ETH_MACVTR_VTHM) >> 25) =
+ 558              		.loc 1 329 0
+ 559 002a 0268     		ldr	r2, [r0]
+ 560 002c 126D     		ldr	r2, [r2, #80]
+ 561 002e C2F34062 		ubfx	r2, r2, #25, #1
+ 562 0032 8A72     		strb	r2, [r1, #10]
+ 330:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   pVlanConfig->VLANTagInStatus = ((READ_BIT(heth->Instance->MACVTR, ETH_MACVTR_EVLRXS) >> 24) == 0U
+ 563              		.loc 1 330 0
+ 564 0034 0268     		ldr	r2, [r0]
+ 565 0036 126D     		ldr	r2, [r2, #80]
+ 566 0038 C2F30062 		ubfx	r2, r2, #24, #1
+ 567 003c CA72     		strb	r2, [r1, #11]
+ 331:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   pVlanConfig->StripVLANTag = READ_BIT(heth->Instance->MACVTR, ETH_MACVTR_EVLS);
+ 568              		.loc 1 331 0
+ 569 003e 0268     		ldr	r2, [r0]
+ 570 0040 126D     		ldr	r2, [r2, #80]
+ 571 0042 02F4C002 		and	r2, r2, #6291456
+ 572 0046 CA60     		str	r2, [r1, #12]
+ 332:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   pVlanConfig->VLANTypeCheck = READ_BIT(heth->Instance->MACVTR, (ETH_MACVTR_DOVLTC | ETH_MACVTR_ERS
+ 573              		.loc 1 332 0
+ 574 0048 0268     		ldr	r2, [r0]
+ 575 004a 126D     		ldr	r2, [r2, #80]
+ 576 004c 02F4E012 		and	r2, r2, #1835008
+ 577 0050 0A61     		str	r2, [r1, #16]
+ 333:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   pVlanConfig->VLANTagInverceMatch = ((READ_BIT(heth->Instance->MACVTR, ETH_MACVTR_VTIM) >> 17) == 
+ 578              		.loc 1 333 0
+ 579 0052 0268     		ldr	r2, [r0]
+ 580 0054 126D     		ldr	r2, [r2, #80]
+ 581 0056 C2F34042 		ubfx	r2, r2, #17, #1
+ 582 005a 0A75     		strb	r2, [r1, #20]
+ 334:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+ARM GAS  /tmp/cchwLyXD.s 			page 17
+
+
+ 335:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   return HAL_OK;
+ 583              		.loc 1 335 0
+ 584 005c 0020     		movs	r0, #0
+ 585              	.LVL37:
+ 586 005e 7047     		bx	lr
+ 587              	.LVL38:
+ 588              	.L32:
+ 322:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   }
+ 589              		.loc 1 322 0
+ 590 0060 0120     		movs	r0, #1
+ 591              	.LVL39:
+ 336:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** }
+ 592              		.loc 1 336 0
+ 593 0062 7047     		bx	lr
+ 594              		.cfi_endproc
+ 595              	.LFE150:
+ 597              		.section	.text.HAL_ETHEx_SetRxVLANConfig,"ax",%progbits
+ 598              		.align	1
+ 599              		.global	HAL_ETHEx_SetRxVLANConfig
+ 600              		.syntax unified
+ 601              		.thumb
+ 602              		.thumb_func
+ 603              		.fpu fpv5-d16
+ 605              	HAL_ETHEx_SetRxVLANConfig:
+ 606              	.LFB151:
+ 337:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+ 338:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** /**
+ 339:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @brief  Set the VLAN Configuration for Receive Packets.
+ 340:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @param  heth: pointer to a ETH_HandleTypeDef structure that contains
+ 341:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *         the configuration information for ETHERNET module
+ 342:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @param  pVlanConfig: pointer to a ETH_RxVLANConfigTypeDef structure
+ 343:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *         that contains VLAN filter configuration.
+ 344:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @retval HAL status
+ 345:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   */
+ 346:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** HAL_StatusTypeDef HAL_ETHEx_SetRxVLANConfig(ETH_HandleTypeDef *heth, ETH_RxVLANConfigTypeDef *pVlan
+ 347:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** {
+ 607              		.loc 1 347 0
+ 608              		.cfi_startproc
+ 609              		@ args = 0, pretend = 0, frame = 0
+ 610              		@ frame_needed = 0, uses_anonymous_args = 0
+ 611              		@ link register save eliminated.
+ 612              	.LVL40:
+ 348:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   if(pVlanConfig == NULL)
+ 613              		.loc 1 348 0
+ 614 0000 11B3     		cbz	r1, .L35
+ 347:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   if(pVlanConfig == NULL)
+ 615              		.loc 1 347 0
+ 616 0002 10B4     		push	{r4}
+ 617              	.LCFI10:
+ 618              		.cfi_def_cfa_offset 4
+ 619              		.cfi_offset 4, -4
+ 620 0004 0A46     		mov	r2, r1
+ 349:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   {
+ 350:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****     return HAL_ERROR;
+ 351:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   }
+ 352:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+ 353:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   /* Write config to MACVTR */
+ARM GAS  /tmp/cchwLyXD.s 			page 18
+
+
+ 354:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   MODIFY_REG(heth->Instance->MACVTR, ETH_MACRXVLAN_MASK, (((uint32_t)pVlanConfig->InnerVLANTagInSta
+ 621              		.loc 1 354 0
+ 622 0006 0068     		ldr	r0, [r0]
+ 623              	.LVL41:
+ 624 0008 036D     		ldr	r3, [r0, #80]
+ 625 000a 1049     		ldr	r1, .L40
+ 626              	.LVL42:
+ 627 000c 1940     		ands	r1, r1, r3
+ 628 000e 1478     		ldrb	r4, [r2]	@ zero_extendqisi2
+ 629 0010 5368     		ldr	r3, [r2, #4]
+ 630 0012 43EAC473 		orr	r3, r3, r4, lsl #31
+ 631 0016 147A     		ldrb	r4, [r2, #8]	@ zero_extendqisi2
+ 632 0018 43EAC463 		orr	r3, r3, r4, lsl #27
+ 633 001c 547A     		ldrb	r4, [r2, #9]	@ zero_extendqisi2
+ 634 001e 43EA8463 		orr	r3, r3, r4, lsl #26
+ 635 0022 947A     		ldrb	r4, [r2, #10]	@ zero_extendqisi2
+ 636 0024 43EA4463 		orr	r3, r3, r4, lsl #25
+ 637 0028 D47A     		ldrb	r4, [r2, #11]	@ zero_extendqisi2
+ 638 002a 43EA0463 		orr	r3, r3, r4, lsl #24
+ 639 002e D468     		ldr	r4, [r2, #12]
+ 640 0030 2343     		orrs	r3, r3, r4
+ 641 0032 1469     		ldr	r4, [r2, #16]
+ 642 0034 2343     		orrs	r3, r3, r4
+ 643 0036 127D     		ldrb	r2, [r2, #20]	@ zero_extendqisi2
+ 644              	.LVL43:
+ 645 0038 43EA4243 		orr	r3, r3, r2, lsl #17
+ 646 003c 0B43     		orrs	r3, r3, r1
+ 647 003e 0365     		str	r3, [r0, #80]
+ 355:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****                                                           pVlanConfig->StripInnerVLANTag |
+ 356:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****                                                             ((uint32_t)pVlanConfig->InnerVLANTag <<
+ 357:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****                                                               ((uint32_t)pVlanConfig->DoubleVLANPro
+ 358:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****                                                                 ((uint32_t)pVlanConfig->VLANTagHash
+ 359:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****                                                                   ((uint32_t)pVlanConfig->VLANTagIn
+ 360:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****                                                                     pVlanConfig->StripVLANTag |
+ 361:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****                                                                       pVlanConfig->VLANTypeCheck |
+ 362:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****                                                                         ((uint32_t)pVlanConfig->VLA
+ 363:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+ 364:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   return HAL_OK;
+ 648              		.loc 1 364 0
+ 649 0040 0020     		movs	r0, #0
+ 365:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** }
+ 650              		.loc 1 365 0
+ 651 0042 5DF8044B 		ldr	r4, [sp], #4
+ 652              	.LCFI11:
+ 653              		.cfi_restore 4
+ 654              		.cfi_def_cfa_offset 0
+ 655 0046 7047     		bx	lr
+ 656              	.LVL44:
+ 657              	.L35:
+ 350:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   }
+ 658              		.loc 1 350 0
+ 659 0048 0120     		movs	r0, #1
+ 660              	.LVL45:
+ 661 004a 7047     		bx	lr
+ 662              	.L41:
+ 663              		.align	2
+ 664              	.L40:
+ARM GAS  /tmp/cchwLyXD.s 			page 19
+
+
+ 665 004c FFFF8040 		.word	1082195967
+ 666              		.cfi_endproc
+ 667              	.LFE151:
+ 669              		.section	.text.HAL_ETHEx_SetVLANHashTable,"ax",%progbits
+ 670              		.align	1
+ 671              		.global	HAL_ETHEx_SetVLANHashTable
+ 672              		.syntax unified
+ 673              		.thumb
+ 674              		.thumb_func
+ 675              		.fpu fpv5-d16
+ 677              	HAL_ETHEx_SetVLANHashTable:
+ 678              	.LFB152:
+ 366:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+ 367:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** /**
+ 368:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @brief  Set the VLAN Hash Table
+ 369:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @param  heth: pointer to a ETH_HandleTypeDef structure that contains
+ 370:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *         the configuration information for ETHERNET module
+ 371:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @param  VLANHashTable: VLAN hash table 16 bit value
+ 372:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @retval None
+ 373:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   */
+ 374:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** void HAL_ETHEx_SetVLANHashTable(ETH_HandleTypeDef *heth, uint32_t VLANHashTable)
+ 375:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** {
+ 679              		.loc 1 375 0
+ 680              		.cfi_startproc
+ 681              		@ args = 0, pretend = 0, frame = 0
+ 682              		@ frame_needed = 0, uses_anonymous_args = 0
+ 683              		@ link register save eliminated.
+ 684              	.LVL46:
+ 376:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   MODIFY_REG(heth->Instance->MACVHTR, ETH_MACVHTR_VLHT, VLANHashTable);
+ 685              		.loc 1 376 0
+ 686 0000 0268     		ldr	r2, [r0]
+ 687 0002 906D     		ldr	r0, [r2, #88]
+ 688              	.LVL47:
+ 689 0004 024B     		ldr	r3, .L43
+ 690 0006 0340     		ands	r3, r3, r0
+ 691 0008 1943     		orrs	r1, r1, r3
+ 692              	.LVL48:
+ 693 000a 9165     		str	r1, [r2, #88]
+ 694 000c 7047     		bx	lr
+ 695              	.L44:
+ 696 000e 00BF     		.align	2
+ 697              	.L43:
+ 698 0010 0000FFFF 		.word	-65536
+ 699              		.cfi_endproc
+ 700              	.LFE152:
+ 702              		.section	.text.HAL_ETHEx_GetTxVLANConfig,"ax",%progbits
+ 703              		.align	1
+ 704              		.global	HAL_ETHEx_GetTxVLANConfig
+ 705              		.syntax unified
+ 706              		.thumb
+ 707              		.thumb_func
+ 708              		.fpu fpv5-d16
+ 710              	HAL_ETHEx_GetTxVLANConfig:
+ 711              	.LFB153:
+ 377:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** }
+ 378:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+ 379:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** /**
+ARM GAS  /tmp/cchwLyXD.s 			page 20
+
+
+ 380:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @brief  Get the VLAN Configuration for Transmit Packets.
+ 381:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @param  heth: pointer to a ETH_HandleTypeDef structure that contains
+ 382:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *         the configuration information for ETHERNET module
+ 383:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @param  VLANTag: Selects the vlan tag, this parameter must be one of the following
+ 384:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *                 ETH_OUTER_TX_VLANTAG
+ 385:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *                 ETH_INNER_TX_VLANTAG
+ 386:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @param  pVlanConfig: pointer to a ETH_TxVLANConfigTypeDef structure
+ 387:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *         that will contain the Tx VLAN filter configuration.
+ 388:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @retval HAL Status.
+ 389:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   */
+ 390:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** HAL_StatusTypeDef HAL_ETHEx_GetTxVLANConfig(ETH_HandleTypeDef *heth, uint32_t VLANTag ,ETH_TxVLANCo
+ 391:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** {
+ 712              		.loc 1 391 0
+ 713              		.cfi_startproc
+ 714              		@ args = 0, pretend = 0, frame = 0
+ 715              		@ frame_needed = 0, uses_anonymous_args = 0
+ 716              		@ link register save eliminated.
+ 717              	.LVL49:
+ 392:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   if (pVlanConfig == NULL)
+ 718              		.loc 1 392 0
+ 719 0000 1346     		mov	r3, r2
+ 720 0002 1AB3     		cbz	r2, .L48
+ 393:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   {
+ 394:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****     return HAL_ERROR;
+ 395:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   }
+ 396:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+ 397:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   if(VLANTag == ETH_INNER_TX_VLANTAG)
+ 721              		.loc 1 397 0
+ 722 0004 0129     		cmp	r1, #1
+ 723 0006 10D0     		beq	.L49
+ 398:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   {
+ 399:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****     pVlanConfig->SourceTxDesc = ((READ_BIT(heth->Instance->MACIVIR, ETH_MACVIR_VLTI) >> 20) == 0U) 
+ 400:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****     pVlanConfig->SVLANType = ((READ_BIT(heth->Instance->MACIVIR, ETH_MACVIR_CSVL) >> 19) == 0U) ? D
+ 401:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****     pVlanConfig->VLANTagControl = READ_BIT(heth->Instance->MACIVIR, (ETH_MACVIR_VLP | ETH_MACVIR_VL
+ 402:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   }
+ 403:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   else
+ 404:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   {
+ 405:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****     pVlanConfig->SourceTxDesc = ((READ_BIT(heth->Instance->MACVIR, ETH_MACVIR_VLTI) >> 20) == 0U) ?
+ 724              		.loc 1 405 0
+ 725 0008 0268     		ldr	r2, [r0]
+ 726              	.LVL50:
+ 727 000a 126E     		ldr	r2, [r2, #96]
+ 728 000c C2F30052 		ubfx	r2, r2, #20, #1
+ 729 0010 1A70     		strb	r2, [r3]
+ 406:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****     pVlanConfig->SVLANType = ((READ_BIT(heth->Instance->MACVIR, ETH_MACVIR_CSVL) >> 19) == 0U) ? DI
+ 730              		.loc 1 406 0
+ 731 0012 0268     		ldr	r2, [r0]
+ 732 0014 126E     		ldr	r2, [r2, #96]
+ 733 0016 C2F3C042 		ubfx	r2, r2, #19, #1
+ 734 001a 5A70     		strb	r2, [r3, #1]
+ 407:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****     pVlanConfig->VLANTagControl = READ_BIT(heth->Instance->MACVIR, (ETH_MACVIR_VLP | ETH_MACVIR_VLC
+ 735              		.loc 1 407 0
+ 736 001c 0268     		ldr	r2, [r0]
+ 737 001e 126E     		ldr	r2, [r2, #96]
+ 738 0020 02F4E022 		and	r2, r2, #458752
+ 739 0024 5A60     		str	r2, [r3, #4]
+ 408:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   }
+ARM GAS  /tmp/cchwLyXD.s 			page 21
+
+
+ 409:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+ 410:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   return HAL_OK;;
+ 740              		.loc 1 410 0
+ 741 0026 0020     		movs	r0, #0
+ 742              	.LVL51:
+ 743 0028 7047     		bx	lr
+ 744              	.LVL52:
+ 745              	.L49:
+ 399:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****     pVlanConfig->SVLANType = ((READ_BIT(heth->Instance->MACIVIR, ETH_MACVIR_CSVL) >> 19) == 0U) ? D
+ 746              		.loc 1 399 0
+ 747 002a 0268     		ldr	r2, [r0]
+ 748              	.LVL53:
+ 749 002c 526E     		ldr	r2, [r2, #100]
+ 750 002e C2F30052 		ubfx	r2, r2, #20, #1
+ 751 0032 1A70     		strb	r2, [r3]
+ 400:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****     pVlanConfig->VLANTagControl = READ_BIT(heth->Instance->MACIVIR, (ETH_MACVIR_VLP | ETH_MACVIR_VL
+ 752              		.loc 1 400 0
+ 753 0034 0268     		ldr	r2, [r0]
+ 754 0036 526E     		ldr	r2, [r2, #100]
+ 755 0038 C2F3C042 		ubfx	r2, r2, #19, #1
+ 756 003c 5A70     		strb	r2, [r3, #1]
+ 401:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   }
+ 757              		.loc 1 401 0
+ 758 003e 0268     		ldr	r2, [r0]
+ 759 0040 526E     		ldr	r2, [r2, #100]
+ 760 0042 02F4E022 		and	r2, r2, #458752
+ 761 0046 5A60     		str	r2, [r3, #4]
+ 762              		.loc 1 410 0
+ 763 0048 0020     		movs	r0, #0
+ 764              	.LVL54:
+ 765 004a 7047     		bx	lr
+ 766              	.LVL55:
+ 767              	.L48:
+ 394:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   }
+ 768              		.loc 1 394 0
+ 769 004c 0120     		movs	r0, #1
+ 770              	.LVL56:
+ 411:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** }
+ 771              		.loc 1 411 0
+ 772 004e 7047     		bx	lr
+ 773              		.cfi_endproc
+ 774              	.LFE153:
+ 776              		.section	.text.HAL_ETHEx_SetTxVLANConfig,"ax",%progbits
+ 777              		.align	1
+ 778              		.global	HAL_ETHEx_SetTxVLANConfig
+ 779              		.syntax unified
+ 780              		.thumb
+ 781              		.thumb_func
+ 782              		.fpu fpv5-d16
+ 784              	HAL_ETHEx_SetTxVLANConfig:
+ 785              	.LFB154:
+ 412:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+ 413:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** /**
+ 414:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @brief  Set the VLAN Configuration for Transmit Packets.
+ 415:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @param  heth: pointer to a ETH_HandleTypeDef structure that contains
+ 416:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *         the configuration information for ETHERNET module
+ 417:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @param  VLANTag: Selects the vlan tag, this parameter must be one of the following
+ARM GAS  /tmp/cchwLyXD.s 			page 22
+
+
+ 418:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *                 ETH_OUTER_TX_VLANTAG
+ 419:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *                 ETH_INNER_TX_VLANTAG
+ 420:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @param  pVlanConfig: pointer to a ETH_TxVLANConfigTypeDef structure
+ 421:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *         that contains Tx VLAN filter configuration.
+ 422:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @retval HAL Status
+ 423:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   */
+ 424:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** HAL_StatusTypeDef HAL_ETHEx_SetTxVLANConfig(ETH_HandleTypeDef *heth, uint32_t VLANTag ,ETH_TxVLANCo
+ 425:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** {
+ 786              		.loc 1 425 0
+ 787              		.cfi_startproc
+ 788              		@ args = 0, pretend = 0, frame = 0
+ 789              		@ frame_needed = 0, uses_anonymous_args = 0
+ 790              		@ link register save eliminated.
+ 791              	.LVL57:
+ 792 0000 30B4     		push	{r4, r5}
+ 793              	.LCFI12:
+ 794              		.cfi_def_cfa_offset 8
+ 795              		.cfi_offset 4, -8
+ 796              		.cfi_offset 5, -4
+ 426:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   if(VLANTag == ETH_INNER_TX_VLANTAG)
+ 797              		.loc 1 426 0
+ 798 0002 0129     		cmp	r1, #1
+ 799 0004 0FD0     		beq	.L54
+ 427:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   {
+ 428:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****     MODIFY_REG(heth->Instance->MACIVIR, ETH_MACTXVLAN_MASK, (((uint32_t)pVlanConfig->SourceTxDesc <
+ 429:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****                                                             ((uint32_t)pVlanConfig->SVLANType << 19
+ 430:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****                                                               pVlanConfig->VLANTagControl));
+ 431:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****     /* Enable Double VLAN processing */
+ 432:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****     SET_BIT(heth->Instance->MACVTR, ETH_MACVTR_EDVLP);
+ 433:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   }
+ 434:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   else
+ 435:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   {
+ 436:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****     MODIFY_REG(heth->Instance->MACVIR, ETH_MACTXVLAN_MASK, (((uint32_t)pVlanConfig->SourceTxDesc <<
+ 800              		.loc 1 436 0
+ 801 0006 0068     		ldr	r0, [r0]
+ 802              	.LVL58:
+ 803 0008 016E     		ldr	r1, [r0, #96]
+ 804              	.LVL59:
+ 805 000a 21F4F811 		bic	r1, r1, #2031616
+ 806 000e 1478     		ldrb	r4, [r2]	@ zero_extendqisi2
+ 807 0010 5378     		ldrb	r3, [r2, #1]	@ zero_extendqisi2
+ 808 0012 DB04     		lsls	r3, r3, #19
+ 809 0014 43EA0453 		orr	r3, r3, r4, lsl #20
+ 810 0018 5268     		ldr	r2, [r2, #4]
+ 811              	.LVL60:
+ 812 001a 1343     		orrs	r3, r3, r2
+ 813 001c 0B43     		orrs	r3, r3, r1
+ 814 001e 0366     		str	r3, [r0, #96]
+ 815              	.L52:
+ 437:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****                                                             ((uint32_t)pVlanConfig->SVLANType << 19
+ 438:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****                                                               pVlanConfig->VLANTagControl));
+ 439:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   }
+ 440:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+ 441:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   return HAL_OK;
+ 442:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** }
+ 816              		.loc 1 442 0
+ 817 0020 0020     		movs	r0, #0
+ARM GAS  /tmp/cchwLyXD.s 			page 23
+
+
+ 818 0022 30BC     		pop	{r4, r5}
+ 819              	.LCFI13:
+ 820              		.cfi_remember_state
+ 821              		.cfi_restore 5
+ 822              		.cfi_restore 4
+ 823              		.cfi_def_cfa_offset 0
+ 824 0024 7047     		bx	lr
+ 825              	.LVL61:
+ 826              	.L54:
+ 827              	.LCFI14:
+ 828              		.cfi_restore_state
+ 428:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****                                                             ((uint32_t)pVlanConfig->SVLANType << 19
+ 829              		.loc 1 428 0
+ 830 0026 0468     		ldr	r4, [r0]
+ 831 0028 616E     		ldr	r1, [r4, #100]
+ 832              	.LVL62:
+ 833 002a 21F4F811 		bic	r1, r1, #2031616
+ 834 002e 1578     		ldrb	r5, [r2]	@ zero_extendqisi2
+ 835 0030 5378     		ldrb	r3, [r2, #1]	@ zero_extendqisi2
+ 836 0032 DB04     		lsls	r3, r3, #19
+ 837 0034 43EA0553 		orr	r3, r3, r5, lsl #20
+ 838 0038 5268     		ldr	r2, [r2, #4]
+ 839              	.LVL63:
+ 840 003a 1343     		orrs	r3, r3, r2
+ 841 003c 0B43     		orrs	r3, r3, r1
+ 842 003e 6366     		str	r3, [r4, #100]
+ 432:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   }
+ 843              		.loc 1 432 0
+ 844 0040 0268     		ldr	r2, [r0]
+ 845 0042 136D     		ldr	r3, [r2, #80]
+ 846 0044 43F08063 		orr	r3, r3, #67108864
+ 847 0048 1365     		str	r3, [r2, #80]
+ 848 004a E9E7     		b	.L52
+ 849              		.cfi_endproc
+ 850              	.LFE154:
+ 852              		.section	.text.HAL_ETHEx_SetTxVLANIdentifier,"ax",%progbits
+ 853              		.align	1
+ 854              		.global	HAL_ETHEx_SetTxVLANIdentifier
+ 855              		.syntax unified
+ 856              		.thumb
+ 857              		.thumb_func
+ 858              		.fpu fpv5-d16
+ 860              	HAL_ETHEx_SetTxVLANIdentifier:
+ 861              	.LFB155:
+ 443:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+ 444:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** /**
+ 445:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @brief  Set the VLAN Tag Identifier for Transmit Packets.
+ 446:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @param  heth: pointer to a ETH_HandleTypeDef structure that contains
+ 447:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *         the configuration information for ETHERNET module
+ 448:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @param  VLANTag: Selects the vlan tag, this parameter must be one of the following
+ 449:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *                 ETH_OUTER_TX_VLANTAG
+ 450:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *                 ETH_INNER_TX_VLANTAG
+ 451:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @param  VLANIdentifier: VLAN Identifier 16 bit value
+ 452:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @retval None
+ 453:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   */
+ 454:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** void HAL_ETHEx_SetTxVLANIdentifier(ETH_HandleTypeDef *heth, uint32_t VLANTag ,uint32_t VLANIdentifi
+ 455:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** {
+ARM GAS  /tmp/cchwLyXD.s 			page 24
+
+
+ 862              		.loc 1 455 0
+ 863              		.cfi_startproc
+ 864              		@ args = 0, pretend = 0, frame = 0
+ 865              		@ frame_needed = 0, uses_anonymous_args = 0
+ 866              		@ link register save eliminated.
+ 867              	.LVL64:
+ 456:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   if(VLANTag == ETH_INNER_TX_VLANTAG)
+ 868              		.loc 1 456 0
+ 869 0000 0129     		cmp	r1, #1
+ 870 0002 06D0     		beq	.L58
+ 457:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   {
+ 458:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****     MODIFY_REG(heth->Instance->MACIVIR, ETH_MACVIR_VLT, VLANIdentifier);
+ 459:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   }
+ 460:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   else
+ 461:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   {
+ 462:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****     MODIFY_REG(heth->Instance->MACVIR, ETH_MACVIR_VLT, VLANIdentifier);
+ 871              		.loc 1 462 0
+ 872 0004 0168     		ldr	r1, [r0]
+ 873              	.LVL65:
+ 874 0006 086E     		ldr	r0, [r1, #96]
+ 875              	.LVL66:
+ 876 0008 054B     		ldr	r3, .L59
+ 877 000a 0340     		ands	r3, r3, r0
+ 878 000c 1A43     		orrs	r2, r2, r3
+ 879              	.LVL67:
+ 880 000e 0A66     		str	r2, [r1, #96]
+ 881 0010 7047     		bx	lr
+ 882              	.LVL68:
+ 883              	.L58:
+ 458:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   }
+ 884              		.loc 1 458 0
+ 885 0012 0168     		ldr	r1, [r0]
+ 886              	.LVL69:
+ 887 0014 486E     		ldr	r0, [r1, #100]
+ 888              	.LVL70:
+ 889 0016 024B     		ldr	r3, .L59
+ 890 0018 0340     		ands	r3, r3, r0
+ 891 001a 1A43     		orrs	r2, r2, r3
+ 892              	.LVL71:
+ 893 001c 4A66     		str	r2, [r1, #100]
+ 894 001e 7047     		bx	lr
+ 895              	.L60:
+ 896              		.align	2
+ 897              	.L59:
+ 898 0020 0000FFFF 		.word	-65536
+ 899              		.cfi_endproc
+ 900              	.LFE155:
+ 902              		.section	.text.HAL_ETHEx_EnableVLANProcessing,"ax",%progbits
+ 903              		.align	1
+ 904              		.global	HAL_ETHEx_EnableVLANProcessing
+ 905              		.syntax unified
+ 906              		.thumb
+ 907              		.thumb_func
+ 908              		.fpu fpv5-d16
+ 910              	HAL_ETHEx_EnableVLANProcessing:
+ 911              	.LFB156:
+ 463:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   }
+ARM GAS  /tmp/cchwLyXD.s 			page 25
+
+
+ 464:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** }
+ 465:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+ 466:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** /**
+ 467:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @brief  Enables the VLAN Tag Filtering process.
+ 468:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @param  heth: pointer to a ETH_HandleTypeDef structure that contains
+ 469:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *         the configuration information for ETHERNET module
+ 470:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @retval None.
+ 471:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   */
+ 472:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** void HAL_ETHEx_EnableVLANProcessing(ETH_HandleTypeDef *heth)
+ 473:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** {
+ 912              		.loc 1 473 0
+ 913              		.cfi_startproc
+ 914              		@ args = 0, pretend = 0, frame = 0
+ 915              		@ frame_needed = 0, uses_anonymous_args = 0
+ 916              		@ link register save eliminated.
+ 917              	.LVL72:
+ 474:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   /* Enable VLAN processing */
+ 475:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   SET_BIT(heth->Instance->MACPFR, ETH_MACPFR_VTFE);
+ 918              		.loc 1 475 0
+ 919 0000 0268     		ldr	r2, [r0]
+ 920 0002 9368     		ldr	r3, [r2, #8]
+ 921 0004 43F48033 		orr	r3, r3, #65536
+ 922 0008 9360     		str	r3, [r2, #8]
+ 923 000a 7047     		bx	lr
+ 924              		.cfi_endproc
+ 925              	.LFE156:
+ 927              		.section	.text.HAL_ETHEx_DisableVLANProcessing,"ax",%progbits
+ 928              		.align	1
+ 929              		.global	HAL_ETHEx_DisableVLANProcessing
+ 930              		.syntax unified
+ 931              		.thumb
+ 932              		.thumb_func
+ 933              		.fpu fpv5-d16
+ 935              	HAL_ETHEx_DisableVLANProcessing:
+ 936              	.LFB157:
+ 476:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** }
+ 477:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+ 478:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** /**
+ 479:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @brief  Disables the VLAN Tag Filtering process.
+ 480:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @param  heth: pointer to a ETH_HandleTypeDef structure that contains
+ 481:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *         the configuration information for ETHERNET module
+ 482:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @retval None.
+ 483:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   */
+ 484:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** void HAL_ETHEx_DisableVLANProcessing(ETH_HandleTypeDef *heth)
+ 485:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** {
+ 937              		.loc 1 485 0
+ 938              		.cfi_startproc
+ 939              		@ args = 0, pretend = 0, frame = 0
+ 940              		@ frame_needed = 0, uses_anonymous_args = 0
+ 941              		@ link register save eliminated.
+ 942              	.LVL73:
+ 486:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   /* Disable VLAN processing */
+ 487:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   CLEAR_BIT(heth->Instance->MACPFR, ETH_MACPFR_VTFE);
+ 943              		.loc 1 487 0
+ 944 0000 0268     		ldr	r2, [r0]
+ 945 0002 9368     		ldr	r3, [r2, #8]
+ 946 0004 23F48033 		bic	r3, r3, #65536
+ARM GAS  /tmp/cchwLyXD.s 			page 26
+
+
+ 947 0008 9360     		str	r3, [r2, #8]
+ 948 000a 7047     		bx	lr
+ 949              		.cfi_endproc
+ 950              	.LFE157:
+ 952              		.section	.text.HAL_ETHEx_EnterLPIMode,"ax",%progbits
+ 953              		.align	1
+ 954              		.global	HAL_ETHEx_EnterLPIMode
+ 955              		.syntax unified
+ 956              		.thumb
+ 957              		.thumb_func
+ 958              		.fpu fpv5-d16
+ 960              	HAL_ETHEx_EnterLPIMode:
+ 961              	.LFB158:
+ 488:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** }
+ 489:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+ 490:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** /**
+ 491:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @brief  Enters the Low Power Idle (LPI) mode
+ 492:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @param  heth: pointer to a ETH_HandleTypeDef structure that contains
+ 493:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *         the configuration information for ETHERNET module
+ 494:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @param  TxAutomate: Enable/Disbale automate enter/exit LPI mode.
+ 495:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @param  TxClockStop: Enable/Disbale Tx clock stop in LPI mode.
+ 496:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @retval None
+ 497:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   */
+ 498:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** void HAL_ETHEx_EnterLPIMode(ETH_HandleTypeDef *heth, FunctionalState TxAutomate, FunctionalState Tx
+ 499:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** {
+ 962              		.loc 1 499 0
+ 963              		.cfi_startproc
+ 964              		@ args = 0, pretend = 0, frame = 0
+ 965              		@ frame_needed = 0, uses_anonymous_args = 0
+ 966              		@ link register save eliminated.
+ 967              	.LVL74:
+ 968 0000 10B4     		push	{r4}
+ 969              	.LCFI15:
+ 970              		.cfi_def_cfa_offset 4
+ 971              		.cfi_offset 4, -4
+ 500:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   /* Enable LPI Interrupts */
+ 501:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   __HAL_ETH_MAC_ENABLE_IT(heth, ETH_MACIER_LPIIE);
+ 972              		.loc 1 501 0
+ 973 0002 0468     		ldr	r4, [r0]
+ 974 0004 D4F8B430 		ldr	r3, [r4, #180]
+ 975 0008 43F02003 		orr	r3, r3, #32
+ 976 000c C4F8B430 		str	r3, [r4, #180]
+ 502:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+ 503:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   /* Write to LPI Control register: Enter low power mode */
+ 504:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   MODIFY_REG(heth->Instance->MACLCSR, (ETH_MACLCSR_LPIEN | ETH_MACLCSR_LPITXA | ETH_MACLCSR_LPITCSE
+ 977              		.loc 1 504 0
+ 978 0010 0068     		ldr	r0, [r0]
+ 979              	.LVL75:
+ 980 0012 D0F8D030 		ldr	r3, [r0, #208]
+ 981 0016 23F42413 		bic	r3, r3, #2686976
+ 982 001a 5205     		lsls	r2, r2, #21
+ 983              	.LVL76:
+ 984 001c 42EAC141 		orr	r1, r2, r1, lsl #19
+ 985              	.LVL77:
+ 986 0020 0B43     		orrs	r3, r3, r1
+ 987 0022 43F48033 		orr	r3, r3, #65536
+ 988 0026 C0F8D030 		str	r3, [r0, #208]
+ARM GAS  /tmp/cchwLyXD.s 			page 27
+
+
+ 505:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****                                                                                                    
+ 506:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****                                                                                                    
+ 507:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** }
+ 989              		.loc 1 507 0
+ 990 002a 5DF8044B 		ldr	r4, [sp], #4
+ 991              	.LCFI16:
+ 992              		.cfi_restore 4
+ 993              		.cfi_def_cfa_offset 0
+ 994 002e 7047     		bx	lr
+ 995              		.cfi_endproc
+ 996              	.LFE158:
+ 998              		.section	.text.HAL_ETHEx_ExitLPIMode,"ax",%progbits
+ 999              		.align	1
+ 1000              		.global	HAL_ETHEx_ExitLPIMode
+ 1001              		.syntax unified
+ 1002              		.thumb
+ 1003              		.thumb_func
+ 1004              		.fpu fpv5-d16
+ 1006              	HAL_ETHEx_ExitLPIMode:
+ 1007              	.LFB159:
+ 508:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+ 509:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** /**
+ 510:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @brief  Exits the Low Power Idle (LPI) mode.
+ 511:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @param  heth: pointer to a ETH_HandleTypeDef structure that contains
+ 512:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *         the configuration information for ETHERNET module
+ 513:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @retval None
+ 514:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   */
+ 515:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** void HAL_ETHEx_ExitLPIMode(ETH_HandleTypeDef *heth)
+ 516:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** {
+ 1008              		.loc 1 516 0
+ 1009              		.cfi_startproc
+ 1010              		@ args = 0, pretend = 0, frame = 0
+ 1011              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1012              		@ link register save eliminated.
+ 1013              	.LVL78:
+ 517:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   /* Clear the LPI Config and exit low power mode */
+ 518:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   CLEAR_BIT(heth->Instance->MACLCSR, (ETH_MACLCSR_LPIEN | ETH_MACLCSR_LPITXA | ETH_MACLCSR_LPITCSE)
+ 1014              		.loc 1 518 0
+ 1015 0000 0268     		ldr	r2, [r0]
+ 1016 0002 D2F8D030 		ldr	r3, [r2, #208]
+ 1017 0006 23F42413 		bic	r3, r3, #2686976
+ 1018 000a C2F8D030 		str	r3, [r2, #208]
+ 519:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+ 520:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   /* Enable LPI Interrupts */
+ 521:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   __HAL_ETH_MAC_DISABLE_IT(heth, ETH_MACIER_LPIIE);
+ 1019              		.loc 1 521 0
+ 1020 000e 0268     		ldr	r2, [r0]
+ 1021 0010 D2F8B430 		ldr	r3, [r2, #180]
+ 1022 0014 23F02003 		bic	r3, r3, #32
+ 1023 0018 C2F8B430 		str	r3, [r2, #180]
+ 1024 001c 7047     		bx	lr
+ 1025              		.cfi_endproc
+ 1026              	.LFE159:
+ 1028              		.section	.text.HAL_ETHEx_GetMACLPIEvent,"ax",%progbits
+ 1029              		.align	1
+ 1030              		.global	HAL_ETHEx_GetMACLPIEvent
+ 1031              		.syntax unified
+ARM GAS  /tmp/cchwLyXD.s 			page 28
+
+
+ 1032              		.thumb
+ 1033              		.thumb_func
+ 1034              		.fpu fpv5-d16
+ 1036              	HAL_ETHEx_GetMACLPIEvent:
+ 1037              	.LFB160:
+ 522:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** }
+ 523:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+ 524:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** 
+ 525:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** /**
+ 526:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @brief  Returns the ETH MAC LPI event
+ 527:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @param  heth: pointer to a ETH_HandleTypeDef structure that contains
+ 528:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   *         the configuration information for ETHERNET module
+ 529:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   * @retval ETH MAC WakeUp event
+ 530:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   */
+ 531:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** uint32_t HAL_ETHEx_GetMACLPIEvent(ETH_HandleTypeDef *heth)
+ 532:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** {
+ 1038              		.loc 1 532 0
+ 1039              		.cfi_startproc
+ 1040              		@ args = 0, pretend = 0, frame = 0
+ 1041              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1042              		@ link register save eliminated.
+ 1043              	.LVL79:
+ 533:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c ****   return heth->MACLPIEvent;
+ 1044              		.loc 1 533 0
+ 1045 0000 C06E     		ldr	r0, [r0, #108]
+ 1046              	.LVL80:
+ 534:Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c **** }
+ 1047              		.loc 1 534 0
+ 1048 0002 7047     		bx	lr
+ 1049              		.cfi_endproc
+ 1050              	.LFE160:
+ 1052              		.text
+ 1053              	.Letext0:
+ 1054              		.file 2 "/usr/include/newlib/machine/_default_types.h"
+ 1055              		.file 3 "/usr/include/newlib/sys/_stdint.h"
+ 1056              		.file 4 "Drivers/CMSIS/Include/core_cm7.h"
+ 1057              		.file 5 "Drivers/CMSIS/Device/ST/STM32H7xx/Include/system_stm32h7xx.h"
+ 1058              		.file 6 "Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h743xx.h"
+ 1059              		.file 7 "Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h"
+ 1060              		.file 8 "/usr/include/newlib/sys/lock.h"
+ 1061              		.file 9 "/usr/include/newlib/sys/_types.h"
+ 1062              		.file 10 "/usr/lib/gcc/arm-none-eabi/6.3.1/include/stddef.h"
+ 1063              		.file 11 "/usr/include/newlib/sys/reent.h"
+ 1064              		.file 12 "/usr/include/newlib/math.h"
+ 1065              		.file 13 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h"
+ 1066              		.file 14 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_eth.h"
+ 1067              		.file 15 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_eth_ex.h"
+ 1068              		.file 16 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash.h"
+ 1069              		.file 17 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h"
+ARM GAS  /tmp/cchwLyXD.s 			page 29
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 stm32h7xx_hal_eth_ex.c
+     /tmp/cchwLyXD.s:17     .text.HAL_ETHEx_EnableARPOffload:0000000000000000 $t
+     /tmp/cchwLyXD.s:24     .text.HAL_ETHEx_EnableARPOffload:0000000000000000 HAL_ETHEx_EnableARPOffload
+     /tmp/cchwLyXD.s:43     .text.HAL_ETHEx_DisableARPOffload:0000000000000000 $t
+     /tmp/cchwLyXD.s:50     .text.HAL_ETHEx_DisableARPOffload:0000000000000000 HAL_ETHEx_DisableARPOffload
+     /tmp/cchwLyXD.s:68     .text.HAL_ETHEx_SetARPAddressMatch:0000000000000000 $t
+     /tmp/cchwLyXD.s:75     .text.HAL_ETHEx_SetARPAddressMatch:0000000000000000 HAL_ETHEx_SetARPAddressMatch
+     /tmp/cchwLyXD.s:91     .text.HAL_ETHEx_SetL4FilterConfig:0000000000000000 $t
+     /tmp/cchwLyXD.s:98     .text.HAL_ETHEx_SetL4FilterConfig:0000000000000000 HAL_ETHEx_SetL4FilterConfig
+     /tmp/cchwLyXD.s:173    .text.HAL_ETHEx_GetL4FilterConfig:0000000000000000 $t
+     /tmp/cchwLyXD.s:180    .text.HAL_ETHEx_GetL4FilterConfig:0000000000000000 HAL_ETHEx_GetL4FilterConfig
+     /tmp/cchwLyXD.s:237    .text.HAL_ETHEx_SetL3FilterConfig:0000000000000000 $t
+     /tmp/cchwLyXD.s:244    .text.HAL_ETHEx_SetL3FilterConfig:0000000000000000 HAL_ETHEx_SetL3FilterConfig
+     /tmp/cchwLyXD.s:346    .text.HAL_ETHEx_SetL3FilterConfig:000000000000008c $d
+     /tmp/cchwLyXD.s:351    .text.HAL_ETHEx_GetL3FilterConfig:0000000000000000 $t
+     /tmp/cchwLyXD.s:358    .text.HAL_ETHEx_GetL3FilterConfig:0000000000000000 HAL_ETHEx_GetL3FilterConfig
+     /tmp/cchwLyXD.s:470    .text.HAL_ETHEx_EnableL3L4Filtering:0000000000000000 $t
+     /tmp/cchwLyXD.s:477    .text.HAL_ETHEx_EnableL3L4Filtering:0000000000000000 HAL_ETHEx_EnableL3L4Filtering
+     /tmp/cchwLyXD.s:495    .text.HAL_ETHEx_DisableL3L4Filtering:0000000000000000 $t
+     /tmp/cchwLyXD.s:502    .text.HAL_ETHEx_DisableL3L4Filtering:0000000000000000 HAL_ETHEx_DisableL3L4Filtering
+     /tmp/cchwLyXD.s:520    .text.HAL_ETHEx_GetRxVLANConfig:0000000000000000 $t
+     /tmp/cchwLyXD.s:527    .text.HAL_ETHEx_GetRxVLANConfig:0000000000000000 HAL_ETHEx_GetRxVLANConfig
+     /tmp/cchwLyXD.s:598    .text.HAL_ETHEx_SetRxVLANConfig:0000000000000000 $t
+     /tmp/cchwLyXD.s:605    .text.HAL_ETHEx_SetRxVLANConfig:0000000000000000 HAL_ETHEx_SetRxVLANConfig
+     /tmp/cchwLyXD.s:665    .text.HAL_ETHEx_SetRxVLANConfig:000000000000004c $d
+     /tmp/cchwLyXD.s:670    .text.HAL_ETHEx_SetVLANHashTable:0000000000000000 $t
+     /tmp/cchwLyXD.s:677    .text.HAL_ETHEx_SetVLANHashTable:0000000000000000 HAL_ETHEx_SetVLANHashTable
+     /tmp/cchwLyXD.s:698    .text.HAL_ETHEx_SetVLANHashTable:0000000000000010 $d
+     /tmp/cchwLyXD.s:703    .text.HAL_ETHEx_GetTxVLANConfig:0000000000000000 $t
+     /tmp/cchwLyXD.s:710    .text.HAL_ETHEx_GetTxVLANConfig:0000000000000000 HAL_ETHEx_GetTxVLANConfig
+     /tmp/cchwLyXD.s:777    .text.HAL_ETHEx_SetTxVLANConfig:0000000000000000 $t
+     /tmp/cchwLyXD.s:784    .text.HAL_ETHEx_SetTxVLANConfig:0000000000000000 HAL_ETHEx_SetTxVLANConfig
+     /tmp/cchwLyXD.s:853    .text.HAL_ETHEx_SetTxVLANIdentifier:0000000000000000 $t
+     /tmp/cchwLyXD.s:860    .text.HAL_ETHEx_SetTxVLANIdentifier:0000000000000000 HAL_ETHEx_SetTxVLANIdentifier
+     /tmp/cchwLyXD.s:898    .text.HAL_ETHEx_SetTxVLANIdentifier:0000000000000020 $d
+     /tmp/cchwLyXD.s:903    .text.HAL_ETHEx_EnableVLANProcessing:0000000000000000 $t
+     /tmp/cchwLyXD.s:910    .text.HAL_ETHEx_EnableVLANProcessing:0000000000000000 HAL_ETHEx_EnableVLANProcessing
+     /tmp/cchwLyXD.s:928    .text.HAL_ETHEx_DisableVLANProcessing:0000000000000000 $t
+     /tmp/cchwLyXD.s:935    .text.HAL_ETHEx_DisableVLANProcessing:0000000000000000 HAL_ETHEx_DisableVLANProcessing
+     /tmp/cchwLyXD.s:953    .text.HAL_ETHEx_EnterLPIMode:0000000000000000 $t
+     /tmp/cchwLyXD.s:960    .text.HAL_ETHEx_EnterLPIMode:0000000000000000 HAL_ETHEx_EnterLPIMode
+     /tmp/cchwLyXD.s:999    .text.HAL_ETHEx_ExitLPIMode:0000000000000000 $t
+     /tmp/cchwLyXD.s:1006   .text.HAL_ETHEx_ExitLPIMode:0000000000000000 HAL_ETHEx_ExitLPIMode
+     /tmp/cchwLyXD.s:1029   .text.HAL_ETHEx_GetMACLPIEvent:0000000000000000 $t
+     /tmp/cchwLyXD.s:1036   .text.HAL_ETHEx_GetMACLPIEvent:0000000000000000 HAL_ETHEx_GetMACLPIEvent
+                     .debug_frame:0000000000000010 $d
+
+NO UNDEFINED SYMBOLS
