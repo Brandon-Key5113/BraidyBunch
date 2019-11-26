@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32H743xx</Define>
               <Undefine></Undefine>
-              <IncludePath>../Inc;               ../Drivers/STM32H7xx_HAL_Driver/Inc;               ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy;               ../Drivers/CMSIS/Device/ST/STM32H7xx/Include;               ../Drivers/CMSIS/Include;            ../Middlewares/Third_Party/FreeRTOS/Source/include;            ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F;           ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS</IncludePath>
+              <IncludePath>../Inc;../Drivers/STM32H7xx_HAL_Driver/Inc;../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32H7xx/Include;../Drivers/CMSIS/Include;../Middlewares/Third_Party/FreeRTOS/Source/include;../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F;../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS;../Drivers/BSP/Components/Common;../Drivers/BSP/Components\l6474;../Drivers/BSP/STM32H7xx_Nucleo;../Drivers/BSP/X-NUCLEO-IHMxx</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -426,6 +426,36 @@
               <FileName>stm32h7xx_hal_timebase_tim.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Src/stm32h7xx_hal_timebase_tim.c</FilePath>
+            </File>
+            <File>
+              <FileName>StepperDriver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\StepperDriver.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Drivers/BSP/Components/I6474</GroupName>
+          <Files>
+            <File>
+              <FileName>l6474.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\BSP\Components\l6474\l6474.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Drivers/BSP/X-NUCLEO-IHMxx</GroupName>
+          <Files>
+            <File>
+              <FileName>x_nucleo_ihm01a1_stm32h7xx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\BSP\X-NUCLEO-IHMxx\x_nucleo_ihm01a1_stm32h7xx.c</FilePath>
+            </File>
+            <File>
+              <FileName>x_nucleo_ihmxx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\BSP\X-NUCLEO-IHMxx\x_nucleo_ihmxx.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -596,6 +626,16 @@
               <FileName>port.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/port.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Drivers/BSP/STM32H7ZII_NUCLEO</GroupName>
+          <Files>
+            <File>
+              <FileName>stm32h7xx_nucleo.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\BSP\STM32H7xx_Nucleo\stm32h7xx_nucleo.c</FilePath>
             </File>
           </Files>
         </Group>
