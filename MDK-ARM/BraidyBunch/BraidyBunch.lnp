@@ -1,6 +1,7 @@
 --cpu Cortex-M7.fp.dp
 "braidybunch\startup_stm32h743xx.o"
 "braidybunch\led_task.o"
+"braidybunch\messaging.o"
 "braidybunch\main.o"
 "braidybunch\freertos.o"
 "braidybunch\stm32h7xx_it.o"
@@ -26,9 +27,6 @@
 "braidybunch\stm32h7xx_hal_tim_ex.o"
 "braidybunch\stm32h7xx_hal_uart.o"
 "braidybunch\stm32h7xx_hal_uart_ex.o"
-"braidybunch\stm32h7xx_hal_pcd.o"
-"braidybunch\stm32h7xx_hal_pcd_ex.o"
-"braidybunch\stm32h7xx_ll_usb.o"
 "braidybunch\system_stm32h7xx.o"
 "braidybunch\croutine.o"
 "braidybunch\event_groups.o"

@@ -1,10 +1,19 @@
 
+#include "led_task.h"
+
 #include "main.h"
 #include "cmsis_os.h"
-#include "led_task.h"
 #include "string.h"
+#include "stdio.h"
+
+#include "messaging.h"
 
 LED_PARAMS_t led_params[2];  // create 2 instances of params, one for each task
+
+extern UART_HandleTypeDef huart3;
+
+const char* LED_NAMES[LED_MAX] = {"GREEN", "ORANGE", "RED"};
+
 
 /*****************************************
 led_toggle() toggles the indentified LED 
@@ -13,10 +22,14 @@ inputs
 outputs
   none
 *******************************************/
+char buf[100];
 void led_toggle(int id) {
+    
     switch (id){
         case 0:
             HAL_GPIO_TogglePin(LD1_GPIO_PORT , LD1_GPIO_PIN);
+            //sprintf(buf, "LD1 Toggle\n\r");
+            //HAL_UART_Transmit_IT(&huart3, (uint8_t *)buf, strlen(buf)/*, 1000*/);
             break;
         case 1:
             HAL_GPIO_TogglePin(LD2_GPIO_PORT , LD2_GPIO_PIN);
@@ -38,12 +51,12 @@ outputs
 void led_task(void *parameters)
 {
     LED_PARAMS_t *p = (LED_PARAMS_t *)parameters;
-    uint32_t wait_ms = 1000;
+    
+    MSG_Printf("Task Startup %d\n\r", p->id);
+    
     while(1) {
-
-        led_toggle(p->id);
-
-        vTaskDelay(wait_ms * (p->id +1 ));
+        HAL_GPIO_TogglePin(p->GPIOx , p->GPIO_Pin);
+        vTaskDelay(p->togglePeriod_ms);
     }
 }
 
@@ -57,11 +70,35 @@ inputs
 outputs
   none
 *******************************************/
-void led_task_init(int id, char *task_name)
+void led_task_init(enum LED led)
 {
-  LED_PARAMS_t *p = &led_params[id];   // get pointer to THIS instance of parameters (one for each task)
-  p->id = id;                           // initialize members of this structure for this task
+    LED_PARAMS_t *p = &led_params[led];
+    p->id = led;
 
-  strncpy(p->task_name, task_name, configMAX_TASK_NAME_LEN);
-  xTaskCreate( led_task, p->task_name, 256, (void *)p, 2, &p->handle); // go ahead and create the task 
+    switch (led){
+        case LED_GREEN:
+            p->GPIOx = LD1_GPIO_PORT;
+            p->GPIO_Pin = LD1_GPIO_PIN;
+            p->togglePeriod_ms = 500;
+            break;
+        case LED_ORANGE:
+            p->GPIOx = LD2_GPIO_PORT;
+            p->GPIO_Pin = LD2_GPIO_PIN;
+            p->togglePeriod_ms = 750;
+            break;
+        case LED_RED:
+            p->GPIOx = LD3_GPIO_PORT;
+            p->GPIO_Pin = LD3_GPIO_PIN;
+            p->togglePeriod_ms = 1000;
+            break;
+        default:
+            // Error
+            p->GPIOx = LD1_GPIO_PORT;
+            p->GPIO_Pin = LD1_GPIO_PIN;
+            p->togglePeriod_ms = 250;
+            break;
+    }
+
+
+    xTaskCreate( led_task, LED_NAMES[led], 256, (void *)p, 6, &p->handle); 
 }
