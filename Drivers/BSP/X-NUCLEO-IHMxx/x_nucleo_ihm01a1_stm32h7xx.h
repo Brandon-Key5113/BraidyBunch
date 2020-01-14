@@ -69,7 +69,8 @@
 * @{
 */   
 /// Interrupt line used for L6474 FLAG
-#define EXTI_MCU_LINE_IRQn           (EXTI4_15_IRQn)
+// It was EXTI4_15_IRQn
+#define EXTI_MCU_LINE_IRQn           (EXTI15_10_IRQn)
 
 /// Timer used for PWM1
 #define BSP_MOTOR_CONTROL_BOARD_TIMER_PWM1      (TIM22)

@@ -135,7 +135,7 @@ typedef enum
 #define USER_BUTTON_GPIO_PORT                   GPIOC
 #define USER_BUTTON_GPIO_CLK_ENABLE()           __HAL_RCC_GPIOC_CLK_ENABLE()
 #define USER_BUTTON_GPIO_CLK_DISABLE()          __HAL_RCC_GPIOC_CLK_DISABLE()
-#define USER_BUTTON_EXTI_IRQn                   EXTI4_15_IRQn
+#define USER_BUTTON_EXTI_IRQn                   EXTI15_10_IRQn //It was this: EXTI4_15_IRQn
 /* Aliases */
 #define KEY_BUTTON_PIN                          USER_BUTTON_PIN
 #define KEY_BUTTON_GPIO_PORT                    USER_BUTTON_GPIO_PORT
