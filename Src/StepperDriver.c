@@ -527,13 +527,13 @@ void MyFlagInterruptHandler(void)
   * @param  error number of the error
   * @retval None
   */
-void Error_Handler(uint16_t error)
-{
-  /* Backup error number */
-  gLastError = error;
-  
-  /* Infinite loop */
-  while(1)
-  {
-  }
-}
+//void Error_Handler(uint16_t error)
+//{
+//  /* Backup error number */
+//  gLastError = error;
+//  
+//  /* Infinite loop */
+//  while(1)
+//  {
+//  }
+//}
