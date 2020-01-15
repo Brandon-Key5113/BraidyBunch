@@ -1,6 +1,6 @@
 /**
   ******************************************************************************
-  * @file    stm32l0xx_nucleo.h
+  * @file    stm32h7xx_nucleo.h
   * @author  MCD Application Team
   * @brief   This file contains definitions for:
   *          - LEDs and push-button available on STM32H7XX-Nucleo Kit 
@@ -157,13 +157,13 @@ typedef enum
 #define NUCLEO_SPIx                                 SPI1
 #define NUCLEO_SPIx_CLK_ENABLE()                  __HAL_RCC_SPI1_CLK_ENABLE()
 
-#define NUCLEO_SPIx_SCK_AF                          GPIO_AF0_SPI1
+#define NUCLEO_SPIx_SCK_AF                          GPIO_AF5_SPI1//GPIO_AF0_SPI1
 #define NUCLEO_SPIx_SCK_GPIO_PORT                   GPIOA
 #define NUCLEO_SPIx_SCK_PIN                         GPIO_PIN_5
 #define NUCLEO_SPIx_SCK_GPIO_CLK_ENABLE()         __HAL_RCC_GPIOA_CLK_ENABLE()
 #define NUCLEO_SPIx_SCK_GPIO_CLK_DISABLE()        __HAL_RCC_GPIOA_CLK_DISABLE()
 
-#define NUCLEO_SPIx_MISO_MOSI_AF                    GPIO_AF0_SPI1
+#define NUCLEO_SPIx_MISO_MOSI_AF                    GPIO_AF5_SPI1//GPIO_AF0_SPI1
 #define NUCLEO_SPIx_MISO_MOSI_GPIO_PORT             GPIOA
 #define NUCLEO_SPIx_MISO_MOSI_GPIO_CLK_ENABLE()   __HAL_RCC_GPIOA_CLK_ENABLE()
 #define NUCLEO_SPIx_MISO_MOSI_GPIO_CLK_DISABLE()  __HAL_RCC_GPIOA_CLK_DISABLE()

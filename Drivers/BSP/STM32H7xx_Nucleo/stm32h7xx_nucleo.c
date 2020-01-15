@@ -690,24 +690,24 @@ void LCD_IO_WriteMultipleData(uint8_t *pData, uint32_t Size)
       {
       }  
       /* Need to invert bytes for LCD*/
-      *((__IO uint8_t*)&hnucleo_Spi.Instance->DR) = *(pData+1);
+      *((__IO uint8_t*)&hnucleo_Spi.Instance->TXDR) = *(pData+1);
       
       while(((hnucleo_Spi.Instance->SR) & SPI_FLAG_TXE) != SPI_FLAG_TXE)
       {
       }  
-      *((__IO uint8_t*)&hnucleo_Spi.Instance->DR) = *pData;
+      *((__IO uint8_t*)&hnucleo_Spi.Instance->TXDR) = *pData;
       counter--;
       pData += 2;
     }
     
     /* Wait until the bus is ready before releasing Chip select */ 
-    while(((hnucleo_Spi.Instance->SR) & SPI_FLAG_BSY) != RESET)
+    while(((hnucleo_Spi.Instance->SR) & HAL_SPI_STATE_BUSY) != RESET)
     {
     }  
   } 
 
   /* Empty the Rx fifo */
-  data = *(&hnucleo_Spi.Instance->DR);
+  data = *(&hnucleo_Spi.Instance->TXDR);
   UNUSED(data);  /* Remove GNU warning */
 
   /* Deselect : Chip Select high */

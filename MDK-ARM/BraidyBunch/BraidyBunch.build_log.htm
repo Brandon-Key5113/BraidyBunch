@@ -22,51 +22,21 @@ Dialog DLL:      TCM.DLL V1.36.1.0
  
 <h2>Project:</h2>
 D:\Documents\BraidyBunch\MDK-ARM\BraidyBunch.uvprojx
-Project File Date:  11/26/2019
+Project File Date:  01/15/2020
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'BraidyBunch'
+compiling stm32h7xx_hal_spi_ex.c...
 compiling x_nucleo_ihm01a1_stm32h7xx.c...
-..\Drivers\BSP\X-NUCLEO-IHMxx\x_nucleo_ihm01a1_stm32h7xx.c(72): error:  #20: identifier "SPI_HandleTypeDef" is undefined
-  static SPI_HandleTypeDef SpiHandle;
-..\Drivers\BSP\X-NUCLEO-IHMxx\x_nucleo_ihm01a1_stm32h7xx.c(164): error:  #20: identifier "EXTI4_15_IRQn" is undefined
-    HAL_NVIC_SetPriority(EXTI_MCU_LINE_IRQn, 5, 0);
 ..\Drivers\BSP\X-NUCLEO-IHMxx\x_nucleo_ihm01a1_stm32h7xx.c(286): error:  #20: identifier "TIM22" is undefined
         pHTim->Instance = BSP_MOTOR_CONTROL_BOARD_TIMER_PWM1;
 ..\Drivers\BSP\X-NUCLEO-IHMxx\x_nucleo_ihm01a1_stm32h7xx.c(299): error:  #20: identifier "TIM21" is undefined
         pHTim->Instance = BSP_MOTOR_CONTROL_BOARD_TIMER_PWM3;
-..\Drivers\BSP\X-NUCLEO-IHMxx\x_nucleo_ihm01a1_stm32h7xx.c(400): error:  #20: identifier "SPI_BAUDRATEPRESCALER_32" is undefined
-    SpiHandle.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_32; 
-..\Drivers\BSP\X-NUCLEO-IHMxx\x_nucleo_ihm01a1_stm32h7xx.c(401): error:  #20: identifier "SPI_DIRECTION_2LINES" is undefined
-    SpiHandle.Init.Direction         = SPI_DIRECTION_2LINES;
-..\Drivers\BSP\X-NUCLEO-IHMxx\x_nucleo_ihm01a1_stm32h7xx.c(402): error:  #20: identifier "SPI_PHASE_2EDGE" is undefined
-    SpiHandle.Init.CLKPhase          = SPI_PHASE_2EDGE;    
-..\Drivers\BSP\X-NUCLEO-IHMxx\x_nucleo_ihm01a1_stm32h7xx.c(403): error:  #20: identifier "SPI_POLARITY_HIGH" is undefined
-    SpiHandle.Init.CLKPolarity       = SPI_POLARITY_HIGH;
-..\Drivers\BSP\X-NUCLEO-IHMxx\x_nucleo_ihm01a1_stm32h7xx.c(404): error:  #20: identifier "SPI_CRCCALCULATION_DISABLE" is undefined
-    SpiHandle.Init.CRCCalculation    = SPI_CRCCALCULATION_DISABLED;
-..\Drivers\BSP\X-NUCLEO-IHMxx\x_nucleo_ihm01a1_stm32h7xx.c(406): error:  #20: identifier "SPI_DATASIZE_8BIT" is undefined
-    SpiHandle.Init.DataSize          = SPI_DATASIZE_8BIT;
-..\Drivers\BSP\X-NUCLEO-IHMxx\x_nucleo_ihm01a1_stm32h7xx.c(407): error:  #20: identifier "SPI_FIRSTBIT_MSB" is undefined
-    SpiHandle.Init.FirstBit          = SPI_FIRSTBIT_MSB;
-..\Drivers\BSP\X-NUCLEO-IHMxx\x_nucleo_ihm01a1_stm32h7xx.c(408): error:  #20: identifier "SPI_NSS_SOFT" is undefined
-    SpiHandle.Init.NSS               = SPI_NSS_SOFT;
-..\Drivers\BSP\X-NUCLEO-IHMxx\x_nucleo_ihm01a1_stm32h7xx.c(409): error:  #20: identifier "SPI_TIMODE_DISABLE" is undefined
-    SpiHandle.Init.TIMode            = SPI_TIMODE_DISABLED;
-..\Drivers\BSP\X-NUCLEO-IHMxx\x_nucleo_ihm01a1_stm32h7xx.c(411): error:  #20: identifier "SPI_MODE_MASTER" is undefined
-    SpiHandle.Init.Mode = SPI_MODE_MASTER;
-..\Drivers\BSP\X-NUCLEO-IHMxx\x_nucleo_ihm01a1_stm32h7xx.c(413): warning:  #223-D: function "HAL_SPI_Init" declared implicitly
-    status = HAL_SPI_Init(&SpiHandle);
-..\Drivers\BSP\X-NUCLEO-IHMxx\x_nucleo_ihm01a1_stm32h7xx.c(413): warning:  #188-D: enumerated type mixed with another type
-    status = HAL_SPI_Init(&SpiHandle);
-..\Drivers\BSP\X-NUCLEO-IHMxx\x_nucleo_ihm01a1_stm32h7xx.c(431): warning:  #223-D: function "HAL_SPI_TransmitReceive" declared implicitly
-      status = HAL_SPI_TransmitReceive(&SpiHandle, pByteToTransmit, pReceivedByte, 1, SPIx_TIMEOUT_MAX);
-..\Drivers\BSP\X-NUCLEO-IHMxx\x_nucleo_ihm01a1_stm32h7xx.c(431): warning:  #188-D: enumerated type mixed with another type
-      status = HAL_SPI_TransmitReceive(&SpiHandle, pByteToTransmit, pReceivedByte, 1, SPIx_TIMEOUT_MAX);
-..\Drivers\BSP\X-NUCLEO-IHMxx\x_nucleo_ihm01a1_stm32h7xx.c: 4 warnings, 14 errors
+..\Drivers\BSP\X-NUCLEO-IHMxx\x_nucleo_ihm01a1_stm32h7xx.c: 0 warnings, 2 errors
 compiling stm32h7xx_nucleo.c...
-"BraidyBunch\BraidyBunch.axf" - 14 Error(s), 4 Warning(s).
+compiling stm32h7xx_hal_spi.c...
+"BraidyBunch\BraidyBunch.axf" - 2 Error(s), 0 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -90,7 +60,7 @@ Package Vendor: Keil
 
    * Component: ARM::CMSIS:CORE:5.3.0
 Target not created.
-Build Time Elapsed:  00:00:18
+Build Time Elapsed:  00:00:16
 </pre>
 </body>
 </html>

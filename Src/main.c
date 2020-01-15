@@ -39,6 +39,8 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+// IDK a good place to put this
+//#define HAL_SPI_MODULE_ENABLED
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/

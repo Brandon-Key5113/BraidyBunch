@@ -27,7 +27,7 @@ I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x5DCE4399)
 I (../Drivers/CMSIS/Device/ST/STM32H7xx/Include/system_stm32h7xx.h)(0x5DCE4341)
 I (../Inc/main.h)(0x5DD8441B)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h)(0x5DCE439D)
-I (../Inc/stm32h7xx_hal_conf.h)(0x5DD8441A)
+I (../Inc/stm32h7xx_hal_conf.h)(0x5E1F80B3)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h)(0x5DCE439D)
 I (../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h)(0x5DCE4341)
@@ -48,6 +48,8 @@ I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c_ex.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h)(0x5DCE439E)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h)(0x5DCE439E)
@@ -75,7 +77,7 @@ I (../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h)(0x5DCE43AB)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h)(0x5DCE43AB)
 I (../Inc/main.h)(0x5DD8441B)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h)(0x5DCE439D)
-I (../Inc/stm32h7xx_hal_conf.h)(0x5DD8441A)
+I (../Inc/stm32h7xx_hal_conf.h)(0x5E1F80B3)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h)(0x5DCE439D)
 I (../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h)(0x5DCE4341)
@@ -103,6 +105,8 @@ I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c_ex.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h)(0x5DCE439E)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h)(0x5DCE439E)
@@ -110,10 +114,10 @@ I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h)(0x5DCE439E)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x599F75EC)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599F75EC)
 I (C:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x599F75EA)
-F (../Src/main.c)(0x5DD84447)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/BSP/Components/Common -I ../Drivers/BSP/Components\l6474 -I ../Drivers/BSP/STM32H7xx_Nucleo -I ../Drivers/BSP/X-NUCLEO-IHMxx-I.\RTE\_BraidyBunch-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include"-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\Keil\STM32H7xx_DFP\2.3.1\Drivers\CMSIS\Device\ST\STM32H7xx\Include"-D__UVISION_VERSION="527" -D_RTE_ -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o braidybunch\main.o --omf_browse braidybunch\main.crf --depend braidybunch\main.d)
+F (../Src/main.c)(0x5E1E0314)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/BSP/Components/Common -I ../Drivers/BSP/Components\l6474 -I ../Drivers/BSP/STM32H7xx_Nucleo -I ../Drivers/BSP/X-NUCLEO-IHMxx-I.\RTE\_BraidyBunch-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include"-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\Keil\STM32H7xx_DFP\2.3.1\Drivers\CMSIS\Device\ST\STM32H7xx\Include"-D__UVISION_VERSION="527" -D_RTE_ -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o braidybunch\main.o --omf_browse braidybunch\main.crf --depend braidybunch\main.d)
 I (../Inc/main.h)(0x5DD8441B)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h)(0x5DCE439D)
-I (../Inc/stm32h7xx_hal_conf.h)(0x5DD8441A)
+I (../Inc/stm32h7xx_hal_conf.h)(0x5E1F80B3)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h)(0x5DCE439D)
 I (../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h)(0x5DCE4341)
@@ -143,6 +147,8 @@ I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c_ex.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h)(0x5DCE439E)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h)(0x5DCE439E)
@@ -179,7 +185,7 @@ I (../Middlewares/Third_Party/FreeRTOS/Source/include/task.h)(0x5DCE43AB)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/list.h)(0x5DCE43AB)
 I (../Inc/main.h)(0x5DD8441B)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h)(0x5DCE439D)
-I (../Inc/stm32h7xx_hal_conf.h)(0x5DD8441A)
+I (../Inc/stm32h7xx_hal_conf.h)(0x5E1F80B3)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h)(0x5DCE439D)
 I (../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h)(0x5DCE4341)
@@ -207,6 +213,8 @@ I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c_ex.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h)(0x5DCE439E)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h)(0x5DCE439E)
@@ -214,7 +222,7 @@ I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h)(0x5DCE439E)
 F (../Src/stm32h7xx_it.c)(0x5DDDA003)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/BSP/Components/Common -I ../Drivers/BSP/Components\l6474 -I ../Drivers/BSP/STM32H7xx_Nucleo -I ../Drivers/BSP/X-NUCLEO-IHMxx-I.\RTE\_BraidyBunch-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include"-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\Keil\STM32H7xx_DFP\2.3.1\Drivers\CMSIS\Device\ST\STM32H7xx\Include"-D__UVISION_VERSION="527" -D_RTE_ -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o braidybunch\stm32h7xx_it.o --omf_browse braidybunch\stm32h7xx_it.crf --depend braidybunch\stm32h7xx_it.d)
 I (../Inc/main.h)(0x5DD8441B)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h)(0x5DCE439D)
-I (../Inc/stm32h7xx_hal_conf.h)(0x5DD8441A)
+I (../Inc/stm32h7xx_hal_conf.h)(0x5E1F80B3)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h)(0x5DCE439D)
 I (../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h)(0x5DCE4341)
@@ -244,6 +252,8 @@ I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c_ex.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h)(0x5DCE439E)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h)(0x5DCE439E)
@@ -261,7 +271,7 @@ I (../Middlewares/Third_Party/FreeRTOS/Source/include/list.h)(0x5DCE43AB)
 F (../Src/stm32h7xx_hal_msp.c)(0x5DDDA004)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/BSP/Components/Common -I ../Drivers/BSP/Components\l6474 -I ../Drivers/BSP/STM32H7xx_Nucleo -I ../Drivers/BSP/X-NUCLEO-IHMxx-I.\RTE\_BraidyBunch-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include"-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\Keil\STM32H7xx_DFP\2.3.1\Drivers\CMSIS\Device\ST\STM32H7xx\Include"-D__UVISION_VERSION="527" -D_RTE_ -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o braidybunch\stm32h7xx_hal_msp.o --omf_browse braidybunch\stm32h7xx_hal_msp.crf --depend braidybunch\stm32h7xx_hal_msp.d)
 I (../Inc/main.h)(0x5DD8441B)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h)(0x5DCE439D)
-I (../Inc/stm32h7xx_hal_conf.h)(0x5DD8441A)
+I (../Inc/stm32h7xx_hal_conf.h)(0x5E1F80B3)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h)(0x5DCE439D)
 I (../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h)(0x5DCE4341)
@@ -291,13 +301,15 @@ I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c_ex.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h)(0x5DCE439E)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h)(0x5DCE439E)
 F (../Src/stm32h7xx_hal_timebase_tim.c)(0x5DDDA005)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/BSP/Components/Common -I ../Drivers/BSP/Components\l6474 -I ../Drivers/BSP/STM32H7xx_Nucleo -I ../Drivers/BSP/X-NUCLEO-IHMxx-I.\RTE\_BraidyBunch-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include"-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\Keil\STM32H7xx_DFP\2.3.1\Drivers\CMSIS\Device\ST\STM32H7xx\Include"-D__UVISION_VERSION="527" -D_RTE_ -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o braidybunch\stm32h7xx_hal_timebase_tim.o --omf_browse braidybunch\stm32h7xx_hal_timebase_tim.crf --depend braidybunch\stm32h7xx_hal_timebase_tim.d)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h)(0x5DCE439D)
-I (../Inc/stm32h7xx_hal_conf.h)(0x5DD8441A)
+I (../Inc/stm32h7xx_hal_conf.h)(0x5E1F80B3)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h)(0x5DCE439D)
 I (../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h)(0x5DCE4341)
@@ -327,6 +339,8 @@ I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c_ex.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h)(0x5DCE439E)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h)(0x5DCE439E)
@@ -368,10 +382,10 @@ I (..\Drivers\BSP\Components\l6474\l6474_target_config.h)(0x5AAF7390)
 I (../Drivers/BSP/Components/Common/motor.h)(0x5AAF73BA)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F75EE)
 F (..\Drivers\BSP\X-NUCLEO-IHMxx\x_nucleo_ihm01a1_stm32h7xx.c)(0x5DDDAAC4)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/BSP/Components/Common -I ../Drivers/BSP/Components\l6474 -I ../Drivers/BSP/STM32H7xx_Nucleo -I ../Drivers/BSP/X-NUCLEO-IHMxx-I.\RTE\_BraidyBunch-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include"-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\Keil\STM32H7xx_DFP\2.3.1\Drivers\CMSIS\Device\ST\STM32H7xx\Include"-D__UVISION_VERSION="527" -D_RTE_ -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o braidybunch\x_nucleo_ihm01a1_stm32h7xx.o --omf_browse braidybunch\x_nucleo_ihm01a1_stm32h7xx.crf --depend braidybunch\x_nucleo_ihm01a1_stm32h7xx.d)
-I (..\Drivers\BSP\X-NUCLEO-IHMxx\x_nucleo_ihm01a1_stm32h7xx.h)(0x5DDDAEF9)
-I (../Drivers/BSP/STM32H7xx_Nucleo/stm32h7xx_nucleo.h)(0x5E1DF555)
+I (..\Drivers\BSP\X-NUCLEO-IHMxx\x_nucleo_ihm01a1_stm32h7xx.h)(0x5E1DF5D4)
+I (../Drivers/BSP/STM32H7xx_Nucleo/stm32h7xx_nucleo.h)(0x5E1F4FBB)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h)(0x5DCE439D)
-I (../Inc/stm32h7xx_hal_conf.h)(0x5DD8441A)
+I (../Inc/stm32h7xx_hal_conf.h)(0x5E1F80B3)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h)(0x5DCE439D)
 I (../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h)(0x5DCE4341)
@@ -401,6 +415,8 @@ I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c_ex.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h)(0x5DCE439E)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h)(0x5DCE439E)
@@ -411,7 +427,7 @@ I (../Drivers/BSP/Components/Common/motor.h)(0x5AAF73BA)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F75EE)
 F (../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c)(0x5DCE439E)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/BSP/Components/Common -I ../Drivers/BSP/Components\l6474 -I ../Drivers/BSP/STM32H7xx_Nucleo -I ../Drivers/BSP/X-NUCLEO-IHMxx-I.\RTE\_BraidyBunch-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include"-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\Keil\STM32H7xx_DFP\2.3.1\Drivers\CMSIS\Device\ST\STM32H7xx\Include"-D__UVISION_VERSION="527" -D_RTE_ -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o braidybunch\stm32h7xx_hal_cortex.o --omf_browse braidybunch\stm32h7xx_hal_cortex.crf --depend braidybunch\stm32h7xx_hal_cortex.d)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h)(0x5DCE439D)
-I (../Inc/stm32h7xx_hal_conf.h)(0x5DD8441A)
+I (../Inc/stm32h7xx_hal_conf.h)(0x5E1F80B3)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h)(0x5DCE439D)
 I (../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h)(0x5DCE4341)
@@ -441,13 +457,15 @@ I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c_ex.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h)(0x5DCE439E)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h)(0x5DCE439E)
 F (../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c)(0x5DCE439F)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/BSP/Components/Common -I ../Drivers/BSP/Components\l6474 -I ../Drivers/BSP/STM32H7xx_Nucleo -I ../Drivers/BSP/X-NUCLEO-IHMxx-I.\RTE\_BraidyBunch-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include"-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\Keil\STM32H7xx_DFP\2.3.1\Drivers\CMSIS\Device\ST\STM32H7xx\Include"-D__UVISION_VERSION="527" -D_RTE_ -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o braidybunch\stm32h7xx_hal_rcc.o --omf_browse braidybunch\stm32h7xx_hal_rcc.crf --depend braidybunch\stm32h7xx_hal_rcc.d)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h)(0x5DCE439D)
-I (../Inc/stm32h7xx_hal_conf.h)(0x5DD8441A)
+I (../Inc/stm32h7xx_hal_conf.h)(0x5E1F80B3)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h)(0x5DCE439D)
 I (../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h)(0x5DCE4341)
@@ -477,13 +495,15 @@ I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c_ex.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h)(0x5DCE439E)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h)(0x5DCE439E)
 F (../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c)(0x5DCE439F)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/BSP/Components/Common -I ../Drivers/BSP/Components\l6474 -I ../Drivers/BSP/STM32H7xx_Nucleo -I ../Drivers/BSP/X-NUCLEO-IHMxx-I.\RTE\_BraidyBunch-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include"-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\Keil\STM32H7xx_DFP\2.3.1\Drivers\CMSIS\Device\ST\STM32H7xx\Include"-D__UVISION_VERSION="527" -D_RTE_ -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o braidybunch\stm32h7xx_hal_rcc_ex.o --omf_browse braidybunch\stm32h7xx_hal_rcc_ex.crf --depend braidybunch\stm32h7xx_hal_rcc_ex.d)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h)(0x5DCE439D)
-I (../Inc/stm32h7xx_hal_conf.h)(0x5DD8441A)
+I (../Inc/stm32h7xx_hal_conf.h)(0x5E1F80B3)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h)(0x5DCE439D)
 I (../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h)(0x5DCE4341)
@@ -513,13 +533,15 @@ I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c_ex.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h)(0x5DCE439E)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h)(0x5DCE439E)
 F (../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash.c)(0x5DCE439F)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/BSP/Components/Common -I ../Drivers/BSP/Components\l6474 -I ../Drivers/BSP/STM32H7xx_Nucleo -I ../Drivers/BSP/X-NUCLEO-IHMxx-I.\RTE\_BraidyBunch-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include"-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\Keil\STM32H7xx_DFP\2.3.1\Drivers\CMSIS\Device\ST\STM32H7xx\Include"-D__UVISION_VERSION="527" -D_RTE_ -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o braidybunch\stm32h7xx_hal_flash.o --omf_browse braidybunch\stm32h7xx_hal_flash.crf --depend braidybunch\stm32h7xx_hal_flash.d)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h)(0x5DCE439D)
-I (../Inc/stm32h7xx_hal_conf.h)(0x5DD8441A)
+I (../Inc/stm32h7xx_hal_conf.h)(0x5E1F80B3)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h)(0x5DCE439D)
 I (../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h)(0x5DCE4341)
@@ -549,13 +571,15 @@ I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c_ex.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h)(0x5DCE439E)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h)(0x5DCE439E)
 F (../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash_ex.c)(0x5DCE439F)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/BSP/Components/Common -I ../Drivers/BSP/Components\l6474 -I ../Drivers/BSP/STM32H7xx_Nucleo -I ../Drivers/BSP/X-NUCLEO-IHMxx-I.\RTE\_BraidyBunch-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include"-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\Keil\STM32H7xx_DFP\2.3.1\Drivers\CMSIS\Device\ST\STM32H7xx\Include"-D__UVISION_VERSION="527" -D_RTE_ -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o braidybunch\stm32h7xx_hal_flash_ex.o --omf_browse braidybunch\stm32h7xx_hal_flash_ex.crf --depend braidybunch\stm32h7xx_hal_flash_ex.d)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h)(0x5DCE439D)
-I (../Inc/stm32h7xx_hal_conf.h)(0x5DD8441A)
+I (../Inc/stm32h7xx_hal_conf.h)(0x5E1F80B3)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h)(0x5DCE439D)
 I (../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h)(0x5DCE4341)
@@ -585,13 +609,15 @@ I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c_ex.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h)(0x5DCE439E)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h)(0x5DCE439E)
 F (../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.c)(0x5DCE439F)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/BSP/Components/Common -I ../Drivers/BSP/Components\l6474 -I ../Drivers/BSP/STM32H7xx_Nucleo -I ../Drivers/BSP/X-NUCLEO-IHMxx-I.\RTE\_BraidyBunch-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include"-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\Keil\STM32H7xx_DFP\2.3.1\Drivers\CMSIS\Device\ST\STM32H7xx\Include"-D__UVISION_VERSION="527" -D_RTE_ -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o braidybunch\stm32h7xx_hal_gpio.o --omf_browse braidybunch\stm32h7xx_hal_gpio.crf --depend braidybunch\stm32h7xx_hal_gpio.d)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h)(0x5DCE439D)
-I (../Inc/stm32h7xx_hal_conf.h)(0x5DD8441A)
+I (../Inc/stm32h7xx_hal_conf.h)(0x5E1F80B3)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h)(0x5DCE439D)
 I (../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h)(0x5DCE4341)
@@ -621,13 +647,15 @@ I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c_ex.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h)(0x5DCE439E)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h)(0x5DCE439E)
 F (../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c)(0x5DCE439F)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/BSP/Components/Common -I ../Drivers/BSP/Components\l6474 -I ../Drivers/BSP/STM32H7xx_Nucleo -I ../Drivers/BSP/X-NUCLEO-IHMxx-I.\RTE\_BraidyBunch-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include"-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\Keil\STM32H7xx_DFP\2.3.1\Drivers\CMSIS\Device\ST\STM32H7xx\Include"-D__UVISION_VERSION="527" -D_RTE_ -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o braidybunch\stm32h7xx_hal_hsem.o --omf_browse braidybunch\stm32h7xx_hal_hsem.crf --depend braidybunch\stm32h7xx_hal_hsem.d)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h)(0x5DCE439D)
-I (../Inc/stm32h7xx_hal_conf.h)(0x5DD8441A)
+I (../Inc/stm32h7xx_hal_conf.h)(0x5E1F80B3)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h)(0x5DCE439D)
 I (../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h)(0x5DCE4341)
@@ -657,13 +685,15 @@ I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c_ex.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h)(0x5DCE439E)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h)(0x5DCE439E)
 F (../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c)(0x5DCE439F)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/BSP/Components/Common -I ../Drivers/BSP/Components\l6474 -I ../Drivers/BSP/STM32H7xx_Nucleo -I ../Drivers/BSP/X-NUCLEO-IHMxx-I.\RTE\_BraidyBunch-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include"-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\Keil\STM32H7xx_DFP\2.3.1\Drivers\CMSIS\Device\ST\STM32H7xx\Include"-D__UVISION_VERSION="527" -D_RTE_ -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o braidybunch\stm32h7xx_hal_dma.o --omf_browse braidybunch\stm32h7xx_hal_dma.crf --depend braidybunch\stm32h7xx_hal_dma.d)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h)(0x5DCE439D)
-I (../Inc/stm32h7xx_hal_conf.h)(0x5DD8441A)
+I (../Inc/stm32h7xx_hal_conf.h)(0x5E1F80B3)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h)(0x5DCE439D)
 I (../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h)(0x5DCE4341)
@@ -693,13 +723,15 @@ I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c_ex.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h)(0x5DCE439E)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h)(0x5DCE439E)
 F (../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma_ex.c)(0x5DCE439F)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/BSP/Components/Common -I ../Drivers/BSP/Components\l6474 -I ../Drivers/BSP/STM32H7xx_Nucleo -I ../Drivers/BSP/X-NUCLEO-IHMxx-I.\RTE\_BraidyBunch-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include"-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\Keil\STM32H7xx_DFP\2.3.1\Drivers\CMSIS\Device\ST\STM32H7xx\Include"-D__UVISION_VERSION="527" -D_RTE_ -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o braidybunch\stm32h7xx_hal_dma_ex.o --omf_browse braidybunch\stm32h7xx_hal_dma_ex.crf --depend braidybunch\stm32h7xx_hal_dma_ex.d)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h)(0x5DCE439D)
-I (../Inc/stm32h7xx_hal_conf.h)(0x5DD8441A)
+I (../Inc/stm32h7xx_hal_conf.h)(0x5E1F80B3)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h)(0x5DCE439D)
 I (../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h)(0x5DCE4341)
@@ -729,13 +761,15 @@ I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c_ex.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h)(0x5DCE439E)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h)(0x5DCE439E)
 F (../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_mdma.c)(0x5DCE439F)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/BSP/Components/Common -I ../Drivers/BSP/Components\l6474 -I ../Drivers/BSP/STM32H7xx_Nucleo -I ../Drivers/BSP/X-NUCLEO-IHMxx-I.\RTE\_BraidyBunch-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include"-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\Keil\STM32H7xx_DFP\2.3.1\Drivers\CMSIS\Device\ST\STM32H7xx\Include"-D__UVISION_VERSION="527" -D_RTE_ -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o braidybunch\stm32h7xx_hal_mdma.o --omf_browse braidybunch\stm32h7xx_hal_mdma.crf --depend braidybunch\stm32h7xx_hal_mdma.d)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h)(0x5DCE439D)
-I (../Inc/stm32h7xx_hal_conf.h)(0x5DD8441A)
+I (../Inc/stm32h7xx_hal_conf.h)(0x5E1F80B3)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h)(0x5DCE439D)
 I (../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h)(0x5DCE4341)
@@ -765,13 +799,15 @@ I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c_ex.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h)(0x5DCE439E)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h)(0x5DCE439E)
 F (../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr.c)(0x5DCE439F)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/BSP/Components/Common -I ../Drivers/BSP/Components\l6474 -I ../Drivers/BSP/STM32H7xx_Nucleo -I ../Drivers/BSP/X-NUCLEO-IHMxx-I.\RTE\_BraidyBunch-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include"-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\Keil\STM32H7xx_DFP\2.3.1\Drivers\CMSIS\Device\ST\STM32H7xx\Include"-D__UVISION_VERSION="527" -D_RTE_ -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o braidybunch\stm32h7xx_hal_pwr.o --omf_browse braidybunch\stm32h7xx_hal_pwr.crf --depend braidybunch\stm32h7xx_hal_pwr.d)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h)(0x5DCE439D)
-I (../Inc/stm32h7xx_hal_conf.h)(0x5DD8441A)
+I (../Inc/stm32h7xx_hal_conf.h)(0x5E1F80B3)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h)(0x5DCE439D)
 I (../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h)(0x5DCE4341)
@@ -801,13 +837,15 @@ I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c_ex.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h)(0x5DCE439E)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h)(0x5DCE439E)
 F (../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr_ex.c)(0x5DCE439F)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/BSP/Components/Common -I ../Drivers/BSP/Components\l6474 -I ../Drivers/BSP/STM32H7xx_Nucleo -I ../Drivers/BSP/X-NUCLEO-IHMxx-I.\RTE\_BraidyBunch-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include"-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\Keil\STM32H7xx_DFP\2.3.1\Drivers\CMSIS\Device\ST\STM32H7xx\Include"-D__UVISION_VERSION="527" -D_RTE_ -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o braidybunch\stm32h7xx_hal_pwr_ex.o --omf_browse braidybunch\stm32h7xx_hal_pwr_ex.crf --depend braidybunch\stm32h7xx_hal_pwr_ex.d)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h)(0x5DCE439D)
-I (../Inc/stm32h7xx_hal_conf.h)(0x5DD8441A)
+I (../Inc/stm32h7xx_hal_conf.h)(0x5E1F80B3)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h)(0x5DCE439D)
 I (../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h)(0x5DCE4341)
@@ -837,13 +875,15 @@ I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c_ex.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h)(0x5DCE439E)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h)(0x5DCE439E)
 F (../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c)(0x5DCE439E)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/BSP/Components/Common -I ../Drivers/BSP/Components\l6474 -I ../Drivers/BSP/STM32H7xx_Nucleo -I ../Drivers/BSP/X-NUCLEO-IHMxx-I.\RTE\_BraidyBunch-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include"-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\Keil\STM32H7xx_DFP\2.3.1\Drivers\CMSIS\Device\ST\STM32H7xx\Include"-D__UVISION_VERSION="527" -D_RTE_ -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o braidybunch\stm32h7xx_hal.o --omf_browse braidybunch\stm32h7xx_hal.crf --depend braidybunch\stm32h7xx_hal.d)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h)(0x5DCE439D)
-I (../Inc/stm32h7xx_hal_conf.h)(0x5DD8441A)
+I (../Inc/stm32h7xx_hal_conf.h)(0x5E1F80B3)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h)(0x5DCE439D)
 I (../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h)(0x5DCE4341)
@@ -873,13 +913,15 @@ I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c_ex.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h)(0x5DCE439E)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h)(0x5DCE439E)
 F (../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c.c)(0x5DCE439F)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/BSP/Components/Common -I ../Drivers/BSP/Components\l6474 -I ../Drivers/BSP/STM32H7xx_Nucleo -I ../Drivers/BSP/X-NUCLEO-IHMxx-I.\RTE\_BraidyBunch-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include"-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\Keil\STM32H7xx_DFP\2.3.1\Drivers\CMSIS\Device\ST\STM32H7xx\Include"-D__UVISION_VERSION="527" -D_RTE_ -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o braidybunch\stm32h7xx_hal_i2c.o --omf_browse braidybunch\stm32h7xx_hal_i2c.crf --depend braidybunch\stm32h7xx_hal_i2c.d)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h)(0x5DCE439D)
-I (../Inc/stm32h7xx_hal_conf.h)(0x5DD8441A)
+I (../Inc/stm32h7xx_hal_conf.h)(0x5E1F80B3)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h)(0x5DCE439D)
 I (../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h)(0x5DCE4341)
@@ -909,13 +951,15 @@ I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c_ex.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h)(0x5DCE439E)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h)(0x5DCE439E)
 F (../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c)(0x5DCE439F)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/BSP/Components/Common -I ../Drivers/BSP/Components\l6474 -I ../Drivers/BSP/STM32H7xx_Nucleo -I ../Drivers/BSP/X-NUCLEO-IHMxx-I.\RTE\_BraidyBunch-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include"-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\Keil\STM32H7xx_DFP\2.3.1\Drivers\CMSIS\Device\ST\STM32H7xx\Include"-D__UVISION_VERSION="527" -D_RTE_ -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o braidybunch\stm32h7xx_hal_i2c_ex.o --omf_browse braidybunch\stm32h7xx_hal_i2c_ex.crf --depend braidybunch\stm32h7xx_hal_i2c_ex.d)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h)(0x5DCE439D)
-I (../Inc/stm32h7xx_hal_conf.h)(0x5DD8441A)
+I (../Inc/stm32h7xx_hal_conf.h)(0x5E1F80B3)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h)(0x5DCE439D)
 I (../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h)(0x5DCE4341)
@@ -945,13 +989,15 @@ I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c_ex.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h)(0x5DCE439E)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h)(0x5DCE439E)
 F (../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_exti.c)(0x5DCE439F)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/BSP/Components/Common -I ../Drivers/BSP/Components\l6474 -I ../Drivers/BSP/STM32H7xx_Nucleo -I ../Drivers/BSP/X-NUCLEO-IHMxx-I.\RTE\_BraidyBunch-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include"-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\Keil\STM32H7xx_DFP\2.3.1\Drivers\CMSIS\Device\ST\STM32H7xx\Include"-D__UVISION_VERSION="527" -D_RTE_ -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o braidybunch\stm32h7xx_hal_exti.o --omf_browse braidybunch\stm32h7xx_hal_exti.crf --depend braidybunch\stm32h7xx_hal_exti.d)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h)(0x5DCE439D)
-I (../Inc/stm32h7xx_hal_conf.h)(0x5DD8441A)
+I (../Inc/stm32h7xx_hal_conf.h)(0x5E1F80B3)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h)(0x5DCE439D)
 I (../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h)(0x5DCE4341)
@@ -981,13 +1027,15 @@ I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c_ex.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h)(0x5DCE439E)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h)(0x5DCE439E)
 F (../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c)(0x5DCE43A0)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/BSP/Components/Common -I ../Drivers/BSP/Components\l6474 -I ../Drivers/BSP/STM32H7xx_Nucleo -I ../Drivers/BSP/X-NUCLEO-IHMxx-I.\RTE\_BraidyBunch-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include"-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\Keil\STM32H7xx_DFP\2.3.1\Drivers\CMSIS\Device\ST\STM32H7xx\Include"-D__UVISION_VERSION="527" -D_RTE_ -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o braidybunch\stm32h7xx_hal_tim.o --omf_browse braidybunch\stm32h7xx_hal_tim.crf --depend braidybunch\stm32h7xx_hal_tim.d)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h)(0x5DCE439D)
-I (../Inc/stm32h7xx_hal_conf.h)(0x5DD8441A)
+I (../Inc/stm32h7xx_hal_conf.h)(0x5E1F80B3)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h)(0x5DCE439D)
 I (../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h)(0x5DCE4341)
@@ -1017,13 +1065,15 @@ I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c_ex.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h)(0x5DCE439E)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h)(0x5DCE439E)
 F (../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c)(0x5DCE43A0)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/BSP/Components/Common -I ../Drivers/BSP/Components\l6474 -I ../Drivers/BSP/STM32H7xx_Nucleo -I ../Drivers/BSP/X-NUCLEO-IHMxx-I.\RTE\_BraidyBunch-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include"-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\Keil\STM32H7xx_DFP\2.3.1\Drivers\CMSIS\Device\ST\STM32H7xx\Include"-D__UVISION_VERSION="527" -D_RTE_ -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o braidybunch\stm32h7xx_hal_tim_ex.o --omf_browse braidybunch\stm32h7xx_hal_tim_ex.crf --depend braidybunch\stm32h7xx_hal_tim_ex.d)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h)(0x5DCE439D)
-I (../Inc/stm32h7xx_hal_conf.h)(0x5DD8441A)
+I (../Inc/stm32h7xx_hal_conf.h)(0x5E1F80B3)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h)(0x5DCE439D)
 I (../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h)(0x5DCE4341)
@@ -1053,13 +1103,15 @@ I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c_ex.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h)(0x5DCE439E)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h)(0x5DCE439E)
 F (../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c)(0x5DCE43A0)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/BSP/Components/Common -I ../Drivers/BSP/Components\l6474 -I ../Drivers/BSP/STM32H7xx_Nucleo -I ../Drivers/BSP/X-NUCLEO-IHMxx-I.\RTE\_BraidyBunch-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include"-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\Keil\STM32H7xx_DFP\2.3.1\Drivers\CMSIS\Device\ST\STM32H7xx\Include"-D__UVISION_VERSION="527" -D_RTE_ -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o braidybunch\stm32h7xx_hal_uart.o --omf_browse braidybunch\stm32h7xx_hal_uart.crf --depend braidybunch\stm32h7xx_hal_uart.d)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h)(0x5DCE439D)
-I (../Inc/stm32h7xx_hal_conf.h)(0x5DD8441A)
+I (../Inc/stm32h7xx_hal_conf.h)(0x5E1F80B3)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h)(0x5DCE439D)
 I (../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h)(0x5DCE4341)
@@ -1089,13 +1141,15 @@ I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c_ex.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h)(0x5DCE439E)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h)(0x5DCE439E)
 F (../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c)(0x5DCE43A0)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/BSP/Components/Common -I ../Drivers/BSP/Components\l6474 -I ../Drivers/BSP/STM32H7xx_Nucleo -I ../Drivers/BSP/X-NUCLEO-IHMxx-I.\RTE\_BraidyBunch-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include"-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\Keil\STM32H7xx_DFP\2.3.1\Drivers\CMSIS\Device\ST\STM32H7xx\Include"-D__UVISION_VERSION="527" -D_RTE_ -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o braidybunch\stm32h7xx_hal_uart_ex.o --omf_browse braidybunch\stm32h7xx_hal_uart_ex.crf --depend braidybunch\stm32h7xx_hal_uart_ex.d)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h)(0x5DCE439D)
-I (../Inc/stm32h7xx_hal_conf.h)(0x5DD8441A)
+I (../Inc/stm32h7xx_hal_conf.h)(0x5E1F80B3)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h)(0x5DCE439D)
 I (../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h)(0x5DCE4341)
@@ -1125,6 +1179,84 @@ I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c_ex.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h)(0x5DCE439E)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi_ex.h)(0x5DCE439E)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h)(0x5DCE439E)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h)(0x5DCE439E)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h)(0x5DCE439E)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h)(0x5DCE439E)
+F (..\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_spi.c)(0x5DCE43A0)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/BSP/Components/Common -I ../Drivers/BSP/Components\l6474 -I ../Drivers/BSP/STM32H7xx_Nucleo -I ../Drivers/BSP/X-NUCLEO-IHMxx-I.\RTE\_BraidyBunch-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include"-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\Keil\STM32H7xx_DFP\2.3.1\Drivers\CMSIS\Device\ST\STM32H7xx\Include"-D__UVISION_VERSION="527" -D_RTE_ -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o braidybunch\stm32h7xx_hal_spi.o --omf_browse braidybunch\stm32h7xx_hal_spi.crf --depend braidybunch\stm32h7xx_hal_spi.d)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h)(0x5DCE439D)
+I (../Inc/stm32h7xx_hal_conf.h)(0x5E1F80B3)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h)(0x5DCE439D)
+I (../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h)(0x5DCE4341)
+I (../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h743xx.h)(0x5DCE4341)
+I (../Drivers/CMSIS/Include/core_cm7.h)(0x5DCE4399)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F75EE)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x5DCE4399)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x5DCE4399)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5DCE4399)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x5DCE4399)
+I (../Drivers/CMSIS/Device/ST/STM32H7xx/Include/system_stm32h7xx.h)(0x5DCE4341)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x5DCE439D)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599F75EC)
+I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x599F75EE)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc_ex.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_gpio.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_gpio_ex.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma_ex.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_mdma.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_exti.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_cortex.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_hsem.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c_ex.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h)(0x5DCE439E)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi_ex.h)(0x5DCE439E)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h)(0x5DCE439E)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h)(0x5DCE439E)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h)(0x5DCE439E)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h)(0x5DCE439E)
+F (..\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_spi_ex.c)(0x5DCE43A0)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/BSP/Components/Common -I ../Drivers/BSP/Components\l6474 -I ../Drivers/BSP/STM32H7xx_Nucleo -I ../Drivers/BSP/X-NUCLEO-IHMxx-I.\RTE\_BraidyBunch-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include"-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\Keil\STM32H7xx_DFP\2.3.1\Drivers\CMSIS\Device\ST\STM32H7xx\Include"-D__UVISION_VERSION="527" -D_RTE_ -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o braidybunch\stm32h7xx_hal_spi_ex.o --omf_browse braidybunch\stm32h7xx_hal_spi_ex.crf --depend braidybunch\stm32h7xx_hal_spi_ex.d)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h)(0x5DCE439D)
+I (../Inc/stm32h7xx_hal_conf.h)(0x5E1F80B3)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h)(0x5DCE439D)
+I (../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h)(0x5DCE4341)
+I (../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h743xx.h)(0x5DCE4341)
+I (../Drivers/CMSIS/Include/core_cm7.h)(0x5DCE4399)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F75EE)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x5DCE4399)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x5DCE4399)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5DCE4399)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x5DCE4399)
+I (../Drivers/CMSIS/Device/ST/STM32H7xx/Include/system_stm32h7xx.h)(0x5DCE4341)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x5DCE439D)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599F75EC)
+I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x599F75EE)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc_ex.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_gpio.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_gpio_ex.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma_ex.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_mdma.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_exti.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_cortex.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_hsem.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c_ex.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h)(0x5DCE439E)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h)(0x5DCE439E)
@@ -1140,7 +1272,7 @@ I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5DCE4399)
 I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x5DCE4399)
 I (../Drivers/CMSIS/Device/ST/STM32H7xx/Include/system_stm32h7xx.h)(0x5DCE4341)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h)(0x5DCE439D)
-I (../Inc/stm32h7xx_hal_conf.h)(0x5DD8441A)
+I (../Inc/stm32h7xx_hal_conf.h)(0x5E1F80B3)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x5DCE439D)
@@ -1161,6 +1293,8 @@ I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c_ex.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h)(0x5DCE439E)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h)(0x5DCE439E)
@@ -1309,10 +1443,10 @@ I (../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h)(0x5DCE43AB)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/task.h)(0x5DCE43AB)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/list.h)(0x5DCE43AB)
-F (..\Drivers\BSP\STM32H7xx_Nucleo\stm32h7xx_nucleo.c)(0x5DDDAED4)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/BSP/Components/Common -I ../Drivers/BSP/Components\l6474 -I ../Drivers/BSP/STM32H7xx_Nucleo -I ../Drivers/BSP/X-NUCLEO-IHMxx-I.\RTE\_BraidyBunch-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include"-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\Keil\STM32H7xx_DFP\2.3.1\Drivers\CMSIS\Device\ST\STM32H7xx\Include"-D__UVISION_VERSION="527" -D_RTE_ -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o braidybunch\stm32h7xx_nucleo.o --omf_browse braidybunch\stm32h7xx_nucleo.crf --depend braidybunch\stm32h7xx_nucleo.d)
-I (..\Drivers\BSP\STM32H7xx_Nucleo\stm32h7xx_nucleo.h)(0x5E1DF555)
+F (..\Drivers\BSP\STM32H7xx_Nucleo\stm32h7xx_nucleo.c)(0x5E1F49EC)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/BSP/Components/Common -I ../Drivers/BSP/Components\l6474 -I ../Drivers/BSP/STM32H7xx_Nucleo -I ../Drivers/BSP/X-NUCLEO-IHMxx-I.\RTE\_BraidyBunch-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include"-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\Keil\STM32H7xx_DFP\2.3.1\Drivers\CMSIS\Device\ST\STM32H7xx\Include"-D__UVISION_VERSION="527" -D_RTE_ -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o braidybunch\stm32h7xx_nucleo.o --omf_browse braidybunch\stm32h7xx_nucleo.crf --depend braidybunch\stm32h7xx_nucleo.d)
+I (..\Drivers\BSP\STM32H7xx_Nucleo\stm32h7xx_nucleo.h)(0x5E1F4FBB)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h)(0x5DCE439D)
-I (../Inc/stm32h7xx_hal_conf.h)(0x5DD8441A)
+I (../Inc/stm32h7xx_hal_conf.h)(0x5E1F80B3)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h)(0x5DCE439D)
 I (../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h)(0x5DCE4341)
@@ -1342,6 +1476,8 @@ I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c_ex.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h)(0x5DCE439D)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h)(0x5DCE439D)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h)(0x5DCE439E)
+I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h)(0x5DCE439E)
