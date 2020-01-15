@@ -29,14 +29,14 @@ Project File Date:  01/15/2020
 Build target 'BraidyBunch'
 compiling stm32h7xx_hal_spi_ex.c...
 compiling x_nucleo_ihm01a1_stm32h7xx.c...
-..\Drivers\BSP\X-NUCLEO-IHMxx\x_nucleo_ihm01a1_stm32h7xx.c(286): error:  #20: identifier "TIM22" is undefined
-        pHTim->Instance = BSP_MOTOR_CONTROL_BOARD_TIMER_PWM1;
-..\Drivers\BSP\X-NUCLEO-IHMxx\x_nucleo_ihm01a1_stm32h7xx.c(299): error:  #20: identifier "TIM21" is undefined
-        pHTim->Instance = BSP_MOTOR_CONTROL_BOARD_TIMER_PWM3;
-..\Drivers\BSP\X-NUCLEO-IHMxx\x_nucleo_ihm01a1_stm32h7xx.c: 0 warnings, 2 errors
 compiling stm32h7xx_nucleo.c...
 compiling stm32h7xx_hal_spi.c...
-"BraidyBunch\BraidyBunch.axf" - 2 Error(s), 0 Warning(s).
+linking...
+BraidyBunch\BraidyBunch.axf: Error: L6200E: Symbol Error_Handler multiply defined (by stepperdriver.o and main.o).
+Not enough information to list image symbols.
+Not enough information to list load addresses in the image map.
+Finished: 2 information, 0 warning and 1 error messages.
+"BraidyBunch\BraidyBunch.axf" - 1 Error(s), 0 Warning(s).
 
 <h2>Software Packages used:</h2>
 

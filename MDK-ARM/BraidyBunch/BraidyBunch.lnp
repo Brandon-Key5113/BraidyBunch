@@ -7,6 +7,10 @@
 "braidybunch\stm32h7xx_it.o"
 "braidybunch\stm32h7xx_hal_msp.o"
 "braidybunch\stm32h7xx_hal_timebase_tim.o"
+"braidybunch\stepperdriver.o"
+"braidybunch\l6474.o"
+"braidybunch\x_nucleo_ihm01a1_stm32h7xx.o"
+"braidybunch\x_nucleo_ihmxx.o"
 "braidybunch\stm32h7xx_hal_cortex.o"
 "braidybunch\stm32h7xx_hal_rcc.o"
 "braidybunch\stm32h7xx_hal_rcc_ex.o"
@@ -27,6 +31,8 @@
 "braidybunch\stm32h7xx_hal_tim_ex.o"
 "braidybunch\stm32h7xx_hal_uart.o"
 "braidybunch\stm32h7xx_hal_uart_ex.o"
+"braidybunch\stm32h7xx_hal_spi.o"
+"braidybunch\stm32h7xx_hal_spi_ex.o"
 "braidybunch\system_stm32h7xx.o"
 "braidybunch\croutine.o"
 "braidybunch\event_groups.o"
@@ -38,6 +44,7 @@
 "braidybunch\cmsis_os.o"
 "braidybunch\heap_4.o"
 "braidybunch\port.o"
+"braidybunch\stm32h7xx_nucleo.o"
 --library_type=microlib --strict --scatter "BraidyBunch\BraidyBunch.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
