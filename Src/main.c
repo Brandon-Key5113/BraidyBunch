@@ -24,12 +24,12 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "led_task.h"           // needed for led_task_init
 #include "string.h"
 #include "stdio.h"
 
 #include "messaging.h"
 #include "led_task.h"
+#include "StepperDriver.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -122,6 +122,7 @@ int main(void)
   led_task_init(LED_GREEN);
   led_task_init(LED_ORANGE);
   led_task_init(LED_RED);
+  StepperTaskInit(0);
 
   /* USER CODE END 2 */
 
