@@ -1,27 +1,25 @@
 #include "StepperDriver.h"
 
 #include "led_task.h"
-//#include "main.h"
+#include "main.h"
 #include "cmsis_os.h"
-
+#include "stm32h7xx_hal.h"
+#include "stdio.h"
 
 #include "messaging.h"
 
 
- static volatile uint16_t gLastError;
- 
+static volatile uint16_t gLastError;
+static const char* STEPPER_TASK_FORMAT = "STEPPER_TASK %d";
+static STEPPER_PARAMS_t STEPPER_PARAMS[STEPPER_NUM];
+
 /* Private function prototypes -----------------------------------------------*/
 static void MyFlagInterruptHandler(void);
 
 /* Private functions ---------------------------------------------------------*/
 
-/**
-  * @brief  Main program
-  * @param  None
-  * @retval None
-  */
-int poob(void)
-{
+
+void StepperTask(void *parameters){
   int32_t pos;
   uint32_t myMaxSpeed;
   uint32_t myMinSpeed;
@@ -35,7 +33,7 @@ int poob(void)
   //SystemClock_Config();
     
   /* Set the L6474 library to use 3 device */
-  BSP_MotorControl_SetNbDevices(BSP_MOTOR_CONTROL_BOARD_ID_L6474, 3);
+  BSP_MotorControl_SetNbDevices(BSP_MOTOR_CONTROL_BOARD_ID_L6474, STEPPER_NUM);
   
   /* When BSP_MotorControl_Init is called with NULL pointer,                  */
   /* the L6474 registers and parameters are set with the predefined values from file   */
@@ -57,7 +55,7 @@ int poob(void)
   BSP_MotorControl_AttachFlagInterrupt(MyFlagInterruptHandler);
 
   /* Attach the function Error_Handler (defined below) to the error Handler*/
-  BSP_MotorControl_AttachErrorHandler(Error_Handler);
+  BSP_MotorControl_AttachErrorHandler(Stepper_Error_Handler);
   
   
   /* Get current position of device 0*/
@@ -119,8 +117,7 @@ int poob(void)
   pos = BSP_MotorControl_GetPosition(2);
 
   /* Wait for 1s */
-  // TODO actually update
-  //HAL_Delay(1000);
+  vTaskDelay(1000);
   
   if (pos == 3200)
   {
@@ -136,8 +133,7 @@ int poob(void)
   }
   
   /* Wait for 1s */
-  // TODO replace with actual delay
-  //HAL_Delay(1000);
+  vTaskDelay(1000);
   
   
   /* Request device 0 to Goto position -3200 */ 
@@ -178,7 +174,7 @@ int poob(void)
   pos = BSP_MotorControl_GetPosition(2);
 
   /* Wait for 1s */
-  HAL_Delay(1000);
+  vTaskDelay(1000);
 
   if (pos == -3200)
   {
@@ -197,7 +193,7 @@ int poob(void)
   }
 
   /* Wait for 1s */
-  HAL_Delay(1000);
+  vTaskDelay(1000);
   
   /* Request device 0 and device 2 to go their mark position */
   BSP_MotorControl_GoMark(0); 
@@ -208,7 +204,7 @@ int poob(void)
   BSP_MotorControl_WaitWhileActive(2);
   
   /* Wait for 1s */
-  HAL_Delay(1000);
+  vTaskDelay(1000);
   
    /* Request device 0 to run in FORWARD direction */
   BSP_MotorControl_Run(0,FORWARD); 
@@ -240,7 +236,7 @@ int poob(void)
   while (BSP_MotorControl_GetCurrentSpeed(2) != myMaxSpeed);
 
   /* Wait for 3s */
-  HAL_Delay(3000);
+  vTaskDelay(3000);
   
   /* Request device 1 to make a soft stop */
   BSP_MotorControl_SoftStop(1);
@@ -527,13 +523,26 @@ void MyFlagInterruptHandler(void)
   * @param  error number of the error
   * @retval None
   */
-//void Error_Handler(uint16_t error)
-//{
-//  /* Backup error number */
-//  gLastError = error;
-//  
-//  /* Infinite loop */
-//  while(1)
-//  {
-//  }
-//}
+void Stepper_Error_Handler(uint16_t error)
+{
+  /* Backup error number */
+  gLastError = error;
+  
+  /* Infinite loop */
+  while(1)
+  {
+  }
+}
+
+void StepperTaskInit(uint8_t stepper){
+    // Retrieve pointer to the correct set of parameters
+    STEPPER_PARAMS_t *p = &STEPPER_PARAMS[stepper];
+    p->id = stepper;
+    
+    // Configure Task name
+    char taskName[configMAX_TASK_NAME_LEN];
+    sprintf(taskName, STEPPER_TASK_FORMAT, stepper );
+    
+    // Create the task
+    xTaskCreate( StepperTask, taskName, STEPPER_TASK_STACK, (void *)p, STEPPER_TASK_PRIORITY, &p->handle); 
+}
