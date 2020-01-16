@@ -18,294 +18,307 @@ static void MyFlagInterruptHandler(void);
 
 /* Private functions ---------------------------------------------------------*/
 
+L6474_Init_t gL6474InitParams =
+{
+    160,                               /// Acceleration rate in step/s2. Range: (0..+inf).
+    160,                               /// Deceleration rate in step/s2. Range: (0..+inf). 
+    1600,                              /// Maximum speed in step/s. Range: (30..10000].
+    800,                               ///Minimum speed in step/s. Range: [30..10000).
+    250,                               ///Torque regulation current in mA. (TVAL register) Range: 31.25mA to 4000mA.
+    750,                               ///Overcurrent threshold (OCD_TH register). Range: 375mA to 6000mA.
+    L6474_CONFIG_OC_SD_ENABLE,         ///Overcurrent shutwdown (OC_SD field of CONFIG register). 
+    L6474_CONFIG_EN_TQREG_TVAL_USED,   /// Torque regulation method (EN_TQREG field of CONFIG register).
+    L6474_STEP_SEL_1_16,               /// Step selection (STEP_SEL field of STEP_MODE register).
+    L6474_SYNC_SEL_1_2,                /// Sync selection (SYNC_SEL field of STEP_MODE register).
+    L6474_FAST_STEP_12us,              /// Fall time value (T_FAST field of T_FAST register). Range: 2us to 32us.
+    L6474_TOFF_FAST_8us,               /// Maximum fast decay time (T_OFF field of T_FAST register). Range: 2us to 32us.
+    3,                                 /// Minimum ON time in us (TON_MIN register). Range: 0.5us to 64us.
+    21,                                /// Minimum OFF time in us (TOFF_MIN register). Range: 0.5us to 64us.
+    L6474_CONFIG_TOFF_044us,           /// Target Swicthing Period (field TOFF of CONFIG register).
+    L6474_CONFIG_SR_320V_us,           /// Slew rate (POW_SR field of CONFIG register).
+    L6474_CONFIG_INT_16MHZ,            /// Clock setting (OSC_CLK_SEL field of CONFIG register).
+    (L6474_ALARM_EN_OVERCURRENT      |
+     L6474_ALARM_EN_THERMAL_SHUTDOWN |
+     L6474_ALARM_EN_THERMAL_WARNING  |
+     L6474_ALARM_EN_UNDERVOLTAGE     |
+     L6474_ALARM_EN_SW_TURN_ON       |
+     L6474_ALARM_EN_WRONG_NPERF_CMD)    /// Alarm (ALARM_EN register).
+};
 
 void StepperTask(void *parameters){
-  int32_t pos;
-  uint32_t myMaxSpeed;
-  uint32_t myMinSpeed;
-  uint16_t myAcceleration;
-  uint16_t myDeceleration;
+    int32_t pos;
+    uint16_t mySpeed;
 
-  /* STM32xx HAL library initialization */
-  // HAL_Init();
-  
-  /* Configure the system clock */
-  //SystemClock_Config();
-    
-  /* Set the L6474 library to use 3 device */
-  BSP_MotorControl_SetNbDevices(BSP_MOTOR_CONTROL_BOARD_ID_L6474, STEPPER_NUM);
-  
-  /* When BSP_MotorControl_Init is called with NULL pointer,                  */
-  /* the L6474 registers and parameters are set with the predefined values from file   */
-  /* l6474_target_config.h, otherwise the registers are set using the   */
-  /* L6474_Init_t pointer structure                */
-  /* The first call to BSP_MotorControl_Init initializes the first device     */
-  /* whose Id is 0.                                                           */
-  /* The nth call to BSP_MotorControl_Init initializes the nth device         */
-  /* whose Id is n-1.                                                         */
-  
-  /* Initialisation of first device */
-  BSP_MotorControl_Init(BSP_MOTOR_CONTROL_BOARD_ID_L6474, NULL);
-  /* Initialisation of second device */
-  BSP_MotorControl_Init(BSP_MOTOR_CONTROL_BOARD_ID_L6474, NULL);
-  /* Initialisation of third device */
-  BSP_MotorControl_Init(BSP_MOTOR_CONTROL_BOARD_ID_L6474, NULL);
+    //----- Init of the Motor control library 
+    /* Set the L6474 library to use 1 device */
+    BSP_MotorControl_SetNbDevices(BSP_MOTOR_CONTROL_BOARD_ID_L6474, 1);
+    /* When BSP_MotorControl_Init is called with NULL pointer,                  */
+    /* the L6474 registers and parameters are set with the predefined values from file   */
+    /* l6474_target_config.h, otherwise the registers are set using the   */
+    /* L6474_Init_t pointer structure                */
+    /* The first call to BSP_MotorControl_Init initializes the first device     */
+    /* whose Id is 0.                                                           */
+    /* The nth call to BSP_MotorControl_Init initializes the nth device         */
+    /* whose Id is n-1.                                                         */
+    /* Uncomment the call to BSP_MotorControl_Init below to initialize the      */
+    /* device with the structure gL6474InitParams declared in the the main.c file */
+    /* and comment the subsequent call having the NULL pointer                   */
+    //BSP_MotorControl_Init(BSP_MOTOR_CONTROL_BOARD_ID_L6474, &gL6474InitParams);
+    BSP_MotorControl_Init(BSP_MOTOR_CONTROL_BOARD_ID_L6474, NULL);
 
-  /* Attach the function MyFlagInterruptHandler (defined below) to the flag interrupt */
-  BSP_MotorControl_AttachFlagInterrupt(MyFlagInterruptHandler);
+    /* Attach the function MyFlagInterruptHandler (defined below) to the flag interrupt */
+    BSP_MotorControl_AttachFlagInterrupt(MyFlagInterruptHandler);
 
-  /* Attach the function Error_Handler (defined below) to the error Handler*/
-  BSP_MotorControl_AttachErrorHandler(Stepper_Error_Handler);
-  
-  
-  /* Get current position of device 0*/
-  pos = BSP_MotorControl_GetPosition(0);
-  
-  /* Set Current position to be the home position for device 0 */
-  BSP_MotorControl_SetHome(0, pos);
-  
-  /* Get current position of device 1*/
-  pos = BSP_MotorControl_GetPosition(1);
-  
-  /* Set Current position to be the home position for device 1 */
-  BSP_MotorControl_SetHome(1, pos);
-  
-  /* Get current position of device 2*/
-  pos = BSP_MotorControl_GetPosition(2);
-  
-  /* Set Current position to be the home position for device 2 */
-  BSP_MotorControl_SetHome(2, pos);
+    /* Attach the function Error_Handler (defined below) to the error Handler*/
+    BSP_MotorControl_AttachErrorHandler(Stepper_Error_Handler);
 
-  /* Request device 0 to Goto position 3200 */ 
-  BSP_MotorControl_GoTo(0,3200);  
+    //----- Move of 16000 steps in the FW direction
+    /* Move device 0 of 16000 steps in the FORWARD direction*/
+    BSP_MotorControl_Move(0, FORWARD, 16000);
 
-  /* Wait for  device 0 ends moving */  
-  BSP_MotorControl_WaitWhileActive(0);
-
-  /* Get current position of device 0*/
-  pos = BSP_MotorControl_GetPosition(0);
-    
-  /* If the read position of device 0 is 3200 */
-  /* Request device 1 to go to the same position */
-  if (pos == 3200)
-  {
-    /* Set current position of device 0 to be its mark position*/
-    BSP_MotorControl_SetMark(0, pos); 
-    
-    /* Request device 1 to Go to the same position  */ 
-    BSP_MotorControl_GoTo(1,pos); 
-    
-    /* Wait for  device 1 ends moving */  
-    BSP_MotorControl_WaitWhileActive(1);
-  }
-  
-  /* Get current position of device 0*/
-  pos = BSP_MotorControl_GetPosition(1);
-  
-  /* If the read position of device 1 is 3200 */
-  /* Request device 2 to go to the same position */
-  if (pos == 3200)
-  {
-    /* Request device 2 to Go to the same position  */ 
-    BSP_MotorControl_GoTo(2,pos); 
-
-    /* Wait for device 2 ends moving */  
-    BSP_MotorControl_WaitWhileActive(2);
-  }
-  
-  /* Get current position of device 0*/
-  pos = BSP_MotorControl_GetPosition(2);
-
-  /* Wait for 1s */
-  vTaskDelay(1000);
-  
-  if (pos == 3200)
-  {
-    /* Request all devices to go home */
-    BSP_MotorControl_GoHome(0); 
-    BSP_MotorControl_GoHome(1); 
-    BSP_MotorControl_GoHome(2); 
-
-    /* Wait for all devices end moving */ 
+    /* Wait for the motor of device 0 ends moving */
     BSP_MotorControl_WaitWhileActive(0);
-    BSP_MotorControl_WaitWhileActive(1);
-    BSP_MotorControl_WaitWhileActive(2);
-  }
-  
-  /* Wait for 1s */
-  vTaskDelay(1000);
-  
-  
-  /* Request device 0 to Goto position -3200 */ 
-  BSP_MotorControl_GoTo(0,-3200);  
 
-  /* Wait for device 0 ends moving */  
-  BSP_MotorControl_WaitWhileActive(0);
+    /* Wait for 2 seconds */
+    vTaskDelay(2000);  
 
-  /* Get current position of device 0*/
-  pos = BSP_MotorControl_GetPosition(0);
+    //----- Move of 16000 steps in the BW direction
+
+    /* Move device 0 of 16000 steps in the BACKWARD direction*/
+    BSP_MotorControl_Move(0, BACKWARD, 16000);
+
+    /* Wait for the motor of device 0 ends moving */
+    BSP_MotorControl_WaitWhileActive(0);
+
+    /* Get current position of device 0*/
+    pos = BSP_MotorControl_GetPosition(0);
+
+    /* Set the current position of device 0 to be the Home position */
+    BSP_MotorControl_SetHome(0, pos);
+
+    /* Wait for 2 seconds */
+    vTaskDelay(2000);
+
+    //----- Go to position -6400
+
+    /* Request device 0 to go to position -6400 */
+    BSP_MotorControl_GoTo(0,-6400);  
+
+    /* Wait for the motor ends moving */
+    BSP_MotorControl_WaitWhileActive(0);
+
+    /* Get current position of device 0*/
+    pos = BSP_MotorControl_GetPosition(0);
+
+    if (pos != -6400) {
+        Stepper_Error_Handler(11);
+    }
+
+    /* Set the current position of device 0 to be the Mark position */
+    BSP_MotorControl_SetMark(0, pos);
+
+    /* Wait for 2 seconds */
+    vTaskDelay(2000);
+
+    //----- Go Home
+
+    /* Request device 0 to go to Home */
+    BSP_MotorControl_GoHome(0);  
+    BSP_MotorControl_WaitWhileActive(0);
+
+    /* Get current position of device 0 */
+    pos = BSP_MotorControl_GetPosition(0);
+
+    /* Wait for 2 seconds */
+    vTaskDelay(2000);
+
+    //----- Go to position 6400
+
+    /* Request device 0 to go to position 6400 */
+    BSP_MotorControl_GoTo(0,6400);  
+
+    /* Wait for the motor of device 0 ends moving */
+    BSP_MotorControl_WaitWhileActive(0);
+
+    /* Get current position of device 0*/
+    pos = BSP_MotorControl_GetPosition(0);
+
+    /* Wait for 2 seconds */
+    vTaskDelay(2000);
+
+    //----- Go Mark which was set previously after go to -6400
+
+    /* Request device 0 to go to Mark position */
+    BSP_MotorControl_GoMark(0);  
+
+    /* Wait for the motor of device 0 ends moving */
+    BSP_MotorControl_WaitWhileActive(0);
+
+    /* Get current position of device 0 */
+    pos = BSP_MotorControl_GetPosition(0);
+
+    /* Wait for 2 seconds */
+    vTaskDelay(2000);
+
+    //----- Run the motor BACKWARD
+
+    /* Request device 0 to run BACKWARD */
+    BSP_MotorControl_Run(0,BACKWARD);       
+    vTaskDelay(5000);
+
+    /* Get current speed of device 0 */
+    mySpeed = BSP_MotorControl_GetCurrentSpeed(0);
+
+    //----- Increase the speed while running
+
+    /* Increase speed of device 0 to 2400 step/s */
+    BSP_MotorControl_SetMaxSpeed(0,2400);
+    vTaskDelay(5000);
+
+    /* Get current speed of device 0 */
+    mySpeed = BSP_MotorControl_GetCurrentSpeed(0);
+
+    //----- Decrease the speed while running
+
+    /* Decrease speed of device 0 to 1200 step/s */
+    BSP_MotorControl_SetMaxSpeed(0,1200);
+    vTaskDelay(5000);
+
+    /* Get current speed */
+    mySpeed = BSP_MotorControl_GetCurrentSpeed(0);
+
+    //----- Increase acceleration while running
+
+    /* Increase acceleration of device 0 to 480 step/s^2 */
+    BSP_MotorControl_SetAcceleration(0,480);
+    vTaskDelay(5000);
+
+    /* Increase speed of device 0 to 2400 step/s */
+    BSP_MotorControl_SetMaxSpeed(0,2400);
+    vTaskDelay(5000);
+
+    /* Get current speed of device 0 */
+    mySpeed = BSP_MotorControl_GetCurrentSpeed(0);
+
+    if (mySpeed != 2400){
+        Stepper_Error_Handler(10);
+    }
+    //----- Increase deceleration while running
+
+    /* Increase deceleration of device 0 to 480 step/s^2 */
+    BSP_MotorControl_SetDeceleration(0,480);
+    vTaskDelay(5000);
+
+    /* Decrease speed of device 0 to 1200 step/s */
+    BSP_MotorControl_SetMaxSpeed(0,1200);
+    vTaskDelay(5000);
+
+    /* Get current speed */
+    mySpeed = BSP_MotorControl_GetCurrentSpeed(0);
+
+    //----- Soft stopped required while running
+
+    /* Request soft stop of device 0 */
+    BSP_MotorControl_SoftStop(0);
+
+    /* Wait for the motor of device 0 ends moving */  
+    BSP_MotorControl_WaitWhileActive(0);
+
+    /* Wait for 2 seconds */
+    vTaskDelay(2000);
+
+    //----- Run stopped by hardstop
+
+    /* Request device 0 to run in FORWARD direction */
+    BSP_MotorControl_Run(0,FORWARD);       
+    vTaskDelay(5000);
+
+    /* Request device 0 to immediatly stop */
+    BSP_MotorControl_HardStop(0);
+    BSP_MotorControl_WaitWhileActive(0);
+
+    /* Request device 0 to disable bridge */
+    BSP_MotorControl_CmdDisable(0);
+
+    /* Wait for 2 seconds */
+    vTaskDelay(2000);
+
+    //----- GOTO stopped by softstop
+
+    /* Request device 0 to go to position 20000  */
+    BSP_MotorControl_GoTo(0,20000);  
+    vTaskDelay(5000);
+
+    /* Request device 0 to perform a soft stop */
+    BSP_MotorControl_SoftStop(0);
+    BSP_MotorControl_WaitWhileActive(0);
+
+    /* Wait for 2 seconds */
+    vTaskDelay(2000);  
+
+    //----- Read inexistent register to test MyFlagInterruptHandler
+
+    /* Try to read an inexistent register */
+    /* the flag interrupt should be raised */
+    /* and the MyFlagInterruptHandler function called */
+    BSP_MotorControl_CmdGetParam(0,0x1F);
+    vTaskDelay(500);
+
+    //----- Change step mode to full step mode
+
+    /* Select full step mode for device 0 */
+    BSP_MotorControl_SelectStepMode(0,STEP_MODE_FULL);
+
+    /* Set speed and acceleration to be consistent with full step mode */
+    BSP_MotorControl_SetMaxSpeed(0,100);
+    BSP_MotorControl_SetMinSpeed(0,50);
+    BSP_MotorControl_SetAcceleration(0,10);
+    BSP_MotorControl_SetDeceleration(0,10);
+
+    /* Request device 0 to go position 200 */
+    BSP_MotorControl_GoTo(0,200);  
+
+    /* Wait for the motor of device 0 ends moving */
+    BSP_MotorControl_WaitWhileActive(0);
+
+    /* Get current position */
+    pos =  BSP_MotorControl_GetPosition(0);
+
+    /* Wait for 2 seconds */
+    vTaskDelay(2000);
+
+    //----- Restore 1/16 microstepping mode
+
+    /* Reset device 0 to 1/16 microstepping mode */
+    BSP_MotorControl_SelectStepMode(0,STEP_MODE_1_16);    
+
+    /* Update speed, acceleration, deceleration for 1/16 microstepping mode*/
+    BSP_MotorControl_SetMaxSpeed(0,1600);
+    BSP_MotorControl_SetMinSpeed(0,800);
+    BSP_MotorControl_SetAcceleration(0,160);
+    BSP_MotorControl_SetDeceleration(0,160);  
+
+    /* Infinite loop */
+    while(1){
+        /* Request device 0 to go position -6400 */
+        BSP_MotorControl_GoTo(0,-6400);
+
+        /* Wait for the motor of device 0 ends moving */
+        BSP_MotorControl_WaitWhileActive(0);
+
+        /* Request device 0 to go position 6400 */
+        BSP_MotorControl_GoTo(0,6400);
+
+        /* Wait for the motor of device 0 ends moving */
+        BSP_MotorControl_WaitWhileActive(0);  
+    }
     
-  /* If the read position of device 0 is -3200 */
-  /* Request device 1 to go to the same position */
-  if (pos == -3200)
-  {
-    /* Request device 1 to go to the same position  */ 
-    BSP_MotorControl_GoTo(1,pos); 
     
-    /* Wait for device 1 ends moving */  
-    BSP_MotorControl_WaitWhileActive(1);
-  }
-  
-  /* Get current position of device 0*/
-  pos = BSP_MotorControl_GetPosition(1);
-  
-  /* If the read position of device 1 is -3200 */
-  /* Request device 2 to go to the same position */
-  if (pos == -3200)
-  {
-    /* Request device 2 to Go to the same position  */ 
-    BSP_MotorControl_GoTo(2,pos); 
-
-    /* Wait for device 2 ends moving */  
-    BSP_MotorControl_WaitWhileActive(2);
-  }
-  
-  /* Get current position of device 0*/
-  pos = BSP_MotorControl_GetPosition(2);
-
-  /* Wait for 1s */
-  vTaskDelay(1000);
-
-  if (pos == -3200)
-  {
-    /* Set current position of device 2 to be its mark position*/
-    BSP_MotorControl_SetMark(2, pos); 
-
-    /* Request all devices to go home */
-    BSP_MotorControl_GoHome(0); 
-    BSP_MotorControl_GoHome(1); 
-    BSP_MotorControl_GoHome(2); 
-
-    /* Wait for all devices end moving */ 
-    BSP_MotorControl_WaitWhileActive(0);
-    BSP_MotorControl_WaitWhileActive(1);
-    BSP_MotorControl_WaitWhileActive(2);
-  }
-
-  /* Wait for 1s */
-  vTaskDelay(1000);
-  
-  /* Request device 0 and device 2 to go their mark position */
-  BSP_MotorControl_GoMark(0); 
-  BSP_MotorControl_GoMark(2); 
-  
-  /* Wait for device 0 and 2 ends moving */ 
-  BSP_MotorControl_WaitWhileActive(0);
-  BSP_MotorControl_WaitWhileActive(2);
-  
-  /* Wait for 1s */
-  vTaskDelay(1000);
-  
-   /* Request device 0 to run in FORWARD direction */
-  BSP_MotorControl_Run(0,FORWARD); 
- 
-  /* Get device 0 max speed */
-  myMaxSpeed = BSP_MotorControl_GetMaxSpeed(0);
-  
-  /* Wait for device 0 reaches its max speed */
-  while (BSP_MotorControl_GetCurrentSpeed(0) != myMaxSpeed);
-
-  /* Set max speed of device 1 to be the one of device 0 -320 step/s */
-  myMaxSpeed -= 320;
-  BSP_MotorControl_SetMaxSpeed(1, myMaxSpeed);
-
-  /* Request device 0 to run in FORWARD direction */
-  BSP_MotorControl_Run(1,FORWARD); 
- 
-  /* Wait for device 1 reaches its max speed */
-  while (BSP_MotorControl_GetCurrentSpeed(1) != myMaxSpeed);
-
-   /* Set max speed of device 2 to be the one of device 1 -320 step/s */
-  myMaxSpeed -= 320;
-  BSP_MotorControl_SetMaxSpeed(2, myMaxSpeed);
-
-  /* Request device 2 to run in FORWARD direction */
-  BSP_MotorControl_Run(2,FORWARD); 
-
-  /* Wait for device 1 reaches its max speed */
-  while (BSP_MotorControl_GetCurrentSpeed(2) != myMaxSpeed);
-
-  /* Wait for 3s */
-  vTaskDelay(3000);
-  
-  /* Request device 1 to make a soft stop */
-  BSP_MotorControl_SoftStop(1);
-  
-  /* Wait for both devices end moving */
-  BSP_MotorControl_WaitWhileActive(1);  
-  
-  /* Request device 0 and 2 to make a hard stop */
-  BSP_MotorControl_HardStop(0);
-  BSP_MotorControl_HardStop(2);
-  
-  /* Wait for both devices end moving */
-  BSP_MotorControl_WaitWhileActive(0);  
-  BSP_MotorControl_WaitWhileActive(2);    
-  
-  /* Request all devices to go home */
-  BSP_MotorControl_GoHome(0);  
-  BSP_MotorControl_GoHome(1);  
-  BSP_MotorControl_GoHome(2);  
-  
-  /* Wait for all devices end moving */  
-  BSP_MotorControl_WaitWhileActive(0);
-  BSP_MotorControl_WaitWhileActive(1);
-  BSP_MotorControl_WaitWhileActive(2);
-
-  /* Get acceleration, deceleration, Maxspeed and MinSpeed of device 0*/
-  myAcceleration = BSP_MotorControl_GetAcceleration(0);
-  myDeceleration = BSP_MotorControl_GetDeceleration(0);
-  myMaxSpeed = BSP_MotorControl_GetMaxSpeed(0);
-  myMinSpeed = BSP_MotorControl_GetMinSpeed(0);
-  
-  /* Select 1/8 microstepping mode for device 1 */
-  BSP_MotorControl_SelectStepMode(1, STEP_MODE_1_8);
-
-  /* Set speed and acceleration of device 1 to be consistent with 1/8 microstepping mode */
-  BSP_MotorControl_SetMaxSpeed(1, myMaxSpeed / 2 );
-  BSP_MotorControl_SetMinSpeed(1, myMinSpeed / 2 );
-  BSP_MotorControl_SetAcceleration(1, myAcceleration / 2 );
-  BSP_MotorControl_SetDeceleration(1, myDeceleration / 2 );
-  
-  /* Select ful step mode  for device 2 */
-  BSP_MotorControl_SelectStepMode(2, STEP_MODE_FULL);
-
-  /* Set speed and acceleration of device 1 to be consistent with full step mode */
-  BSP_MotorControl_SetMaxSpeed(2, myMaxSpeed / 16);
-  BSP_MotorControl_SetMinSpeed(2, myMinSpeed / 16);
-  BSP_MotorControl_SetAcceleration(2, myAcceleration / 16);
-  BSP_MotorControl_SetDeceleration(2, myDeceleration / 16);  
-  
-  /* Infinite loop */
-  while(1)
-  {
-    /* Device 0 is using 1/16 microstepping mode */ 
-    /* Device 1 is using 1/8 microstepping mode */
-    /* Device 2 is using full step mode */
-    BSP_MotorControl_GoTo(0, -3200); 
-    BSP_MotorControl_GoTo(1, 1600); 
-    BSP_MotorControl_GoTo(2, -200);   
-    BSP_MotorControl_WaitWhileActive(0);
-    BSP_MotorControl_WaitWhileActive(1);
-    BSP_MotorControl_WaitWhileActive(2);
-
-    BSP_MotorControl_GoTo(0, 3200); 
-    BSP_MotorControl_GoTo(1, -1600); 
-    BSP_MotorControl_GoTo(2, 200); 
-    BSP_MotorControl_WaitWhileActive(0);
-    BSP_MotorControl_WaitWhileActive(1);
-    BSP_MotorControl_WaitWhileActive(2);
-  }
+    
+    /* Infinite loop */
+    while(1) {
+        //vTaskDelay(100);
+    }
 }
 
 /**
