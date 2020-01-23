@@ -154,7 +154,7 @@
           <Type>0</Type>
           <LineNumber>860</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134234146</Address>
+          <Address>134234158</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -182,6 +182,18 @@
           <Expression>\\BraidyBunch\../Src/stm32h7xx_hal_msp.c\211</Expression>
         </Bp>
       </Breakpoint>
+      <WatchWindow1>
+        <Ww>
+          <count>0</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>devicePrm[MAX_NUMBER_OF_DEVICES]</ItemText>
+        </Ww>
+        <Ww>
+          <count>1</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>devicePrm[0]</ItemText>
+        </Ww>
+      </WatchWindow1>
       <Tracepoint>
         <THDelay>0</THDelay>
       </Tracepoint>

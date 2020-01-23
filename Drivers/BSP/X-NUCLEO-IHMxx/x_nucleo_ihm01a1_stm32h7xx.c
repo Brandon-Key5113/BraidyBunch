@@ -38,6 +38,7 @@
   
 /* Includes ------------------------------------------------------------------*/
 #include "x_nucleo_ihm01a1_stm32h7xx.h"
+#include "messaging.h"
 
 /** @addtogroup BSP
   * @{
@@ -436,6 +437,8 @@ uint8_t L6474_Board_SpiWriteBytes(uint8_t *pByteToTransmit, uint8_t *pReceivedBy
       break;
     }
     // ADDED BY BRANDON KEY 1/23/2020 TO sniff the data
+    MSG_Printf("SPI Out: 0x%hhX\r\n",&pByteToTransmit);
+    MSG_Printf("SPI In:  0x%hhX\r\n",&pReceivedByte);
     
     pByteToTransmit++;
     pReceivedByte++;

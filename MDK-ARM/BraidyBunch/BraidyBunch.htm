@@ -3,7 +3,7 @@
 <title>Static Call Graph - [BraidyBunch\BraidyBunch.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image BraidyBunch\BraidyBunch.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Thu Jan 23 12:18:40 2020
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Thu Jan 23 12:59:44 2020
 <BR><P>
 <H3>Maximum Stack Usage =        568 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -779,9 +779,9 @@ Global Symbols
 <LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_round
 <LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_epilogue
 </UL>
-<BR>[Called By]<UL><LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
+<BR>[Called By]<UL><LI><a href="#[195]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fp_digits
+<LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
 <LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
-<LI><a href="#[195]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fp_digits
 </UL>
 
 <P><STRONG><a name="[e3]"></a>__aeabi_dsub</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, dadd.o(.text), UNUSED)
@@ -1589,7 +1589,7 @@ Global Symbols
 <LI><a href="#[15f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_Pwm1SetFreq
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_StepClockHandler
-<LI><a href="#[175]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_StartMovement
+<LI><a href="#[176]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_StartMovement
 </UL>
 
 <P><STRONG><a name="[2]"></a>L6474_AttachErrorHandler</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, l6474.o(i.L6474_AttachErrorHandler))
@@ -1607,15 +1607,15 @@ Global Symbols
 <LI><a href="#[0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Init
 </UL>
 
-<P><STRONG><a name="[16e]"></a>L6474_Board_DisableIrq</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, x_nucleo_ihm01a1_stm32h7xx.o(i.L6474_Board_DisableIrq))
-<BR><BR>[Called By]<UL><LI><a href="#[16c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SendCommand
+<P><STRONG><a name="[16f]"></a>L6474_Board_DisableIrq</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, x_nucleo_ihm01a1_stm32h7xx.o(i.L6474_Board_DisableIrq))
+<BR><BR>[Called By]<UL><LI><a href="#[16d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SendCommand
 <LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdSetParam
 <LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdGetStatus
 <LI><a href="#[20]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdGetParam
 </UL>
 
-<P><STRONG><a name="[16d]"></a>L6474_Board_EnableIrq</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, x_nucleo_ihm01a1_stm32h7xx.o(i.L6474_Board_EnableIrq))
-<BR><BR>[Called By]<UL><LI><a href="#[16c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SendCommand
+<P><STRONG><a name="[16e]"></a>L6474_Board_EnableIrq</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, x_nucleo_ihm01a1_stm32h7xx.o(i.L6474_Board_EnableIrq))
+<BR><BR>[Called By]<UL><LI><a href="#[16d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SendCommand
 <LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdSetParam
 <LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdGetStatus
 <LI><a href="#[20]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdGetParam
@@ -1709,19 +1709,20 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Init
 </UL>
 
-<P><STRONG><a name="[16b]"></a>L6474_Board_SpiWriteBytes</STRONG> (Thumb, 80 bytes, Stack size 40 bytes, x_nucleo_ihm01a1_stm32h7xx.o(i.L6474_Board_SpiWriteBytes))
-<BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
+<P><STRONG><a name="[16b]"></a>L6474_Board_SpiWriteBytes</STRONG> (Thumb, 100 bytes, Stack size 40 bytes, x_nucleo_ihm01a1_stm32h7xx.o(i.L6474_Board_SpiWriteBytes))
+<BR><BR>[Stack]<UL><LI>Max Depth = 264<LI>Call Chain = L6474_Board_SpiWriteBytes &rArr; MSG_Printf &rArr; xQueueGenericSend &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
 <BR>[Calls]<UL><LI><a href="#[163]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
+<LI><a href="#[16c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MSG_Printf
 <LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SPI_TransmitReceive
 </UL>
-<BR>[Called By]<UL><LI><a href="#[16f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_WriteBytes
+<BR>[Called By]<UL><LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_WriteBytes
 </UL>
 
 <P><STRONG><a name="[1e]"></a>L6474_CmdDisable</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, l6474.o(i.L6474_CmdDisable))
-<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = L6474_CmdDisable &rArr; L6474_SendCommand &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
+<BR><BR>[Stack]<UL><LI>Max Depth = 296<LI>Call Chain = L6474_CmdDisable &rArr; L6474_SendCommand &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; MSG_Printf &rArr; xQueueGenericSend &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
-<BR>[Calls]<UL><LI><a href="#[16c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SendCommand
+<BR>[Calls]<UL><LI><a href="#[16d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SendCommand
 </UL>
 <BR>[Called By]<UL><LI><a href="#[0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Init
 <LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_HizStop
@@ -1729,20 +1730,20 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
 </UL>
 <P><STRONG><a name="[1f]"></a>L6474_CmdEnable</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, l6474.o(i.L6474_CmdEnable))
-<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = L6474_CmdEnable &rArr; L6474_SendCommand &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
+<BR><BR>[Stack]<UL><LI>Max Depth = 296<LI>Call Chain = L6474_CmdEnable &rArr; L6474_SendCommand &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; MSG_Printf &rArr; xQueueGenericSend &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
-<BR>[Calls]<UL><LI><a href="#[16c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SendCommand
+<BR>[Calls]<UL><LI><a href="#[16d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SendCommand
 </UL>
-<BR>[Called By]<UL><LI><a href="#[175]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_StartMovement
+<BR>[Called By]<UL><LI><a href="#[176]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_StartMovement
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
 </UL>
 <P><STRONG><a name="[20]"></a>L6474_CmdGetParam</STRONG> (Thumb, 206 bytes, Stack size 40 bytes, l6474.o(i.L6474_CmdGetParam))
-<BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = L6474_CmdGetParam &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
+<BR><BR>[Stack]<UL><LI>Max Depth = 312<LI>Call Chain = L6474_CmdGetParam &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; MSG_Printf &rArr; xQueueGenericSend &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
-<BR>[Calls]<UL><LI><a href="#[16d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_EnableIrq
-<LI><a href="#[16e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_DisableIrq
-<LI><a href="#[16f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_WriteBytes
+<BR>[Calls]<UL><LI><a href="#[16e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_EnableIrq
+<LI><a href="#[16f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_DisableIrq
+<LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_WriteBytes
 </UL>
 <BR>[Called By]<UL><LI><a href="#[17]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetHome
 <LI><a href="#[31]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetAnalogValue
@@ -1759,32 +1760,32 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
 </UL>
 <P><STRONG><a name="[21]"></a>L6474_CmdGetStatus</STRONG> (Thumb, 118 bytes, Stack size 24 bytes, l6474.o(i.L6474_CmdGetStatus))
-<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = L6474_CmdGetStatus &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
+<BR><BR>[Stack]<UL><LI>Max Depth = 296<LI>Call Chain = L6474_CmdGetStatus &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; MSG_Printf &rArr; xQueueGenericSend &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
-<BR>[Calls]<UL><LI><a href="#[16d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_EnableIrq
-<LI><a href="#[16e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_DisableIrq
-<LI><a href="#[16f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_WriteBytes
+<BR>[Calls]<UL><LI><a href="#[16e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_EnableIrq
+<LI><a href="#[16f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_DisableIrq
+<LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_WriteBytes
 </UL>
 <BR>[Called By]<UL><LI><a href="#[0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Init
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
 </UL>
 <P><STRONG><a name="[22]"></a>L6474_CmdNop</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, l6474.o(i.L6474_CmdNop))
-<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = L6474_CmdNop &rArr; L6474_SendCommand &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
+<BR><BR>[Stack]<UL><LI>Max Depth = 296<LI>Call Chain = L6474_CmdNop &rArr; L6474_SendCommand &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; MSG_Printf &rArr; xQueueGenericSend &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
-<BR>[Calls]<UL><LI><a href="#[16c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SendCommand
+<BR>[Calls]<UL><LI><a href="#[16d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SendCommand
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
 </UL>
 <P><STRONG><a name="[23]"></a>L6474_CmdSetParam</STRONG> (Thumb, 178 bytes, Stack size 40 bytes, l6474.o(i.L6474_CmdSetParam))
-<BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = L6474_CmdSetParam &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
+<BR><BR>[Stack]<UL><LI>Max Depth = 312<LI>Call Chain = L6474_CmdSetParam &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; MSG_Printf &rArr; xQueueGenericSend &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
-<BR>[Calls]<UL><LI><a href="#[16d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_EnableIrq
-<LI><a href="#[16e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_DisableIrq
-<LI><a href="#[16f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_WriteBytes
+<BR>[Calls]<UL><LI><a href="#[16e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_EnableIrq
+<LI><a href="#[16f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_DisableIrq
+<LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_WriteBytes
 </UL>
-<BR>[Called By]<UL><LI><a href="#[17c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetRegisterToPredefinedValues
-<LI><a href="#[17b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetRegisterToGivenValues
+<BR>[Called By]<UL><LI><a href="#[17d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetRegisterToPredefinedValues
+<LI><a href="#[17c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetRegisterToGivenValues
 <LI><a href="#[18]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetMark
 <LI><a href="#[17]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetHome
 <LI><a href="#[31]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetAnalogValue
@@ -1792,14 +1793,14 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
 </UL>
-<P><STRONG><a name="[174]"></a>L6474_ComputeSpeedProfile</STRONG> (Thumb, 88 bytes, Stack size 12 bytes, l6474.o(i.L6474_ComputeSpeedProfile))
+<P><STRONG><a name="[175]"></a>L6474_ComputeSpeedProfile</STRONG> (Thumb, 88 bytes, Stack size 12 bytes, l6474.o(i.L6474_ComputeSpeedProfile))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = L6474_ComputeSpeedProfile
 </UL>
 <BR>[Called By]<UL><LI><a href="#[12]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Move
 <LI><a href="#[10]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_GoTo
 </UL>
 
-<P><STRONG><a name="[170]"></a>L6474_ConvertPosition</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, l6474.o(i.L6474_ConvertPosition))
+<P><STRONG><a name="[171]"></a>L6474_ConvertPosition</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, l6474.o(i.L6474_ConvertPosition))
 <BR><BR>[Called By]<UL><LI><a href="#[17]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetHome
 <LI><a href="#[12]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Move
 <LI><a href="#[10]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_GoTo
@@ -1810,7 +1811,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[2b]"></a>L6474_ErrorHandler</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, l6474.o(i.L6474_ErrorHandler))
-<BR><BR>[Called By]<UL><LI><a href="#[16f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_WriteBytes
+<BR><BR>[Called By]<UL><LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_WriteBytes
 <LI><a href="#[0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Init
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
@@ -1824,12 +1825,12 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
 </UL>
 <P><STRONG><a name="[32]"></a>L6474_GetAnalogValue</STRONG> (Thumb, 90 bytes, Stack size 8 bytes, l6474.o(i.L6474_GetAnalogValue))
-<BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = L6474_GetAnalogValue &rArr; L6474_CmdGetParam &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
+<BR><BR>[Stack]<UL><LI>Max Depth = 320<LI>Call Chain = L6474_GetAnalogValue &rArr; L6474_CmdGetParam &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; MSG_Printf &rArr; xQueueGenericSend &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
-<BR>[Calls]<UL><LI><a href="#[171]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Tval_Par_to_Current
-<LI><a href="#[173]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Tmin_Par_to_Time
-<LI><a href="#[172]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Ocd_Par_to_Th
-<LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ConvertPosition
+<BR>[Calls]<UL><LI><a href="#[172]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Tval_Par_to_Current
+<LI><a href="#[174]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Tmin_Par_to_Time
+<LI><a href="#[173]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Ocd_Par_to_Th
+<LI><a href="#[171]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ConvertPosition
 <LI><a href="#[20]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdGetParam
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
@@ -1852,9 +1853,9 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
 </UL>
 <P><STRONG><a name="[a]"></a>L6474_GetMark</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, l6474.o(i.L6474_GetMark))
-<BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = L6474_GetMark &rArr; L6474_CmdGetParam &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
+<BR><BR>[Stack]<UL><LI>Max Depth = 320<LI>Call Chain = L6474_GetMark &rArr; L6474_CmdGetParam &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; MSG_Printf &rArr; xQueueGenericSend &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
-<BR>[Calls]<UL><LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ConvertPosition
+<BR>[Calls]<UL><LI><a href="#[171]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ConvertPosition
 <LI><a href="#[20]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdGetParam
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
@@ -1873,15 +1874,15 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
 </UL>
 <P><STRONG><a name="[d]"></a>L6474_GetPosition</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, l6474.o(i.L6474_GetPosition))
-<BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = L6474_GetPosition &rArr; L6474_CmdGetParam &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
+<BR><BR>[Stack]<UL><LI>Max Depth = 320<LI>Call Chain = L6474_GetPosition &rArr; L6474_CmdGetParam &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; MSG_Printf &rArr; xQueueGenericSend &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
-<BR>[Calls]<UL><LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ConvertPosition
+<BR>[Calls]<UL><LI><a href="#[171]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ConvertPosition
 <LI><a href="#[20]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdGetParam
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
 </UL>
 <P><STRONG><a name="[2e]"></a>L6474_GetStepMode</STRONG> (Thumb, 56 bytes, Stack size 8 bytes, l6474.o(i.L6474_GetStepMode))
-<BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = L6474_GetStepMode &rArr; L6474_CmdGetParam &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
+<BR><BR>[Stack]<UL><LI>Max Depth = 320<LI>Call Chain = L6474_GetStepMode &rArr; L6474_CmdGetParam &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; MSG_Printf &rArr; xQueueGenericSend &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
 <BR>[Calls]<UL><LI><a href="#[20]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdGetParam
 </UL>
@@ -1891,28 +1892,28 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
 </UL>
 <P><STRONG><a name="[e]"></a>L6474_GoHome</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, l6474.o(i.L6474_GoHome))
-<BR><BR>[Stack]<UL><LI>Max Depth = 192<LI>Call Chain = L6474_GoHome &rArr; L6474_GoTo &rArr; L6474_StartMovement &rArr; L6474_CmdEnable &rArr; L6474_SendCommand &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
+<BR><BR>[Stack]<UL><LI>Max Depth = 328<LI>Call Chain = L6474_GoHome &rArr; L6474_GoTo &rArr; L6474_StartMovement &rArr; L6474_CmdEnable &rArr; L6474_SendCommand &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; MSG_Printf &rArr; xQueueGenericSend &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
 <BR>[Calls]<UL><LI><a href="#[10]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_GoTo
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
 </UL>
 <P><STRONG><a name="[f]"></a>L6474_GoMark</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, l6474.o(i.L6474_GoMark))
-<BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = L6474_GoMark &rArr; L6474_CmdGetParam &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
+<BR><BR>[Stack]<UL><LI>Max Depth = 320<LI>Call Chain = L6474_GoMark &rArr; L6474_CmdGetParam &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; MSG_Printf &rArr; xQueueGenericSend &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
-<BR>[Calls]<UL><LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ConvertPosition
+<BR>[Calls]<UL><LI><a href="#[171]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ConvertPosition
 <LI><a href="#[20]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdGetParam
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
 </UL>
 <P><STRONG><a name="[10]"></a>L6474_GoTo</STRONG> (Thumb, 104 bytes, Stack size 16 bytes, l6474.o(i.L6474_GoTo))
-<BR><BR>[Stack]<UL><LI>Max Depth = 192<LI>Call Chain = L6474_GoTo &rArr; L6474_StartMovement &rArr; L6474_CmdEnable &rArr; L6474_SendCommand &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
+<BR><BR>[Stack]<UL><LI>Max Depth = 328<LI>Call Chain = L6474_GoTo &rArr; L6474_StartMovement &rArr; L6474_CmdEnable &rArr; L6474_SendCommand &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; MSG_Printf &rArr; xQueueGenericSend &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
-<BR>[Calls]<UL><LI><a href="#[175]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_StartMovement
+<BR>[Calls]<UL><LI><a href="#[176]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_StartMovement
 <LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetDirection
 <LI><a href="#[11]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_HardStop
-<LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ConvertPosition
-<LI><a href="#[174]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ComputeSpeedProfile
+<LI><a href="#[171]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ConvertPosition
+<LI><a href="#[175]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ComputeSpeedProfile
 <LI><a href="#[20]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdGetParam
 </UL>
 <BR>[Called By]<UL><LI><a href="#[e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_GoHome
@@ -1920,7 +1921,7 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
 </UL>
 <P><STRONG><a name="[11]"></a>L6474_HardStop</STRONG> (Thumb, 54 bytes, Stack size 8 bytes, l6474.o(i.L6474_HardStop))
-<BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = L6474_HardStop &rArr; L6474_HizStop &rArr; L6474_CmdDisable &rArr; L6474_SendCommand &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
+<BR><BR>[Stack]<UL><LI>Max Depth = 312<LI>Call Chain = L6474_HardStop &rArr; L6474_HizStop &rArr; L6474_CmdDisable &rArr; L6474_SendCommand &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; MSG_Printf &rArr; xQueueGenericSend &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
 <BR>[Calls]<UL><LI><a href="#[167]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_PwmStop
 <LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_HizStop
@@ -1933,7 +1934,7 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
 </UL>
 <P><STRONG><a name="[29]"></a>L6474_HizStop</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, l6474.o(i.L6474_HizStop))
-<BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = L6474_HizStop &rArr; L6474_CmdDisable &rArr; L6474_SendCommand &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
+<BR><BR>[Stack]<UL><LI>Max Depth = 304<LI>Call Chain = L6474_HizStop &rArr; L6474_CmdDisable &rArr; L6474_SendCommand &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; MSG_Printf &rArr; xQueueGenericSend &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
 <BR>[Calls]<UL><LI><a href="#[167]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_PwmStop
 <LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdDisable
@@ -1945,15 +1946,15 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
 </UL>
 <P><STRONG><a name="[0]"></a>L6474_Init</STRONG> (Thumb, 80 bytes, Stack size 16 bytes, l6474.o(i.L6474_Init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 248<LI>Call Chain = L6474_Init &rArr; L6474_SetDeviceParamsToGivenValues &rArr; L6474_SetRegisterToGivenValues &rArr; L6474_SetAnalogValue &rArr; L6474_CmdSetParam &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
+<BR><BR>[Stack]<UL><LI>Max Depth = 384<LI>Call Chain = L6474_Init &rArr; L6474_SetDeviceParamsToGivenValues &rArr; L6474_SetRegisterToGivenValues &rArr; L6474_SetAnalogValue &rArr; L6474_CmdSetParam &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; MSG_Printf &rArr; xQueueGenericSend &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
 <BR>[Calls]<UL><LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_SpiInit
 <LI><a href="#[168]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_ReleaseReset
 <LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_PwmInit
 <LI><a href="#[162]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_GpioInit
 <LI><a href="#[161]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_Delay
-<LI><a href="#[177]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetDeviceParamsToPredefinedValues
-<LI><a href="#[176]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetDeviceParamsToGivenValues
+<LI><a href="#[178]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetDeviceParamsToPredefinedValues
+<LI><a href="#[177]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetDeviceParamsToGivenValues
 <LI><a href="#[2b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ErrorHandler
 <LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdGetStatus
 <LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdDisable
@@ -1961,22 +1962,22 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
 </UL>
 <P><STRONG><a name="[12]"></a>L6474_Move</STRONG> (Thumb, 90 bytes, Stack size 24 bytes, l6474.o(i.L6474_Move))
-<BR><BR>[Stack]<UL><LI>Max Depth = 200<LI>Call Chain = L6474_Move &rArr; L6474_StartMovement &rArr; L6474_CmdEnable &rArr; L6474_SendCommand &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
+<BR><BR>[Stack]<UL><LI>Max Depth = 336<LI>Call Chain = L6474_Move &rArr; L6474_StartMovement &rArr; L6474_CmdEnable &rArr; L6474_SendCommand &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; MSG_Printf &rArr; xQueueGenericSend &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
-<BR>[Calls]<UL><LI><a href="#[175]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_StartMovement
+<BR>[Calls]<UL><LI><a href="#[176]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_StartMovement
 <LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetDirection
 <LI><a href="#[11]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_HardStop
-<LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ConvertPosition
-<LI><a href="#[174]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ComputeSpeedProfile
+<LI><a href="#[171]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ConvertPosition
+<LI><a href="#[175]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ComputeSpeedProfile
 <LI><a href="#[20]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdGetParam
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
 </UL>
-<P><STRONG><a name="[172]"></a>L6474_Ocd_Par_to_Th</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, l6474.o(i.L6474_Ocd_Par_to_Th))
+<P><STRONG><a name="[173]"></a>L6474_Ocd_Par_to_Th</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, l6474.o(i.L6474_Ocd_Par_to_Th))
 <BR><BR>[Called By]<UL><LI><a href="#[32]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_GetAnalogValue
 </UL>
 
-<P><STRONG><a name="[179]"></a>L6474_Ocd_Th_to_Par</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, l6474.o(i.L6474_Ocd_Th_to_Par))
+<P><STRONG><a name="[17a]"></a>L6474_Ocd_Th_to_Par</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, l6474.o(i.L6474_Ocd_Th_to_Par))
 <BR><BR>[Called By]<UL><LI><a href="#[31]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetAnalogValue
 </UL>
 
@@ -1984,7 +1985,7 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
 </UL>
 <P><STRONG><a name="[24]"></a>L6474_ReadStatusRegister</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, l6474.o(i.L6474_ReadStatusRegister))
-<BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = L6474_ReadStatusRegister &rArr; L6474_CmdGetParam &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
+<BR><BR>[Stack]<UL><LI>Max Depth = 320<LI>Call Chain = L6474_ReadStatusRegister &rArr; L6474_CmdGetParam &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; MSG_Printf &rArr; xQueueGenericSend &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
 <BR>[Calls]<UL><LI><a href="#[20]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdGetParam
 </UL>
@@ -2001,7 +2002,7 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
 </UL>
 <P><STRONG><a name="[13]"></a>L6474_ResetAllDevices</STRONG> (Thumb, 50 bytes, Stack size 16 bytes, l6474.o(i.L6474_ResetAllDevices))
-<BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = L6474_ResetAllDevices &rArr; L6474_HizStop &rArr; L6474_CmdDisable &rArr; L6474_SendCommand &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
+<BR><BR>[Stack]<UL><LI>Max Depth = 320<LI>Call Chain = L6474_ResetAllDevices &rArr; L6474_HizStop &rArr; L6474_CmdDisable &rArr; L6474_SendCommand &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; MSG_Printf &rArr; xQueueGenericSend &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
 <BR>[Calls]<UL><LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_Reset
 <LI><a href="#[168]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_ReleaseReset
@@ -2011,16 +2012,16 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
 </UL>
 <P><STRONG><a name="[14]"></a>L6474_Run</STRONG> (Thumb, 54 bytes, Stack size 16 bytes, l6474.o(i.L6474_Run))
-<BR><BR>[Stack]<UL><LI>Max Depth = 192<LI>Call Chain = L6474_Run &rArr; L6474_StartMovement &rArr; L6474_CmdEnable &rArr; L6474_SendCommand &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
+<BR><BR>[Stack]<UL><LI>Max Depth = 328<LI>Call Chain = L6474_Run &rArr; L6474_StartMovement &rArr; L6474_CmdEnable &rArr; L6474_SendCommand &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; MSG_Printf &rArr; xQueueGenericSend &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
-<BR>[Calls]<UL><LI><a href="#[175]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_StartMovement
+<BR>[Calls]<UL><LI><a href="#[176]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_StartMovement
 <LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetDirection
 <LI><a href="#[11]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_HardStop
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
 </UL>
 <P><STRONG><a name="[27]"></a>L6474_SelectStepMode</STRONG> (Thumb, 76 bytes, Stack size 16 bytes, l6474.o(i.L6474_SelectStepMode))
-<BR><BR>[Stack]<UL><LI>Max Depth = 192<LI>Call Chain = L6474_SelectStepMode &rArr; L6474_CmdSetParam &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
+<BR><BR>[Stack]<UL><LI>Max Depth = 328<LI>Call Chain = L6474_SelectStepMode &rArr; L6474_CmdSetParam &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; MSG_Printf &rArr; xQueueGenericSend &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
 <BR>[Calls]<UL><LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_HizStop
 <LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdSetParam
@@ -2028,12 +2029,12 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
 </UL>
-<P><STRONG><a name="[16c]"></a>L6474_SendCommand</STRONG> (Thumb, 84 bytes, Stack size 24 bytes, l6474.o(i.L6474_SendCommand))
-<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = L6474_SendCommand &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
+<P><STRONG><a name="[16d]"></a>L6474_SendCommand</STRONG> (Thumb, 84 bytes, Stack size 24 bytes, l6474.o(i.L6474_SendCommand))
+<BR><BR>[Stack]<UL><LI>Max Depth = 296<LI>Call Chain = L6474_SendCommand &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; MSG_Printf &rArr; xQueueGenericSend &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
-<BR>[Calls]<UL><LI><a href="#[16d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_EnableIrq
-<LI><a href="#[16e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_DisableIrq
-<LI><a href="#[16f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_WriteBytes
+<BR>[Calls]<UL><LI><a href="#[16e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_EnableIrq
+<LI><a href="#[16f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_DisableIrq
+<LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_WriteBytes
 </UL>
 <BR>[Called By]<UL><LI><a href="#[22]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdNop
 <LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdEnable
@@ -2044,33 +2045,33 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
 </UL>
 <P><STRONG><a name="[31]"></a>L6474_SetAnalogValue</STRONG> (Thumb, 286 bytes, Stack size 24 bytes, l6474.o(i.L6474_SetAnalogValue))
-<BR><BR>[Stack]<UL><LI>Max Depth = 200<LI>Call Chain = L6474_SetAnalogValue &rArr; L6474_CmdSetParam &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
+<BR><BR>[Stack]<UL><LI>Max Depth = 336<LI>Call Chain = L6474_SetAnalogValue &rArr; L6474_CmdSetParam &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; MSG_Printf &rArr; xQueueGenericSend &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
-<BR>[Calls]<UL><LI><a href="#[178]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Tval_Current_to_Par
-<LI><a href="#[17a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Tmin_Time_to_Par
-<LI><a href="#[179]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Ocd_Th_to_Par
+<BR>[Calls]<UL><LI><a href="#[179]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Tval_Current_to_Par
+<LI><a href="#[17b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Tmin_Time_to_Par
+<LI><a href="#[17a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Ocd_Th_to_Par
 <LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdSetParam
 <LI><a href="#[20]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdGetParam
 </UL>
-<BR>[Called By]<UL><LI><a href="#[17b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetRegisterToGivenValues
+<BR>[Called By]<UL><LI><a href="#[17c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetRegisterToGivenValues
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
 </UL>
 <P><STRONG><a name="[16]"></a>L6474_SetDeceleration</STRONG> (Thumb, 42 bytes, Stack size 0 bytes, l6474.o(i.L6474_SetDeceleration))
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
 </UL>
-<P><STRONG><a name="[176]"></a>L6474_SetDeviceParamsToGivenValues</STRONG> (Thumb, 70 bytes, Stack size 16 bytes, l6474.o(i.L6474_SetDeviceParamsToGivenValues))
-<BR><BR>[Stack]<UL><LI>Max Depth = 232<LI>Call Chain = L6474_SetDeviceParamsToGivenValues &rArr; L6474_SetRegisterToGivenValues &rArr; L6474_SetAnalogValue &rArr; L6474_CmdSetParam &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
+<P><STRONG><a name="[177]"></a>L6474_SetDeviceParamsToGivenValues</STRONG> (Thumb, 70 bytes, Stack size 16 bytes, l6474.o(i.L6474_SetDeviceParamsToGivenValues))
+<BR><BR>[Stack]<UL><LI>Max Depth = 368<LI>Call Chain = L6474_SetDeviceParamsToGivenValues &rArr; L6474_SetRegisterToGivenValues &rArr; L6474_SetAnalogValue &rArr; L6474_CmdSetParam &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; MSG_Printf &rArr; xQueueGenericSend &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
-<BR>[Calls]<UL><LI><a href="#[17b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetRegisterToGivenValues
+<BR>[Calls]<UL><LI><a href="#[17c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetRegisterToGivenValues
 </UL>
 <BR>[Called By]<UL><LI><a href="#[0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Init
 </UL>
 
-<P><STRONG><a name="[177]"></a>L6474_SetDeviceParamsToPredefinedValues</STRONG> (Thumb, 70 bytes, Stack size 16 bytes, l6474.o(i.L6474_SetDeviceParamsToPredefinedValues))
-<BR><BR>[Stack]<UL><LI>Max Depth = 208<LI>Call Chain = L6474_SetDeviceParamsToPredefinedValues &rArr; L6474_SetRegisterToPredefinedValues &rArr; L6474_CmdSetParam &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
+<P><STRONG><a name="[178]"></a>L6474_SetDeviceParamsToPredefinedValues</STRONG> (Thumb, 70 bytes, Stack size 16 bytes, l6474.o(i.L6474_SetDeviceParamsToPredefinedValues))
+<BR><BR>[Stack]<UL><LI>Max Depth = 344<LI>Call Chain = L6474_SetDeviceParamsToPredefinedValues &rArr; L6474_SetRegisterToPredefinedValues &rArr; L6474_CmdSetParam &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; MSG_Printf &rArr; xQueueGenericSend &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
-<BR>[Calls]<UL><LI><a href="#[17c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetRegisterToPredefinedValues
+<BR>[Calls]<UL><LI><a href="#[17d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetRegisterToPredefinedValues
 </UL>
 <BR>[Called By]<UL><LI><a href="#[0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Init
 </UL>
@@ -2085,16 +2086,16 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
 </UL>
 <P><STRONG><a name="[17]"></a>L6474_SetHome</STRONG> (Thumb, 48 bytes, Stack size 16 bytes, l6474.o(i.L6474_SetHome))
-<BR><BR>[Stack]<UL><LI>Max Depth = 192<LI>Call Chain = L6474_SetHome &rArr; L6474_CmdSetParam &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
+<BR><BR>[Stack]<UL><LI>Max Depth = 328<LI>Call Chain = L6474_SetHome &rArr; L6474_CmdSetParam &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; MSG_Printf &rArr; xQueueGenericSend &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
-<BR>[Calls]<UL><LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ConvertPosition
+<BR>[Calls]<UL><LI><a href="#[171]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ConvertPosition
 <LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdSetParam
 <LI><a href="#[20]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdGetParam
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
 </UL>
 <P><STRONG><a name="[18]"></a>L6474_SetMark</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, l6474.o(i.L6474_SetMark))
-<BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = L6474_SetMark &rArr; L6474_CmdSetParam &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
+<BR><BR>[Stack]<UL><LI>Max Depth = 312<LI>Call Chain = L6474_SetMark &rArr; L6474_CmdSetParam &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; MSG_Printf &rArr; xQueueGenericSend &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
 <BR>[Calls]<UL><LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdSetParam
 </UL>
@@ -2113,36 +2114,36 @@ Global Symbols
 <P><STRONG><a name="[30]"></a>L6474_SetNbDevices</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, l6474.o(i.L6474_SetNbDevices))
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
 </UL>
-<P><STRONG><a name="[17b]"></a>L6474_SetRegisterToGivenValues</STRONG> (Thumb, 152 bytes, Stack size 16 bytes, l6474.o(i.L6474_SetRegisterToGivenValues))
-<BR><BR>[Stack]<UL><LI>Max Depth = 216<LI>Call Chain = L6474_SetRegisterToGivenValues &rArr; L6474_SetAnalogValue &rArr; L6474_CmdSetParam &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
+<P><STRONG><a name="[17c]"></a>L6474_SetRegisterToGivenValues</STRONG> (Thumb, 152 bytes, Stack size 16 bytes, l6474.o(i.L6474_SetRegisterToGivenValues))
+<BR><BR>[Stack]<UL><LI>Max Depth = 352<LI>Call Chain = L6474_SetRegisterToGivenValues &rArr; L6474_SetAnalogValue &rArr; L6474_CmdSetParam &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; MSG_Printf &rArr; xQueueGenericSend &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
 <BR>[Calls]<UL><LI><a href="#[31]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetAnalogValue
 <LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdSetParam
 </UL>
-<BR>[Called By]<UL><LI><a href="#[176]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetDeviceParamsToGivenValues
+<BR>[Called By]<UL><LI><a href="#[177]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetDeviceParamsToGivenValues
 </UL>
 
-<P><STRONG><a name="[17c]"></a>L6474_SetRegisterToPredefinedValues</STRONG> (Thumb, 164 bytes, Stack size 16 bytes, l6474.o(i.L6474_SetRegisterToPredefinedValues))
-<BR><BR>[Stack]<UL><LI>Max Depth = 192<LI>Call Chain = L6474_SetRegisterToPredefinedValues &rArr; L6474_CmdSetParam &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
+<P><STRONG><a name="[17d]"></a>L6474_SetRegisterToPredefinedValues</STRONG> (Thumb, 164 bytes, Stack size 16 bytes, l6474.o(i.L6474_SetRegisterToPredefinedValues))
+<BR><BR>[Stack]<UL><LI>Max Depth = 328<LI>Call Chain = L6474_SetRegisterToPredefinedValues &rArr; L6474_CmdSetParam &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; MSG_Printf &rArr; xQueueGenericSend &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
-<BR>[Calls]<UL><LI><a href="#[178]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Tval_Current_to_Par
-<LI><a href="#[17a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Tmin_Time_to_Par
+<BR>[Calls]<UL><LI><a href="#[179]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Tval_Current_to_Par
+<LI><a href="#[17b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Tmin_Time_to_Par
 <LI><a href="#[2c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetStopMode
 <LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdSetParam
 </UL>
-<BR>[Called By]<UL><LI><a href="#[177]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetDeviceParamsToPredefinedValues
+<BR>[Called By]<UL><LI><a href="#[178]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetDeviceParamsToPredefinedValues
 </UL>
 
 <P><STRONG><a name="[2c]"></a>L6474_SetStopMode</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, l6474.o(i.L6474_SetStopMode))
-<BR><BR>[Called By]<UL><LI><a href="#[17c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetRegisterToPredefinedValues
+<BR><BR>[Called By]<UL><LI><a href="#[17d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetRegisterToPredefinedValues
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
 </UL>
 <P><STRONG><a name="[1b]"></a>L6474_SoftStop</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, l6474.o(i.L6474_SoftStop))
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
 </UL>
-<P><STRONG><a name="[175]"></a>L6474_StartMovement</STRONG> (Thumb, 54 bytes, Stack size 16 bytes, l6474.o(i.L6474_StartMovement))
-<BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = L6474_StartMovement &rArr; L6474_CmdEnable &rArr; L6474_SendCommand &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
+<P><STRONG><a name="[176]"></a>L6474_StartMovement</STRONG> (Thumb, 54 bytes, Stack size 16 bytes, l6474.o(i.L6474_StartMovement))
+<BR><BR>[Stack]<UL><LI>Max Depth = 312<LI>Call Chain = L6474_StartMovement &rArr; L6474_CmdEnable &rArr; L6474_SendCommand &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; MSG_Printf &rArr; xQueueGenericSend &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdEnable
 <LI><a href="#[15d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ApplySpeed
@@ -2153,28 +2154,28 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[1c]"></a>L6474_StepClockHandler</STRONG> (Thumb, 398 bytes, Stack size 40 bytes, l6474.o(i.L6474_StepClockHandler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 216<LI>Call Chain = L6474_StepClockHandler &rArr; L6474_HardStop &rArr; L6474_HizStop &rArr; L6474_CmdDisable &rArr; L6474_SendCommand &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
+<BR><BR>[Stack]<UL><LI>Max Depth = 352<LI>Call Chain = L6474_StepClockHandler &rArr; L6474_HardStop &rArr; L6474_HizStop &rArr; L6474_CmdDisable &rArr; L6474_SendCommand &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; MSG_Printf &rArr; xQueueGenericSend &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
 <BR>[Calls]<UL><LI><a href="#[11]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_HardStop
 <LI><a href="#[15d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ApplySpeed
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
 </UL>
-<P><STRONG><a name="[173]"></a>L6474_Tmin_Par_to_Time</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, l6474.o(i.L6474_Tmin_Par_to_Time))
+<P><STRONG><a name="[174]"></a>L6474_Tmin_Par_to_Time</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, l6474.o(i.L6474_Tmin_Par_to_Time))
 <BR><BR>[Called By]<UL><LI><a href="#[32]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_GetAnalogValue
 </UL>
 
-<P><STRONG><a name="[17a]"></a>L6474_Tmin_Time_to_Par</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, l6474.o(i.L6474_Tmin_Time_to_Par))
-<BR><BR>[Called By]<UL><LI><a href="#[17c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetRegisterToPredefinedValues
+<P><STRONG><a name="[17b]"></a>L6474_Tmin_Time_to_Par</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, l6474.o(i.L6474_Tmin_Time_to_Par))
+<BR><BR>[Called By]<UL><LI><a href="#[17d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetRegisterToPredefinedValues
 <LI><a href="#[31]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetAnalogValue
 </UL>
 
-<P><STRONG><a name="[178]"></a>L6474_Tval_Current_to_Par</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, l6474.o(i.L6474_Tval_Current_to_Par))
-<BR><BR>[Called By]<UL><LI><a href="#[17c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetRegisterToPredefinedValues
+<P><STRONG><a name="[179]"></a>L6474_Tval_Current_to_Par</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, l6474.o(i.L6474_Tval_Current_to_Par))
+<BR><BR>[Called By]<UL><LI><a href="#[17d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetRegisterToPredefinedValues
 <LI><a href="#[31]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetAnalogValue
 </UL>
 
-<P><STRONG><a name="[171]"></a>L6474_Tval_Par_to_Current</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, l6474.o(i.L6474_Tval_Par_to_Current))
+<P><STRONG><a name="[172]"></a>L6474_Tval_Par_to_Current</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, l6474.o(i.L6474_Tval_Par_to_Current))
 <BR><BR>[Called By]<UL><LI><a href="#[32]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_GetAnalogValue
 </UL>
 
@@ -2185,19 +2186,19 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
 </UL>
-<P><STRONG><a name="[16f]"></a>L6474_WriteBytes</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, l6474.o(i.L6474_WriteBytes))
-<BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
+<P><STRONG><a name="[170]"></a>L6474_WriteBytes</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, l6474.o(i.L6474_WriteBytes))
+<BR><BR>[Stack]<UL><LI>Max Depth = 272<LI>Call Chain = L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; MSG_Printf &rArr; xQueueGenericSend &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
 <BR>[Calls]<UL><LI><a href="#[16b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_SpiWriteBytes
 <LI><a href="#[2b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ErrorHandler
 </UL>
-<BR>[Called By]<UL><LI><a href="#[16c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SendCommand
+<BR>[Called By]<UL><LI><a href="#[16d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SendCommand
 <LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdSetParam
 <LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdGetStatus
 <LI><a href="#[20]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdGetParam
 </UL>
 
-<P><STRONG><a name="[17d]"></a>MSG_Printf</STRONG> (Thumb, 38 bytes, Stack size 112 bytes, messaging.o(i.MSG_Printf))
+<P><STRONG><a name="[16c]"></a>MSG_Printf</STRONG> (Thumb, 38 bytes, Stack size 112 bytes, messaging.o(i.MSG_Printf))
 <BR><BR>[Stack]<UL><LI>Max Depth = 224<LI>Call Chain = MSG_Printf &rArr; xQueueGenericSend &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
 <BR>[Calls]<UL><LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericSend
@@ -2205,6 +2206,7 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StepperTask
 <LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;led_task
+<LI><a href="#[16b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_SpiWriteBytes
 </UL>
 
 <P><STRONG><a name="[36]"></a>MemManage_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32h7xx_it.o(i.MemManage_Handler))
@@ -2278,7 +2280,7 @@ Global Symbols
 <LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_MotorControl_AttachFlagInterrupt
 <LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_MotorControl_AttachErrorHandler
 <LI><a href="#[187]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
-<LI><a href="#[17d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MSG_Printf
+<LI><a href="#[16c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MSG_Printf
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> stepperdriver.o(i.StepperTaskInit)
 </UL>
@@ -2438,7 +2440,7 @@ Global Symbols
 <P><STRONG><a name="[17e]"></a>vsnprintf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0vsnprintf))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = vsnprintf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[17d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MSG_Printf
+<BR>[Called By]<UL><LI><a href="#[16c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MSG_Printf
 </UL>
 
 <P><STRONG><a name="[1e1]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
@@ -2459,7 +2461,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 224<LI>Call Chain = led_task &rArr; MSG_Printf &rArr; xQueueGenericSend &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
 <BR>[Calls]<UL><LI><a href="#[187]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
-<LI><a href="#[17d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MSG_Printf
+<LI><a href="#[16c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MSG_Printf
 <LI><a href="#[19a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_TogglePin
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> led_task.o(i.led_task_init)
@@ -2716,7 +2718,7 @@ Global Symbols
 <LI><a href="#[1a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortExitCritical
 <LI><a href="#[1a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortEnterCritical
 </UL>
-<BR>[Called By]<UL><LI><a href="#[17d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MSG_Printf
+<BR>[Called By]<UL><LI><a href="#[16c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MSG_Printf
 </UL>
 
 <P><STRONG><a name="[185]"></a>xQueueReceive</STRONG> (Thumb, 310 bytes, Stack size 56 bytes, queue.o(i.xQueueReceive))

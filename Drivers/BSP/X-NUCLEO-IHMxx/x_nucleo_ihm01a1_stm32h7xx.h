@@ -244,10 +244,10 @@
 #define SPIx_MISO_GPIO_PORT              (GPIOA)
 
 /// SPI MOSI pin
-#define SPIx_MOSI_PIN                    (GPIO_PIN_7)
+#define SPIx_MOSI_PIN                    (GPIO_PIN_5)
 
 /// SPI MOSI port
-#define SPIx_MOSI_GPIO_PORT              (GPIOA)
+#define SPIx_MOSI_GPIO_PORT              (GPIOB)
 
 #else  /* USE SPI2 */
 
