@@ -70,7 +70,7 @@
 */   
 /// Interrupt line used for L6474 FLAG
 // It was EXTI4_15_IRQn
-#define EXTI_MCU_LINE_IRQn           (EXTI15_10_IRQn)
+#define EXTI_MCU_LINE_IRQn           (EXTI2_IRQn)
 
 /// Timer used for PWM1
 #define BSP_MOTOR_CONTROL_BOARD_TIMER_PWM1      (TIM4)
@@ -160,39 +160,39 @@
 */   
 
 /// GPIO Pin used for the L6474 flag pin
-#define BSP_MOTOR_CONTROL_BOARD_FLAG_PIN   (GPIO_PIN_10)
+#define BSP_MOTOR_CONTROL_BOARD_FLAG_PIN   (GPIO_PIN_14)
 /// GPIO port used for the L6474 flag pin
-#define BSP_MOTOR_CONTROL_BOARD_FLAG_PORT   (GPIOA)
+#define BSP_MOTOR_CONTROL_BOARD_FLAG_PORT   (GPIOG)
 
 /// GPIO Pin used for the L6474 step clock pin of device 0
-#define BSP_MOTOR_CONTROL_BOARD_PWM_1_PIN  (GPIO_PIN_7)
+#define BSP_MOTOR_CONTROL_BOARD_PWM_1_PIN  (GPIO_PIN_15)
 /// GPIO Port used for the L6474 step clock pin of device 0
-#define BSP_MOTOR_CONTROL_BOARD_PWM_1_PORT  (GPIOC)
+#define BSP_MOTOR_CONTROL_BOARD_PWM_1_PORT  (GPIOD)
 
 /// GPIO Pin used for the L6474 step clock pin of device 1
-#define BSP_MOTOR_CONTROL_BOARD_PWM_2_PIN  (GPIO_PIN_3)
+#define BSP_MOTOR_CONTROL_BOARD_PWM_2_PIN  (GPIO_PIN_13)
 /// GPIO port used for the L6474 step clock pin of device 1
-#define BSP_MOTOR_CONTROL_BOARD_PWM_2_PORT  (GPIOB)
+#define BSP_MOTOR_CONTROL_BOARD_PWM_2_PORT  (GPIOE)
 
 /// GPIO Pin used for the L6474 step clock pin of device 2
-#define BSP_MOTOR_CONTROL_BOARD_PWM_3_PIN   (GPIO_PIN_10)
+#define BSP_MOTOR_CONTROL_BOARD_PWM_3_PIN   (GPIO_PIN_9)
 /// GPIO port used for the L6474 step clock pin of device 2
-#define BSP_MOTOR_CONTROL_BOARD_PWM_3_PORT  (GPIOB)
+#define BSP_MOTOR_CONTROL_BOARD_PWM_3_PORT  (GPIOE)
 
 /// GPIO Pin used for the L6474 direction pin of device 0
-#define BSP_MOTOR_CONTROL_BOARD_DIR_1_PIN  (GPIO_PIN_8)
+#define BSP_MOTOR_CONTROL_BOARD_DIR_1_PIN  (GPIO_PIN_12)
 /// GPIO port used for the L6474 direction pin of device 0
-#define BSP_MOTOR_CONTROL_BOARD_DIR_1_PORT  (GPIOA)
+#define BSP_MOTOR_CONTROL_BOARD_DIR_1_PORT  (GPIOG)
 
 /// GPIO Pin used for the L6474 direction pin of device 1
-#define BSP_MOTOR_CONTROL_BOARD_DIR_2_PIN   (GPIO_PIN_5)
+#define BSP_MOTOR_CONTROL_BOARD_DIR_2_PIN   (GPIO_PIN_14)
 /// GPIO port used for the L6474 direction pin of device 1
-#define BSP_MOTOR_CONTROL_BOARD_DIR_2_PORT  (GPIOB)
+#define BSP_MOTOR_CONTROL_BOARD_DIR_2_PORT  (GPIOE)
 
 /// GPIO Pin used for the L6474 direction pin of device 2
-#define BSP_MOTOR_CONTROL_BOARD_DIR_3_PIN   (GPIO_PIN_4)
+#define BSP_MOTOR_CONTROL_BOARD_DIR_3_PIN   (GPIO_PIN_11)
 /// GPIO port used for the L6474 direction pin of device 2
-#define BSP_MOTOR_CONTROL_BOARD_DIR_3_PORT  (GPIOB)
+#define BSP_MOTOR_CONTROL_BOARD_DIR_3_PORT  (GPIOE)
 
 /// GPIO Pin used for the L6474 reset pin
 #define BSP_MOTOR_CONTROL_BOARD_RESET_PIN  (GPIO_PIN_9)
@@ -200,9 +200,9 @@
 #define BSP_MOTOR_CONTROL_BOARD_RESET_PORT (GPIOA)
 
 /// GPIO Pin used for the L6474 SPI chip select pin
-#define BSP_MOTOR_CONTROL_BOARD_CS_PIN  (GPIO_PIN_6)
+#define BSP_MOTOR_CONTROL_BOARD_CS_PIN  (GPIO_PIN_3)
 /// GPIO port used for the L6474 SPI chip select  pin
-#define BSP_MOTOR_CONTROL_BOARD_CS_PORT (GPIOB)
+#define BSP_MOTOR_CONTROL_BOARD_CS_PORT (GPIOF)
 
 /* Definition for SPIx clock resources */
 

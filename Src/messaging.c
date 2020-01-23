@@ -90,6 +90,6 @@ void MessagingTaskInit(void)
     xTaskCreate( MessageTxTask,"MessageTxTask", 128, &MessageTxTaskHandle, 
         6, &MessageTxTaskHandle); 
     
-    xTaskCreate( MessageRxTask,"MessageRxTask", 128, &MessageRxTaskHandle, 
-        6, &MessageRxTaskHandle); 
+    //xTaskCreate( MessageRxTask,"MessageRxTask", 128, &MessageRxTaskHandle, 
+    //    6, &MessageRxTaskHandle); 
 }

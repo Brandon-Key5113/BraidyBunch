@@ -397,7 +397,7 @@ uint8_t L6474_Board_SpiInit(void)
   
   /* Initialises the SPI  --------------------------------------------------*/
   SpiHandle.Instance               = SPIx;
-  SpiHandle.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_32; 
+  SpiHandle.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_128; 
   SpiHandle.Init.Direction         = SPI_DIRECTION_2LINES;
   SpiHandle.Init.CLKPhase          = SPI_PHASE_2EDGE;    
   SpiHandle.Init.CLKPolarity       = SPI_POLARITY_HIGH;
@@ -426,6 +426,8 @@ uint8_t L6474_Board_SpiWriteBytes(uint8_t *pByteToTransmit, uint8_t *pReceivedBy
   HAL_StatusTypeDef status;
   uint32_t i;
   HAL_GPIO_WritePin(BSP_MOTOR_CONTROL_BOARD_CS_PORT, BSP_MOTOR_CONTROL_BOARD_CS_PIN, GPIO_PIN_RESET); 
+    char str[32];
+    
   for (i = 0; i < nbDevices; i++)
   {
     status = HAL_SPI_TransmitReceive(&SpiHandle, pByteToTransmit, pReceivedByte, 1, SPIx_TIMEOUT_MAX);
@@ -433,6 +435,8 @@ uint8_t L6474_Board_SpiWriteBytes(uint8_t *pByteToTransmit, uint8_t *pReceivedBy
     {
       break;
     }
+    // ADDED BY BRANDON KEY 1/23/2020 TO sniff the data
+    
     pByteToTransmit++;
     pReceivedByte++;
   }

@@ -9,7 +9,7 @@
 
 #define STEPPER_NUM (3)
 #define STEPPER_TASK_PRIORITY (6)
-#define STEPPER_TASK_STACK (256)
+#define STEPPER_TASK_STACK (512)
 
 typedef struct {
     int id;

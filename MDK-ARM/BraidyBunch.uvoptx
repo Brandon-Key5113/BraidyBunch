@@ -152,82 +152,34 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>80</LineNumber>
+          <LineNumber>860</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134238594</Address>
+          <Address>134234146</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\Src\StepperDriver.c</Filename>
+          <Filename>..\Drivers\BSP\Components\l6474\l6474.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\BraidyBunch\../Src/StepperDriver.c\80</Expression>
+          <Expression>\\BraidyBunch\../Drivers/BSP/Components/l6474/l6474.c\860</Expression>
         </Bp>
         <Bp>
           <Number>1</Number>
           <Type>0</Type>
-          <LineNumber>73</LineNumber>
+          <LineNumber>211</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134238574</Address>
+          <Address>134231574</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\Src\StepperDriver.c</Filename>
+          <Filename>../Src/stm32h7xx_hal_msp.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\BraidyBunch\../Src/StepperDriver.c\73</Expression>
-        </Bp>
-        <Bp>
-          <Number>2</Number>
-          <Type>0</Type>
-          <LineNumber>70</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134238568</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\Src\StepperDriver.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\BraidyBunch\../Src/StepperDriver.c\70</Expression>
-        </Bp>
-        <Bp>
-          <Number>3</Number>
-          <Type>0</Type>
-          <LineNumber>67</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134238560</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\Src\StepperDriver.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\BraidyBunch\../Src/StepperDriver.c\67</Expression>
-        </Bp>
-        <Bp>
-          <Number>4</Number>
-          <Type>0</Type>
-          <LineNumber>54</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134238548</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\Src\StepperDriver.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\BraidyBunch\../Src/StepperDriver.c\54</Expression>
+          <Expression>\\BraidyBunch\../Src/stm32h7xx_hal_msp.c\211</Expression>
         </Bp>
       </Breakpoint>
       <Tracepoint>
@@ -273,6 +225,10 @@
       <pSingCmdsp></pSingCmdsp>
       <pMultCmdsp></pMultCmdsp>
       <SystemViewers>
+        <Entry>
+          <Name>System Viewer\GPIOD</Name>
+          <WinId>35905</WinId>
+        </Entry>
         <Entry>
           <Name>System Viewer\SPI1</Name>
           <WinId>35903</WinId>
@@ -442,7 +398,7 @@
       <GroupNumber>4</GroupNumber>
       <FileNumber>11</FileNumber>
       <FileType>1</FileType>
-      <tvExp>0</tvExp>
+      <tvExp>1</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\Drivers\BSP\X-NUCLEO-IHMxx\x_nucleo_ihm01a1_stm32h7xx.c</PathWithFileName>

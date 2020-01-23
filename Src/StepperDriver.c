@@ -48,6 +48,8 @@ L6474_Init_t gL6474InitParams =
 void StepperTask(void *parameters){
     int32_t pos;
     uint16_t mySpeed;
+    
+    MSG_Printf("Start of Stepper Task");
 
     //----- Init of the Motor control library 
     /* Set the L6474 library to use 1 device */
@@ -63,8 +65,8 @@ void StepperTask(void *parameters){
     /* Uncomment the call to BSP_MotorControl_Init below to initialize the      */
     /* device with the structure gL6474InitParams declared in the the main.c file */
     /* and comment the subsequent call having the NULL pointer                   */
-    //BSP_MotorControl_Init(BSP_MOTOR_CONTROL_BOARD_ID_L6474, &gL6474InitParams);
-    BSP_MotorControl_Init(BSP_MOTOR_CONTROL_BOARD_ID_L6474, NULL);
+    BSP_MotorControl_Init(BSP_MOTOR_CONTROL_BOARD_ID_L6474, &gL6474InitParams);
+    //BSP_MotorControl_Init(BSP_MOTOR_CONTROL_BOARD_ID_L6474, NULL);
 
     /* Attach the function MyFlagInterruptHandler (defined below) to the flag interrupt */
     BSP_MotorControl_AttachFlagInterrupt(MyFlagInterruptHandler);
@@ -317,7 +319,7 @@ void StepperTask(void *parameters){
     
     /* Infinite loop */
     while(1) {
-        //vTaskDelay(100);
+        vTaskDelay(100);
     }
 }
 
@@ -331,6 +333,8 @@ void MyFlagInterruptHandler(void)
   /* Get status of device 0 */
   /* this will clear the flags */
   uint16_t statusRegister = BSP_MotorControl_CmdGetStatus(0);
+    
+  while(1){continue;}
 
   /* Check HIZ flag: if set, power brigdes are disabled */
   if ((statusRegister & L6474_STATUS_HIZ) == L6474_STATUS_HIZ)
