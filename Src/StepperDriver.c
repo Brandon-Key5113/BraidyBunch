@@ -54,6 +54,9 @@ void StepperTask(void *parameters){
     //----- Init of the Motor control library 
     /* Set the L6474 library to use 1 device */
     BSP_MotorControl_SetNbDevices(BSP_MOTOR_CONTROL_BOARD_ID_L6474, 1);
+    
+    MSG_Printf("Num Devices Set\r\n");
+    
     /* When BSP_MotorControl_Init is called with NULL pointer,                  */
     /* the L6474 registers and parameters are set with the predefined values from file   */
     /* l6474_target_config.h, otherwise the registers are set using the   */
@@ -68,18 +71,28 @@ void StepperTask(void *parameters){
     BSP_MotorControl_Init(BSP_MOTOR_CONTROL_BOARD_ID_L6474, &gL6474InitParams);
     //BSP_MotorControl_Init(BSP_MOTOR_CONTROL_BOARD_ID_L6474, NULL);
 
+    MSG_Printf("Motor Control Init'd\r\n");
+
     /* Attach the function MyFlagInterruptHandler (defined below) to the flag interrupt */
     BSP_MotorControl_AttachFlagInterrupt(MyFlagInterruptHandler);
+    
+    MSG_Printf("Flag Handler Attached\r\n");
 
     /* Attach the function Error_Handler (defined below) to the error Handler*/
     BSP_MotorControl_AttachErrorHandler(Stepper_Error_Handler);
 
+    MSG_Printf("Error Handler Attached\r\n");
+
     //----- Move of 16000 steps in the FW direction
     /* Move device 0 of 16000 steps in the FORWARD direction*/
     BSP_MotorControl_Move(0, FORWARD, 16000);
+    
+    MSG_Printf("Motor told to move\r\n");
 
     /* Wait for the motor of device 0 ends moving */
     BSP_MotorControl_WaitWhileActive(0);
+
+    MSG_Printf("Motor Inactive\r\n");
 
     /* Wait for 2 seconds */
     vTaskDelay(2000);  

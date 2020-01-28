@@ -427,7 +427,6 @@ uint8_t L6474_Board_SpiWriteBytes(uint8_t *pByteToTransmit, uint8_t *pReceivedBy
   HAL_StatusTypeDef status;
   uint32_t i;
   HAL_GPIO_WritePin(BSP_MOTOR_CONTROL_BOARD_CS_PORT, BSP_MOTOR_CONTROL_BOARD_CS_PIN, GPIO_PIN_RESET); 
-    char str[32];
     
   for (i = 0; i < nbDevices; i++)
   {
@@ -437,14 +436,13 @@ uint8_t L6474_Board_SpiWriteBytes(uint8_t *pByteToTransmit, uint8_t *pReceivedBy
       break;
     }
     // ADDED BY BRANDON KEY 1/23/2020 TO sniff the data
-    MSG_Printf("SPI Out: 0x%hhX\r\n",&pByteToTransmit);
-    MSG_Printf("SPI In:  0x%hhX\r\n",&pReceivedByte);
+    MSG_Printf("SPI: 0x%hhX    0x%hhX\r\n",&pByteToTransmit, &pReceivedByte);
     
     pByteToTransmit++;
     pReceivedByte++;
   }
   HAL_GPIO_WritePin(BSP_MOTOR_CONTROL_BOARD_CS_PORT, BSP_MOTOR_CONTROL_BOARD_CS_PIN, GPIO_PIN_SET); 
-  
+  //MSG_Printf("SPI Status: %d\r\n",status);
   return (uint8_t) status;  
 }
 

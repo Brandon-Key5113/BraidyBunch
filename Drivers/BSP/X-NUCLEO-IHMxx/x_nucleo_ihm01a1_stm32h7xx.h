@@ -195,14 +195,14 @@
 #define BSP_MOTOR_CONTROL_BOARD_DIR_3_PORT  (GPIOE)
 
 /// GPIO Pin used for the L6474 reset pin
-#define BSP_MOTOR_CONTROL_BOARD_RESET_PIN  (GPIO_PIN_9)
+#define BSP_MOTOR_CONTROL_BOARD_RESET_PIN  (GPIO_PIN_3)
 /// GPIO port used for the L6474 reset pin
-#define BSP_MOTOR_CONTROL_BOARD_RESET_PORT (GPIOA)
+#define BSP_MOTOR_CONTROL_BOARD_RESET_PORT (GPIOF)
 
 /// GPIO Pin used for the L6474 SPI chip select pin
-#define BSP_MOTOR_CONTROL_BOARD_CS_PIN  (GPIO_PIN_3)
+#define BSP_MOTOR_CONTROL_BOARD_CS_PIN  (GPIO_PIN_14)
 /// GPIO port used for the L6474 SPI chip select  pin
-#define BSP_MOTOR_CONTROL_BOARD_CS_PORT (GPIOF)
+#define BSP_MOTOR_CONTROL_BOARD_CS_PORT (GPIOD)
 
 /* Definition for SPIx clock resources */
 

@@ -63,6 +63,8 @@ void Error_Handler(void);
 #define User_Button_Pin GPIO_PIN_13
 #define User_Button_GPIO_Port GPIOC
 #define User_Button_EXTI_IRQn EXTI15_10_IRQn
+#define RST_Pin GPIO_PIN_3
+#define RST_GPIO_Port GPIOF
 #define Inputasdfasd_Pin GPIO_PIN_0
 #define Inputasdfasd_GPIO_Port GPIOG
 #define Inputasdfasd_EXTI_IRQn EXTI0_IRQn
@@ -70,6 +72,8 @@ void Error_Handler(void);
 #define LD3_GPIO_Port GPIOB
 #define USB_OTG_FS_PWR_EN_Pin GPIO_PIN_10
 #define USB_OTG_FS_PWR_EN_GPIO_Port GPIOD
+#define ChipSel_Pin GPIO_PIN_14
+#define ChipSel_GPIO_Port GPIOD
 #define USB_OTG_FS_OVCR_Pin GPIO_PIN_7
 #define USB_OTG_FS_OVCR_GPIO_Port GPIOG
 #define USB_OTG_FS_OVCR_EXTI_IRQn EXTI9_5_IRQn
