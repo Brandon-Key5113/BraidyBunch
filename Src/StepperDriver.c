@@ -353,18 +353,21 @@ void MyFlagInterruptHandler(void)
   {
     // HIZ state
     // Action to be customized
+      MSG_Printf("Hi-Z Mode\r\n");
   }
 
   /* Check direction bit */
   if ((statusRegister & L6474_STATUS_DIR) == L6474_STATUS_DIR)
   {
     // Forward direction is set
-    // Action to be customized    
+    // Action to be customized  
+    //MSG_Printf("FWD Dir Set\r\n");
   }  
   else
   {
     // Backward direction is set
     // Action to be customized    
+    //MSG_Printf("REV Dir Set\r\n");
   }  
 
   /* Check NOTPERF_CMD flag: if set, the command received by SPI can't be performed */
@@ -374,41 +377,47 @@ void MyFlagInterruptHandler(void)
   {
        // Command received by SPI can't be performed
        // Action to be customized    
+      //MSG_Printf("Bad CMD\r\n");
   }  
 
   /* Check WRONG_CMD flag: if set, the command does not exist */
   if ((statusRegister & L6474_STATUS_WRONG_CMD) == L6474_STATUS_WRONG_CMD)
   {
      //command received by SPI does not exist 
-     // Action to be customized        
+     // Action to be customized      
+     //MSG_Printf("CMD DNE\r\n");
   }  
 
   /* Check UVLO flag: if not set, there is an undervoltage lock-out */
   if ((statusRegister & L6474_STATUS_UVLO) == 0)
   {
      //undervoltage lock-out 
-     // Action to be customized            
+     // Action to be customized      
+     //MSG_Printf("UVLO\r\n");      
   }  
 
   /* Check TH_WRN flag: if not set, the thermal warning threshold is reached */
   if ((statusRegister & L6474_STATUS_TH_WRN) == 0)
   {
     //thermal warning threshold is reached
-    // Action to be customized            
+    // Action to be customized    
+    //MSG_Printf("TH_WRN\r\n");
   }    
 
   /* Check TH_SHD flag: if not set, the thermal shut down threshold is reached */
   if ((statusRegister & L6474_STATUS_TH_SD) == 0)
   {
     //thermal shut down threshold is reached 
-    // Action to be customized            
+    // Action to be customized    
+    //MSG_Printf("FWD Dir Set\r\n");
   }    
 
   /* Check OCD  flag: if not set, there is an overcurrent detection */
   if ((statusRegister & L6474_STATUS_OCD) == 0)
   {
     //overcurrent detection 
-    // Action to be customized            
+    // Action to be customized
+    //MSG_Printf("OCD\r\n");
   }      
 
 //  /* Get status of device 1 */

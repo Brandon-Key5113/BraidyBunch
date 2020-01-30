@@ -438,7 +438,7 @@ uint8_t L6474_Board_SpiWriteBytes(uint8_t *pByteToTransmit, uint8_t *pReceivedBy
       break;
     }
     // ADDED BY BRANDON KEY 1/23/2020 TO sniff the data
-    MSG_Printf("SPI: 0x%hhX    0x%hhX\r\n",&pByteToTransmit, &pReceivedByte);
+    //MSG_Printf("SPI: 0x%hhX    0x%hhX\r\n",&pByteToTransmit, &pReceivedByte);
     
     pByteToTransmit++;
     pReceivedByte++;

@@ -129,7 +129,7 @@ int main(void)
   led_task_init(LED_GREEN);
   led_task_init(LED_ORANGE);
   led_task_init(LED_RED);
-  //StepperTaskInit(0);
+  StepperTaskInit(0);
 
   /* USER CODE END 2 */
 
@@ -568,10 +568,8 @@ static void MX_GPIO_Init(void)
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
     switch(GPIO_Pin){
         case User_Button_Pin:
-            while (1){}
             break;
         case Flag_Pin:
-            while (1){}
             BSP_MotorControl_FlagInterruptHandler();
             break;
         default:
