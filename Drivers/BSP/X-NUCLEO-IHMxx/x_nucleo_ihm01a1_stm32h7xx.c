@@ -39,6 +39,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "x_nucleo_ihm01a1_stm32h7xx.h"
 #include "messaging.h"
+#include "cmsis_os.h"
 
 /** @addtogroup BSP
   * @{
@@ -117,7 +118,8 @@ uint8_t L6474_Board_SpiWriteBytes(uint8_t *pByteToTransmit, uint8_t *pReceivedBy
  **********************************************************/
 void L6474_Board_Delay(uint32_t delay)
 {
-  HAL_Delay(delay);
+  //HAL_Delay(delay);
+  vTaskDelay(delay);
 }
 
 /******************************************************//**

@@ -347,7 +347,6 @@ void MyFlagInterruptHandler(void)
   /* this will clear the flags */
   uint16_t statusRegister = BSP_MotorControl_CmdGetStatus(0);
     
-  while(1){continue;}
 
   /* Check HIZ flag: if set, power brigdes are disabled */
   if ((statusRegister & L6474_STATUS_HIZ) == L6474_STATUS_HIZ)
@@ -412,139 +411,139 @@ void MyFlagInterruptHandler(void)
     // Action to be customized            
   }      
 
-  /* Get status of device 1 */
-  /* this will clear the flags */
-  statusRegister = BSP_MotorControl_CmdGetStatus(1);  
-  
-  /* Check HIZ flag: if set, power brigdes are disabled */
-  if ((statusRegister & L6474_STATUS_HIZ) == L6474_STATUS_HIZ)
-  {
-    // HIZ state
-    // Action to be customized
-  }
+//  /* Get status of device 1 */
+//  /* this will clear the flags */
+//  statusRegister = BSP_MotorControl_CmdGetStatus(1);  
+//  
+//  /* Check HIZ flag: if set, power brigdes are disabled */
+//  if ((statusRegister & L6474_STATUS_HIZ) == L6474_STATUS_HIZ)
+//  {
+//    // HIZ state
+//    // Action to be customized
+//  }
 
-  /* Check direction bit */
-  if ((statusRegister & L6474_STATUS_DIR) == L6474_STATUS_DIR)
-  {
-    // Forward direction is set
-    // Action to be customized    
-  }  
-  else
-  {
-    // Backward direction is set
-    // Action to be customized    
-  }  
+//  /* Check direction bit */
+//  if ((statusRegister & L6474_STATUS_DIR) == L6474_STATUS_DIR)
+//  {
+//    // Forward direction is set
+//    // Action to be customized    
+//  }  
+//  else
+//  {
+//    // Backward direction is set
+//    // Action to be customized    
+//  }  
 
-  /* Check NOTPERF_CMD flag: if set, the command received by SPI can't be performed */
-  /* This often occures when a command is sent to the L6474 */
-  /* while it is in HIZ state */
-  if ((statusRegister & L6474_STATUS_NOTPERF_CMD) == L6474_STATUS_NOTPERF_CMD)
-  {
-       // Command received by SPI can't be performed
-       // Action to be customized    
-  }  
+//  /* Check NOTPERF_CMD flag: if set, the command received by SPI can't be performed */
+//  /* This often occures when a command is sent to the L6474 */
+//  /* while it is in HIZ state */
+//  if ((statusRegister & L6474_STATUS_NOTPERF_CMD) == L6474_STATUS_NOTPERF_CMD)
+//  {
+//       // Command received by SPI can't be performed
+//       // Action to be customized    
+//  }  
 
-  /* Check WRONG_CMD flag: if set, the command does not exist */
-  if ((statusRegister & L6474_STATUS_WRONG_CMD) == L6474_STATUS_WRONG_CMD)
-  {
-     //command received by SPI does not exist 
-     // Action to be customized        
-  }  
+//  /* Check WRONG_CMD flag: if set, the command does not exist */
+//  if ((statusRegister & L6474_STATUS_WRONG_CMD) == L6474_STATUS_WRONG_CMD)
+//  {
+//     //command received by SPI does not exist 
+//     // Action to be customized        
+//  }  
 
-  /* Check UVLO flag: if not set, there is an undervoltage lock-out */
-  if ((statusRegister & L6474_STATUS_UVLO) == 0)
-  {
-     //undervoltage lock-out 
-     // Action to be customized            
-  }  
+//  /* Check UVLO flag: if not set, there is an undervoltage lock-out */
+//  if ((statusRegister & L6474_STATUS_UVLO) == 0)
+//  {
+//     //undervoltage lock-out 
+//     // Action to be customized            
+//  }  
 
-  /* Check TH_WRN flag: if not set, the thermal warning threshold is reached */
-  if ((statusRegister & L6474_STATUS_TH_WRN) == 0)
-  {
-    //thermal warning threshold is reached
-    // Action to be customized            
-  }    
+//  /* Check TH_WRN flag: if not set, the thermal warning threshold is reached */
+//  if ((statusRegister & L6474_STATUS_TH_WRN) == 0)
+//  {
+//    //thermal warning threshold is reached
+//    // Action to be customized            
+//  }    
 
-  /* Check TH_SHD flag: if not set, the thermal shut down threshold is reached */
-  if ((statusRegister & L6474_STATUS_TH_SD) == 0)
-  {
-    //thermal shut down threshold is reached 
-    // Action to be customized            
-  }    
+//  /* Check TH_SHD flag: if not set, the thermal shut down threshold is reached */
+//  if ((statusRegister & L6474_STATUS_TH_SD) == 0)
+//  {
+//    //thermal shut down threshold is reached 
+//    // Action to be customized            
+//  }    
 
-  /* Check OCD  flag: if not set, there is an overcurrent detection */
-  if ((statusRegister & L6474_STATUS_OCD) == 0)
-  {
-    //overcurrent detection 
-    // Action to be customized            
-  }      
+//  /* Check OCD  flag: if not set, there is an overcurrent detection */
+//  if ((statusRegister & L6474_STATUS_OCD) == 0)
+//  {
+//    //overcurrent detection 
+//    // Action to be customized            
+//  }      
 
-  /* Get status of device 2 */
-  /* this will clear the flags */
-  statusRegister = BSP_MotorControl_CmdGetStatus(2);  
+//  /* Get status of device 2 */
+//  /* this will clear the flags */
+//  statusRegister = BSP_MotorControl_CmdGetStatus(2);  
 
-  /* Check HIZ flag: if set, power brigdes are disabled */
-  if ((statusRegister & L6474_STATUS_HIZ) == L6474_STATUS_HIZ)
-  {
-    // HIZ state
-    // Action to be customized
-  }
+//  /* Check HIZ flag: if set, power brigdes are disabled */
+//  if ((statusRegister & L6474_STATUS_HIZ) == L6474_STATUS_HIZ)
+//  {
+//    // HIZ state
+//    // Action to be customized
+//  }
 
-  /* Check direction bit */
-  if ((statusRegister & L6474_STATUS_DIR) == L6474_STATUS_DIR)
-  {
-    // Forward direction is set
-    // Action to be customized    
-  }  
-  else
-  {
-    // Backward direction is set
-    // Action to be customized    
-  }  
+//  /* Check direction bit */
+//  if ((statusRegister & L6474_STATUS_DIR) == L6474_STATUS_DIR)
+//  {
+//    // Forward direction is set
+//    // Action to be customized    
+//  }  
+//  else
+//  {
+//    // Backward direction is set
+//    // Action to be customized    
+//  }  
 
-  /* Check NOTPERF_CMD flag: if set, the command received by SPI can't be performed */
-  /* This often occures when a command is sent to the L6474 */
-  /* while it is in HIZ state */
-  if ((statusRegister & L6474_STATUS_NOTPERF_CMD) == L6474_STATUS_NOTPERF_CMD)
-  {
-       // Command received by SPI can't be performed
-       // Action to be customized    
-  }  
+//  /* Check NOTPERF_CMD flag: if set, the command received by SPI can't be performed */
+//  /* This often occures when a command is sent to the L6474 */
+//  /* while it is in HIZ state */
+//  if ((statusRegister & L6474_STATUS_NOTPERF_CMD) == L6474_STATUS_NOTPERF_CMD)
+//  {
+//       // Command received by SPI can't be performed
+//       // Action to be customized    
+//  }  
 
-  /* Check WRONG_CMD flag: if set, the command does not exist */
-  if ((statusRegister & L6474_STATUS_WRONG_CMD) == L6474_STATUS_WRONG_CMD)
-  {
-     //command received by SPI does not exist 
-     // Action to be customized        
-  }  
+//  /* Check WRONG_CMD flag: if set, the command does not exist */
+//  if ((statusRegister & L6474_STATUS_WRONG_CMD) == L6474_STATUS_WRONG_CMD)
+//  {
+//     //command received by SPI does not exist 
+//     // Action to be customized        
+//  }  
 
-  /* Check UVLO flag: if not set, there is an undervoltage lock-out */
-  if ((statusRegister & L6474_STATUS_UVLO) == 0)
-  {
-     //undervoltage lock-out 
-     // Action to be customized            
-  }  
+//  /* Check UVLO flag: if not set, there is an undervoltage lock-out */
+//  if ((statusRegister & L6474_STATUS_UVLO) == 0)
+//  {
+//     //undervoltage lock-out 
+//     // Action to be customized            
+//  }  
 
-  /* Check TH_WRN flag: if not set, the thermal warning threshold is reached */
-  if ((statusRegister & L6474_STATUS_TH_WRN) == 0)
-  {
-    //thermal warning threshold is reached
-    // Action to be customized            
-  }    
+//  /* Check TH_WRN flag: if not set, the thermal warning threshold is reached */
+//  if ((statusRegister & L6474_STATUS_TH_WRN) == 0)
+//  {
+//    //thermal warning threshold is reached
+//    // Action to be customized            
+//  }    
 
-  /* Check TH_SHD flag: if not set, the thermal shut down threshold is reached */
-  if ((statusRegister & L6474_STATUS_TH_SD) == 0)
-  {
-    //thermal shut down threshold is reached 
-    // Action to be customized            
-  }    
+//  /* Check TH_SHD flag: if not set, the thermal shut down threshold is reached */
+//  if ((statusRegister & L6474_STATUS_TH_SD) == 0)
+//  {
+//    //thermal shut down threshold is reached 
+//    // Action to be customized            
+//  }    
 
-  /* Check OCD  flag: if not set, there is an overcurrent detection */
-  if ((statusRegister & L6474_STATUS_OCD) == 0)
-  {
-    //overcurrent detection 
-    // Action to be customized            
-  }      
+//  /* Check OCD  flag: if not set, there is an overcurrent detection */
+//  if ((statusRegister & L6474_STATUS_OCD) == 0)
+//  {
+//    //overcurrent detection 
+//    // Action to be customized            
+//  }      
 
 }
 

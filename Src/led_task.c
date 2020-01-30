@@ -8,7 +8,7 @@
 
 #include "messaging.h"
 
-LED_PARAMS_t led_params[2];  // create 2 instances of params, one for each task
+LED_PARAMS_t led_params[LED_MAX];  // create 2 instances of params, one for each task
 
 extern UART_HandleTypeDef huart3;
 
@@ -100,5 +100,5 @@ void led_task_init(enum LED led)
     }
 
 
-    xTaskCreate( led_task, LED_NAMES[led], 256, (void *)p, 6, &p->handle); 
+    xTaskCreate( led_task, LED_NAMES[led], 64, (void *)p, 6, &p->handle); 
 }

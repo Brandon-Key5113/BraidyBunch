@@ -37,7 +37,7 @@ typedef struct {
     
 } LED_PARAMS_t;
 
-extern LED_PARAMS_t led_params[2]; // defined here, allocated in led_task.c
+extern LED_PARAMS_t led_params[LED_MAX]; // defined here, allocated in led_task.c
 
 void led_toggle(int id);
 void led_task(void *parameters);

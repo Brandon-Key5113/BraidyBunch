@@ -65,9 +65,9 @@ void Error_Handler(void);
 #define User_Button_EXTI_IRQn EXTI15_10_IRQn
 #define RST_Pin GPIO_PIN_3
 #define RST_GPIO_Port GPIOF
-#define Inputasdfasd_Pin GPIO_PIN_0
-#define Inputasdfasd_GPIO_Port GPIOG
-#define Inputasdfasd_EXTI_IRQn EXTI0_IRQn
+#define IntTest_Pin GPIO_PIN_0
+#define IntTest_GPIO_Port GPIOG
+#define IntTest_EXTI_IRQn EXTI0_IRQn
 #define LD3_Pin GPIO_PIN_14
 #define LD3_GPIO_Port GPIOB
 #define USB_OTG_FS_PWR_EN_Pin GPIO_PIN_10
@@ -77,9 +77,9 @@ void Error_Handler(void);
 #define USB_OTG_FS_OVCR_Pin GPIO_PIN_7
 #define USB_OTG_FS_OVCR_GPIO_Port GPIOG
 #define USB_OTG_FS_OVCR_EXTI_IRQn EXTI9_5_IRQn
-#define Flag_Pin GPIO_PIN_2
-#define Flag_GPIO_Port GPIOD
-#define Flag_EXTI_IRQn EXTI2_IRQn
+#define Flag_Pin GPIO_PIN_14
+#define Flag_GPIO_Port GPIOG
+#define Flag_EXTI_IRQn EXTI15_10_IRQn
 #define LD2_Pin GPIO_PIN_1
 #define LD2_GPIO_Port GPIOE
 /* USER CODE BEGIN Private defines */
