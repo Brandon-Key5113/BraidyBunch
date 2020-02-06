@@ -740,6 +740,26 @@ void BSP_MotorControl_StepClockHandler(uint8_t deviceId)
     MOTOR_CONTROL_ERROR_UNDEFINED_FUNCTION(29);
   }   
 }
+
+#include "stm32h7xx.h"
+#include "x_nucleo_ihm01a1_stm32h7xx.h"
+void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim){
+    if (htim->Instance == BSP_MOTOR_CONTROL_BOARD_TIMER_PWM1){
+        // Pulse Finished for PWM 1
+        BSP_MotorControl_StepClockHandler(0);
+    } 
+    if(htim->Instance == BSP_MOTOR_CONTROL_BOARD_TIMER_PWM2){
+        // Pulse Finished for PWM 2
+        BSP_MotorControl_StepClockHandler(1);
+    } 
+    
+    if(htim->Instance == BSP_MOTOR_CONTROL_BOARD_TIMER_PWM3){
+        // Pulse Finished for PWM 3
+        BSP_MotorControl_StepClockHandler(2);
+    }
+    
+}
+
 /******************************************************//**
  * @brief  Locks until the device state becomes Inactive
  * @param[in] deviceId (from 0 to MAX_NUMBER_OF_DEVICES - 1)
@@ -1927,6 +1947,7 @@ uint8_t BSP_MotorControl_GetDualFullBridgeConfig(void)
   
   return value;
 }
+
 
 /**
  * @}

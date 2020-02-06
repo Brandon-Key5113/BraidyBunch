@@ -82,12 +82,26 @@ void StepperTask(void *parameters){
     BSP_MotorControl_AttachErrorHandler(Stepper_Error_Handler);
 
     MSG_Printf("Error Handler Attached\r\n");
+    
+    // Hold the reset pin low for a bit. Active Low.
+    //BSP_MotorControl_ResetAllDevices();
 
     //----- Move of 16000 steps in the FW direction
     /* Move device 0 of 16000 steps in the FORWARD direction*/
-    BSP_MotorControl_Move(0, FORWARD, 16000);
+    //BSP_MotorControl_Move(0, FORWARD, 1600);
+    BSP_MotorControl_GoTo(0,1600);
     
     MSG_Printf("Motor told to move\r\n");
+    
+    while ((pos = BSP_MotorControl_GetPosition(0)) < 1600){
+        MSG_Printf("Motor Pos: %d\r\n", pos);
+        vTaskDelay(100);
+    }
+    
+    //BSP_MotorControl_CmdSoftStop(0);
+    BSP_MotorControl_HardStop(0);
+    
+    vTaskDelay(10000);
 
     /* Wait for the motor of device 0 ends moving */
     BSP_MotorControl_WaitWhileActive(0);
@@ -97,52 +111,76 @@ void StepperTask(void *parameters){
     /* Wait for 2 seconds */
     vTaskDelay(2000);  
 
+    MSG_Printf("Delay'd\r\n");
     //----- Move of 16000 steps in the BW direction
 
     /* Move device 0 of 16000 steps in the BACKWARD direction*/
-    BSP_MotorControl_Move(0, BACKWARD, 16000);
+    BSP_MotorControl_Move(0, BACKWARD, 1600);
+    
+    MSG_Printf("Moving Backwards\r\n");
 
     /* Wait for the motor of device 0 ends moving */
     BSP_MotorControl_WaitWhileActive(0);
+    
+    MSG_Printf("Motor Inactive\r\n");
 
     /* Get current position of device 0*/
     pos = BSP_MotorControl_GetPosition(0);
+    
+    MSG_Printf("Motor Pos: %d\r\n", pos);
 
     /* Set the current position of device 0 to be the Home position */
     BSP_MotorControl_SetHome(0, pos);
+    
+    MSG_Printf("Motor Set to home\r\n");
 
     /* Wait for 2 seconds */
     vTaskDelay(2000);
 
+    MSG_Printf("Motor Delay'd\r\n");
     //----- Go to position -6400
 
     /* Request device 0 to go to position -6400 */
-    BSP_MotorControl_GoTo(0,-6400);  
+    BSP_MotorControl_GoTo(0,-6400); 
+
+    MSG_Printf("Motor Going to -6400\r\n");
 
     /* Wait for the motor ends moving */
     BSP_MotorControl_WaitWhileActive(0);
+    
+    MSG_Printf("Motor Inactive\r\n");
 
     /* Get current position of device 0*/
     pos = BSP_MotorControl_GetPosition(0);
 
+    MSG_Printf("Motor Pos: %d\r\n", pos);
+    
     if (pos != -6400) {
+        MSG_Printf("Bad Motor Pos\r\n");
         Stepper_Error_Handler(11);
     }
 
     /* Set the current position of device 0 to be the Mark position */
     BSP_MotorControl_SetMark(0, pos);
+    
+    MSG_Printf("Motor Mark Set\r\n");
 
     /* Wait for 2 seconds */
     vTaskDelay(2000);
 
+    MSG_Printf("Motor Delay'd\r\n");
     //----- Go Home
 
     /* Request device 0 to go to Home */
     BSP_MotorControl_GoHome(0);  
+    MSG_Printf("Motor Going Home\r\n");
     BSP_MotorControl_WaitWhileActive(0);
+    MSG_Printf("Motor Inactive\r\n");
 
     /* Get current position of device 0 */
     pos = BSP_MotorControl_GetPosition(0);
+
+    MSG_Printf("Motor Pos: %d\r\n", pos);
 
     /* Wait for 2 seconds */
     vTaskDelay(2000);
@@ -377,7 +415,7 @@ void MyFlagInterruptHandler(void)
   {
        // Command received by SPI can't be performed
        // Action to be customized    
-      //MSG_Printf("Bad CMD\r\n");
+      MSG_Printf("Bad CMD\r\n");
   }  
 
   /* Check WRONG_CMD flag: if set, the command does not exist */
@@ -385,7 +423,7 @@ void MyFlagInterruptHandler(void)
   {
      //command received by SPI does not exist 
      // Action to be customized      
-     //MSG_Printf("CMD DNE\r\n");
+     MSG_Printf("CMD DNE\r\n");
   }  
 
   /* Check UVLO flag: if not set, there is an undervoltage lock-out */
@@ -393,7 +431,7 @@ void MyFlagInterruptHandler(void)
   {
      //undervoltage lock-out 
      // Action to be customized      
-     //MSG_Printf("UVLO\r\n");      
+     MSG_Printf("UVLO\r\n");      
   }  
 
   /* Check TH_WRN flag: if not set, the thermal warning threshold is reached */
@@ -401,7 +439,7 @@ void MyFlagInterruptHandler(void)
   {
     //thermal warning threshold is reached
     // Action to be customized    
-    //MSG_Printf("TH_WRN\r\n");
+    MSG_Printf("TH_WRN\r\n");
   }    
 
   /* Check TH_SHD flag: if not set, the thermal shut down threshold is reached */
@@ -417,7 +455,7 @@ void MyFlagInterruptHandler(void)
   {
     //overcurrent detection 
     // Action to be customized
-    //MSG_Printf("OCD\r\n");
+    MSG_Printf("OCD\r\n");
   }      
 
 //  /* Get status of device 1 */
