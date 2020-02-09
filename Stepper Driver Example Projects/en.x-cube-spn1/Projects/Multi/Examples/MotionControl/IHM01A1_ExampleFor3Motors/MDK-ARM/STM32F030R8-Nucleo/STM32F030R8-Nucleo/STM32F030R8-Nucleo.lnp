@@ -1,0 +1,27 @@
+--cpu Cortex-M0
+".\stm32f030r8-nucleo\l6474.o"
+".\stm32f030r8-nucleo\x_nucleo_ihm01a1_stm32f0xx.o"
+".\stm32f030r8-nucleo\x_nucleo_ihmxx.o"
+".\stm32f030r8-nucleo\stm32f0xx_nucleo.o"
+".\stm32f030r8-nucleo\system_stm32f0xx.o"
+".\stm32f030r8-nucleo\stm32f0xx_hal.o"
+".\stm32f030r8-nucleo\stm32f0xx_hal_cortex.o"
+".\stm32f030r8-nucleo\stm32f0xx_hal_dma.o"
+".\stm32f030r8-nucleo\stm32f0xx_hal_gpio.o"
+".\stm32f030r8-nucleo\stm32f0xx_hal_rcc.o"
+".\stm32f030r8-nucleo\stm32f0xx_hal_rcc_ex.o"
+".\stm32f030r8-nucleo\stm32f0xx_hal_adc.o"
+".\stm32f030r8-nucleo\stm32f0xx_hal_adc_ex.o"
+".\stm32f030r8-nucleo\stm32f0xx_hal_tim.o"
+".\stm32f030r8-nucleo\stm32f0xx_hal_tim_ex.o"
+".\stm32f030r8-nucleo\stm32f0xx_hal_spi.o"
+".\stm32f030r8-nucleo\stm32f0xx_hal_spi_ex.o"
+".\stm32f030r8-nucleo\startup_stm32f030x8.o"
+".\stm32f030r8-nucleo\main.o"
+".\stm32f030r8-nucleo\stm32f0xx_hal_msp.o"
+".\stm32f030r8-nucleo\stm32f0xx_it.o"
+".\stm32f030r8-nucleo\clock_f0.o"
+--strict --scatter ".\STM32F030R8-Nucleo\STM32F030R8-Nucleo.sct"
+--diag_suppress=L6329 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "STM32F030R8-Nucleo.map" -o .\STM32F030R8-Nucleo\STM32F030R8-Nucleo.axf

@@ -75,8 +75,8 @@ void MSG_Printf(const char *fmt, ...) {
     va_end(argptr);
 	
 	// add to buffer
-	xQueueSendToBack(MessageTxQueueHandle, &buffer, 0);
-    
+	//xQueueSendToBack(MessageTxQueueHandle, &buffer, 0);
+    xQueueSendToBackFromISR(MessageTxQueueHandle, &buffer, 0);
 }
 
 

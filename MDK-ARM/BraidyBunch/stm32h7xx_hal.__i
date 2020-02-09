@@ -1,0 +1,6 @@
+--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/BSP/Components/Common -I ../Drivers/BSP/Components\l6474 -I ../Drivers/BSP/STM32H7xx_Nucleo -I ../Drivers/BSP/X-NUCLEO-IHMxx
+-I.\RTE\_BraidyBunch
+-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include"
+-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\Keil\STM32H7xx_DFP\2.3.1\Drivers\CMSIS\Device\ST\STM32H7xx\Include"
+-D__UVISION_VERSION="527" -D_RTE_ -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx
+-o braidybunch\stm32h7xx_hal.o --omf_browse braidybunch\stm32h7xx_hal.crf --depend braidybunch\stm32h7xx_hal.d "../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c"

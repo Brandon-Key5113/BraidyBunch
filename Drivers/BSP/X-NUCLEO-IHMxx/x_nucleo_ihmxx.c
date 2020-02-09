@@ -37,6 +37,9 @@
 /* Includes ------------------------------------------------------------------*/
 #include "x_nucleo_ihmxx.h"
 
+#include "stm32h7xx.h" // For Timer defines
+#include "x_nucleo_ihm01a1_stm32h7xx.h" // For Timer to stepper hat mappings
+
 /** @addtogroup BSP
  * @{
  */
@@ -741,8 +744,7 @@ void BSP_MotorControl_StepClockHandler(uint8_t deviceId)
   }   
 }
 
-#include "stm32h7xx.h"
-#include "x_nucleo_ihm01a1_stm32h7xx.h"
+
 void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim){
     if (htim->Instance == BSP_MOTOR_CONTROL_BOARD_TIMER_PWM1){
         // Pulse Finished for PWM 1

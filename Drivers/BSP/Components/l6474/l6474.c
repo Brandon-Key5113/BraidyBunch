@@ -38,6 +38,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "l6474.h"
+#include "cmsis_os.h" // For vTaskDelay
 
 /* Private constants  ---------------------------------------------------------*/
 
@@ -1309,7 +1310,9 @@ bool L6474_SoftStop(uint8_t deviceId)
 void L6474_WaitWhileActive(uint8_t deviceId)
  {
 	/* Wait while motor is running */
-	while (L6474_GetDeviceState(deviceId) != INACTIVE);
+	while (L6474_GetDeviceState(deviceId) != INACTIVE){
+        vTaskDelay(1);
+    }
 }
 
 /**
