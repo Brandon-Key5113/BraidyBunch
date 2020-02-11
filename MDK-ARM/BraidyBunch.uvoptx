@@ -154,7 +154,7 @@
           <Type>0</Type>
           <LineNumber>1295</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134236314</Address>
+          <Address>134235822</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -210,12 +210,24 @@
       <pMultCmdsp></pMultCmdsp>
       <SystemViewers>
         <Entry>
+          <Name>System Viewer\GPIOD</Name>
+          <WinId>35900</WinId>
+        </Entry>
+        <Entry>
+          <Name>System Viewer\GPIOE</Name>
+          <WinId>35901</WinId>
+        </Entry>
+        <Entry>
           <Name>System Viewer\GPIOF</Name>
           <WinId>35905</WinId>
         </Entry>
         <Entry>
           <Name>System Viewer\GPIOG</Name>
           <WinId>35903</WinId>
+        </Entry>
+        <Entry>
+          <Name>System Viewer\TIM1</Name>
+          <WinId>35902</WinId>
         </Entry>
         <Entry>
           <Name>System Viewer\TIM4</Name>

@@ -130,7 +130,7 @@
 #define BSP_MOTOR_CONTROL_BOARD_AFx_TIMx_PWM1  (GPIO_AF0_TIM4)
 
 /// PWM2 GPIO alternate function 
-#define BSP_MOTOR_CONTROL_BOARD_AFx_TIMx_PWM2  (GPIO_AF2_TIM1 )
+#define BSP_MOTOR_CONTROL_BOARD_AFx_TIMx_PWM2  (GPIO_AF2_TIM1)
 
 #ifndef BSP_MOTOR_CONTROL_BOARD_USE_SPI2
 /// SPI SCK AF
@@ -145,7 +145,7 @@
 /// PWM2 frequency rescaler (1 for HW PWM, 2 for SW PWM)
 #define BSP_MOTOR_CONTROL_BOARD_PWM2_FREQ_RESCALER    (1)   
 /// PWM3 frequency rescaler (1 for HW PWM, 2 for SW PWM)   
-#define BSP_MOTOR_CONTROL_BOARD_PWM3_FREQ_RESCALER    (2)  
+#define BSP_MOTOR_CONTROL_BOARD_PWM3_FREQ_RESCALER    (1)  
    
  /**
 * @}

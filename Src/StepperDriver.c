@@ -8,10 +8,12 @@
 
 #include "messaging.h"
 
-
 static volatile uint16_t gLastError;
 static const char* STEPPER_TASK_FORMAT = "STEPPER_TASK %d";
 static STEPPER_PARAMS_t STEPPER_PARAMS[STEPPER_NUM];
+
+int buttonPressed = 0;
+int running = 0;
 
 /* Private function prototypes -----------------------------------------------*/
 static void MyFlagInterruptHandler(void);
@@ -22,8 +24,8 @@ L6474_Init_t gL6474InitParams =
 {
     10,                               /// Acceleration rate in step/s2. Range: (0..+inf).
     10,                               /// Deceleration rate in step/s2. Range: (0..+inf). 
-    30000,                              /// Maximum speed in step/s. Range: (30..10000].
-    8000,                               ///Minimum speed in step/s. Range: [30..10000).
+    2000,                              /// Maximum speed in step/s. Range: (30..10000].
+    1000,                               ///Minimum speed in step/s. Range: [30..10000).
     500,                               ///Torque regulation current in mA. (TVAL register) Range: 31.25mA to 4000mA.
     1000,                               ///Overcurrent threshold (OCD_TH register). Range: 375mA to 6000mA.
     L6474_CONFIG_OC_SD_ENABLE,         ///Overcurrent shutwdown (OC_SD field of CONFIG register). 
@@ -55,13 +57,24 @@ void StepperTask(void *parameters){
     /* Set the L6474 library to use 1 device */
     BSP_MotorControl_SetNbDevices(BSP_MOTOR_CONTROL_BOARD_ID_L6474, 3);
     
-    vTaskDelay(1000);
+    vTaskDelay(1);
     BSP_MotorControl_Reset(0);
-    vTaskDelay(1000);
+    BSP_MotorControl_Reset(1);
+    BSP_MotorControl_Reset(2);
+    vTaskDelay(1);
     BSP_MotorControl_ReleaseReset(0);
-    vTaskDelay(1000);
-    
-    
+    BSP_MotorControl_ReleaseReset(1);
+    BSP_MotorControl_ReleaseReset(2);
+    vTaskDelay(1);
+    BSP_MotorControl_Reset(0);
+    BSP_MotorControl_Reset(1);
+    BSP_MotorControl_Reset(2);
+    vTaskDelay(1);
+    BSP_MotorControl_ReleaseReset(0);
+    BSP_MotorControl_ReleaseReset(1);
+    BSP_MotorControl_ReleaseReset(2);
+    vTaskDelay(1);
+  
     
     
     MSG_Printf("Num Devices Set\r\n");
@@ -97,7 +110,31 @@ void StepperTask(void *parameters){
     MSG_Printf("Error Handler Attached\r\n");
 
 
+    while (1){
+        if (buttonPressed){
+            buttonPressed = 0;
+            running = !running;
+            BSP_MotorControl_Move(0, BACKWARD, 880);
+            BSP_MotorControl_Move(2, BACKWARD, 880);
+//            if (running){
+//                BSP_MotorControl_Run(0,BACKWARD);  
+//                BSP_MotorControl_Run(1,BACKWARD);  
+//                BSP_MotorControl_Run(2,BACKWARD);
+//            
+//            } else {
+//                BSP_MotorControl_HardStop(0);
+//                BSP_MotorControl_HardStop(1);
+//                BSP_MotorControl_HardStop(2);
+//            }
+            
+            
+        }
+        vTaskDelay(100);
+    }
+
+
     while(1){
+        
         BSP_MotorControl_Run(0,BACKWARD);  
         BSP_MotorControl_Run(1,BACKWARD);  
         BSP_MotorControl_Run(2,BACKWARD);

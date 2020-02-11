@@ -1,6 +1,0 @@
---cpu Cortex-M7.fp.dp -g --apcs=interwork --pd "__MICROLIB SETA 1" -I ..\Inc
--I.\RTE\_BraidyBunch
--I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include"
--I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\Keil\STM32H7xx_DFP\2.3.1\Drivers\CMSIS\Device\ST\STM32H7xx\Include"
---pd "__UVISION_VERSION SETA 527" --pd "_RTE_ SETA 1" --pd "STM32H743xx SETA 1"
---list startup_stm32h743xx.lst --xref -o braidybunch\startup_stm32h743xx.o --depend braidybunch\startup_stm32h743xx.d "startup_stm32h743xx.s"
