@@ -7,9 +7,11 @@
 #include "x_nucleo_ihmxx.h"
 #include "l6474.h"
 
+#include <stdbool.h>
+
 #define STEPPER_NUM (3)
 #define STEPPER_TASK_PRIORITY (6)
-#define STEPPER_TASK_STACK (512)
+#define STEPPER_TASK_STACK (1024)
 
 typedef struct {
     int id;
@@ -23,9 +25,32 @@ typedef struct {
     
 } STEPPER_PARAMS_t;
 
-void Stepper_Error_Handler(uint16_t error);
+#define HEADING_START (0x01)
+#define TRANSMISSION_END (0x04)
 
+typedef struct {
+    char StartOfHeader;
+    uint32_t PacketSize;
+    uint8_t PacketType;
+    char EndOfHeader;
+} PACKET_HEADER;
+
+typedef enum {
+    MTR_MVMNT_NONE = 0,
+    MTR_MVMNT_FWD  = 1,
+    MTR_MVMNT_REV  = 2,
+} MTR_MVMNT;
+
+
+// Task Related functions
 void StepperTask(void *parameters);
 void StepperTaskInit(uint8_t stepper);
+
+// Public functions
+void StepperClearMovements(void);
+bool StepperAddMovement(uint8_t stepper, MTR_MVMNT mvmnt);
+
+// Private Functions
+void Stepper_Error_Handler(uint16_t error);
 
 #endif

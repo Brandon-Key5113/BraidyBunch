@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32H743xx</Define>
               <Undefine></Undefine>
-              <IncludePath>../Inc;                        ../Drivers/STM32H7xx_HAL_Driver/Inc;                        ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy;                        ../Drivers/CMSIS/Device/ST/STM32H7xx/Include;                        ../Drivers/CMSIS/Include;                        ../Middlewares/Third_Party/FreeRTOS/Source/include;                        ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F;                        ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS;                        ../Drivers/BSP/Components/Common;                        ../Drivers/BSP/Components\l6474;                        ../Drivers/BSP/STM32H7xx_Nucleo;                        ../Drivers/BSP/X-NUCLEO-IHMxx</IncludePath>
+              <IncludePath>../Inc;                           ../Drivers/STM32H7xx_HAL_Driver/Inc;                           ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy;                           ../Drivers/CMSIS/Device/ST/STM32H7xx/Include;                           ../Drivers/CMSIS/Include;                           ../Middlewares/Third_Party/FreeRTOS/Source/include;                           ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F;                           ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS;                           ../Drivers/BSP/Components/Common;                           ../Drivers/BSP/Components\l6474;                           ../Drivers/BSP/STM32H7xx_Nucleo;                           ../Drivers/BSP/X-NUCLEO-IHMxx</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -431,6 +431,11 @@
               <FileName>stm32h7xx_hal_timebase_tim.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Src/stm32h7xx_hal_timebase_tim.c</FilePath>
+            </File>
+            <File>
+              <FileName>SolenoidDriver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\SolenoidDriver.c</FilePath>
             </File>
           </Files>
         </Group>

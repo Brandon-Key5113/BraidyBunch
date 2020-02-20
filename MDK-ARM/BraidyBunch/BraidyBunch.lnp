@@ -8,6 +8,7 @@
 "braidybunch\stm32h7xx_it.o"
 "braidybunch\stm32h7xx_hal_msp.o"
 "braidybunch\stm32h7xx_hal_timebase_tim.o"
+"braidybunch\solenoiddriver.o"
 "braidybunch\l6474.o"
 "braidybunch\x_nucleo_ihm01a1_stm32h7xx.o"
 "braidybunch\x_nucleo_ihmxx.o"

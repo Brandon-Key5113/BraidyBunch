@@ -39,6 +39,7 @@
 
 #include "stm32h7xx.h" // For Timer defines
 #include "x_nucleo_ihm01a1_stm32h7xx.h" // For Timer to stepper hat mappings
+#include "messaging.h"
 
 /** @addtogroup BSP
  * @{
@@ -745,10 +746,23 @@ void BSP_MotorControl_StepClockHandler(uint8_t deviceId)
 }
 
 
+int cnnt = 0;
+int lastPoss;
+int poss;
 void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim){
     if (htim->Instance == BSP_MOTOR_CONTROL_BOARD_TIMER_PWM1){
         // Pulse Finished for PWM 1
         BSP_MotorControl_StepClockHandler(0);
+        cnnt++;
+        lastPoss = poss;
+        poss = BSP_MotorControl_GetPosition(0);
+        if (lastPoss == poss){
+            MSG_Printf("%d %d\r\n", cnnt, poss);
+        }
+        // Tested that the stepper motor counts 1:1 with the steps generated
+        // It does, but occasionally has -65284
+        //MSG_Printf("%d %d\r\n", cnnt, poss);
+        
     } 
     if(htim->Instance == BSP_MOTOR_CONTROL_BOARD_TIMER_PWM2){
         // Pulse Finished for PWM 2

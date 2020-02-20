@@ -12,6 +12,13 @@ static volatile uint16_t gLastError;
 static const char* STEPPER_TASK_FORMAT = "STEPPER_TASK %d";
 static STEPPER_PARAMS_t STEPPER_PARAMS[STEPPER_NUM];
 
+MTR_MVMNT mtrMovements[STEPPER_NUM];
+
+#define STEPS_PER_REV (3200)
+#define STEPS_PER_HALF_REV (STEPS_PER_REV >> 1)
+#define STEPS_PER_QUARTER_REV (STEPS_PER_REV >> 2)
+#define STEPS_PER_EIGTH_REV (STEPS_PER_REV >> 3)
+
 int buttonPressed = 0;
 int running = 0;
 
@@ -22,12 +29,12 @@ static void MyFlagInterruptHandler(void);
 
 L6474_Init_t gL6474InitParams =
 {
-    10,                               /// Acceleration rate in step/s2. Range: (0..+inf).
-    10,                               /// Deceleration rate in step/s2. Range: (0..+inf). 
+    4000,                               /// Acceleration rate in step/s2. Range: (0..+inf).
+    4000,                               /// Deceleration rate in step/s2. Range: (0..+inf). 
     2000,                              /// Maximum speed in step/s. Range: (30..10000].
-    1000,                               ///Minimum speed in step/s. Range: [30..10000).
-    500,                               ///Torque regulation current in mA. (TVAL register) Range: 31.25mA to 4000mA.
-    1000,                               ///Overcurrent threshold (OCD_TH register). Range: 375mA to 6000mA.
+    2,                               ///Minimum speed in step/s. Range: [30..10000).
+    900,                               ///Torque regulation current in mA. (TVAL register) Range: 31.25mA to 4000mA.
+    950,                               ///Overcurrent threshold (OCD_TH register). Range: 375mA to 6000mA.
     L6474_CONFIG_OC_SD_ENABLE,         ///Overcurrent shutwdown (OC_SD field of CONFIG register). 
     L6474_CONFIG_EN_TQREG_TVAL_USED,   /// Torque regulation method (EN_TQREG field of CONFIG register).
     L6474_STEP_SEL_1_16,               /// Step selection (STEP_SEL field of STEP_MODE register).
@@ -56,6 +63,10 @@ void StepperTask(void *parameters){
     //----- Init of the Motor control library 
     /* Set the L6474 library to use 1 device */
     BSP_MotorControl_SetNbDevices(BSP_MOTOR_CONTROL_BOARD_ID_L6474, 3);
+    
+    extern TIM_HandleTypeDef htim1;
+    
+    HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_3);
     
     vTaskDelay(1);
     BSP_MotorControl_Reset(0);
@@ -109,23 +120,45 @@ void StepperTask(void *parameters){
 
     MSG_Printf("Error Handler Attached\r\n");
 
+    
+    volatile uint16_t spd = 10;
+    
+    BSP_MotorControl_SetMinSpeed(0,5);
+    BSP_MotorControl_SetMaxSpeed(0,2000);
+    BSP_MotorControl_SetAcceleration(0,4000);
+
+    extern int poss;
+    poss = 0;
 
     while (1){
         if (buttonPressed){
             buttonPressed = 0;
             running = !running;
-            BSP_MotorControl_Move(0, BACKWARD, 880);
-            BSP_MotorControl_Move(2, BACKWARD, 880);
-//            if (running){
-//                BSP_MotorControl_Run(0,BACKWARD);  
-//                BSP_MotorControl_Run(1,BACKWARD);  
-//                BSP_MotorControl_Run(2,BACKWARD);
-//            
-//            } else {
-//                BSP_MotorControl_HardStop(0);
-//                BSP_MotorControl_HardStop(1);
-//                BSP_MotorControl_HardStop(2);
-//            }
+            
+            
+            BSP_MotorControl_Move(0, BACKWARD, STEPS_PER_EIGTH_REV);
+            BSP_MotorControl_Move(1, FORWARD, STEPS_PER_EIGTH_REV);
+            //BSP_MotorControl_Move(1, BACKWARD, 800);
+            //BSP_MotorControl_Move(2, BACKWARD, 800);
+            
+            //HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_3);
+            
+            
+            vTaskDelay(1);
+            
+            //HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
+            //HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_3);
+  
+            if (running){
+                //BSP_MotorControl_Run(0,BACKWARD);  
+                //BSP_MotorControl_Run(1,BACKWARD);  
+                //BSP_MotorControl_Run(2,BACKWARD);
+            
+            } else {
+                //BSP_MotorControl_HardStop(0);
+                //BSP_MotorControl_HardStop(1);
+                //BSP_MotorControl_HardStop(2);
+            }
             
             
         }
@@ -144,291 +177,31 @@ void StepperTask(void *parameters){
         BSP_MotorControl_Run(2,FORWARD);
         vTaskDelay(10000);
     }
-
-//    //----- Move of 16000 steps in the FW direction
-//    /* Move device 0 of 16000 steps in the FORWARD direction*/
-//    //BSP_MotorControl_Move(0, FORWARD, 1600);
-//    BSP_MotorControl_GoTo(0,1600);
-//    
-//    MSG_Printf("Motor told to move\r\n");
-//    
-//    while ((pos = BSP_MotorControl_GetPosition(0)) < 1600){
-//        MSG_Printf("Motor Pos: %d\r\n", pos);
-//        vTaskDelay(100);
-//    }
-//    
-//    BSP_MotorControl_HardStop(0);
-//    
-
-//    /* Wait for the motor of device 0 ends moving */
-//    BSP_MotorControl_WaitWhileActive(0);
-
-//    MSG_Printf("Motor Inactive\r\n");
-
-//    /* Wait for 2 seconds */
-//    vTaskDelay(2000);  
-
-//    MSG_Printf("Delay'd\r\n");
-//    //----- Move of 16000 steps in the BW direction
-
-//    /* Move device 0 of 16000 steps in the BACKWARD direction*/
-//    BSP_MotorControl_Move(0, BACKWARD, 1600);
-//    
-//    MSG_Printf("Moving Backwards\r\n");
-
-//    /* Wait for the motor of device 0 ends moving */
-//    BSP_MotorControl_WaitWhileActive(0);
-//    
-//    MSG_Printf("Motor Inactive\r\n");
-
-//    /* Get current position of device 0*/
-//    pos = BSP_MotorControl_GetPosition(0);
-//    
-//    MSG_Printf("Motor Pos: %d\r\n", pos);
-
-//    /* Set the current position of device 0 to be the Home position */
-//    BSP_MotorControl_SetHome(0, pos);
-//    
-//    MSG_Printf("Motor Set to home\r\n");
-
-//    /* Wait for 2 seconds */
-//    vTaskDelay(2000);
-
-//    MSG_Printf("Motor Delay'd\r\n");
-//    //----- Go to position -6400
-
-//    /* Request device 0 to go to position -6400 */
-//    BSP_MotorControl_GoTo(0,-6400); 
-
-//    MSG_Printf("Motor Going to -6400\r\n");
-
-//    /* Wait for the motor ends moving */
-//    BSP_MotorControl_WaitWhileActive(0);
-//    
-//    MSG_Printf("Motor Inactive\r\n");
-
-//    /* Get current position of device 0*/
-//    pos = BSP_MotorControl_GetPosition(0);
-
-//    MSG_Printf("Motor Pos: %d\r\n", pos);
-//    
-//    if (pos != -6400) {
-//        MSG_Printf("Bad Motor Pos\r\n");
-//        Stepper_Error_Handler(11);
-//    }
-
-//    /* Set the current position of device 0 to be the Mark position */
-//    BSP_MotorControl_SetMark(0, pos);
-//    
-//    MSG_Printf("Motor Mark Set\r\n");
-
-//    /* Wait for 2 seconds */
-//    vTaskDelay(2000);
-
-//    MSG_Printf("Motor Delay'd\r\n");
-//    //----- Go Home
-
-//    /* Request device 0 to go to Home */
-//    BSP_MotorControl_GoHome(0);  
-//    MSG_Printf("Motor Going Home\r\n");
-//    BSP_MotorControl_WaitWhileActive(0);
-//    MSG_Printf("Motor Inactive\r\n");
-
-//    /* Get current position of device 0 */
-//    pos = BSP_MotorControl_GetPosition(0);
-
-//    MSG_Printf("Motor Pos: %d\r\n", pos);
-
-//    /* Wait for 2 seconds */
-//    vTaskDelay(2000);
-
-//    //----- Go to position 6400
-
-//    /* Request device 0 to go to position 6400 */
-//    BSP_MotorControl_GoTo(0,6400);  
-
-//    /* Wait for the motor of device 0 ends moving */
-//    BSP_MotorControl_WaitWhileActive(0);
-
-//    /* Get current position of device 0*/
-//    pos = BSP_MotorControl_GetPosition(0);
-
-//    /* Wait for 2 seconds */
-//    vTaskDelay(2000);
-
-//    //----- Go Mark which was set previously after go to -6400
-
-//    /* Request device 0 to go to Mark position */
-//    BSP_MotorControl_GoMark(0);  
-
-//    /* Wait for the motor of device 0 ends moving */
-//    BSP_MotorControl_WaitWhileActive(0);
-
-//    /* Get current position of device 0 */
-//    pos = BSP_MotorControl_GetPosition(0);
-
-//    /* Wait for 2 seconds */
-//    vTaskDelay(2000);
-
-//    //----- Run the motor BACKWARD
-
-//    /* Request device 0 to run BACKWARD */
-//    BSP_MotorControl_Run(0,BACKWARD);       
-//    vTaskDelay(5000);
-
-//    /* Get current speed of device 0 */
-//    mySpeed = BSP_MotorControl_GetCurrentSpeed(0);
-
-//    //----- Increase the speed while running
-
-//    /* Increase speed of device 0 to 2400 step/s */
-//    BSP_MotorControl_SetMaxSpeed(0,2400);
-//    vTaskDelay(5000);
-
-//    /* Get current speed of device 0 */
-//    mySpeed = BSP_MotorControl_GetCurrentSpeed(0);
-
-//    //----- Decrease the speed while running
-
-//    /* Decrease speed of device 0 to 1200 step/s */
-//    BSP_MotorControl_SetMaxSpeed(0,1200);
-//    vTaskDelay(5000);
-
-//    /* Get current speed */
-//    mySpeed = BSP_MotorControl_GetCurrentSpeed(0);
-
-//    //----- Increase acceleration while running
-
-//    /* Increase acceleration of device 0 to 480 step/s^2 */
-//    BSP_MotorControl_SetAcceleration(0,480);
-//    vTaskDelay(5000);
-
-//    /* Increase speed of device 0 to 2400 step/s */
-//    BSP_MotorControl_SetMaxSpeed(0,2400);
-//    vTaskDelay(5000);
-
-//    /* Get current speed of device 0 */
-//    mySpeed = BSP_MotorControl_GetCurrentSpeed(0);
-
-//    if (mySpeed != 2400){
-//        Stepper_Error_Handler(10);
-//    }
-//    //----- Increase deceleration while running
-
-//    /* Increase deceleration of device 0 to 480 step/s^2 */
-//    BSP_MotorControl_SetDeceleration(0,480);
-//    vTaskDelay(5000);
-
-//    /* Decrease speed of device 0 to 1200 step/s */
-//    BSP_MotorControl_SetMaxSpeed(0,1200);
-//    vTaskDelay(5000);
-
-//    /* Get current speed */
-//    mySpeed = BSP_MotorControl_GetCurrentSpeed(0);
-
-//    //----- Soft stopped required while running
-
-//    /* Request soft stop of device 0 */
-//    BSP_MotorControl_SoftStop(0);
-
-//    /* Wait for the motor of device 0 ends moving */  
-//    BSP_MotorControl_WaitWhileActive(0);
-
-//    /* Wait for 2 seconds */
-//    vTaskDelay(2000);
-
-//    //----- Run stopped by hardstop
-
-//    /* Request device 0 to run in FORWARD direction */
-//    BSP_MotorControl_Run(0,FORWARD);       
-//    vTaskDelay(5000);
-
-//    /* Request device 0 to immediatly stop */
-//    BSP_MotorControl_HardStop(0);
-//    BSP_MotorControl_WaitWhileActive(0);
-
-//    /* Request device 0 to disable bridge */
-//    BSP_MotorControl_CmdDisable(0);
-
-//    /* Wait for 2 seconds */
-//    vTaskDelay(2000);
-
-//    //----- GOTO stopped by softstop
-
-//    /* Request device 0 to go to position 20000  */
-//    BSP_MotorControl_GoTo(0,20000);  
-//    vTaskDelay(5000);
-
-//    /* Request device 0 to perform a soft stop */
-//    BSP_MotorControl_SoftStop(0);
-//    BSP_MotorControl_WaitWhileActive(0);
-
-//    /* Wait for 2 seconds */
-//    vTaskDelay(2000);  
-
-//    //----- Read inexistent register to test MyFlagInterruptHandler
-
-//    /* Try to read an inexistent register */
-//    /* the flag interrupt should be raised */
-//    /* and the MyFlagInterruptHandler function called */
-//    BSP_MotorControl_CmdGetParam(0,0x1F);
-//    vTaskDelay(500);
-
-//    //----- Change step mode to full step mode
-
-//    /* Select full step mode for device 0 */
-//    BSP_MotorControl_SelectStepMode(0,STEP_MODE_FULL);
-
-//    /* Set speed and acceleration to be consistent with full step mode */
-//    BSP_MotorControl_SetMaxSpeed(0,100);
-//    BSP_MotorControl_SetMinSpeed(0,50);
-//    BSP_MotorControl_SetAcceleration(0,10);
-//    BSP_MotorControl_SetDeceleration(0,10);
-
-//    /* Request device 0 to go position 200 */
-//    BSP_MotorControl_GoTo(0,200);  
-
-//    /* Wait for the motor of device 0 ends moving */
-//    BSP_MotorControl_WaitWhileActive(0);
-
-//    /* Get current position */
-//    pos =  BSP_MotorControl_GetPosition(0);
-
-//    /* Wait for 2 seconds */
-//    vTaskDelay(2000);
-
-//    //----- Restore 1/16 microstepping mode
-
-//    /* Reset device 0 to 1/16 microstepping mode */
-//    BSP_MotorControl_SelectStepMode(0,STEP_MODE_1_16);    
-
-//    /* Update speed, acceleration, deceleration for 1/16 microstepping mode*/
-//    BSP_MotorControl_SetMaxSpeed(0,1600);
-//    BSP_MotorControl_SetMinSpeed(0,800);
-//    BSP_MotorControl_SetAcceleration(0,160);
-//    BSP_MotorControl_SetDeceleration(0,160);  
-
-//    /* Infinite loop */
-//    while(1){
-//        /* Request device 0 to go position -6400 */
-//        BSP_MotorControl_GoTo(0,-6400);
-
-//        /* Wait for the motor of device 0 ends moving */
-//        BSP_MotorControl_WaitWhileActive(0);
-
-//        /* Request device 0 to go position 6400 */
-//        BSP_MotorControl_GoTo(0,6400);
-
-//        /* Wait for the motor of device 0 ends moving */
-//        BSP_MotorControl_WaitWhileActive(0);  
-//    }
-//    
     
     
     /* Infinite loop */
     while(1) {
         vTaskDelay(100);
     }
+}
+
+void StepperClearMovements(void){
+    for (int i = 0; i < STEPPER_NUM; i++){
+        mtrMovements[i] = MTR_MVMNT_NONE;
+    }
+}
+
+bool StepperAddMovement(uint8_t stepper, MTR_MVMNT mvmnt){
+    if (stepper >= STEPPER_NUM){
+        return false;
+    }
+    
+    //only add new command it there isn't once already for that position.
+    if (mtrMovements[mvmnt] == MTR_MVMNT_NONE){
+        mtrMovements[mvmnt] = mvmnt;
+    }
+    
+    return false;
 }
 
 /**
@@ -472,8 +245,6 @@ void MyFlagInterruptHandler(void)
   {
        // Command received by SPI can't be performed
        // Action to be customized    
-      
-      // TODO Message Failed...
       
       MSG_Printf("Bad CMD\r\n");
   }  
