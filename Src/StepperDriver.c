@@ -19,8 +19,8 @@ MTR_MVMNT mtrMovements[STEPPER_NUM];
 #define STEPS_PER_QUARTER_REV (STEPS_PER_REV >> 2)
 #define STEPS_PER_EIGTH_REV (STEPS_PER_REV >> 3)
 
-int buttonPressed = 0;
-int running = 0;
+
+bool StepperMvmntActive = false;
 
 /* Private function prototypes -----------------------------------------------*/
 static void MyFlagInterruptHandler(void);
@@ -130,59 +130,22 @@ void StepperTask(void *parameters){
     extern int poss;
     poss = 0;
 
+    StepperMvmntActive = false;
     while (1){
-        if (buttonPressed){
-            buttonPressed = 0;
-            running = !running;
+        if (StepperMvmntActive){
             
+            vTaskDelay(10);
             
-            BSP_MotorControl_Move(0, BACKWARD, STEPS_PER_EIGTH_REV);
-            BSP_MotorControl_Move(1, FORWARD, STEPS_PER_EIGTH_REV);
-            //BSP_MotorControl_Move(1, BACKWARD, 800);
-            //BSP_MotorControl_Move(2, BACKWARD, 800);
+            BSP_MotorControl_WaitWhileActive(0);
+            BSP_MotorControl_WaitWhileActive(1);
+            BSP_MotorControl_WaitWhileActive(2);
             
-            //HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_3);
-            
-            
-            vTaskDelay(1);
-            
-            //HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
-            //HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_3);
-  
-            if (running){
-                //BSP_MotorControl_Run(0,BACKWARD);  
-                //BSP_MotorControl_Run(1,BACKWARD);  
-                //BSP_MotorControl_Run(2,BACKWARD);
-            
-            } else {
-                //BSP_MotorControl_HardStop(0);
-                //BSP_MotorControl_HardStop(1);
-                //BSP_MotorControl_HardStop(2);
-            }
-            
+            StepperMvmntActive = false;
             
         }
         vTaskDelay(100);
     }
 
-
-    while(1){
-        
-        BSP_MotorControl_Run(0,BACKWARD);  
-        BSP_MotorControl_Run(1,BACKWARD);  
-        BSP_MotorControl_Run(2,BACKWARD);
-        vTaskDelay(10000);
-        BSP_MotorControl_Run(0,FORWARD);  
-        BSP_MotorControl_Run(1,FORWARD);  
-        BSP_MotorControl_Run(2,FORWARD);
-        vTaskDelay(10000);
-    }
-    
-    
-    /* Infinite loop */
-    while(1) {
-        vTaskDelay(100);
-    }
 }
 
 void StepperClearMovements(void){
@@ -197,11 +160,37 @@ bool StepperAddMovement(uint8_t stepper, MTR_MVMNT mvmnt){
     }
     
     //only add new command it there isn't once already for that position.
-    if (mtrMovements[mvmnt] == MTR_MVMNT_NONE){
-        mtrMovements[mvmnt] = mvmnt;
+    if (mtrMovements[stepper] == MTR_MVMNT_NONE){
+        mtrMovements[stepper] = mvmnt;
+        return true;
     }
     
     return false;
+}
+
+bool StepperMvmntFinished(){
+    return !StepperMvmntActive;
+}
+
+bool StepperMvmntStart(){
+    // Don't start a new movement until the last one has finished
+    if (StepperMvmntActive){
+        return false;
+    }
+    
+    for (int i = 0; i < STEPPER_NUM; i++){
+        // Start movement for each motor
+        if (mtrMovements[i] == MTR_MVMNT_FWD){
+            BSP_MotorControl_Move(i, FORWARD, STEPS_PER_EIGTH_REV);
+        } else if (mtrMovements[i] == MTR_MVMNT_REV){
+            BSP_MotorControl_Move(i, BACKWARD, STEPS_PER_EIGTH_REV);
+        } else {
+            // Nothing
+        }
+    }
+    
+    StepperMvmntActive = true;
+    return true;
 }
 
 /**

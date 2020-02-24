@@ -45,6 +45,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include <stdint.h>
+#include <stdbool.h>
    
 /** @addtogroup BSP
   * @{
@@ -83,7 +84,7 @@
   * @{
   */
 ///bool Type
-typedef uint8_t  bool;
+//typedef uint8_t  bool;
 /**
   * @}
   */   

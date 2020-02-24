@@ -30,6 +30,8 @@
 #include "messaging.h"
 #include "led_task.h"
 #include "StepperDriver.h"
+#include "SolenoidDriver.h"
+#include "Coordination.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -137,6 +139,8 @@ int main(void)
   //HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_3);
   
   StepperTaskInit(0);
+  SolenoidTaskInit();
+  CoordinationTaskInit();
 
   /* USER CODE END 2 */
 

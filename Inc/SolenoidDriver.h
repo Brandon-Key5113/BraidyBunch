@@ -24,6 +24,8 @@ void SolenoidTaskInit(void);
 // Public Functions
 void SolenoidClearMovements(void);
 bool SolenoidAddMovement(uint8_t stepper, SOL_MVMNT mvmnt);
+bool SolenoidMvmntFinished(void);
+bool SolenoidMvmntStart(void);
 
 // Private Functions
 void SolenoidIn(uint8_t solenoid);

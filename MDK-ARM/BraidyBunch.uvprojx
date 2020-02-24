@@ -437,6 +437,11 @@
               <FileType>1</FileType>
               <FilePath>..\Src\SolenoidDriver.c</FilePath>
             </File>
+            <File>
+              <FileName>Coordination.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\Coordination.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

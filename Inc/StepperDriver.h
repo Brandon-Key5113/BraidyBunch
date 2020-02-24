@@ -49,6 +49,8 @@ void StepperTaskInit(uint8_t stepper);
 // Public functions
 void StepperClearMovements(void);
 bool StepperAddMovement(uint8_t stepper, MTR_MVMNT mvmnt);
+bool StepperMvmntFinished(void);
+bool StepperMvmntStart(void);
 
 // Private Functions
 void Stepper_Error_Handler(uint16_t error);
