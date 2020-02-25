@@ -3,11 +3,11 @@
 
 #include "cmsis_os.h"
 #include "stm32h743xx.h"
-
 #include "x_nucleo_ihmxx.h"
 #include "l6474.h"
-
 #include <stdbool.h>
+#include "ControlMessages.h"
+
 
 #define STEPPER_NUM (3)
 #define STEPPER_TASK_PRIORITY (6)
@@ -25,21 +25,7 @@ typedef struct {
     
 } STEPPER_PARAMS_t;
 
-#define HEADING_START (0x01)
-#define TRANSMISSION_END (0x04)
 
-typedef struct {
-    char StartOfHeader;
-    uint32_t PacketSize;
-    uint8_t PacketType;
-    char EndOfHeader;
-} PACKET_HEADER;
-
-typedef enum {
-    MTR_MVMNT_NONE = 0,
-    MTR_MVMNT_FWD  = 1,
-    MTR_MVMNT_REV  = 2,
-} MTR_MVMNT;
 
 
 // Task Related functions

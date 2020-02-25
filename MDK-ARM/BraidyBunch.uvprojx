@@ -442,6 +442,11 @@
               <FileType>1</FileType>
               <FilePath>..\Src\Coordination.c</FilePath>
             </File>
+            <File>
+              <FileName>ControlMessages.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\ControlMessages.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

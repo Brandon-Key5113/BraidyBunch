@@ -3,19 +3,13 @@
 
 #include "cmsis_os.h"
 #include "stm32h743xx.h"
-
 #include <stdbool.h>
+#include "ControlMessages.h"
 
 #define SOLENOID_NUM (4)
 #define SOLENOID_TASK_PRIORITY (6)
 #define SOLENOID_TASK_STACK (256)
 
-
-typedef enum {
-    SOL_MVMNT_NONE = 0,
-    SOL_MVMNT_IN   = 1,
-    SOL_MVMNT_OUT  = 2,
-}SOL_MVMNT;
 
 // Task Related Functions
 void SolenoidTask(void *parameters);
