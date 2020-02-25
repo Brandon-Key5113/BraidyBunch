@@ -52,6 +52,7 @@ void SolenoidTask(void *parameters){
 
 void SolenoidIn(uint8_t solenoid){
     if (solenoid >= SOLENOID_NUM){
+        //HAL_GPIO_WritePin(BSP_MOTOR_CONTROL_BOARD_RESET_PORT, BSP_MOTOR_CONTROL_BOARD_RESET_PIN, GPIO_PIN_SET);
         //\TODO
         return;
     }

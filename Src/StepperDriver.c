@@ -33,8 +33,8 @@ L6474_Init_t gL6474InitParams =
     4000,                               /// Deceleration rate in step/s2. Range: (0..+inf). 
     2000,                              /// Maximum speed in step/s. Range: (30..10000].
     2,                               ///Minimum speed in step/s. Range: [30..10000).
-    900,                               ///Torque regulation current in mA. (TVAL register) Range: 31.25mA to 4000mA.
-    950,                               ///Overcurrent threshold (OCD_TH register). Range: 375mA to 6000mA.
+    1000,                               ///Torque regulation current in mA. (TVAL register) Range: 31.25mA to 4000mA.
+    3000,                               ///Overcurrent threshold (OCD_TH register). Range: 375mA to 6000mA.
     L6474_CONFIG_OC_SD_ENABLE,         ///Overcurrent shutwdown (OC_SD field of CONFIG register). 
     L6474_CONFIG_EN_TQREG_TVAL_USED,   /// Torque regulation method (EN_TQREG field of CONFIG register).
     L6474_STEP_SEL_1_16,               /// Step selection (STEP_SEL field of STEP_MODE register).
@@ -85,10 +85,18 @@ void StepperTask(void *parameters){
     BSP_MotorControl_ReleaseReset(1);
     BSP_MotorControl_ReleaseReset(2);
     vTaskDelay(1);
-  
-    
     
     MSG_Printf("Num Devices Set\r\n");
+    
+    /* Attach the function MyFlagInterruptHandler (defined below) to the flag interrupt */
+    BSP_MotorControl_AttachFlagInterrupt(MyFlagInterruptHandler);
+    
+    MSG_Printf("Flag Handler Attached\r\n");
+
+    /* Attach the function Error_Handler (defined below) to the error Handler*/
+    BSP_MotorControl_AttachErrorHandler(Stepper_Error_Handler);
+
+    MSG_Printf("Error Handler Attached\r\n");
     
     /* When BSP_MotorControl_Init is called with NULL pointer,                  */
     /* the L6474 registers and parameters are set with the predefined values from file   */
@@ -101,27 +109,23 @@ void StepperTask(void *parameters){
     /* Uncomment the call to BSP_MotorControl_Init below to initialize the      */
     /* device with the structure gL6474InitParams declared in the the main.c file */
     /* and comment the subsequent call having the NULL pointer                   */
-    /* Initialisation of first device */
-    BSP_MotorControl_Init(BSP_MOTOR_CONTROL_BOARD_ID_L6474, &gL6474InitParams);
-    /* Initialisation of second device */
-    BSP_MotorControl_Init(BSP_MOTOR_CONTROL_BOARD_ID_L6474, &gL6474InitParams);
-    /* Initialisation of third device */
-    BSP_MotorControl_Init(BSP_MOTOR_CONTROL_BOARD_ID_L6474, &gL6474InitParams);
+    for (int i = 0; i < STEPPER_NUM; i++){
+        BSP_MotorControl_Init(BSP_MOTOR_CONTROL_BOARD_ID_L6474, &gL6474InitParams);
+    }
 
     MSG_Printf("Motor Control Init'd\r\n");
 
-    /* Attach the function MyFlagInterruptHandler (defined below) to the flag interrupt */
-    BSP_MotorControl_AttachFlagInterrupt(MyFlagInterruptHandler);
-    
-    MSG_Printf("Flag Handler Attached\r\n");
-
-    /* Attach the function Error_Handler (defined below) to the error Handler*/
-    BSP_MotorControl_AttachErrorHandler(Stepper_Error_Handler);
-
-    MSG_Printf("Error Handler Attached\r\n");
-
-    
-    volatile uint16_t spd = 10;
+    // Attempt to get each motor our of Hi-Z mode properly.
+    for (int i = 0; i < STEPPER_NUM; i++){
+        //BSP_MotorControl_SoftStop(i);
+        BSP_MotorControl_HardStop(i);
+        BSP_MotorControl_WaitWhileActive(i);
+        // Couldn't find a way to just engauge motors without movement. This 
+        // seems to work. There's probably a better way.
+        BSP_MotorControl_Move(i, FORWARD, 0);
+        BSP_MotorControl_WaitWhileActive(i);
+        
+    }
     
     BSP_MotorControl_SetMinSpeed(0,5);
     BSP_MotorControl_SetMaxSpeed(0,2000);
@@ -200,218 +204,85 @@ bool StepperMvmntStart(){
   */
 void MyFlagInterruptHandler(void)
 {
-  /* Get status of device 0 */
-  /* this will clear the flags */
-  uint16_t statusRegister = BSP_MotorControl_CmdGetStatus(0);
-    
+    /*Get status of device 0 */
+    /*this will clear the flags */
+    for (int i = 0; i < STEPPER_NUM; i++)
+    {
+        uint16_t statusRegister = BSP_MotorControl_CmdGetStatus(i);
 
-  /* Check HIZ flag: if set, power brigdes are disabled */
-  if ((statusRegister & L6474_STATUS_HIZ) == L6474_STATUS_HIZ)
-  {
-    // HIZ state
-    // Action to be customized
-      MSG_Printf("Hi-Z Mode\r\n");
-  }
+        /*Check HIZ flag: if set, power brigdes are disabled */
+        if ((statusRegister & L6474_STATUS_HIZ) == L6474_STATUS_HIZ)
+        {
+           	// HIZ state
+           	// Action to be customized
+            MSG_Printf("Stepper %d: Hi-Z Mode\r\n", i);
+        }
 
-  /* Check direction bit */
-  if ((statusRegister & L6474_STATUS_DIR) == L6474_STATUS_DIR)
-  {
-    // Forward direction is set
-    // Action to be customized  
-    //MSG_Printf("FWD Dir Set\r\n");
-  }  
-  else
-  {
-    // Backward direction is set
-    // Action to be customized    
-    //MSG_Printf("REV Dir Set\r\n");
-  }  
+        /*Check direction bit */
+        if ((statusRegister & L6474_STATUS_DIR) == L6474_STATUS_DIR)
+        {
+           	// Forward direction is set
+           	// Action to be customized  
+           	//MSG_Printf("FWD Dir Set\r\n");
+        }
+        else
+        {
+           	// Backward direction is set
+           	// Action to be customized    
+           	//MSG_Printf("REV Dir Set\r\n");
+        }
 
-  /* Check NOTPERF_CMD flag: if set, the command received by SPI can't be performed */
-  /* This often occures when a command is sent to the L6474 */
-  /* while it is in HIZ state */
-  if ((statusRegister & L6474_STATUS_NOTPERF_CMD) == L6474_STATUS_NOTPERF_CMD)
-  {
-       // Command received by SPI can't be performed
-       // Action to be customized    
-      
-      MSG_Printf("Bad CMD\r\n");
-  }  
+        /*Check NOTPERF_CMD flag: if set, the command received by SPI can't be performed */
+        /*This often occures when a command is sent to the L6474 */
+        /*while it is in HIZ state */
+        if ((statusRegister & L6474_STATUS_NOTPERF_CMD) == L6474_STATUS_NOTPERF_CMD)
+        {
+           	// Command received by SPI can't be performed
+           	// Action to be customized    
 
-  /* Check WRONG_CMD flag: if set, the command does not exist */
-  if ((statusRegister & L6474_STATUS_WRONG_CMD) == L6474_STATUS_WRONG_CMD)
-  {
-     //command received by SPI does not exist 
-     // Action to be customized      
-     MSG_Printf("CMD DNE\r\n");
-  }  
+            MSG_Printf("Stepper %d: Bad CMD\r\n", i);
+        }
 
-  /* Check UVLO flag: if not set, there is an undervoltage lock-out */
-  if ((statusRegister & L6474_STATUS_UVLO) == 0)
-  {
-     //undervoltage lock-out 
-     // Action to be customized      
-     MSG_Printf("UVLO\r\n");      
-  }  
+        /*Check WRONG_CMD flag: if set, the command does not exist */
+        if ((statusRegister & L6474_STATUS_WRONG_CMD) == L6474_STATUS_WRONG_CMD)
+        {
+           	//command received by SPI does not exist 
+           	// Action to be customized      
+            MSG_Printf("Stepper %d: CMD DNE\r\n", i);
+        }
 
-  /* Check TH_WRN flag: if not set, the thermal warning threshold is reached */
-  if ((statusRegister & L6474_STATUS_TH_WRN) == 0)
-  {
-    //thermal warning threshold is reached
-    // Action to be customized    
-    MSG_Printf("TH_WRN\r\n");
-  }    
+        /*Check UVLO flag: if not set, there is an undervoltage lock-out */
+        if ((statusRegister & L6474_STATUS_UVLO) == 0)
+        {
+           	//undervoltage lock-out 
+           	// Action to be customized      
+            MSG_Printf("Stepper %d: UVLO\r\n", i);
+        }
 
-  /* Check TH_SHD flag: if not set, the thermal shut down threshold is reached */
-  if ((statusRegister & L6474_STATUS_TH_SD) == 0)
-  {
-    //thermal shut down threshold is reached 
-    // Action to be customized    
-    //MSG_Printf("FWD Dir Set\r\n");
-  }    
+        /*Check TH_WRN flag: if not set, the thermal warning threshold is reached */
+        if ((statusRegister & L6474_STATUS_TH_WRN) == 0)
+        {
+           	//thermal warning threshold is reached
+           	// Action to be customized    
+            MSG_Printf("Stepper %d: TH_WRN\r\n", i);
+        }
 
-  /* Check OCD  flag: if not set, there is an overcurrent detection */
-  if ((statusRegister & L6474_STATUS_OCD) == 0)
-  {
-    //overcurrent detection 
-    // Action to be customized
-    MSG_Printf("OCD\r\n");
-  }      
+        /*Check TH_SHD flag: if not set, the thermal shut down threshold is reached */
+        if ((statusRegister & L6474_STATUS_TH_SD) == 0)
+        {
+           	//thermal shut down threshold is reached 
+           	// Action to be customized    
+            MSG_Printf("Stepper %d: Thermal Shutdown \r\n", i);
+        }
 
-//  /* Get status of device 1 */
-//  /* this will clear the flags */
-//  statusRegister = BSP_MotorControl_CmdGetStatus(1);  
-//  
-//  /* Check HIZ flag: if set, power brigdes are disabled */
-//  if ((statusRegister & L6474_STATUS_HIZ) == L6474_STATUS_HIZ)
-//  {
-//    // HIZ state
-//    // Action to be customized
-//  }
-
-//  /* Check direction bit */
-//  if ((statusRegister & L6474_STATUS_DIR) == L6474_STATUS_DIR)
-//  {
-//    // Forward direction is set
-//    // Action to be customized    
-//  }  
-//  else
-//  {
-//    // Backward direction is set
-//    // Action to be customized    
-//  }  
-
-//  /* Check NOTPERF_CMD flag: if set, the command received by SPI can't be performed */
-//  /* This often occures when a command is sent to the L6474 */
-//  /* while it is in HIZ state */
-//  if ((statusRegister & L6474_STATUS_NOTPERF_CMD) == L6474_STATUS_NOTPERF_CMD)
-//  {
-//       // Command received by SPI can't be performed
-//       // Action to be customized    
-//  }  
-
-//  /* Check WRONG_CMD flag: if set, the command does not exist */
-//  if ((statusRegister & L6474_STATUS_WRONG_CMD) == L6474_STATUS_WRONG_CMD)
-//  {
-//     //command received by SPI does not exist 
-//     // Action to be customized        
-//  }  
-
-//  /* Check UVLO flag: if not set, there is an undervoltage lock-out */
-//  if ((statusRegister & L6474_STATUS_UVLO) == 0)
-//  {
-//     //undervoltage lock-out 
-//     // Action to be customized            
-//  }  
-
-//  /* Check TH_WRN flag: if not set, the thermal warning threshold is reached */
-//  if ((statusRegister & L6474_STATUS_TH_WRN) == 0)
-//  {
-//    //thermal warning threshold is reached
-//    // Action to be customized            
-//  }    
-
-//  /* Check TH_SHD flag: if not set, the thermal shut down threshold is reached */
-//  if ((statusRegister & L6474_STATUS_TH_SD) == 0)
-//  {
-//    //thermal shut down threshold is reached 
-//    // Action to be customized            
-//  }    
-
-//  /* Check OCD  flag: if not set, there is an overcurrent detection */
-//  if ((statusRegister & L6474_STATUS_OCD) == 0)
-//  {
-//    //overcurrent detection 
-//    // Action to be customized            
-//  }      
-
-//  /* Get status of device 2 */
-//  /* this will clear the flags */
-//  statusRegister = BSP_MotorControl_CmdGetStatus(2);  
-
-//  /* Check HIZ flag: if set, power brigdes are disabled */
-//  if ((statusRegister & L6474_STATUS_HIZ) == L6474_STATUS_HIZ)
-//  {
-//    // HIZ state
-//    // Action to be customized
-//  }
-
-//  /* Check direction bit */
-//  if ((statusRegister & L6474_STATUS_DIR) == L6474_STATUS_DIR)
-//  {
-//    // Forward direction is set
-//    // Action to be customized    
-//  }  
-//  else
-//  {
-//    // Backward direction is set
-//    // Action to be customized    
-//  }  
-
-//  /* Check NOTPERF_CMD flag: if set, the command received by SPI can't be performed */
-//  /* This often occures when a command is sent to the L6474 */
-//  /* while it is in HIZ state */
-//  if ((statusRegister & L6474_STATUS_NOTPERF_CMD) == L6474_STATUS_NOTPERF_CMD)
-//  {
-//       // Command received by SPI can't be performed
-//       // Action to be customized    
-//  }  
-
-//  /* Check WRONG_CMD flag: if set, the command does not exist */
-//  if ((statusRegister & L6474_STATUS_WRONG_CMD) == L6474_STATUS_WRONG_CMD)
-//  {
-//     //command received by SPI does not exist 
-//     // Action to be customized        
-//  }  
-
-//  /* Check UVLO flag: if not set, there is an undervoltage lock-out */
-//  if ((statusRegister & L6474_STATUS_UVLO) == 0)
-//  {
-//     //undervoltage lock-out 
-//     // Action to be customized            
-//  }  
-
-//  /* Check TH_WRN flag: if not set, the thermal warning threshold is reached */
-//  if ((statusRegister & L6474_STATUS_TH_WRN) == 0)
-//  {
-//    //thermal warning threshold is reached
-//    // Action to be customized            
-//  }    
-
-//  /* Check TH_SHD flag: if not set, the thermal shut down threshold is reached */
-//  if ((statusRegister & L6474_STATUS_TH_SD) == 0)
-//  {
-//    //thermal shut down threshold is reached 
-//    // Action to be customized            
-//  }    
-
-//  /* Check OCD  flag: if not set, there is an overcurrent detection */
-//  if ((statusRegister & L6474_STATUS_OCD) == 0)
-//  {
-//    //overcurrent detection 
-//    // Action to be customized            
-//  }      
-
+        /*Check OCD  flag: if not set, there is an overcurrent detection */
+        if ((statusRegister & L6474_STATUS_OCD) == 0)
+        {
+           	//overcurrent detection 
+           	// Action to be customized
+            MSG_Printf("Stepper %d: OCD\r\n", i);
+        }
+    }
 }
 
 /**

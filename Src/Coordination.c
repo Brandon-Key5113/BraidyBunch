@@ -59,15 +59,19 @@ void CoordinationTask(void *parameters){
     while(1) {
         
         for (int i = 0; i < INDEX_NUM; i++){
+            MSG_Printf("Index Cycle %d wating for button press \r\n", i);
+            
             //Wait for button press
             while (!buttonPressed){
                 vTaskDelay(10);
             }
             buttonPressed = 0;
             
+            MSG_Printf("Adding Movements \r\n");
             // Send first round of movements
             AddMovements(indexMvmnts[i]);
             
+            MSG_Printf("Starting Movements \r\n");
             // Start movements
             StepperMvmntStart();
             
@@ -78,7 +82,7 @@ void CoordinationTask(void *parameters){
                 vTaskDelay(200);
             }
             
-            
+            MSG_Printf("Clearing Movements \r\n");
             // Clear movements
             StepperClearMovements();
             SolenoidClearMovements();
