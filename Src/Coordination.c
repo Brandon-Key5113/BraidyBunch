@@ -37,7 +37,7 @@ void CoordinationTask(void *parameters){
     indexMvmnts[index].solMvmnts[3] = SOL_MVMNT_OUT;
     
     index = 1;
-    indexMvmnts[index].mtrMvmnts[0] = MTR_MVMNT_REV;
+    indexMvmnts[index].mtrMvmnts[0] = MTR_MVMNT_FWD;
     indexMvmnts[index].mtrMvmnts[1] = MTR_MVMNT_REV;
     indexMvmnts[index].mtrMvmnts[2] = MTR_MVMNT_REV;
     indexMvmnts[index].solMvmnts[0] = SOL_MVMNT_OUT;
@@ -46,7 +46,7 @@ void CoordinationTask(void *parameters){
     indexMvmnts[index].solMvmnts[3] = SOL_MVMNT_IN;
     
     index = 2;
-    indexMvmnts[index].mtrMvmnts[0] = MTR_MVMNT_REV;
+    indexMvmnts[index].mtrMvmnts[0] = MTR_MVMNT_FWD;
     indexMvmnts[index].mtrMvmnts[1] = MTR_MVMNT_FWD;
     indexMvmnts[index].mtrMvmnts[2] = MTR_MVMNT_REV;
     indexMvmnts[index].solMvmnts[0] = SOL_MVMNT_OUT;
