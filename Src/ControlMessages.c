@@ -5,7 +5,7 @@
 
 uint16_t hex2int(char *hex);
 
-bool PacketStart(uint8_t* dataStart, uint8_t *dataPtr){
+bool PacketStart(uint8_t* dataStart, uint16_t* dataPtr){
     
     *dataPtr = 0;
     
@@ -32,7 +32,7 @@ bool PacketStart(uint8_t* dataStart, uint8_t *dataPtr){
     return true;
 }
 
-bool PacketAddMtrMvmnt(uint8_t* dataStart, uint8_t *dataPtr, MTR_MVMNT mvmnt, uint8_t mtr){
+bool PacketAddMtrMvmnt(uint8_t* dataStart, uint16_t* dataPtr, MTR_MVMNT mvmnt, uint8_t mtr){
     
     PACKET_MTR pckt;
     pckt.StartOfPacket = PCKT_MTR_START;
@@ -46,7 +46,7 @@ bool PacketAddMtrMvmnt(uint8_t* dataStart, uint8_t *dataPtr, MTR_MVMNT mvmnt, ui
     return true;
 }
 
-bool PacketAddSolMvmnt(uint8_t* dataStart, uint8_t *dataPtr, SOL_MVMNT mvmnt, uint8_t sol){
+bool PacketAddSolMvmnt(uint8_t* dataStart, uint16_t* dataPtr, SOL_MVMNT mvmnt, uint8_t sol){
     
     PACKET_SOL pckt;
     pckt.StartOfPacket = PCKT_SOL_START;
@@ -60,7 +60,7 @@ bool PacketAddSolMvmnt(uint8_t* dataStart, uint8_t *dataPtr, SOL_MVMNT mvmnt, ui
     return true;
 }
 
-bool PacketTerm(uint8_t* dataStart, uint8_t *dataPtr){
+bool PacketTerm(uint8_t* dataStart, uint16_t* dataPtr){
     // Add Tailing character
     dataStart[*dataPtr] = PCKT_TX_END;
     (*dataPtr)++;
@@ -80,7 +80,7 @@ bool PacketTerm(uint8_t* dataStart, uint8_t *dataPtr){
     return true;
 }
 
-bool ParsePacketHeader(uint8_t* dataStart, uint8_t* dataPtr, PCKT_TYPE *packetType, uint16_t* size){
+bool ParsePacketHeader(uint8_t* dataStart, uint16_t* dataPtr, PCKT_TYPE *packetType, uint16_t* size){
     *dataPtr = 0;
     *packetType = PCKT_TYPE_INVALID;
     *size = 0;
@@ -98,7 +98,7 @@ bool ParsePacketHeader(uint8_t* dataStart, uint8_t* dataPtr, PCKT_TYPE *packetTy
     // retrieve values
     (*dataPtr)+= sizeof(PACKET_HEADER);
     (*size) = hex2int( &(header->PacketSize[2]));
-    (*packetType) = header->PacketType - '0';
+    (*packetType) = (PCKT_TYPE) (header->PacketType - '0');
     return true;
 }
 
@@ -121,7 +121,7 @@ bool ParseMtrPacket(PACKET_MTR *pckt, uint8_t* mtr, MTR_MVMNT* mvmnt){
     }
     
     *mtr = pckt->Motor - '0';
-    *mvmnt = pckt->Mvmnt - '0';
+    *mvmnt = (MTR_MVMNT) (pckt->Mvmnt - '0');
  
     return true;
 }
@@ -135,7 +135,7 @@ bool ParseSolPacket(PACKET_SOL *pckt, uint8_t* sol, SOL_MVMNT* mvmnt){
     }
     
     *sol = pckt->Solenoid - '0';
-    *mvmnt = pckt->Mvmnt - '0';
+    *mvmnt = (SOL_MVMNT)(pckt->Mvmnt - '0');
  
     return true;
 }

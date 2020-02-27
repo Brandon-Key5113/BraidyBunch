@@ -23,7 +23,8 @@ typedef enum {
     STALL,
     INVALID_STEPPER_CMD,
     INVALID_SOLENOID_CMD,
-    
+    COMM_TIMEOUT,
+    COMM_INVAID_SYNTAX,
     
 } ERROR_TYPE;
 
@@ -34,7 +35,7 @@ void ReportError(ERROR_TYPE e);
 
 // Task Related functions
 void CoordinationTask(void *parameters);
-void CoordinationTaskInit();
+void CoordinationTaskInit(void);
 
 // Private Functions
 bool AddMovements( INDEX_MVMNT index );

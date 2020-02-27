@@ -59,7 +59,11 @@ void CoordinationTask(void *parameters){
     while(1) {
         
         for (int i = 0; i < INDEX_NUM; i++){
+            
+            // Blocking read in packet 
+            
             MSG_Printf("Index Cycle %d wating for button press \r\n", i);
+            
             
             //Wait for button press
             while (!buttonPressed){
@@ -118,6 +122,7 @@ bool AddMovements( INDEX_MVMNT index ){
             ReportError(INVALID_SOLENOID_CMD);
         }
     }
+    return cmdSuc;
 }
 
 void CoordinationTaskInit(void){

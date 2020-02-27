@@ -78,13 +78,13 @@ typedef struct __attribute__((__packed__)){
   * \param dataPtr[In/Out] - Reference to index into buffer
   * \
 **/
-bool PacketStart(uint8_t* dataStart, uint8_t* dataPtr);
-bool PacketAddMtrMvmnt(uint8_t* dataStart, uint8_t* dataPtr, MTR_MVMNT Mvmnt, uint8_t mtr);
-bool PacketAddSolMvmnt(uint8_t* dataStart, uint8_t* dataPtr, SOL_MVMNT Mvmnt, uint8_t sol);
-bool PacketTerm(uint8_t* dataStart, uint8_t* dataPtr);
+bool PacketStart(uint8_t* dataStart, uint16_t* dataPtr);
+bool PacketAddMtrMvmnt(uint8_t* dataStart, uint16_t* dataPtr, MTR_MVMNT Mvmnt, uint8_t mtr);
+bool PacketAddSolMvmnt(uint8_t* dataStart, uint16_t* dataPtr, SOL_MVMNT Mvmnt, uint8_t sol);
+bool PacketTerm(uint8_t* dataStart, uint16_t* dataPtr);
     
 // Packet Parsing Functions
-bool ParsePacketHeader(uint8_t* dataStart, uint8_t* dataPtr, PCKT_TYPE *packetType, uint16_t* size);
+bool ParsePacketHeader(uint8_t* dataStart, uint16_t* dataPtr, PCKT_TYPE *packetType, uint16_t* size);
 PCKT_INDEX_TYPE ParseIndexType(uint8_t* dataStart);
 bool ParseMtrPacket(PACKET_MTR *pckt, uint8_t* mtr, MTR_MVMNT* mvmnt);
 bool ParseSolPacket(PACKET_SOL *pckt, uint8_t* sol, SOL_MVMNT* mvmnt);

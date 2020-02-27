@@ -30,7 +30,7 @@ typedef struct {
 
 // Task Related functions
 void StepperTask(void *parameters);
-void StepperTaskInit(uint8_t stepper);
+void StepperTaskInit(void);
 
 // Public functions
 void StepperClearMovements(void);

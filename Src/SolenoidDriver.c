@@ -22,8 +22,6 @@ TaskHandle_t handle;
 
 
 void SolenoidTask(void *parameters){
-    int32_t pos;
-    uint16_t mySpeed;
     
     MSG_Printf("Start of Solenoid Task");
 

@@ -55,8 +55,6 @@ L6474_Init_t gL6474InitParams =
 };
 
 void StepperTask(void *parameters){
-    int32_t pos;
-    uint16_t mySpeed;
     
     MSG_Printf("Start of Stepper Task");
 
@@ -301,14 +299,14 @@ void Stepper_Error_Handler(uint16_t error)
   }
 }
 
-void StepperTaskInit(uint8_t stepper){
+void StepperTaskInit(void){
     // Retrieve pointer to the correct set of parameters
-    STEPPER_PARAMS_t *p = &STEPPER_PARAMS[stepper];
-    p->id = stepper;
+    STEPPER_PARAMS_t *p = &STEPPER_PARAMS[0];
+    p->id = 0;
     
     // Configure Task name
     char taskName[configMAX_TASK_NAME_LEN];
-    sprintf(taskName, STEPPER_TASK_FORMAT, stepper );
+    sprintf(taskName, STEPPER_TASK_FORMAT, 0 );
     
     // Create the task
     xTaskCreate( StepperTask, taskName, STEPPER_TASK_STACK, (void *)p, STEPPER_TASK_PRIORITY, &p->handle); 
