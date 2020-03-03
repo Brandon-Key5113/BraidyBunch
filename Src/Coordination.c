@@ -16,7 +16,7 @@ TaskHandle_t coordinationHandle;
 
 /* Private functions ---------------------------------------------------------*/
 
-#define INDEX_NUM (3)
+#define INDEX_NUM (7)
 
 INDEX_MVMNT indexMvmnts[INDEX_NUM];
 
@@ -28,32 +28,34 @@ void CoordinationTask(void *parameters){
     MSG_Printf("Start of Coordination Task");
     
     int index = 0;
-    indexMvmnts[index].mtrMvmnts[0] = MTR_MVMNT_FWD;
+    // A 45
     indexMvmnts[index].mtrMvmnts[1] = MTR_MVMNT_FWD;
-    indexMvmnts[index].mtrMvmnts[2] = MTR_MVMNT_FWD;
-    indexMvmnts[index].solMvmnts[0] = SOL_MVMNT_IN;
-    indexMvmnts[index].solMvmnts[1] = SOL_MVMNT_OUT;
-    indexMvmnts[index].solMvmnts[2] = SOL_MVMNT_IN;
-    indexMvmnts[index].solMvmnts[3] = SOL_MVMNT_OUT;
     
     index = 1;
-    indexMvmnts[index].mtrMvmnts[0] = MTR_MVMNT_FWD;
-    indexMvmnts[index].mtrMvmnts[1] = MTR_MVMNT_REV;
-    indexMvmnts[index].mtrMvmnts[2] = MTR_MVMNT_REV;
+    // S1 ON
     indexMvmnts[index].solMvmnts[0] = SOL_MVMNT_OUT;
-    indexMvmnts[index].solMvmnts[1] = SOL_MVMNT_IN;
-    indexMvmnts[index].solMvmnts[2] = SOL_MVMNT_OUT;
-    indexMvmnts[index].solMvmnts[3] = SOL_MVMNT_IN;
     
     index = 2;
+    // A45 B45
     indexMvmnts[index].mtrMvmnts[0] = MTR_MVMNT_FWD;
     indexMvmnts[index].mtrMvmnts[1] = MTR_MVMNT_FWD;
-    indexMvmnts[index].mtrMvmnts[2] = MTR_MVMNT_REV;
-    indexMvmnts[index].solMvmnts[0] = SOL_MVMNT_OUT;
-    indexMvmnts[index].solMvmnts[1] = SOL_MVMNT_OUT;
-    indexMvmnts[index].solMvmnts[2] = SOL_MVMNT_OUT;
-    indexMvmnts[index].solMvmnts[3] = SOL_MVMNT_OUT;
     
+    index = 3;
+    // B45 S2 ON
+    indexMvmnts[index].mtrMvmnts[0] = MTR_MVMNT_FWD;
+    indexMvmnts[index].solMvmnts[1] = SOL_MVMNT_OUT;
+    
+    index = 4;
+    // B45
+    indexMvmnts[index].mtrMvmnts[0] = MTR_MVMNT_FWD;
+    
+    index = 5;
+    // B45
+    indexMvmnts[index].mtrMvmnts[0] = MTR_MVMNT_FWD;
+    
+    index = 6;
+    // B45
+    indexMvmnts[index].mtrMvmnts[0] = MTR_MVMNT_FWD;
 
     /* Infinite loop */
     while(1) {
@@ -74,6 +76,8 @@ void CoordinationTask(void *parameters){
             MSG_Printf("Starting Movements \r\n");
             // Start movements
             StepperMvmntStart();
+            SolenoidMvmntStart();
+            
             
             
             

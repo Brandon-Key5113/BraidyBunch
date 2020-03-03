@@ -51,34 +51,60 @@ void SolenoidTask(void *parameters){
 
 
 void SolenoidIn(uint8_t solenoid){
-    if (solenoid >= SOLENOID_NUM){
-        //HAL_GPIO_WritePin(BSP_MOTOR_CONTROL_BOARD_RESET_PORT, BSP_MOTOR_CONTROL_BOARD_RESET_PIN, GPIO_PIN_SET);
-        //\TODO
-        return;
+    switch(solenoid){
+        case 0:
+            HAL_GPIO_WritePin(SOL0_DIR_GPIO_Port, SOL0_DIR_Pin, GPIO_PIN_SET);
+            break;
+        case 1:
+            HAL_GPIO_WritePin(SOL1_DIR_GPIO_Port, SOL1_DIR_Pin, GPIO_PIN_SET);
+            break;
+        default:
+            // TODO Error
+            break;
     }
-    
 }
 
 void SolenoidOut(uint8_t solenoid){
-    if (solenoid >= SOLENOID_NUM){
-        //\TODO
-        return;
+        switch(solenoid){
+        case 0:
+            HAL_GPIO_WritePin(SOL0_DIR_GPIO_Port, SOL0_DIR_Pin, GPIO_PIN_RESET);
+            break;
+        case 1:
+            HAL_GPIO_WritePin(SOL1_DIR_GPIO_Port, SOL1_DIR_Pin, GPIO_PIN_RESET);
+            break;
+        default:
+            // TODO Error
+            break;
     }
     
 }
 
 void SolenoidEnable(uint8_t solenoid){
-    if (solenoid >= SOLENOID_NUM){
-        //\TODO
-        return;
+    switch(solenoid){
+        case 0:
+            HAL_GPIO_WritePin(SOL0_EN_GPIO_Port, SOL0_EN_Pin, GPIO_PIN_SET);
+            break;
+        case 1:
+            HAL_GPIO_WritePin(SOL1_EN_GPIO_Port, SOL1_EN_Pin, GPIO_PIN_SET);
+            break;
+        default:
+            // TODO Error
+            break;
     }
     
 }
 
 void SolenoidDisable(uint8_t solenoid){
-    if (solenoid >= SOLENOID_NUM){
-        //\TODO
-        return;
+    switch(solenoid){
+        case 0:
+            HAL_GPIO_WritePin(SOL0_EN_GPIO_Port, SOL0_EN_Pin, GPIO_PIN_RESET);
+            break;
+        case 1:
+            HAL_GPIO_WritePin(SOL1_EN_GPIO_Port, SOL1_EN_Pin, GPIO_PIN_RESET);
+            break;
+        default:
+            // TODO Error
+            break;
     }
     
 }

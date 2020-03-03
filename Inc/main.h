@@ -60,6 +60,8 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define SOL0_DIR_Pin GPIO_PIN_6
+#define SOL0_DIR_GPIO_Port GPIOE
 #define User_Button_Pin GPIO_PIN_13
 #define User_Button_GPIO_Port GPIOC
 #define User_Button_EXTI_IRQn EXTI15_10_IRQn
@@ -70,8 +72,14 @@ void Error_Handler(void);
 #define IntTest_EXTI_IRQn EXTI0_IRQn
 #define DIR3_Pin GPIO_PIN_11
 #define DIR3_GPIO_Port GPIOE
+#define SOL0_EN_Pin GPIO_PIN_12
+#define SOL0_EN_GPIO_Port GPIOE
 #define DIR2_Pin GPIO_PIN_14
 #define DIR2_GPIO_Port GPIOE
+#define SOL1_EN_Pin GPIO_PIN_15
+#define SOL1_EN_GPIO_Port GPIOE
+#define SOL1_DIR_Pin GPIO_PIN_10
+#define SOL1_DIR_GPIO_Port GPIOB
 #define LD3_Pin GPIO_PIN_14
 #define LD3_GPIO_Port GPIOB
 #define USB_OTG_FS_PWR_EN_Pin GPIO_PIN_10

@@ -185,9 +185,9 @@ bool StepperMvmntStart(){
     for (int i = 0; i < STEPPER_NUM; i++){
         // Start movement for each motor
         if (mtrMovements[i] == MTR_MVMNT_FWD){
-            BSP_MotorControl_Move(i, FORWARD, STEPS_PER_EIGTH_REV);
+            BSP_MotorControl_Move(i, FORWARD, STEPS_PER_QUARTER_REV);
         } else if (mtrMovements[i] == MTR_MVMNT_REV){
-            BSP_MotorControl_Move(i, BACKWARD, STEPS_PER_EIGTH_REV);
+            BSP_MotorControl_Move(i, BACKWARD, STEPS_PER_QUARTER_REV);
         } else {
             // Nothing
         }
