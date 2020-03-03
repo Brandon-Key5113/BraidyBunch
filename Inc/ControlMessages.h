@@ -34,7 +34,8 @@ typedef enum {
     PCKT_TYPE_INDEX,
     PCKT_TYPE_MVMNT_FIN,
     PCKT_TYPE_ERROR,
-    PCKT_TYPE_STOP // Keep as last item
+    PCKT_TYPE_STOP,
+    PCKT_TYPE_MAX
 } PCKT_TYPE;
 
 typedef enum {

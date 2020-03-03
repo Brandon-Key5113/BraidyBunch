@@ -13,7 +13,11 @@ QueueHandle_t MessageTxQueueHandle;
 
 static TaskHandle_t MessageRxTaskHandle;
 
-extern UART_HandleTypeDef huart3;
+// Array of function pointers. Array index corresponds to packet type
+// First Arg is the data pointer, second arg is the size of the data
+void (*PacketHandlers[PCKT_TYPE_MAX])(uint8_t*, uint16_t);
+
+extern UART_HandleTypeDef huart3; // From main
 
 
 void MessageTxTask(void* params){
@@ -36,33 +40,6 @@ void MessageTxTask(void* params){
     // close task
     //vTaskDelete(MessageTxTaskHandle);
     
-}
-
-
-void HandleIndexData(uint8_t* data, uint16_t size){
-    int16_t index = 0;
-    PCKT_INDEX_TYPE pcktType;
-    while(index < size){
-         vTaskDelay(100);
-         pcktType = ParseIndexType( &data[index]);
-         switch (pcktType){
-         case PCKT_INDEX_TYPE_MTR:
-            MSG_Printf("Mtr\r\n");
-            index += sizeof(PACKET_MTR);
-            break;
-         case PCKT_INDEX_TYPE_SOL:
-            MSG_Printf("Sol\r\n");
-            index += sizeof(PACKET_SOL);
-            break;
-         default:
-            //\TODO Error Handle
-            MSG_Printf("Bad Packet\r\n");
-            return;
-            break;
-         }
-        
-        
-    }    
 }
 
 #define RX_BUF_SIZE (1024)
@@ -134,7 +111,8 @@ void MessageRxTask(void* params){
         vTaskDelay(100);
         // TODO add switch for packet type
         // Pass data to callback
-        HandleIndexData(&RxBuf[RxBufI], DataSize);
+        //HandleIndexData(&RxBuf[RxBufI], DataSize);
+        (*PacketHandlers[RxPacketType])(&RxBuf[RxBufI], DataSize);
         //vTaskDelay(10);
     }
     
@@ -160,11 +138,30 @@ void MSG_Printf(const char *fmt, ...) {
 }
 
 
+void RegisterPacketHandler( void (*handler)(uint8_t*, uint16_t), PCKT_TYPE pcktType){
+    if (pcktType >= PCKT_TYPE_MAX){
+        return;
+    }
+    PacketHandlers[pcktType] = handler;
+}
+
+
+void DummyPacketHandler(uint8_t* data, uint16_t size){
+    MSG_Printf("Dummy Packet Handler Hit");
+    while (1){
+        vTaskDelay(1000);
+    }
+}
 
 void MessagingTaskInit(void)
 { 
     // initialize members of this structure for this task    
     MessageTxQueueHandle = xQueueCreate( 100, 80 );
+    
+    // Init Handler Buffer
+    for (int i = 0; i < PCKT_TYPE_MAX; i++){
+        PacketHandlers[i] = DummyPacketHandler;
+    }
     
     // Create Task
     xTaskCreate( MessageTxTask,"MessageTxTask", 512, &MessageTxTaskHandle, 

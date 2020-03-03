@@ -20,6 +20,9 @@ TaskHandle_t coordinationHandle;
 
 INDEX_MVMNT indexMvmnts[INDEX_NUM];
 
+uint8_t RxData[1024];
+
+
 int buttonPressed = 0;
 
 
@@ -99,6 +102,32 @@ void CoordinationTask(void *parameters){
     }
 }
 
+void HandleIndexData(uint8_t* data, uint16_t size){
+    int16_t index = 0;
+    PCKT_INDEX_TYPE pcktType;
+    while(index < size){
+         vTaskDelay(100);
+         pcktType = ParseIndexType( &data[index]);
+         switch (pcktType){
+         case PCKT_INDEX_TYPE_MTR:
+            MSG_Printf("Mtr\r\n");
+            index += sizeof(PACKET_MTR);
+            break;
+         case PCKT_INDEX_TYPE_SOL:
+            MSG_Printf("Sol\r\n");
+            index += sizeof(PACKET_SOL);
+            break;
+         default:
+            //\TODO Error Handle
+            MSG_Printf("Bad Packet\r\n");
+            return;
+            break;
+         }
+        
+        
+    }    
+}
+
 void ReportError(ERROR_TYPE e){
     //\TODO Flush out, probably should move at some point
     MSG_Printf("Error: %d \r\n", e);
@@ -127,6 +156,8 @@ bool AddMovements( INDEX_MVMNT index ){
 
 void CoordinationTaskInit(void){
     SolenoidClearMovements();
+    
+    RegisterPacketHandler( HandleIndexData, PCKT_TYPE_INDEX);
     
     // Create the task
     xTaskCreate( CoordinationTask, COORDINATION_TASK_NAME, COORDINATION_TASK_STACK, (void *) NULL, COORDINATION_TASK_PRIORITY, &coordinationHandle); 
