@@ -84,12 +84,6 @@ bool ParsePacketHeader(uint8_t* dataStart, uint16_t* dataPtr, PCKT_TYPE *packetT
     //*dataPtr = 0;
     *packetType = PCKT_TYPE_INVALID;
     *size = 0;
-    // Check transmission start character
-    if (dataStart[*dataPtr] != PCKT_TX_START){
-        return false;
-    }
-    // Move onto header
-    (*dataPtr)++;
     PACKET_HEADER *header = (PACKET_HEADER*) (&dataStart[*dataPtr]);
     // Check Header start character
     if (header->StartOfHeader != PCKT_HEADER_START){

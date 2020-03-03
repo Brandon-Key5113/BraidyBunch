@@ -110,7 +110,7 @@ void MessageRxTask(void* params){
         }
         //vTaskDelay(10);
         // Get packet type and size
-        parseStatus = ParsePacketHeader(&RxBuf[RxBufI], &RxBufI, &RxPacketType, &RxSize);
+        parseStatus = ParsePacketHeader(RxBuf, &RxBufI, &RxPacketType, &RxSize);
         if (!parseStatus){
             // TODO handle error
             MSG_Printf("Could not parse packet header\r\n");
@@ -127,11 +127,11 @@ void MessageRxTask(void* params){
         }
         //vTaskDelay(10);
         // Check Termination Character
-        if (RxBuf[RxBufI + DataSize + 1] != PCKT_TX_END){
+        if (RxBuf[RxBufI + DataSize] != PCKT_TX_END){
             // TODO handle error
             MSG_Printf("Bad Transmission end character: %c\r\n", RxBuf[RxBufI + DataSize]);
         }
-        vTaskDelay(10);
+        vTaskDelay(100);
         // TODO add switch for packet type
         // Pass data to callback
         HandleIndexData(&RxBuf[RxBufI], DataSize);

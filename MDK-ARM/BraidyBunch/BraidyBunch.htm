@@ -3,7 +3,7 @@
 <title>Static Call Graph - [BraidyBunch\BraidyBunch.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image BraidyBunch\BraidyBunch.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Tue Mar 03 11:34:04 2020
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Tue Mar 03 12:55:14 2020
 <BR><P>
 <H3>Maximum Stack Usage =        568 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -691,7 +691,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsr
 <LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsl
 </UL>
-<BR>[Called By]<UL><LI><a href="#[160]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_SetConfig
+<BR>[Called By]<UL><LI><a href="#[15f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_SetConfig
 <LI><a href="#[19f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
 <LI><a href="#[1a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fp_digits
 </UL>
@@ -723,13 +723,13 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[12d]"></a>__aeabi_memclr4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[15f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_MspInit
+<BR><BR>[Called By]<UL><LI><a href="#[15e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_MspInit
 <LI><a href="#[12c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SPI_MspInit
 <LI><a href="#[142]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_MspPostInit
 <LI><a href="#[19b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
-<LI><a href="#[18e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM4_Init
-<LI><a href="#[18d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM2_Init
-<LI><a href="#[18a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
+<LI><a href="#[18d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM4_Init
+<LI><a href="#[18c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM2_Init
+<LI><a href="#[189]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
 </UL>
 
 <P><STRONG><a name="[1df]"></a>__aeabi_memclr8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
@@ -1032,10 +1032,10 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32h743xx.o(RESET)
 </UL>
-<P><STRONG><a name="[158]"></a>HAL_DMA_Abort_IT</STRONG> (Thumb, 422 bytes, Stack size 40 bytes, stm32h7xx_hal_dma.o(i.HAL_DMA_Abort_IT))
+<P><STRONG><a name="[157]"></a>HAL_DMA_Abort_IT</STRONG> (Thumb, 422 bytes, Stack size 40 bytes, stm32h7xx_hal_dma.o(i.HAL_DMA_Abort_IT))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = HAL_DMA_Abort_IT
 </UL>
-<BR>[Called By]<UL><LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_IRQHandler
+<BR>[Called By]<UL><LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_IRQHandler
 </UL>
 
 <P><STRONG><a name="[112]"></a>HAL_GPIO_EXTI_Callback</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, main.o(i.HAL_GPIO_EXTI_Callback))
@@ -1056,24 +1056,24 @@ Global Symbols
 <P><STRONG><a name="[12e]"></a>HAL_GPIO_Init</STRONG> (Thumb, 458 bytes, Stack size 40 bytes, stm32h7xx_hal_gpio.o(i.HAL_GPIO_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = HAL_GPIO_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[16d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_GpioInit
-<LI><a href="#[15f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_MspInit
+<BR>[Called By]<UL><LI><a href="#[16c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_GpioInit
+<LI><a href="#[15e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_MspInit
 <LI><a href="#[12c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SPI_MspInit
 <LI><a href="#[142]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_MspPostInit
-<LI><a href="#[18a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
+<LI><a href="#[189]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
 </UL>
 
 <P><STRONG><a name="[1a6]"></a>HAL_GPIO_TogglePin</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, stm32h7xx_hal_gpio.o(i.HAL_GPIO_TogglePin))
 <BR><BR>[Called By]<UL><LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;led_task
 </UL>
 
-<P><STRONG><a name="[16e]"></a>HAL_GPIO_WritePin</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, stm32h7xx_hal_gpio.o(i.HAL_GPIO_WritePin))
-<BR><BR>[Called By]<UL><LI><a href="#[176]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_SpiWriteBytes
-<LI><a href="#[174]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_SetDirectionGpio
-<LI><a href="#[16f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_Reset
-<LI><a href="#[173]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_ReleaseReset
-<LI><a href="#[16d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_GpioInit
-<LI><a href="#[18a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
+<P><STRONG><a name="[16d]"></a>HAL_GPIO_WritePin</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, stm32h7xx_hal_gpio.o(i.HAL_GPIO_WritePin))
+<BR><BR>[Called By]<UL><LI><a href="#[175]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_SpiWriteBytes
+<LI><a href="#[173]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_SetDirectionGpio
+<LI><a href="#[16e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_Reset
+<LI><a href="#[172]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_ReleaseReset
+<LI><a href="#[16c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_GpioInit
+<LI><a href="#[189]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
 </UL>
 
 <P><STRONG><a name="[12a]"></a>HAL_GetREVID</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32h7xx_hal.o(i.HAL_GetREVID))
@@ -1081,8 +1081,8 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[120]"></a>HAL_GetTick</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32h7xx_hal.o(i.HAL_GetTick))
-<BR><BR>[Called By]<UL><LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Transmit
-<LI><a href="#[163]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Receive
+<BR><BR>[Called By]<UL><LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Transmit
+<LI><a href="#[162]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Receive
 <LI><a href="#[12f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SPI_TransmitReceive
 <LI><a href="#[126]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCCEx_PLL3_Config
 <LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCCEx_PLL2_Config
@@ -1091,8 +1091,8 @@ Global Symbols
 <LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCCEx_PeriphCLKConfig
 <LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PWREx_ConfigSupply
 <LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_WaitOnFlagUntilTimeout
-<LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_WaitOnFlagUntilTimeout
-<LI><a href="#[162]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_CheckIdleState
+<LI><a href="#[163]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_WaitOnFlagUntilTimeout
+<LI><a href="#[161]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_CheckIdleState
 </UL>
 
 <P><STRONG><a name="[14f]"></a>HAL_IncTick</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, stm32h7xx_hal.o(i.HAL_IncTick))
@@ -1133,11 +1133,11 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[119]"></a>HAL_NVIC_EnableIRQ</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32h7xx_hal_cortex.o(i.HAL_NVIC_EnableIRQ))
-<BR><BR>[Called By]<UL><LI><a href="#[16d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_GpioInit
+<BR><BR>[Called By]<UL><LI><a href="#[16c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_GpioInit
 <LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_InitTick
-<LI><a href="#[15f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_MspInit
+<LI><a href="#[15e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_MspInit
 <LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_MspInit
-<LI><a href="#[18a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
+<LI><a href="#[189]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
 </UL>
 
 <P><STRONG><a name="[118]"></a>HAL_NVIC_SetPriority</STRONG> (Thumb, 60 bytes, Stack size 16 bytes, stm32h7xx_hal_cortex.o(i.HAL_NVIC_SetPriority))
@@ -1145,12 +1145,12 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__NVIC_SetPriority
 </UL>
-<BR>[Called By]<UL><LI><a href="#[16d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_GpioInit
+<BR>[Called By]<UL><LI><a href="#[16c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_GpioInit
 <LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_InitTick
-<LI><a href="#[15f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_MspInit
+<LI><a href="#[15e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_MspInit
 <LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_MspInit
 <LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_MspInit
-<LI><a href="#[18a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
+<LI><a href="#[189]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
 </UL>
 
 <P><STRONG><a name="[114]"></a>HAL_NVIC_SetPriorityGrouping</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, stm32h7xx_hal_cortex.o(i.HAL_NVIC_SetPriorityGrouping))
@@ -1180,19 +1180,19 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetHCLKFreq
 </UL>
-<BR>[Called By]<UL><LI><a href="#[160]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_SetConfig
+<BR>[Called By]<UL><LI><a href="#[15f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_SetConfig
 </UL>
 
 <P><STRONG><a name="[19c]"></a>HAL_RCCEx_GetPLL2ClockFreq</STRONG> (Thumb, 296 bytes, Stack size 12 bytes, stm32h7xx_hal_rcc_ex.o(i.HAL_RCCEx_GetPLL2ClockFreq))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = HAL_RCCEx_GetPLL2ClockFreq
 </UL>
-<BR>[Called By]<UL><LI><a href="#[160]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_SetConfig
+<BR>[Called By]<UL><LI><a href="#[15f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_SetConfig
 </UL>
 
 <P><STRONG><a name="[19d]"></a>HAL_RCCEx_GetPLL3ClockFreq</STRONG> (Thumb, 296 bytes, Stack size 12 bytes, stm32h7xx_hal_rcc_ex.o(i.HAL_RCCEx_GetPLL3ClockFreq))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = HAL_RCCEx_GetPLL3ClockFreq
 </UL>
-<BR>[Called By]<UL><LI><a href="#[160]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_SetConfig
+<BR>[Called By]<UL><LI><a href="#[15f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_SetConfig
 </UL>
 
 <P><STRONG><a name="[124]"></a>HAL_RCCEx_PeriphCLKConfig</STRONG> (Thumb, 2230 bytes, Stack size 48 bytes, stm32h7xx_hal_rcc_ex.o(i.HAL_RCCEx_PeriphCLKConfig))
@@ -1236,7 +1236,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetHCLKFreq
 </UL>
-<BR>[Called By]<UL><LI><a href="#[160]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_SetConfig
+<BR>[Called By]<UL><LI><a href="#[15f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_SetConfig
 </UL>
 
 <P><STRONG><a name="[11b]"></a>HAL_RCC_GetPCLK2Freq</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, stm32h7xx_hal_rcc.o(i.HAL_RCC_GetPCLK2Freq))
@@ -1245,16 +1245,16 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetHCLKFreq
 </UL>
 <BR>[Called By]<UL><LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_InitTick
-<LI><a href="#[160]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_SetConfig
+<LI><a href="#[15f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_SetConfig
 </UL>
 
 <P><STRONG><a name="[115]"></a>HAL_RCC_GetSysClockFreq</STRONG> (Thumb, 278 bytes, Stack size 16 bytes, stm32h7xx_hal_rcc.o(i.HAL_RCC_GetSysClockFreq))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = HAL_RCC_GetSysClockFreq
 </UL>
 <BR>[Called By]<UL><LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCCEx_GetD1SysClockFreq
-<LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_Pwm3SetFreq
-<LI><a href="#[16b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_Pwm2SetFreq
-<LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_Pwm1SetFreq
+<LI><a href="#[168]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_Pwm3SetFreq
+<LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_Pwm2SetFreq
+<LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_Pwm1SetFreq
 <LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_ClockConfig
 <LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Init
 </UL>
@@ -1273,8 +1273,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[12c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SPI_MspInit
 </UL>
-<BR>[Called By]<UL><LI><a href="#[175]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_SpiInit
-<LI><a href="#[18b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_SPI1_Init
+<BR>[Called By]<UL><LI><a href="#[174]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_SpiInit
+<LI><a href="#[18a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_SPI1_Init
 </UL>
 
 <P><STRONG><a name="[12c]"></a>HAL_SPI_MspInit</STRONG> (Thumb, 126 bytes, Stack size 40 bytes, stm32h7xx_hal_msp.o(i.HAL_SPI_MspInit))
@@ -1293,7 +1293,7 @@ Global Symbols
 <LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_WaitOnFlagUntilTimeout
 <LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_CloseTransfer
 </UL>
-<BR>[Called By]<UL><LI><a href="#[176]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_SpiWriteBytes
+<BR>[Called By]<UL><LI><a href="#[175]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_SpiWriteBytes
 </UL>
 
 <P><STRONG><a name="[13f]"></a>HAL_TIMEx_Break2Callback</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32h7xx_hal_tim_ex.o(i.HAL_TIMEx_Break2Callback))
@@ -1308,13 +1308,13 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_IRQHandler
 </UL>
 
-<P><STRONG><a name="[171]"></a>HAL_TIMEx_MasterConfigSynchronization</STRONG> (Thumb, 88 bytes, Stack size 16 bytes, stm32h7xx_hal_tim_ex.o(i.HAL_TIMEx_MasterConfigSynchronization))
+<P><STRONG><a name="[170]"></a>HAL_TIMEx_MasterConfigSynchronization</STRONG> (Thumb, 88 bytes, Stack size 16 bytes, stm32h7xx_hal_tim_ex.o(i.HAL_TIMEx_MasterConfigSynchronization))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = HAL_TIMEx_MasterConfigSynchronization
 </UL>
-<BR>[Called By]<UL><LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_PwmInit
-<LI><a href="#[18e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM4_Init
-<LI><a href="#[18d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM2_Init
-<LI><a href="#[18c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM1_Init
+<BR>[Called By]<UL><LI><a href="#[16f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_PwmInit
+<LI><a href="#[18d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM4_Init
+<LI><a href="#[18c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM2_Init
+<LI><a href="#[18b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM1_Init
 </UL>
 
 <P><STRONG><a name="[11c]"></a>HAL_TIM_Base_Init</STRONG> (Thumb, 54 bytes, Stack size 8 bytes, stm32h7xx_hal_tim.o(i.HAL_TIM_Base_Init))
@@ -1324,9 +1324,9 @@ Global Symbols
 <LI><a href="#[133]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_SetConfig
 </UL>
 <BR>[Called By]<UL><LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_InitTick
-<LI><a href="#[18e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM4_Init
-<LI><a href="#[18d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM2_Init
-<LI><a href="#[18c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM1_Init
+<LI><a href="#[18d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM4_Init
+<LI><a href="#[18c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM2_Init
+<LI><a href="#[18b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM1_Init
 </UL>
 
 <P><STRONG><a name="[132]"></a>HAL_TIM_Base_MspInit</STRONG> (Thumb, 142 bytes, Stack size 8 bytes, stm32h7xx_hal_msp.o(i.HAL_TIM_Base_MspInit))
@@ -1350,9 +1350,9 @@ Global Symbols
 <LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TI1_ConfigInputStage
 <LI><a href="#[138]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ITRx_SetConfig
 </UL>
-<BR>[Called By]<UL><LI><a href="#[18e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM4_Init
-<LI><a href="#[18d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM2_Init
-<LI><a href="#[18c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM1_Init
+<BR>[Called By]<UL><LI><a href="#[18d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM4_Init
+<LI><a href="#[18c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM2_Init
+<LI><a href="#[18b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM1_Init
 </UL>
 
 <P><STRONG><a name="[13a]"></a>HAL_TIM_IC_CaptureCallback</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32h7xx_hal_tim.o(i.HAL_TIM_IC_CaptureCallback))
@@ -1384,7 +1384,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_Init
 <LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
 </UL>
-<BR>[Called By]<UL><LI><a href="#[18e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM4_Init
+<BR>[Called By]<UL><LI><a href="#[18d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM4_Init
 </UL>
 
 <P><STRONG><a name="[13b]"></a>HAL_TIM_OC_DelayElapsedCallback</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32h7xx_hal_tim.o(i.HAL_TIM_OC_DelayElapsedCallback))
@@ -1401,8 +1401,8 @@ Global Symbols
 <LI><a href="#[146]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC3_SetConfig
 <LI><a href="#[144]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC1_SetConfig
 </UL>
-<BR>[Called By]<UL><LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_PwmInit
-<LI><a href="#[18e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM4_Init
+<BR>[Called By]<UL><LI><a href="#[16f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_PwmInit
+<LI><a href="#[18d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM4_Init
 </UL>
 
 <P><STRONG><a name="[14a]"></a>HAL_TIM_PWM_Init</STRONG> (Thumb, 54 bytes, Stack size 8 bytes, stm32h7xx_hal_tim.o(i.HAL_TIM_PWM_Init))
@@ -1411,8 +1411,8 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[14b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_PWM_MspInit
 <LI><a href="#[133]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_SetConfig
 </UL>
-<BR>[Called By]<UL><LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_PwmInit
-<LI><a href="#[18e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM4_Init
+<BR>[Called By]<UL><LI><a href="#[16f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_PwmInit
+<LI><a href="#[18d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM4_Init
 </UL>
 
 <P><STRONG><a name="[14b]"></a>HAL_TIM_PWM_MspInit</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32h7xx_hal_tim.o(i.HAL_TIM_PWM_MspInit))
@@ -1432,9 +1432,9 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[14d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_CCxChannelCmd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_Pwm3SetFreq
-<LI><a href="#[16b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_Pwm2SetFreq
-<LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_Pwm1SetFreq
+<BR>[Called By]<UL><LI><a href="#[168]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_Pwm3SetFreq
+<LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_Pwm2SetFreq
+<LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_Pwm1SetFreq
 </UL>
 
 <P><STRONG><a name="[14e]"></a>HAL_TIM_PWM_Stop</STRONG> (Thumb, 102 bytes, Stack size 8 bytes, stm32h7xx_hal_tim.o(i.HAL_TIM_PWM_Stop))
@@ -1443,7 +1443,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[14d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_CCxChannelCmd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StepperTask
-<LI><a href="#[172]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_PwmStop
+<LI><a href="#[171]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_PwmStop
 </UL>
 
 <P><STRONG><a name="[13d]"></a>HAL_TIM_PeriodElapsedCallback</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, main.o(i.HAL_TIM_PeriodElapsedCallback))
@@ -1457,80 +1457,78 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[151]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SlaveTimer_SetConfig
 </UL>
-<BR>[Called By]<UL><LI><a href="#[18d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM2_Init
+<BR>[Called By]<UL><LI><a href="#[18c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM2_Init
 </UL>
 
 <P><STRONG><a name="[140]"></a>HAL_TIM_TriggerCallback</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32h7xx_hal_tim.o(i.HAL_TIM_TriggerCallback))
 <BR><BR>[Called By]<UL><LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_IRQHandler
 </UL>
 
-<P><STRONG><a name="[152]"></a>HAL_UARTEx_EnableFifoMode</STRONG> (Thumb, 72 bytes, Stack size 8 bytes, stm32h7xx_hal_uart_ex.o(i.HAL_UARTEx_EnableFifoMode))
-<BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = HAL_UARTEx_EnableFifoMode &rArr; UARTEx_SetNbDataToProcess
+<P><STRONG><a name="[18f]"></a>HAL_UARTEx_DisableFifoMode</STRONG> (Thumb, 64 bytes, Stack size 12 bytes, stm32h7xx_hal_uart_ex.o(i.HAL_UARTEx_DisableFifoMode))
+<BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = HAL_UARTEx_DisableFifoMode
 </UL>
-<BR>[Calls]<UL><LI><a href="#[153]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTEx_SetNbDataToProcess
-</UL>
-<BR>[Called By]<UL><LI><a href="#[18f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART3_UART_Init
+<BR>[Called By]<UL><LI><a href="#[18e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART3_UART_Init
 </UL>
 
-<P><STRONG><a name="[15d]"></a>HAL_UARTEx_RxFifoFullCallback</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32h7xx_hal_uart_ex.o(i.HAL_UARTEx_RxFifoFullCallback))
-<BR><BR>[Called By]<UL><LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_IRQHandler
+<P><STRONG><a name="[15c]"></a>HAL_UARTEx_RxFifoFullCallback</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32h7xx_hal_uart_ex.o(i.HAL_UARTEx_RxFifoFullCallback))
+<BR><BR>[Called By]<UL><LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_IRQHandler
 </UL>
 
-<P><STRONG><a name="[154]"></a>HAL_UARTEx_SetRxFifoThreshold</STRONG> (Thumb, 76 bytes, Stack size 16 bytes, stm32h7xx_hal_uart_ex.o(i.HAL_UARTEx_SetRxFifoThreshold))
+<P><STRONG><a name="[152]"></a>HAL_UARTEx_SetRxFifoThreshold</STRONG> (Thumb, 76 bytes, Stack size 16 bytes, stm32h7xx_hal_uart_ex.o(i.HAL_UARTEx_SetRxFifoThreshold))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = HAL_UARTEx_SetRxFifoThreshold &rArr; UARTEx_SetNbDataToProcess
 </UL>
 <BR>[Calls]<UL><LI><a href="#[153]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTEx_SetNbDataToProcess
 </UL>
-<BR>[Called By]<UL><LI><a href="#[18f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART3_UART_Init
+<BR>[Called By]<UL><LI><a href="#[18e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART3_UART_Init
 </UL>
 
-<P><STRONG><a name="[155]"></a>HAL_UARTEx_SetTxFifoThreshold</STRONG> (Thumb, 76 bytes, Stack size 16 bytes, stm32h7xx_hal_uart_ex.o(i.HAL_UARTEx_SetTxFifoThreshold))
+<P><STRONG><a name="[154]"></a>HAL_UARTEx_SetTxFifoThreshold</STRONG> (Thumb, 76 bytes, Stack size 16 bytes, stm32h7xx_hal_uart_ex.o(i.HAL_UARTEx_SetTxFifoThreshold))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = HAL_UARTEx_SetTxFifoThreshold &rArr; UARTEx_SetNbDataToProcess
 </UL>
 <BR>[Calls]<UL><LI><a href="#[153]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTEx_SetNbDataToProcess
 </UL>
-<BR>[Called By]<UL><LI><a href="#[18f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART3_UART_Init
+<BR>[Called By]<UL><LI><a href="#[18e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART3_UART_Init
 </UL>
 
-<P><STRONG><a name="[15c]"></a>HAL_UARTEx_TxFifoEmptyCallback</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32h7xx_hal_uart_ex.o(i.HAL_UARTEx_TxFifoEmptyCallback))
-<BR><BR>[Called By]<UL><LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_IRQHandler
+<P><STRONG><a name="[15b]"></a>HAL_UARTEx_TxFifoEmptyCallback</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32h7xx_hal_uart_ex.o(i.HAL_UARTEx_TxFifoEmptyCallback))
+<BR><BR>[Called By]<UL><LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_IRQHandler
 </UL>
 
-<P><STRONG><a name="[15a]"></a>HAL_UARTEx_WakeupCallback</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32h7xx_hal_uart_ex.o(i.HAL_UARTEx_WakeupCallback))
-<BR><BR>[Called By]<UL><LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_IRQHandler
+<P><STRONG><a name="[159]"></a>HAL_UARTEx_WakeupCallback</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32h7xx_hal_uart_ex.o(i.HAL_UARTEx_WakeupCallback))
+<BR><BR>[Called By]<UL><LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_IRQHandler
 </UL>
 
-<P><STRONG><a name="[159]"></a>HAL_UART_ErrorCallback</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32h7xx_hal_uart.o(i.HAL_UART_ErrorCallback))
-<BR><BR>[Called By]<UL><LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_IRQHandler
+<P><STRONG><a name="[158]"></a>HAL_UART_ErrorCallback</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32h7xx_hal_uart.o(i.HAL_UART_ErrorCallback))
+<BR><BR>[Called By]<UL><LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_IRQHandler
 <LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_DMAAbortOnError
 </UL>
 
-<P><STRONG><a name="[156]"></a>HAL_UART_IRQHandler</STRONG> (Thumb, 436 bytes, Stack size 24 bytes, stm32h7xx_hal_uart.o(i.HAL_UART_IRQHandler))
+<P><STRONG><a name="[155]"></a>HAL_UART_IRQHandler</STRONG> (Thumb, 436 bytes, Stack size 24 bytes, stm32h7xx_hal_uart.o(i.HAL_UART_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = HAL_UART_IRQHandler &rArr; HAL_DMA_Abort_IT
 </UL>
-<BR>[Calls]<UL><LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_DMA_Abort_IT
-<LI><a href="#[15b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_TxCpltCallback
-<LI><a href="#[159]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_ErrorCallback
-<LI><a href="#[15a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UARTEx_WakeupCallback
-<LI><a href="#[15c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UARTEx_TxFifoEmptyCallback
-<LI><a href="#[15d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UARTEx_RxFifoFullCallback
-<LI><a href="#[157]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_EndRxTransfer
+<BR>[Calls]<UL><LI><a href="#[157]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_DMA_Abort_IT
+<LI><a href="#[15a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_TxCpltCallback
+<LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_ErrorCallback
+<LI><a href="#[159]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UARTEx_WakeupCallback
+<LI><a href="#[15b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UARTEx_TxFifoEmptyCallback
+<LI><a href="#[15c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UARTEx_RxFifoFullCallback
+<LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_EndRxTransfer
 </UL>
 <BR>[Called By]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART3_IRQHandler
 </UL>
 
-<P><STRONG><a name="[15e]"></a>HAL_UART_Init</STRONG> (Thumb, 106 bytes, Stack size 8 bytes, stm32h7xx_hal_uart.o(i.HAL_UART_Init))
+<P><STRONG><a name="[15d]"></a>HAL_UART_Init</STRONG> (Thumb, 106 bytes, Stack size 8 bytes, stm32h7xx_hal_uart.o(i.HAL_UART_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = HAL_UART_Init &rArr; UART_SetConfig &rArr; HAL_RCCEx_GetD3PCLK1Freq &rArr; HAL_RCC_GetHCLKFreq &rArr; HAL_RCCEx_GetD1SysClockFreq &rArr; HAL_RCC_GetSysClockFreq
 </UL>
-<BR>[Calls]<UL><LI><a href="#[15f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_MspInit
-<LI><a href="#[160]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_SetConfig
-<LI><a href="#[162]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_CheckIdleState
-<LI><a href="#[161]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_AdvFeatureConfig
+<BR>[Calls]<UL><LI><a href="#[15e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_MspInit
+<LI><a href="#[15f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_SetConfig
+<LI><a href="#[161]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_CheckIdleState
+<LI><a href="#[160]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_AdvFeatureConfig
 </UL>
-<BR>[Called By]<UL><LI><a href="#[18f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART3_UART_Init
+<BR>[Called By]<UL><LI><a href="#[18e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART3_UART_Init
 </UL>
 
-<P><STRONG><a name="[15f]"></a>HAL_UART_MspInit</STRONG> (Thumb, 104 bytes, Stack size 32 bytes, stm32h7xx_hal_msp.o(i.HAL_UART_MspInit))
+<P><STRONG><a name="[15e]"></a>HAL_UART_MspInit</STRONG> (Thumb, 104 bytes, Stack size 32 bytes, stm32h7xx_hal_msp.o(i.HAL_UART_MspInit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = HAL_UART_MspInit &rArr; HAL_GPIO_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_NVIC_SetPriority
@@ -1538,36 +1536,36 @@ Global Symbols
 <LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_Init
 <LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
 </UL>
-<BR>[Called By]<UL><LI><a href="#[15e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Init
+<BR>[Called By]<UL><LI><a href="#[15d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Init
 </UL>
 
-<P><STRONG><a name="[163]"></a>HAL_UART_Receive</STRONG> (Thumb, 248 bytes, Stack size 40 bytes, stm32h7xx_hal_uart.o(i.HAL_UART_Receive))
+<P><STRONG><a name="[162]"></a>HAL_UART_Receive</STRONG> (Thumb, 248 bytes, Stack size 40 bytes, stm32h7xx_hal_uart.o(i.HAL_UART_Receive))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = HAL_UART_Receive &rArr; UART_WaitOnFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
-<LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_WaitOnFlagUntilTimeout
+<LI><a href="#[163]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_WaitOnFlagUntilTimeout
 </UL>
 <BR>[Called By]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MessageRxTask
 </UL>
 
-<P><STRONG><a name="[165]"></a>HAL_UART_Transmit</STRONG> (Thumb, 190 bytes, Stack size 32 bytes, stm32h7xx_hal_uart.o(i.HAL_UART_Transmit))
+<P><STRONG><a name="[164]"></a>HAL_UART_Transmit</STRONG> (Thumb, 190 bytes, Stack size 32 bytes, stm32h7xx_hal_uart.o(i.HAL_UART_Transmit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = HAL_UART_Transmit &rArr; UART_WaitOnFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
-<LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_WaitOnFlagUntilTimeout
+<LI><a href="#[163]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_WaitOnFlagUntilTimeout
 </UL>
 <BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MessageTxTask
 <LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[15b]"></a>HAL_UART_TxCpltCallback</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32h7xx_hal_uart.o(i.HAL_UART_TxCpltCallback))
-<BR><BR>[Called By]<UL><LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_IRQHandler
+<P><STRONG><a name="[15a]"></a>HAL_UART_TxCpltCallback</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32h7xx_hal_uart.o(i.HAL_UART_TxCpltCallback))
+<BR><BR>[Called By]<UL><LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_IRQHandler
 </UL>
 
-<P><STRONG><a name="[166]"></a>HandleIndexData</STRONG> (Thumb, 60 bytes, Stack size 16 bytes, messaging.o(i.HandleIndexData))
+<P><STRONG><a name="[165]"></a>HandleIndexData</STRONG> (Thumb, 60 bytes, Stack size 16 bytes, messaging.o(i.HandleIndexData))
 <BR><BR>[Stack]<UL><LI>Max Depth = 200<LI>Call Chain = HandleIndexData &rArr; MSG_Printf &rArr; xQueueGenericSendFromISR &rArr; prvCopyDataToQueue &rArr; xTaskPriorityDisinherit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[167]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ParseIndexType
+<BR>[Calls]<UL><LI><a href="#[166]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ParseIndexType
 <LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
 <LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MSG_Printf
 </UL>
@@ -1589,15 +1587,15 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_MotorControl_SetNbDevices
 </UL>
 
-<P><STRONG><a name="[168]"></a>L6474_ApplySpeed</STRONG> (Thumb, 60 bytes, Stack size 0 bytes, l6474.o(i.L6474_ApplySpeed))
+<P><STRONG><a name="[167]"></a>L6474_ApplySpeed</STRONG> (Thumb, 60 bytes, Stack size 0 bytes, l6474.o(i.L6474_ApplySpeed))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = L6474_ApplySpeed &rArr; L6474_Board_Pwm3SetFreq &rArr; HAL_TIM_PWM_Start_IT &rArr; TIM_CCxChannelCmd
 </UL>
-<BR>[Calls]<UL><LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_Pwm3SetFreq
-<LI><a href="#[16b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_Pwm2SetFreq
-<LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_Pwm1SetFreq
+<BR>[Calls]<UL><LI><a href="#[168]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_Pwm3SetFreq
+<LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_Pwm2SetFreq
+<LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_Pwm1SetFreq
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_StepClockHandler
-<LI><a href="#[180]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_StartMovement
+<LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_StartMovement
 </UL>
 
 <P><STRONG><a name="[2]"></a>L6474_AttachErrorHandler</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, l6474.o(i.L6474_AttachErrorHandler))
@@ -1606,7 +1604,7 @@ Global Symbols
 <P><STRONG><a name="[3]"></a>L6474_AttachFlagInterrupt</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, l6474.o(i.L6474_AttachFlagInterrupt))
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
 </UL>
-<P><STRONG><a name="[16c]"></a>L6474_Board_Delay</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, x_nucleo_ihm01a1_stm32h7xx.o(i.L6474_Board_Delay))
+<P><STRONG><a name="[16b]"></a>L6474_Board_Delay</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, x_nucleo_ihm01a1_stm32h7xx.o(i.L6474_Board_Delay))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = L6474_Board_Delay &rArr; vTaskDelay &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
 <BR>[Calls]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
@@ -1615,70 +1613,70 @@ Global Symbols
 <LI><a href="#[0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Init
 </UL>
 
-<P><STRONG><a name="[179]"></a>L6474_Board_DisableIrq</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, x_nucleo_ihm01a1_stm32h7xx.o(i.L6474_Board_DisableIrq))
-<BR><BR>[Called By]<UL><LI><a href="#[177]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SendCommand
+<P><STRONG><a name="[178]"></a>L6474_Board_DisableIrq</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, x_nucleo_ihm01a1_stm32h7xx.o(i.L6474_Board_DisableIrq))
+<BR><BR>[Called By]<UL><LI><a href="#[176]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SendCommand
 <LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdSetParam
 <LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdGetStatus
 <LI><a href="#[20]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdGetParam
 </UL>
 
-<P><STRONG><a name="[178]"></a>L6474_Board_EnableIrq</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, x_nucleo_ihm01a1_stm32h7xx.o(i.L6474_Board_EnableIrq))
-<BR><BR>[Called By]<UL><LI><a href="#[177]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SendCommand
+<P><STRONG><a name="[177]"></a>L6474_Board_EnableIrq</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, x_nucleo_ihm01a1_stm32h7xx.o(i.L6474_Board_EnableIrq))
+<BR><BR>[Called By]<UL><LI><a href="#[176]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SendCommand
 <LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdSetParam
 <LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdGetStatus
 <LI><a href="#[20]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdGetParam
 </UL>
 
-<P><STRONG><a name="[16d]"></a>L6474_Board_GpioInit</STRONG> (Thumb, 216 bytes, Stack size 48 bytes, x_nucleo_ihm01a1_stm32h7xx.o(i.L6474_Board_GpioInit))
+<P><STRONG><a name="[16c]"></a>L6474_Board_GpioInit</STRONG> (Thumb, 216 bytes, Stack size 48 bytes, x_nucleo_ihm01a1_stm32h7xx.o(i.L6474_Board_GpioInit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = L6474_Board_GpioInit &rArr; HAL_GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[16f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_Reset
+<BR>[Calls]<UL><LI><a href="#[16e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_Reset
 <LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_NVIC_SetPriority
 <LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_NVIC_EnableIRQ
-<LI><a href="#[16e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
+<LI><a href="#[16d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 <LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Init
 </UL>
 
-<P><STRONG><a name="[16a]"></a>L6474_Board_Pwm1SetFreq</STRONG> (Thumb, 42 bytes, Stack size 8 bytes, x_nucleo_ihm01a1_stm32h7xx.o(i.L6474_Board_Pwm1SetFreq))
+<P><STRONG><a name="[169]"></a>L6474_Board_Pwm1SetFreq</STRONG> (Thumb, 42 bytes, Stack size 8 bytes, x_nucleo_ihm01a1_stm32h7xx.o(i.L6474_Board_Pwm1SetFreq))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = L6474_Board_Pwm1SetFreq &rArr; HAL_TIM_PWM_Start_IT &rArr; TIM_CCxChannelCmd
 </UL>
 <BR>[Calls]<UL><LI><a href="#[14c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_PWM_Start_IT
 <LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetSysClockFreq
 </UL>
-<BR>[Called By]<UL><LI><a href="#[168]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ApplySpeed
+<BR>[Called By]<UL><LI><a href="#[167]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ApplySpeed
 </UL>
 
-<P><STRONG><a name="[16b]"></a>L6474_Board_Pwm2SetFreq</STRONG> (Thumb, 42 bytes, Stack size 8 bytes, x_nucleo_ihm01a1_stm32h7xx.o(i.L6474_Board_Pwm2SetFreq))
+<P><STRONG><a name="[16a]"></a>L6474_Board_Pwm2SetFreq</STRONG> (Thumb, 42 bytes, Stack size 8 bytes, x_nucleo_ihm01a1_stm32h7xx.o(i.L6474_Board_Pwm2SetFreq))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = L6474_Board_Pwm2SetFreq &rArr; HAL_TIM_PWM_Start_IT &rArr; TIM_CCxChannelCmd
 </UL>
 <BR>[Calls]<UL><LI><a href="#[14c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_PWM_Start_IT
 <LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetSysClockFreq
 </UL>
-<BR>[Called By]<UL><LI><a href="#[168]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ApplySpeed
+<BR>[Called By]<UL><LI><a href="#[167]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ApplySpeed
 </UL>
 
-<P><STRONG><a name="[169]"></a>L6474_Board_Pwm3SetFreq</STRONG> (Thumb, 42 bytes, Stack size 8 bytes, x_nucleo_ihm01a1_stm32h7xx.o(i.L6474_Board_Pwm3SetFreq))
+<P><STRONG><a name="[168]"></a>L6474_Board_Pwm3SetFreq</STRONG> (Thumb, 42 bytes, Stack size 8 bytes, x_nucleo_ihm01a1_stm32h7xx.o(i.L6474_Board_Pwm3SetFreq))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = L6474_Board_Pwm3SetFreq &rArr; HAL_TIM_PWM_Start_IT &rArr; TIM_CCxChannelCmd
 </UL>
 <BR>[Calls]<UL><LI><a href="#[14c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_PWM_Start_IT
 <LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetSysClockFreq
 </UL>
-<BR>[Called By]<UL><LI><a href="#[168]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ApplySpeed
+<BR>[Called By]<UL><LI><a href="#[167]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ApplySpeed
 </UL>
 
-<P><STRONG><a name="[170]"></a>L6474_Board_PwmInit</STRONG> (Thumb, 96 bytes, Stack size 56 bytes, x_nucleo_ihm01a1_stm32h7xx.o(i.L6474_Board_PwmInit))
+<P><STRONG><a name="[16f]"></a>L6474_Board_PwmInit</STRONG> (Thumb, 96 bytes, Stack size 56 bytes, x_nucleo_ihm01a1_stm32h7xx.o(i.L6474_Board_PwmInit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 108<LI>Call Chain = L6474_Board_PwmInit &rArr; HAL_TIM_PWM_ConfigChannel &rArr; TIM_OC1_SetConfig
 </UL>
 <BR>[Calls]<UL><LI><a href="#[14a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_PWM_Init
 <LI><a href="#[143]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_PWM_ConfigChannel
-<LI><a href="#[171]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIMEx_MasterConfigSynchronization
+<LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIMEx_MasterConfigSynchronization
 </UL>
 <BR>[Called By]<UL><LI><a href="#[0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Init
 </UL>
 
-<P><STRONG><a name="[172]"></a>L6474_Board_PwmStop</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, x_nucleo_ihm01a1_stm32h7xx.o(i.L6474_Board_PwmStop))
+<P><STRONG><a name="[171]"></a>L6474_Board_PwmStop</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, x_nucleo_ihm01a1_stm32h7xx.o(i.L6474_Board_PwmStop))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = L6474_Board_PwmStop &rArr; HAL_TIM_PWM_Stop &rArr; TIM_CCxChannelCmd
 </UL>
 <BR>[Calls]<UL><LI><a href="#[14e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_PWM_Stop
@@ -1687,29 +1685,29 @@ Global Symbols
 <LI><a href="#[11]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_HardStop
 </UL>
 
-<P><STRONG><a name="[173]"></a>L6474_Board_ReleaseReset</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, x_nucleo_ihm01a1_stm32h7xx.o(i.L6474_Board_ReleaseReset))
-<BR><BR>[Calls]<UL><LI><a href="#[16e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
+<P><STRONG><a name="[172]"></a>L6474_Board_ReleaseReset</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, x_nucleo_ihm01a1_stm32h7xx.o(i.L6474_Board_ReleaseReset))
+<BR><BR>[Calls]<UL><LI><a href="#[16d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 </UL>
 <BR>[Called By]<UL><LI><a href="#[13]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ResetAllDevices
 <LI><a href="#[25]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ReleaseReset
 <LI><a href="#[0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Init
 </UL>
 
-<P><STRONG><a name="[16f]"></a>L6474_Board_Reset</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, x_nucleo_ihm01a1_stm32h7xx.o(i.L6474_Board_Reset))
-<BR><BR>[Calls]<UL><LI><a href="#[16e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
+<P><STRONG><a name="[16e]"></a>L6474_Board_Reset</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, x_nucleo_ihm01a1_stm32h7xx.o(i.L6474_Board_Reset))
+<BR><BR>[Calls]<UL><LI><a href="#[16d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 </UL>
-<BR>[Called By]<UL><LI><a href="#[16d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_GpioInit
+<BR>[Called By]<UL><LI><a href="#[16c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_GpioInit
 <LI><a href="#[13]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ResetAllDevices
 <LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Reset
 </UL>
 
-<P><STRONG><a name="[174]"></a>L6474_Board_SetDirectionGpio</STRONG> (Thumb, 42 bytes, Stack size 0 bytes, x_nucleo_ihm01a1_stm32h7xx.o(i.L6474_Board_SetDirectionGpio))
-<BR><BR>[Calls]<UL><LI><a href="#[16e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
+<P><STRONG><a name="[173]"></a>L6474_Board_SetDirectionGpio</STRONG> (Thumb, 42 bytes, Stack size 0 bytes, x_nucleo_ihm01a1_stm32h7xx.o(i.L6474_Board_SetDirectionGpio))
+<BR><BR>[Calls]<UL><LI><a href="#[16d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 </UL>
 <BR>[Called By]<UL><LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetDirection
 </UL>
 
-<P><STRONG><a name="[175]"></a>L6474_Board_SpiInit</STRONG> (Thumb, 52 bytes, Stack size 16 bytes, x_nucleo_ihm01a1_stm32h7xx.o(i.L6474_Board_SpiInit))
+<P><STRONG><a name="[174]"></a>L6474_Board_SpiInit</STRONG> (Thumb, 52 bytes, Stack size 16 bytes, x_nucleo_ihm01a1_stm32h7xx.o(i.L6474_Board_SpiInit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = L6474_Board_SpiInit &rArr; HAL_SPI_Init &rArr; HAL_SPI_MspInit &rArr; HAL_GPIO_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SPI_Init
@@ -1717,19 +1715,19 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Init
 </UL>
 
-<P><STRONG><a name="[176]"></a>L6474_Board_SpiWriteBytes</STRONG> (Thumb, 84 bytes, Stack size 40 bytes, x_nucleo_ihm01a1_stm32h7xx.o(i.L6474_Board_SpiWriteBytes))
+<P><STRONG><a name="[175]"></a>L6474_Board_SpiWriteBytes</STRONG> (Thumb, 84 bytes, Stack size 40 bytes, x_nucleo_ihm01a1_stm32h7xx.o(i.L6474_Board_SpiWriteBytes))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[12f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SPI_TransmitReceive
-<LI><a href="#[16e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
+<LI><a href="#[16d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 </UL>
-<BR>[Called By]<UL><LI><a href="#[17a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_WriteBytes
+<BR>[Called By]<UL><LI><a href="#[179]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_WriteBytes
 </UL>
 
 <P><STRONG><a name="[1e]"></a>L6474_CmdDisable</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, l6474.o(i.L6474_CmdDisable))
 <BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = L6474_CmdDisable &rArr; L6474_SendCommand &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[177]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SendCommand
+<BR>[Calls]<UL><LI><a href="#[176]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SendCommand
 </UL>
 <BR>[Called By]<UL><LI><a href="#[0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Init
 <LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_HizStop
@@ -1739,18 +1737,18 @@ Global Symbols
 <P><STRONG><a name="[1f]"></a>L6474_CmdEnable</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, l6474.o(i.L6474_CmdEnable))
 <BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = L6474_CmdEnable &rArr; L6474_SendCommand &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[177]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SendCommand
+<BR>[Calls]<UL><LI><a href="#[176]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SendCommand
 </UL>
-<BR>[Called By]<UL><LI><a href="#[180]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_StartMovement
+<BR>[Called By]<UL><LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_StartMovement
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
 </UL>
 <P><STRONG><a name="[20]"></a>L6474_CmdGetParam</STRONG> (Thumb, 206 bytes, Stack size 40 bytes, l6474.o(i.L6474_CmdGetParam))
 <BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = L6474_CmdGetParam &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[178]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_EnableIrq
-<LI><a href="#[179]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_DisableIrq
-<LI><a href="#[17a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_WriteBytes
+<BR>[Calls]<UL><LI><a href="#[177]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_EnableIrq
+<LI><a href="#[178]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_DisableIrq
+<LI><a href="#[179]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_WriteBytes
 </UL>
 <BR>[Called By]<UL><LI><a href="#[17]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetHome
 <LI><a href="#[31]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetAnalogValue
@@ -1769,9 +1767,9 @@ Global Symbols
 <P><STRONG><a name="[21]"></a>L6474_CmdGetStatus</STRONG> (Thumb, 118 bytes, Stack size 24 bytes, l6474.o(i.L6474_CmdGetStatus))
 <BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = L6474_CmdGetStatus &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[178]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_EnableIrq
-<LI><a href="#[179]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_DisableIrq
-<LI><a href="#[17a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_WriteBytes
+<BR>[Calls]<UL><LI><a href="#[177]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_EnableIrq
+<LI><a href="#[178]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_DisableIrq
+<LI><a href="#[179]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_WriteBytes
 </UL>
 <BR>[Called By]<UL><LI><a href="#[0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Init
 </UL>
@@ -1780,19 +1778,19 @@ Global Symbols
 <P><STRONG><a name="[22]"></a>L6474_CmdNop</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, l6474.o(i.L6474_CmdNop))
 <BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = L6474_CmdNop &rArr; L6474_SendCommand &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[177]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SendCommand
+<BR>[Calls]<UL><LI><a href="#[176]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SendCommand
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
 </UL>
 <P><STRONG><a name="[23]"></a>L6474_CmdSetParam</STRONG> (Thumb, 178 bytes, Stack size 40 bytes, l6474.o(i.L6474_CmdSetParam))
 <BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = L6474_CmdSetParam &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[178]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_EnableIrq
-<LI><a href="#[179]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_DisableIrq
-<LI><a href="#[17a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_WriteBytes
+<BR>[Calls]<UL><LI><a href="#[177]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_EnableIrq
+<LI><a href="#[178]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_DisableIrq
+<LI><a href="#[179]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_WriteBytes
 </UL>
-<BR>[Called By]<UL><LI><a href="#[187]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetRegisterToPredefinedValues
-<LI><a href="#[186]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetRegisterToGivenValues
+<BR>[Called By]<UL><LI><a href="#[186]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetRegisterToPredefinedValues
+<LI><a href="#[185]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetRegisterToGivenValues
 <LI><a href="#[18]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetMark
 <LI><a href="#[17]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetHome
 <LI><a href="#[31]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetAnalogValue
@@ -1800,14 +1798,14 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
 </UL>
-<P><STRONG><a name="[17f]"></a>L6474_ComputeSpeedProfile</STRONG> (Thumb, 88 bytes, Stack size 12 bytes, l6474.o(i.L6474_ComputeSpeedProfile))
+<P><STRONG><a name="[17e]"></a>L6474_ComputeSpeedProfile</STRONG> (Thumb, 88 bytes, Stack size 12 bytes, l6474.o(i.L6474_ComputeSpeedProfile))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = L6474_ComputeSpeedProfile
 </UL>
 <BR>[Called By]<UL><LI><a href="#[12]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Move
 <LI><a href="#[10]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_GoTo
 </UL>
 
-<P><STRONG><a name="[17b]"></a>L6474_ConvertPosition</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, l6474.o(i.L6474_ConvertPosition))
+<P><STRONG><a name="[17a]"></a>L6474_ConvertPosition</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, l6474.o(i.L6474_ConvertPosition))
 <BR><BR>[Called By]<UL><LI><a href="#[17]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetHome
 <LI><a href="#[12]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Move
 <LI><a href="#[10]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_GoTo
@@ -1818,7 +1816,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[2b]"></a>L6474_ErrorHandler</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, l6474.o(i.L6474_ErrorHandler))
-<BR><BR>[Called By]<UL><LI><a href="#[17a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_WriteBytes
+<BR><BR>[Called By]<UL><LI><a href="#[179]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_WriteBytes
 <LI><a href="#[0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Init
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
@@ -1834,10 +1832,10 @@ Global Symbols
 <P><STRONG><a name="[32]"></a>L6474_GetAnalogValue</STRONG> (Thumb, 90 bytes, Stack size 8 bytes, l6474.o(i.L6474_GetAnalogValue))
 <BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = L6474_GetAnalogValue &rArr; L6474_CmdGetParam &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[17c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Tval_Par_to_Current
-<LI><a href="#[17e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Tmin_Par_to_Time
-<LI><a href="#[17d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Ocd_Par_to_Th
-<LI><a href="#[17b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ConvertPosition
+<BR>[Calls]<UL><LI><a href="#[17b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Tval_Par_to_Current
+<LI><a href="#[17d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Tmin_Par_to_Time
+<LI><a href="#[17c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Ocd_Par_to_Th
+<LI><a href="#[17a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ConvertPosition
 <LI><a href="#[20]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdGetParam
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
@@ -1862,7 +1860,7 @@ Global Symbols
 <P><STRONG><a name="[a]"></a>L6474_GetMark</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, l6474.o(i.L6474_GetMark))
 <BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = L6474_GetMark &rArr; L6474_CmdGetParam &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[17b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ConvertPosition
+<BR>[Calls]<UL><LI><a href="#[17a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ConvertPosition
 <LI><a href="#[20]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdGetParam
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
@@ -1883,7 +1881,7 @@ Global Symbols
 <P><STRONG><a name="[d]"></a>L6474_GetPosition</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, l6474.o(i.L6474_GetPosition))
 <BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = L6474_GetPosition &rArr; L6474_CmdGetParam &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[17b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ConvertPosition
+<BR>[Calls]<UL><LI><a href="#[17a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ConvertPosition
 <LI><a href="#[20]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdGetParam
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
@@ -1908,7 +1906,7 @@ Global Symbols
 <P><STRONG><a name="[f]"></a>L6474_GoMark</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, l6474.o(i.L6474_GoMark))
 <BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = L6474_GoMark &rArr; L6474_CmdGetParam &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[17b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ConvertPosition
+<BR>[Calls]<UL><LI><a href="#[17a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ConvertPosition
 <LI><a href="#[20]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdGetParam
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
@@ -1916,11 +1914,11 @@ Global Symbols
 <P><STRONG><a name="[10]"></a>L6474_GoTo</STRONG> (Thumb, 104 bytes, Stack size 16 bytes, l6474.o(i.L6474_GoTo))
 <BR><BR>[Stack]<UL><LI>Max Depth = 192<LI>Call Chain = L6474_GoTo &rArr; L6474_StartMovement &rArr; L6474_CmdEnable &rArr; L6474_SendCommand &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[180]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_StartMovement
+<BR>[Calls]<UL><LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_StartMovement
 <LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetDirection
 <LI><a href="#[11]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_HardStop
-<LI><a href="#[17b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ConvertPosition
-<LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ComputeSpeedProfile
+<LI><a href="#[17a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ConvertPosition
+<LI><a href="#[17e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ComputeSpeedProfile
 <LI><a href="#[20]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdGetParam
 </UL>
 <BR>[Called By]<UL><LI><a href="#[e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_GoHome
@@ -1930,7 +1928,7 @@ Global Symbols
 <P><STRONG><a name="[11]"></a>L6474_HardStop</STRONG> (Thumb, 54 bytes, Stack size 8 bytes, l6474.o(i.L6474_HardStop))
 <BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = L6474_HardStop &rArr; L6474_HizStop &rArr; L6474_CmdDisable &rArr; L6474_SendCommand &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[172]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_PwmStop
+<BR>[Calls]<UL><LI><a href="#[171]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_PwmStop
 <LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_HizStop
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_StepClockHandler
@@ -1943,7 +1941,7 @@ Global Symbols
 <P><STRONG><a name="[29]"></a>L6474_HizStop</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, l6474.o(i.L6474_HizStop))
 <BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = L6474_HizStop &rArr; L6474_CmdDisable &rArr; L6474_SendCommand &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[172]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_PwmStop
+<BR>[Calls]<UL><LI><a href="#[171]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_PwmStop
 <LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdDisable
 </UL>
 <BR>[Called By]<UL><LI><a href="#[27]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SelectStepMode
@@ -1955,13 +1953,13 @@ Global Symbols
 <P><STRONG><a name="[0]"></a>L6474_Init</STRONG> (Thumb, 80 bytes, Stack size 16 bytes, l6474.o(i.L6474_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 248<LI>Call Chain = L6474_Init &rArr; L6474_SetDeviceParamsToGivenValues &rArr; L6474_SetRegisterToGivenValues &rArr; L6474_SetAnalogValue &rArr; L6474_CmdSetParam &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[175]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_SpiInit
-<LI><a href="#[173]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_ReleaseReset
-<LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_PwmInit
-<LI><a href="#[16d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_GpioInit
-<LI><a href="#[16c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_Delay
-<LI><a href="#[182]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetDeviceParamsToPredefinedValues
-<LI><a href="#[181]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetDeviceParamsToGivenValues
+<BR>[Calls]<UL><LI><a href="#[174]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_SpiInit
+<LI><a href="#[172]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_ReleaseReset
+<LI><a href="#[16f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_PwmInit
+<LI><a href="#[16c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_GpioInit
+<LI><a href="#[16b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_Delay
+<LI><a href="#[181]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetDeviceParamsToPredefinedValues
+<LI><a href="#[180]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetDeviceParamsToGivenValues
 <LI><a href="#[2b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ErrorHandler
 <LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdGetStatus
 <LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdDisable
@@ -1971,20 +1969,20 @@ Global Symbols
 <P><STRONG><a name="[12]"></a>L6474_Move</STRONG> (Thumb, 90 bytes, Stack size 24 bytes, l6474.o(i.L6474_Move))
 <BR><BR>[Stack]<UL><LI>Max Depth = 200<LI>Call Chain = L6474_Move &rArr; L6474_StartMovement &rArr; L6474_CmdEnable &rArr; L6474_SendCommand &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[180]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_StartMovement
+<BR>[Calls]<UL><LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_StartMovement
 <LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetDirection
 <LI><a href="#[11]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_HardStop
-<LI><a href="#[17b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ConvertPosition
-<LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ComputeSpeedProfile
+<LI><a href="#[17a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ConvertPosition
+<LI><a href="#[17e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ComputeSpeedProfile
 <LI><a href="#[20]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdGetParam
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
 </UL>
-<P><STRONG><a name="[17d]"></a>L6474_Ocd_Par_to_Th</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, l6474.o(i.L6474_Ocd_Par_to_Th))
+<P><STRONG><a name="[17c]"></a>L6474_Ocd_Par_to_Th</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, l6474.o(i.L6474_Ocd_Par_to_Th))
 <BR><BR>[Called By]<UL><LI><a href="#[32]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_GetAnalogValue
 </UL>
 
-<P><STRONG><a name="[184]"></a>L6474_Ocd_Th_to_Par</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, l6474.o(i.L6474_Ocd_Th_to_Par))
+<P><STRONG><a name="[183]"></a>L6474_Ocd_Th_to_Par</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, l6474.o(i.L6474_Ocd_Th_to_Par))
 <BR><BR>[Called By]<UL><LI><a href="#[31]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetAnalogValue
 </UL>
 
@@ -1999,21 +1997,21 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
 </UL>
 <P><STRONG><a name="[25]"></a>L6474_ReleaseReset</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, l6474.o(i.L6474_ReleaseReset))
-<BR><BR>[Calls]<UL><LI><a href="#[173]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_ReleaseReset
+<BR><BR>[Calls]<UL><LI><a href="#[172]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_ReleaseReset
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
 </UL>
 <P><STRONG><a name="[26]"></a>L6474_Reset</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, l6474.o(i.L6474_Reset))
-<BR><BR>[Calls]<UL><LI><a href="#[16f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_Reset
+<BR><BR>[Calls]<UL><LI><a href="#[16e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_Reset
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
 </UL>
 <P><STRONG><a name="[13]"></a>L6474_ResetAllDevices</STRONG> (Thumb, 50 bytes, Stack size 16 bytes, l6474.o(i.L6474_ResetAllDevices))
 <BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = L6474_ResetAllDevices &rArr; L6474_HizStop &rArr; L6474_CmdDisable &rArr; L6474_SendCommand &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[16f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_Reset
-<LI><a href="#[173]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_ReleaseReset
-<LI><a href="#[16c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_Delay
+<BR>[Calls]<UL><LI><a href="#[16e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_Reset
+<LI><a href="#[172]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_ReleaseReset
+<LI><a href="#[16b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_Delay
 <LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_HizStop
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
@@ -2021,7 +2019,7 @@ Global Symbols
 <P><STRONG><a name="[14]"></a>L6474_Run</STRONG> (Thumb, 54 bytes, Stack size 16 bytes, l6474.o(i.L6474_Run))
 <BR><BR>[Stack]<UL><LI>Max Depth = 192<LI>Call Chain = L6474_Run &rArr; L6474_StartMovement &rArr; L6474_CmdEnable &rArr; L6474_SendCommand &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[180]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_StartMovement
+<BR>[Calls]<UL><LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_StartMovement
 <LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetDirection
 <LI><a href="#[11]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_HardStop
 </UL>
@@ -2036,12 +2034,12 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
 </UL>
-<P><STRONG><a name="[177]"></a>L6474_SendCommand</STRONG> (Thumb, 84 bytes, Stack size 24 bytes, l6474.o(i.L6474_SendCommand))
+<P><STRONG><a name="[176]"></a>L6474_SendCommand</STRONG> (Thumb, 84 bytes, Stack size 24 bytes, l6474.o(i.L6474_SendCommand))
 <BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = L6474_SendCommand &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[178]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_EnableIrq
-<LI><a href="#[179]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_DisableIrq
-<LI><a href="#[17a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_WriteBytes
+<BR>[Calls]<UL><LI><a href="#[177]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_EnableIrq
+<LI><a href="#[178]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_DisableIrq
+<LI><a href="#[179]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_WriteBytes
 </UL>
 <BR>[Called By]<UL><LI><a href="#[22]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdNop
 <LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdEnable
@@ -2054,37 +2052,37 @@ Global Symbols
 <P><STRONG><a name="[31]"></a>L6474_SetAnalogValue</STRONG> (Thumb, 286 bytes, Stack size 24 bytes, l6474.o(i.L6474_SetAnalogValue))
 <BR><BR>[Stack]<UL><LI>Max Depth = 200<LI>Call Chain = L6474_SetAnalogValue &rArr; L6474_CmdSetParam &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[183]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Tval_Current_to_Par
-<LI><a href="#[185]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Tmin_Time_to_Par
-<LI><a href="#[184]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Ocd_Th_to_Par
+<BR>[Calls]<UL><LI><a href="#[182]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Tval_Current_to_Par
+<LI><a href="#[184]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Tmin_Time_to_Par
+<LI><a href="#[183]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Ocd_Th_to_Par
 <LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdSetParam
 <LI><a href="#[20]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdGetParam
 </UL>
-<BR>[Called By]<UL><LI><a href="#[186]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetRegisterToGivenValues
+<BR>[Called By]<UL><LI><a href="#[185]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetRegisterToGivenValues
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
 </UL>
 <P><STRONG><a name="[16]"></a>L6474_SetDeceleration</STRONG> (Thumb, 42 bytes, Stack size 0 bytes, l6474.o(i.L6474_SetDeceleration))
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
 </UL>
-<P><STRONG><a name="[181]"></a>L6474_SetDeviceParamsToGivenValues</STRONG> (Thumb, 70 bytes, Stack size 16 bytes, l6474.o(i.L6474_SetDeviceParamsToGivenValues))
+<P><STRONG><a name="[180]"></a>L6474_SetDeviceParamsToGivenValues</STRONG> (Thumb, 70 bytes, Stack size 16 bytes, l6474.o(i.L6474_SetDeviceParamsToGivenValues))
 <BR><BR>[Stack]<UL><LI>Max Depth = 232<LI>Call Chain = L6474_SetDeviceParamsToGivenValues &rArr; L6474_SetRegisterToGivenValues &rArr; L6474_SetAnalogValue &rArr; L6474_CmdSetParam &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[186]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetRegisterToGivenValues
+<BR>[Calls]<UL><LI><a href="#[185]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetRegisterToGivenValues
 </UL>
 <BR>[Called By]<UL><LI><a href="#[0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Init
 </UL>
 
-<P><STRONG><a name="[182]"></a>L6474_SetDeviceParamsToPredefinedValues</STRONG> (Thumb, 70 bytes, Stack size 16 bytes, l6474.o(i.L6474_SetDeviceParamsToPredefinedValues))
+<P><STRONG><a name="[181]"></a>L6474_SetDeviceParamsToPredefinedValues</STRONG> (Thumb, 70 bytes, Stack size 16 bytes, l6474.o(i.L6474_SetDeviceParamsToPredefinedValues))
 <BR><BR>[Stack]<UL><LI>Max Depth = 208<LI>Call Chain = L6474_SetDeviceParamsToPredefinedValues &rArr; L6474_SetRegisterToPredefinedValues &rArr; L6474_CmdSetParam &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[187]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetRegisterToPredefinedValues
+<BR>[Calls]<UL><LI><a href="#[186]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetRegisterToPredefinedValues
 </UL>
 <BR>[Called By]<UL><LI><a href="#[0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Init
 </UL>
 
 <P><STRONG><a name="[28]"></a>L6474_SetDirection</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, l6474.o(i.L6474_SetDirection))
-<BR><BR>[Calls]<UL><LI><a href="#[174]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_SetDirectionGpio
+<BR><BR>[Calls]<UL><LI><a href="#[173]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_SetDirectionGpio
 </UL>
 <BR>[Called By]<UL><LI><a href="#[14]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Run
 <LI><a href="#[12]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Move
@@ -2095,7 +2093,7 @@ Global Symbols
 <P><STRONG><a name="[17]"></a>L6474_SetHome</STRONG> (Thumb, 48 bytes, Stack size 16 bytes, l6474.o(i.L6474_SetHome))
 <BR><BR>[Stack]<UL><LI>Max Depth = 192<LI>Call Chain = L6474_SetHome &rArr; L6474_CmdSetParam &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[17b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ConvertPosition
+<BR>[Calls]<UL><LI><a href="#[17a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ConvertPosition
 <LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdSetParam
 <LI><a href="#[20]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdGetParam
 </UL>
@@ -2121,39 +2119,39 @@ Global Symbols
 <P><STRONG><a name="[30]"></a>L6474_SetNbDevices</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, l6474.o(i.L6474_SetNbDevices))
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
 </UL>
-<P><STRONG><a name="[186]"></a>L6474_SetRegisterToGivenValues</STRONG> (Thumb, 152 bytes, Stack size 16 bytes, l6474.o(i.L6474_SetRegisterToGivenValues))
+<P><STRONG><a name="[185]"></a>L6474_SetRegisterToGivenValues</STRONG> (Thumb, 152 bytes, Stack size 16 bytes, l6474.o(i.L6474_SetRegisterToGivenValues))
 <BR><BR>[Stack]<UL><LI>Max Depth = 216<LI>Call Chain = L6474_SetRegisterToGivenValues &rArr; L6474_SetAnalogValue &rArr; L6474_CmdSetParam &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[31]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetAnalogValue
 <LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdSetParam
 </UL>
-<BR>[Called By]<UL><LI><a href="#[181]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetDeviceParamsToGivenValues
+<BR>[Called By]<UL><LI><a href="#[180]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetDeviceParamsToGivenValues
 </UL>
 
-<P><STRONG><a name="[187]"></a>L6474_SetRegisterToPredefinedValues</STRONG> (Thumb, 164 bytes, Stack size 16 bytes, l6474.o(i.L6474_SetRegisterToPredefinedValues))
+<P><STRONG><a name="[186]"></a>L6474_SetRegisterToPredefinedValues</STRONG> (Thumb, 164 bytes, Stack size 16 bytes, l6474.o(i.L6474_SetRegisterToPredefinedValues))
 <BR><BR>[Stack]<UL><LI>Max Depth = 192<LI>Call Chain = L6474_SetRegisterToPredefinedValues &rArr; L6474_CmdSetParam &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[183]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Tval_Current_to_Par
-<LI><a href="#[185]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Tmin_Time_to_Par
+<BR>[Calls]<UL><LI><a href="#[182]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Tval_Current_to_Par
+<LI><a href="#[184]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Tmin_Time_to_Par
 <LI><a href="#[2c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetStopMode
 <LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdSetParam
 </UL>
-<BR>[Called By]<UL><LI><a href="#[182]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetDeviceParamsToPredefinedValues
+<BR>[Called By]<UL><LI><a href="#[181]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetDeviceParamsToPredefinedValues
 </UL>
 
 <P><STRONG><a name="[2c]"></a>L6474_SetStopMode</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, l6474.o(i.L6474_SetStopMode))
-<BR><BR>[Called By]<UL><LI><a href="#[187]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetRegisterToPredefinedValues
+<BR><BR>[Called By]<UL><LI><a href="#[186]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetRegisterToPredefinedValues
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
 </UL>
 <P><STRONG><a name="[1b]"></a>L6474_SoftStop</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, l6474.o(i.L6474_SoftStop))
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
 </UL>
-<P><STRONG><a name="[180]"></a>L6474_StartMovement</STRONG> (Thumb, 54 bytes, Stack size 16 bytes, l6474.o(i.L6474_StartMovement))
+<P><STRONG><a name="[17f]"></a>L6474_StartMovement</STRONG> (Thumb, 54 bytes, Stack size 16 bytes, l6474.o(i.L6474_StartMovement))
 <BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = L6474_StartMovement &rArr; L6474_CmdEnable &rArr; L6474_SendCommand &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdEnable
-<LI><a href="#[168]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ApplySpeed
+<LI><a href="#[167]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ApplySpeed
 </UL>
 <BR>[Called By]<UL><LI><a href="#[14]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Run
 <LI><a href="#[12]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Move
@@ -2164,25 +2162,25 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 216<LI>Call Chain = L6474_StepClockHandler &rArr; L6474_HardStop &rArr; L6474_HizStop &rArr; L6474_CmdDisable &rArr; L6474_SendCommand &rArr; L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[11]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_HardStop
-<LI><a href="#[168]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ApplySpeed
+<LI><a href="#[167]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ApplySpeed
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
 </UL>
-<P><STRONG><a name="[17e]"></a>L6474_Tmin_Par_to_Time</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, l6474.o(i.L6474_Tmin_Par_to_Time))
+<P><STRONG><a name="[17d]"></a>L6474_Tmin_Par_to_Time</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, l6474.o(i.L6474_Tmin_Par_to_Time))
 <BR><BR>[Called By]<UL><LI><a href="#[32]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_GetAnalogValue
 </UL>
 
-<P><STRONG><a name="[185]"></a>L6474_Tmin_Time_to_Par</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, l6474.o(i.L6474_Tmin_Time_to_Par))
-<BR><BR>[Called By]<UL><LI><a href="#[187]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetRegisterToPredefinedValues
+<P><STRONG><a name="[184]"></a>L6474_Tmin_Time_to_Par</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, l6474.o(i.L6474_Tmin_Time_to_Par))
+<BR><BR>[Called By]<UL><LI><a href="#[186]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetRegisterToPredefinedValues
 <LI><a href="#[31]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetAnalogValue
 </UL>
 
-<P><STRONG><a name="[183]"></a>L6474_Tval_Current_to_Par</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, l6474.o(i.L6474_Tval_Current_to_Par))
-<BR><BR>[Called By]<UL><LI><a href="#[187]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetRegisterToPredefinedValues
+<P><STRONG><a name="[182]"></a>L6474_Tval_Current_to_Par</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, l6474.o(i.L6474_Tval_Current_to_Par))
+<BR><BR>[Called By]<UL><LI><a href="#[186]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetRegisterToPredefinedValues
 <LI><a href="#[31]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SetAnalogValue
 </UL>
 
-<P><STRONG><a name="[17c]"></a>L6474_Tval_Par_to_Current</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, l6474.o(i.L6474_Tval_Par_to_Current))
+<P><STRONG><a name="[17b]"></a>L6474_Tval_Par_to_Current</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, l6474.o(i.L6474_Tval_Par_to_Current))
 <BR><BR>[Called By]<UL><LI><a href="#[32]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_GetAnalogValue
 </UL>
 
@@ -2194,13 +2192,13 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> l6474.o(.data)
 </UL>
-<P><STRONG><a name="[17a]"></a>L6474_WriteBytes</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, l6474.o(i.L6474_WriteBytes))
+<P><STRONG><a name="[179]"></a>L6474_WriteBytes</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, l6474.o(i.L6474_WriteBytes))
 <BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = L6474_WriteBytes &rArr; L6474_Board_SpiWriteBytes &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[176]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_SpiWriteBytes
+<BR>[Calls]<UL><LI><a href="#[175]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_SpiWriteBytes
 <LI><a href="#[2b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_ErrorHandler
 </UL>
-<BR>[Called By]<UL><LI><a href="#[177]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SendCommand
+<BR>[Called By]<UL><LI><a href="#[176]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_SendCommand
 <LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdSetParam
 <LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdGetStatus
 <LI><a href="#[20]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_CmdGetParam
@@ -2209,8 +2207,8 @@ Global Symbols
 <P><STRONG><a name="[108]"></a>MSG_Printf</STRONG> (Thumb, 38 bytes, Stack size 112 bytes, messaging.o(i.MSG_Printf))
 <BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = MSG_Printf &rArr; xQueueGenericSendFromISR &rArr; prvCopyDataToQueue &rArr; xTaskPriorityDisinherit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[189]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericSendFromISR
-<LI><a href="#[188]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vsnprintf
+<BR>[Calls]<UL><LI><a href="#[188]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericSendFromISR
+<LI><a href="#[187]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vsnprintf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ReportError
 <LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CoordinationTask
@@ -2218,7 +2216,7 @@ Global Symbols
 <LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StepperTask
 <LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MyFlagInterruptHandler
 <LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MessageRxTask
-<LI><a href="#[166]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HandleIndexData
+<LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HandleIndexData
 <LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;led_task
 </UL>
 
@@ -2233,8 +2231,8 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 200<LI>Call Chain = MessageRxTask &rArr; HandleIndexData &rArr; MSG_Printf &rArr; xQueueGenericSendFromISR &rArr; prvCopyDataToQueue &rArr; xTaskPriorityDisinherit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[190]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ParsePacketHeader
-<LI><a href="#[163]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Receive
-<LI><a href="#[166]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HandleIndexData
+<LI><a href="#[162]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Receive
+<LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HandleIndexData
 <LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
 <LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MSG_Printf
 <LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr
@@ -2245,7 +2243,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 208<LI>Call Chain = MessageTxTask &rArr; xQueueReceive &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
 <BR>[Calls]<UL><LI><a href="#[191]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueReceive
-<LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Transmit
+<LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Transmit
 <LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
 <LI><a href="#[192]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
 </UL>
@@ -2263,11 +2261,11 @@ Global Symbols
 <P><STRONG><a name="[34]"></a>NMI_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32h7xx_it.o(i.NMI_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32h743xx.o(RESET)
 </UL>
-<P><STRONG><a name="[167]"></a>ParseIndexType</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, controlmessages.o(i.ParseIndexType))
-<BR><BR>[Called By]<UL><LI><a href="#[166]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HandleIndexData
+<P><STRONG><a name="[166]"></a>ParseIndexType</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, controlmessages.o(i.ParseIndexType))
+<BR><BR>[Called By]<UL><LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HandleIndexData
 </UL>
 
-<P><STRONG><a name="[190]"></a>ParsePacketHeader</STRONG> (Thumb, 60 bytes, Stack size 20 bytes, controlmessages.o(i.ParsePacketHeader))
+<P><STRONG><a name="[190]"></a>ParsePacketHeader</STRONG> (Thumb, 48 bytes, Stack size 20 bytes, controlmessages.o(i.ParsePacketHeader))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = ParsePacketHeader &rArr; hex2int
 </UL>
 <BR>[Calls]<UL><LI><a href="#[195]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hex2int
@@ -2474,20 +2472,20 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[143]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_PWM_ConfigChannel
 </UL>
 
-<P><STRONG><a name="[161]"></a>UART_AdvFeatureConfig</STRONG> (Thumb, 200 bytes, Stack size 0 bytes, stm32h7xx_hal_uart.o(i.UART_AdvFeatureConfig))
-<BR><BR>[Called By]<UL><LI><a href="#[15e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Init
+<P><STRONG><a name="[160]"></a>UART_AdvFeatureConfig</STRONG> (Thumb, 200 bytes, Stack size 0 bytes, stm32h7xx_hal_uart.o(i.UART_AdvFeatureConfig))
+<BR><BR>[Called By]<UL><LI><a href="#[15d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Init
 </UL>
 
-<P><STRONG><a name="[162]"></a>UART_CheckIdleState</STRONG> (Thumb, 94 bytes, Stack size 24 bytes, stm32h7xx_hal_uart.o(i.UART_CheckIdleState))
+<P><STRONG><a name="[161]"></a>UART_CheckIdleState</STRONG> (Thumb, 94 bytes, Stack size 24 bytes, stm32h7xx_hal_uart.o(i.UART_CheckIdleState))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = UART_CheckIdleState &rArr; UART_WaitOnFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
-<LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_WaitOnFlagUntilTimeout
+<LI><a href="#[163]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_WaitOnFlagUntilTimeout
 </UL>
-<BR>[Called By]<UL><LI><a href="#[15e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Init
+<BR>[Called By]<UL><LI><a href="#[15d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Init
 </UL>
 
-<P><STRONG><a name="[160]"></a>UART_SetConfig</STRONG> (Thumb, 3084 bytes, Stack size 64 bytes, stm32h7xx_hal_uart.o(i.UART_SetConfig))
+<P><STRONG><a name="[15f]"></a>UART_SetConfig</STRONG> (Thumb, 3084 bytes, Stack size 64 bytes, stm32h7xx_hal_uart.o(i.UART_SetConfig))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = UART_SetConfig &rArr; HAL_RCCEx_GetD3PCLK1Freq &rArr; HAL_RCC_GetHCLKFreq &rArr; HAL_RCCEx_GetD1SysClockFreq &rArr; HAL_RCC_GetSysClockFreq
 </UL>
 <BR>[Calls]<UL><LI><a href="#[19d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCCEx_GetPLL3ClockFreq
@@ -2497,23 +2495,23 @@ Global Symbols
 <LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetPCLK2Freq
 <LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uldivmod
 </UL>
-<BR>[Called By]<UL><LI><a href="#[15e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Init
+<BR>[Called By]<UL><LI><a href="#[15d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Init
 </UL>
 
-<P><STRONG><a name="[164]"></a>UART_WaitOnFlagUntilTimeout</STRONG> (Thumb, 164 bytes, Stack size 32 bytes, stm32h7xx_hal_uart.o(i.UART_WaitOnFlagUntilTimeout))
+<P><STRONG><a name="[163]"></a>UART_WaitOnFlagUntilTimeout</STRONG> (Thumb, 164 bytes, Stack size 32 bytes, stm32h7xx_hal_uart.o(i.UART_WaitOnFlagUntilTimeout))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = UART_WaitOnFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 </UL>
-<BR>[Called By]<UL><LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Transmit
-<LI><a href="#[163]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Receive
-<LI><a href="#[162]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_CheckIdleState
+<BR>[Called By]<UL><LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Transmit
+<LI><a href="#[162]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Receive
+<LI><a href="#[161]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_CheckIdleState
 </UL>
 
 <P><STRONG><a name="[64]"></a>USART3_IRQHandler</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32h7xx_it.o(i.USART3_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = USART3_IRQHandler &rArr; HAL_UART_IRQHandler &rArr; HAL_DMA_Abort_IT
 </UL>
-<BR>[Calls]<UL><LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_IRQHandler
+<BR>[Calls]<UL><LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_IRQHandler
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32h743xx.o(RESET)
 </UL>
@@ -2552,7 +2550,7 @@ Global Symbols
 
 <P><STRONG><a name="[1ed]"></a>__c89vsnprintf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0vsnprintf), UNUSED)
 
-<P><STRONG><a name="[188]"></a>vsnprintf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0vsnprintf))
+<P><STRONG><a name="[187]"></a>vsnprintf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0vsnprintf))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = vsnprintf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MSG_Printf
@@ -2601,19 +2599,19 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CoordinationTaskInit
 <LI><a href="#[196]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SolenoidTaskInit
 <LI><a href="#[198]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StepperTaskInit
-<LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Transmit
+<LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Transmit
 <LI><a href="#[193]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MessagingTaskInit
 <LI><a href="#[1a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;led_task_init
 <LI><a href="#[1a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osThreadCreate
 <LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osKernelStart
 <LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Init
 <LI><a href="#[19b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
-<LI><a href="#[18f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART3_UART_Init
-<LI><a href="#[18e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM4_Init
-<LI><a href="#[18d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM2_Init
-<LI><a href="#[18c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM1_Init
-<LI><a href="#[18b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_SPI1_Init
-<LI><a href="#[18a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
+<LI><a href="#[18e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART3_UART_Init
+<LI><a href="#[18d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM4_Init
+<LI><a href="#[18c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM2_Init
+<LI><a href="#[18b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM1_Init
+<LI><a href="#[18a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_SPI1_Init
+<LI><a href="#[189]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
 <LI><a href="#[192]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
 <LI><a href="#[1a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
 <LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
@@ -2746,7 +2744,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortGetIPSR
 </UL>
-<BR>[Called By]<UL><LI><a href="#[189]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericSendFromISR
+<BR>[Called By]<UL><LI><a href="#[188]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericSendFromISR
 </UL>
 
 <P><STRONG><a name="[109]"></a>vTaskDelay</STRONG> (Thumb, 66 bytes, Stack size 8 bytes, tasks.o(i.vTaskDelay))
@@ -2761,9 +2759,9 @@ Global Symbols
 <LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StepperTask
 <LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MessageTxTask
 <LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MessageRxTask
-<LI><a href="#[166]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HandleIndexData
+<LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HandleIndexData
 <LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;led_task
-<LI><a href="#[16c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_Delay
+<LI><a href="#[16b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_Board_Delay
 <LI><a href="#[1d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6474_WaitWhileActive
 <LI><a href="#[197]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osDelay
 </UL>
@@ -2837,7 +2835,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[1bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvInitialiseNewQueue
 </UL>
 
-<P><STRONG><a name="[189]"></a>xQueueGenericSendFromISR</STRONG> (Thumb, 188 bytes, Stack size 32 bytes, queue.o(i.xQueueGenericSendFromISR))
+<P><STRONG><a name="[188]"></a>xQueueGenericSendFromISR</STRONG> (Thumb, 188 bytes, Stack size 32 bytes, queue.o(i.xQueueGenericSendFromISR))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = xQueueGenericSendFromISR &rArr; prvCopyDataToQueue &rArr; xTaskPriorityDisinherit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskRemoveFromEventList
@@ -2933,7 +2931,7 @@ Global Symbols
 <LI><a href="#[1af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uxListRemove
 </UL>
 <BR>[Called By]<UL><LI><a href="#[191]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueReceive
-<LI><a href="#[189]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericSendFromISR
+<LI><a href="#[188]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericSendFromISR
 <LI><a href="#[1bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericReset
 <LI><a href="#[1c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvUnlockQueue
 </UL>
@@ -2965,19 +2963,19 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> stepperdriver.o(i.StepperTask)
 </UL>
-<P><STRONG><a name="[18a]"></a>MX_GPIO_Init</STRONG> (Thumb, 512 bytes, Stack size 64 bytes, main.o(i.MX_GPIO_Init))
+<P><STRONG><a name="[189]"></a>MX_GPIO_Init</STRONG> (Thumb, 512 bytes, Stack size 64 bytes, main.o(i.MX_GPIO_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = MX_GPIO_Init &rArr; HAL_GPIO_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_NVIC_SetPriority
 <LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_NVIC_EnableIRQ
-<LI><a href="#[16e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
+<LI><a href="#[16d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 <LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_Init
 <LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[18b]"></a>MX_SPI1_Init</STRONG> (Thumb, 70 bytes, Stack size 16 bytes, main.o(i.MX_SPI1_Init))
+<P><STRONG><a name="[18a]"></a>MX_SPI1_Init</STRONG> (Thumb, 70 bytes, Stack size 16 bytes, main.o(i.MX_SPI1_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = MX_SPI1_Init &rArr; HAL_SPI_Init &rArr; HAL_SPI_MspInit &rArr; HAL_GPIO_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SPI_Init
@@ -2985,29 +2983,29 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[18c]"></a>MX_TIM1_Init</STRONG> (Thumb, 80 bytes, Stack size 40 bytes, main.o(i.MX_TIM1_Init))
+<P><STRONG><a name="[18b]"></a>MX_TIM1_Init</STRONG> (Thumb, 80 bytes, Stack size 40 bytes, main.o(i.MX_TIM1_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = MX_TIM1_Init &rArr; HAL_TIM_Base_Init &rArr; TIM_Base_SetConfig
 </UL>
 <BR>[Calls]<UL><LI><a href="#[134]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_ConfigClockSource
 <LI><a href="#[11c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Init
-<LI><a href="#[171]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIMEx_MasterConfigSynchronization
+<LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIMEx_MasterConfigSynchronization
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[18d]"></a>MX_TIM2_Init</STRONG> (Thumb, 98 bytes, Stack size 56 bytes, main.o(i.MX_TIM2_Init))
+<P><STRONG><a name="[18c]"></a>MX_TIM2_Init</STRONG> (Thumb, 98 bytes, Stack size 56 bytes, main.o(i.MX_TIM2_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = MX_TIM2_Init &rArr; HAL_TIM_SlaveConfigSynchro &rArr; TIM_SlaveTimer_SetConfig &rArr; TIM_TI2_ConfigInputStage
 </UL>
 <BR>[Calls]<UL><LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_SlaveConfigSynchro
 <LI><a href="#[134]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_ConfigClockSource
 <LI><a href="#[11c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Init
-<LI><a href="#[171]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIMEx_MasterConfigSynchronization
+<LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIMEx_MasterConfigSynchronization
 <LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[18e]"></a>MX_TIM4_Init</STRONG> (Thumb, 110 bytes, Stack size 64 bytes, main.o(i.MX_TIM4_Init))
+<P><STRONG><a name="[18d]"></a>MX_TIM4_Init</STRONG> (Thumb, 110 bytes, Stack size 64 bytes, main.o(i.MX_TIM4_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = MX_TIM4_Init &rArr; HAL_TIM_MspPostInit &rArr; HAL_GPIO_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[14a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_PWM_Init
@@ -3015,19 +3013,19 @@ Local Symbols
 <LI><a href="#[142]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_MspPostInit
 <LI><a href="#[134]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_ConfigClockSource
 <LI><a href="#[11c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Init
-<LI><a href="#[171]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIMEx_MasterConfigSynchronization
+<LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIMEx_MasterConfigSynchronization
 <LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[18f]"></a>MX_USART3_UART_Init</STRONG> (Thumb, 68 bytes, Stack size 8 bytes, main.o(i.MX_USART3_UART_Init))
+<P><STRONG><a name="[18e]"></a>MX_USART3_UART_Init</STRONG> (Thumb, 68 bytes, Stack size 8 bytes, main.o(i.MX_USART3_UART_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = MX_USART3_UART_Init &rArr; HAL_UART_Init &rArr; UART_SetConfig &rArr; HAL_RCCEx_GetD3PCLK1Freq &rArr; HAL_RCC_GetHCLKFreq &rArr; HAL_RCCEx_GetD1SysClockFreq &rArr; HAL_RCC_GetSysClockFreq
 </UL>
-<BR>[Calls]<UL><LI><a href="#[15e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Init
-<LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UARTEx_SetTxFifoThreshold
-<LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UARTEx_SetRxFifoThreshold
-<LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UARTEx_EnableFifoMode
+<BR>[Calls]<UL><LI><a href="#[15d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Init
+<LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UARTEx_SetTxFifoThreshold
+<LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UARTEx_SetRxFifoThreshold
+<LI><a href="#[18f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UARTEx_DisableFifoMode
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -3127,22 +3125,21 @@ Local Symbols
 <P><STRONG><a name="[cc]"></a>UART_DMAAbortOnError</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, stm32h7xx_hal_uart.o(i.UART_DMAAbortOnError))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = UART_DMAAbortOnError
 </UL>
-<BR>[Calls]<UL><LI><a href="#[159]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_ErrorCallback
+<BR>[Calls]<UL><LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_ErrorCallback
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> stm32h7xx_hal_uart.o(i.HAL_UART_IRQHandler)
 </UL>
-<P><STRONG><a name="[157]"></a>UART_EndRxTransfer</STRONG> (Thumb, 34 bytes, Stack size 12 bytes, stm32h7xx_hal_uart.o(i.UART_EndRxTransfer))
+<P><STRONG><a name="[156]"></a>UART_EndRxTransfer</STRONG> (Thumb, 34 bytes, Stack size 12 bytes, stm32h7xx_hal_uart.o(i.UART_EndRxTransfer))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = UART_EndRxTransfer
 </UL>
-<BR>[Called By]<UL><LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_IRQHandler
+<BR>[Called By]<UL><LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_IRQHandler
 </UL>
 
 <P><STRONG><a name="[153]"></a>UARTEx_SetNbDataToProcess</STRONG> (Thumb, 82 bytes, Stack size 28 bytes, stm32h7xx_hal_uart_ex.o(i.UARTEx_SetNbDataToProcess))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = UARTEx_SetNbDataToProcess
 </UL>
-<BR>[Called By]<UL><LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UARTEx_SetTxFifoThreshold
-<LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UARTEx_SetRxFifoThreshold
-<LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UARTEx_EnableFifoMode
+<BR>[Called By]<UL><LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UARTEx_SetTxFifoThreshold
+<LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UARTEx_SetRxFifoThreshold
 </UL>
 
 <P><STRONG><a name="[1b6]"></a>prvCopyDataFromQueue</STRONG> (Thumb, 38 bytes, Stack size 8 bytes, queue.o(i.prvCopyDataFromQueue))
@@ -3159,7 +3156,7 @@ Local Symbols
 <BR>[Calls]<UL><LI><a href="#[1b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
 <LI><a href="#[1b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskPriorityDisinherit
 </UL>
-<BR>[Called By]<UL><LI><a href="#[189]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericSendFromISR
+<BR>[Called By]<UL><LI><a href="#[188]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericSendFromISR
 </UL>
 
 <P><STRONG><a name="[1bc]"></a>prvInitialiseNewQueue</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, queue.o(i.prvInitialiseNewQueue))
