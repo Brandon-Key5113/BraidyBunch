@@ -43,6 +43,7 @@ void HandleIndexData(uint8_t* data, uint16_t size){
     int16_t index = 0;
     PCKT_INDEX_TYPE pcktType;
     while(index < size){
+         vTaskDelay(100);
          pcktType = ParseIndexType( &data[index]);
          switch (pcktType){
          case PCKT_INDEX_TYPE_MTR:
@@ -86,10 +87,12 @@ void MessageRxTask(void* params){
         // Wait for start of transmission character
         status = HAL_TIMEOUT;
         while (status != HAL_OK){
-            status = HAL_UART_Receive(&huart3, &RxBuf[RxBufI], 1, 60000);
+            vTaskDelay(100);
+            status = HAL_UART_Receive(&huart3, &RxBuf[RxBufI], 1, 100);
         }
         
-        MSG_Printf("Recieved Message\r\n");
+        //MSG_Printf("Recieved Message\r\n");
+        
         
         // Check start of transmission character
         if (RxBuf[RxBufI] != PCKT_TX_START){
@@ -98,14 +101,14 @@ void MessageRxTask(void* params){
         }
         // Move index up
         RxBufI += 1;
-        
+        //vTaskDelay(10);
         // Read in header
-        status = HAL_UART_Receive(&huart3, &RxBuf[RxBufI], sizeof(PACKET_HEADER), 5000);
+        status = HAL_UART_Receive(&huart3, &RxBuf[RxBufI], sizeof(PACKET_HEADER), 500);
         if (status != HAL_OK){
             // TODO handle error
             MSG_Printf("Could not read packet header\r\n");
         }
-        
+        //vTaskDelay(10);
         // Get packet type and size
         parseStatus = ParsePacketHeader(&RxBuf[RxBufI], &RxBufI, &RxPacketType, &RxSize);
         if (!parseStatus){
@@ -113,25 +116,26 @@ void MessageRxTask(void* params){
             MSG_Printf("Could not parse packet header\r\n");
         }
         // Add Packet header size to the index
-        RxBufI += sizeof(PACKET_HEADER);
-        
+        //RxBufI += sizeof(PACKET_HEADER);
+        //vTaskDelay(10);
         // Read in data into buffer
         DataSize = RxSize - RxBufI - 1;
-        status = HAL_UART_Receive(&huart3, &RxBuf[RxBufI], DataSize + 1, 5000);
+        status = HAL_UART_Receive(&huart3, &RxBuf[RxBufI], DataSize + 1, 500);
         if (status != HAL_OK){
             // TODO handle error
-            MSG_Printf("Could not read packet data\r\n");
+            MSG_Printf("Could not read packet data %d \r\n", status);
         }
-        
+        //vTaskDelay(10);
         // Check Termination Character
         if (RxBuf[RxBufI + DataSize + 1] != PCKT_TX_END){
             // TODO handle error
-            MSG_Printf("Bad Transmission end character\r\n");
+            MSG_Printf("Bad Transmission end character: %c\r\n", RxBuf[RxBufI + DataSize]);
         }
-        
+        vTaskDelay(10);
+        // TODO add switch for packet type
         // Pass data to callback
         HandleIndexData(&RxBuf[RxBufI], DataSize);
-        
+        //vTaskDelay(10);
     }
     
     // close task
@@ -163,7 +167,7 @@ void MessagingTaskInit(void)
     MessageTxQueueHandle = xQueueCreate( 100, 80 );
     
     // Create Task
-    xTaskCreate( MessageTxTask,"MessageTxTask", 128, &MessageTxTaskHandle, 
+    xTaskCreate( MessageTxTask,"MessageTxTask", 512, &MessageTxTaskHandle, 
         6, &MessageTxTaskHandle); 
     
     xTaskCreate( MessageRxTask,"MessageRxTask", 1024, &MessageRxTaskHandle, 

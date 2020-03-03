@@ -81,7 +81,7 @@ bool PacketTerm(uint8_t* dataStart, uint16_t* dataPtr){
 }
 
 bool ParsePacketHeader(uint8_t* dataStart, uint16_t* dataPtr, PCKT_TYPE *packetType, uint16_t* size){
-    *dataPtr = 0;
+    //*dataPtr = 0;
     *packetType = PCKT_TYPE_INVALID;
     *size = 0;
     // Check transmission start character
