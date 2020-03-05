@@ -152,7 +152,7 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>138</LineNumber>
+          <LineNumber>115</LineNumber>
           <EnabledFlag>1</EnabledFlag>
           <Address>0</Address>
           <ByteObject>0</ByteObject>
@@ -164,22 +164,6 @@
           <Filename>..\Src\messaging.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression></Expression>
-        </Bp>
-        <Bp>
-          <Number>1</Number>
-          <Type>0</Type>
-          <LineNumber>137</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134238424</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\Src\messaging.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\BraidyBunch\../Src/messaging.c\137</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -212,6 +196,11 @@
           <count>5</count>
           <WinNumber>1</WinNumber>
           <ItemText>RxBuf[RxBufI + DataSize + 1]</ItemText>
+        </Ww>
+        <Ww>
+          <count>6</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>RxPacketType</ItemText>
         </Ww>
       </WatchWindow1>
       <WatchWindow2>

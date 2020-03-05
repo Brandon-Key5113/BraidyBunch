@@ -8,7 +8,7 @@
 
 #define SOLENOID_NUM (4)
 #define SOLENOID_TASK_PRIORITY (6)
-#define SOLENOID_TASK_STACK (256)
+#define SOLENOID_TASK_STACK (1024)
 
 
 // Task Related Functions

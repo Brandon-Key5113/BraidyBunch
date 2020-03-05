@@ -74,9 +74,9 @@ void CoordinationTask(void *parameters){
             }
             buttonPressed = 0;
             
-            MSG_Printf("Adding Movements \r\n");
+            //MSG_Printf("Adding Movements \r\n");
             // Send first round of movements
-            AddMovements(indexMvmnts[i]);
+            //AddMovements(indexMvmnts[i]);
             
             MSG_Printf("Starting Movements \r\n");
             // Start movements
@@ -105,23 +105,57 @@ void CoordinationTask(void *parameters){
 void HandleIndexData(uint8_t* data, uint16_t size){
     int16_t index = 0;
     PCKT_INDEX_TYPE pcktType;
+    bool cmdSuc = false;
+    uint8_t objNum;
+    MTR_MVMNT mtrMvmnt;
+    SOL_MVMNT solMvmnt;
+    
+    bool ParseMtrPacket(PACKET_MTR *pckt, uint8_t* mtr, MTR_MVMNT* mvmnt);
+    bool ParseSolPacket(PACKET_SOL *pckt, uint8_t* sol, SOL_MVMNT* mvmnt);
+    
     while(index < size){
-         vTaskDelay(100);
+         vTaskDelay(10);
          pcktType = ParseIndexType( &data[index]);
          switch (pcktType){
          case PCKT_INDEX_TYPE_MTR:
-            MSG_Printf("Mtr\r\n");
-            index += sizeof(PACKET_MTR);
-            break;
+             // Parse the packet
+             cmdSuc = ParseMtrPacket((PACKET_MTR *) &data[index], &objNum, &mtrMvmnt);
+             if (!cmdSuc){
+                 MSG_Printf("Could not parse stepper command\r\n");
+                 ReportError(INVALID_STEPPER_CMD);
+             }
+             // Register the movement
+             cmdSuc = StepperAddMovement(objNum, mtrMvmnt);
+             if (!cmdSuc){
+                 MSG_Printf("Could not add stepper command\r\n");
+                 ReportError(INVALID_STEPPER_CMD);
+             }
+             MSG_Printf("Added Stepper Movement\r\n");
+             // Bump up the index approprietly
+             index += sizeof(PACKET_MTR);
+             break;
          case PCKT_INDEX_TYPE_SOL:
-            MSG_Printf("Sol\r\n");
-            index += sizeof(PACKET_SOL);
-            break;
+             // Parse the packet
+             cmdSuc = ParseSolPacket((PACKET_SOL *) &data[index], &objNum, &solMvmnt);
+             if (!cmdSuc){
+                 MSG_Printf("Could not parse solenoid command\r\n");
+                 ReportError(INVALID_SOLENOID_CMD);
+             }
+             // Register the movement
+             cmdSuc = SolenoidAddMovement(objNum, solMvmnt);
+             if (!cmdSuc){
+                 MSG_Printf("Could not add solenoid command\r\n");
+                 ReportError(INVALID_SOLENOID_CMD);
+             }
+             MSG_Printf("Added Solenoid Movement\r\n");
+             // Bump up the index approprietly
+             index += sizeof(PACKET_SOL);
+             break;
          default:
-            //\TODO Error Handle
-            MSG_Printf("Bad Packet\r\n");
-            return;
-            break;
+             //\TODO Error Handle
+             MSG_Printf("Bad Packet\r\n");
+             return;
+             break;
          }
         
         

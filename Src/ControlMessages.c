@@ -89,6 +89,9 @@ bool ParsePacketHeader(uint8_t* dataStart, uint16_t* dataPtr, PCKT_TYPE *packetT
     if (header->StartOfHeader != PCKT_HEADER_START){
         return false;
     }
+    if (header->EndOfHeader != PCKT_HEADER_END){
+        return false;
+    }
     // retrieve values
     (*dataPtr)+= sizeof(PACKET_HEADER);
     (*size) = hex2int( &(header->PacketSize[2]));

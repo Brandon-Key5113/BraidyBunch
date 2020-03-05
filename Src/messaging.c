@@ -97,19 +97,21 @@ void MessageRxTask(void* params){
         //vTaskDelay(10);
         // Read in data into buffer
         DataSize = RxSize - RxBufI - 1;
-        status = HAL_UART_Receive(&huart3, &RxBuf[RxBufI], DataSize + 1, 500);
+        status = HAL_UART_Receive(&huart3, &RxBuf[RxBufI], DataSize + 1, 1000);
         if (status != HAL_OK){
             // TODO handle error
             MSG_Printf("Could not read packet data %d \r\n", status);
+            continue;
         }
         //vTaskDelay(10);
         // Check Termination Character
         if (RxBuf[RxBufI + DataSize] != PCKT_TX_END){
             // TODO handle error
             MSG_Printf("Bad Transmission end character: %c\r\n", RxBuf[RxBufI + DataSize]);
+            continue;
         }
         vTaskDelay(100);
-        // TODO add switch for packet type
+        
         // Pass data to callback
         //HandleIndexData(&RxBuf[RxBufI], DataSize);
         (*PacketHandlers[RxPacketType])(&RxBuf[RxBufI], DataSize);

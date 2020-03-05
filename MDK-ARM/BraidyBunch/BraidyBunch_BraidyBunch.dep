@@ -59,7 +59,7 @@ I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599F75EC)
 I (../Inc/messaging.h)(0x5E5EA014)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599F75EE)
 I (../Inc/ControlMessages.h)(0x5E5E9EAE)
-F (..\Src\messaging.c)(0x5E5EA196)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/BSP/Components/Common -I ../Drivers/BSP/Components\l6474 -I ../Drivers/BSP/STM32H7xx_Nucleo -I ../Drivers/BSP/X-NUCLEO-IHMxx-I.\RTE\_BraidyBunch-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include"-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\Keil\STM32H7xx_DFP\2.3.1\Drivers\CMSIS\Device\ST\STM32H7xx\Include"-D__UVISION_VERSION="527" -D_RTE_ -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o braidybunch\messaging.o --omf_browse braidybunch\messaging.crf --depend braidybunch\messaging.d)
+F (..\Src\messaging.c)(0x5E6165D5)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/BSP/Components/Common -I ../Drivers/BSP/Components\l6474 -I ../Drivers/BSP/STM32H7xx_Nucleo -I ../Drivers/BSP/X-NUCLEO-IHMxx-I.\RTE\_BraidyBunch-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include"-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\Keil\STM32H7xx_DFP\2.3.1\Drivers\CMSIS\Device\ST\STM32H7xx\Include"-D__UVISION_VERSION="527" -D_RTE_ -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o braidybunch\messaging.o --omf_browse braidybunch\messaging.crf --depend braidybunch\messaging.d)
 I (../Inc/messaging.h)(0x5E5EA014)
 I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h)(0x5DCE43AB)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x5DCE43AB)
@@ -119,7 +119,7 @@ I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x599F75EC)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599F75EC)
 I (C:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x599F75EA)
 F (..\Src\StepperDriver.c)(0x5E5EB8D5)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/BSP/Components/Common -I ../Drivers/BSP/Components\l6474 -I ../Drivers/BSP/STM32H7xx_Nucleo -I ../Drivers/BSP/X-NUCLEO-IHMxx-I.\RTE\_BraidyBunch-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include"-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\Keil\STM32H7xx_DFP\2.3.1\Drivers\CMSIS\Device\ST\STM32H7xx\Include"-D__UVISION_VERSION="527" -D_RTE_ -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o braidybunch\stepperdriver.o --omf_browse braidybunch\stepperdriver.crf --depend braidybunch\stepperdriver.d)
-I (../Inc/StepperDriver.h)(0x5E5EB8D3)
+I (../Inc/StepperDriver.h)(0x5E612935)
 I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h)(0x5DCE43AB)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x5DCE43AB)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599F75EC)
@@ -182,7 +182,7 @@ I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h)(0x5DCE439E)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599F75EC)
 I (../Inc/messaging.h)(0x5E5EA014)
 F (..\Src\SolenoidDriver.c)(0x5E5EB8D4)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/BSP/Components/Common -I ../Drivers/BSP/Components\l6474 -I ../Drivers/BSP/STM32H7xx_Nucleo -I ../Drivers/BSP/X-NUCLEO-IHMxx-I.\RTE\_BraidyBunch-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include"-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\Keil\STM32H7xx_DFP\2.3.1\Drivers\CMSIS\Device\ST\STM32H7xx\Include"-D__UVISION_VERSION="527" -D_RTE_ -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o braidybunch\solenoiddriver.o --omf_browse braidybunch\solenoiddriver.crf --depend braidybunch\solenoiddriver.d)
-I (../Inc/SolenoidDriver.h)(0x5E5EB8D3)
+I (../Inc/SolenoidDriver.h)(0x5E612944)
 I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h)(0x5DCE43AB)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x5DCE43AB)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599F75EC)
@@ -239,7 +239,7 @@ I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h)(0x5DCE439E)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599F75EC)
 I (../Inc/messaging.h)(0x5E5EA014)
-F (..\Src\Coordination.c)(0x5E5EA28A)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/BSP/Components/Common -I ../Drivers/BSP/Components\l6474 -I ../Drivers/BSP/STM32H7xx_Nucleo -I ../Drivers/BSP/X-NUCLEO-IHMxx-I.\RTE\_BraidyBunch-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include"-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\Keil\STM32H7xx_DFP\2.3.1\Drivers\CMSIS\Device\ST\STM32H7xx\Include"-D__UVISION_VERSION="527" -D_RTE_ -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o braidybunch\coordination.o --omf_browse braidybunch\coordination.crf --depend braidybunch\coordination.d)
+F (..\Src\Coordination.c)(0x5E6127B5)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/BSP/Components/Common -I ../Drivers/BSP/Components\l6474 -I ../Drivers/BSP/STM32H7xx_Nucleo -I ../Drivers/BSP/X-NUCLEO-IHMxx-I.\RTE\_BraidyBunch-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include"-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\Keil\STM32H7xx_DFP\2.3.1\Drivers\CMSIS\Device\ST\STM32H7xx\Include"-D__UVISION_VERSION="527" -D_RTE_ -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o braidybunch\coordination.o --omf_browse braidybunch\coordination.crf --depend braidybunch\coordination.d)
 I (../Inc/Coordination.h)(0x5E5EB8D3)
 I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h)(0x5DCE43AB)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x5DCE43AB)
@@ -265,13 +265,13 @@ I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5DCE4399)
 I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x5DCE4399)
 I (../Drivers/CMSIS/Device/ST/STM32H7xx/Include/system_stm32h7xx.h)(0x5DCE4341)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599F75EE)
-I (../Inc/StepperDriver.h)(0x5E5EB8D3)
+I (../Inc/StepperDriver.h)(0x5E612935)
 I (../Drivers/BSP/X-NUCLEO-IHMxx/x_nucleo_ihmxx.h)(0x5AD5C059)
 I (../Drivers/BSP/Components/Common/motor.h)(0x5E5544DD)
 I (../Drivers/BSP/Components\l6474/l6474.h)(0x5AAFDF81)
 I (../Drivers/BSP/Components\l6474/l6474_target_config.h)(0x5AAF7390)
 I (../Inc/ControlMessages.h)(0x5E5E9EAE)
-I (../Inc/SolenoidDriver.h)(0x5E5EB8D3)
+I (../Inc/SolenoidDriver.h)(0x5E612944)
 I (../Inc/main.h)(0x5E5E94A1)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h)(0x5DCE439D)
 I (../Inc/stm32h7xx_hal_conf.h)(0x5E5E94A0)
@@ -303,7 +303,7 @@ I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h)(0x5DCE439E)
 I (../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h)(0x5DCE439E)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599F75EC)
 I (../Inc/messaging.h)(0x5E5EA014)
-F (..\Src\ControlMessages.c)(0x5E5E8DF8)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/BSP/Components/Common -I ../Drivers/BSP/Components\l6474 -I ../Drivers/BSP/STM32H7xx_Nucleo -I ../Drivers/BSP/X-NUCLEO-IHMxx-I.\RTE\_BraidyBunch-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include"-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\Keil\STM32H7xx_DFP\2.3.1\Drivers\CMSIS\Device\ST\STM32H7xx\Include"-D__UVISION_VERSION="527" -D_RTE_ -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o braidybunch\controlmessages.o --omf_browse braidybunch\controlmessages.crf --depend braidybunch\controlmessages.d)
+F (..\Src\ControlMessages.c)(0x5E616536)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/BSP/Components/Common -I ../Drivers/BSP/Components\l6474 -I ../Drivers/BSP/STM32H7xx_Nucleo -I ../Drivers/BSP/X-NUCLEO-IHMxx-I.\RTE\_BraidyBunch-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include"-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\Keil\STM32H7xx_DFP\2.3.1\Drivers\CMSIS\Device\ST\STM32H7xx\Include"-D__UVISION_VERSION="527" -D_RTE_ -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o braidybunch\controlmessages.o --omf_browse braidybunch\controlmessages.crf --depend braidybunch\controlmessages.d)
 I (../Inc/ControlMessages.h)(0x5E5E9EAE)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599F75EE)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F75EE)
@@ -368,12 +368,12 @@ I (../Inc/messaging.h)(0x5E5EA014)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599F75EE)
 I (../Inc/ControlMessages.h)(0x5E5E9EAE)
 I (../Inc/led_task.h)(0x5E5544DD)
-I (../Inc/StepperDriver.h)(0x5E5EB8D3)
+I (../Inc/StepperDriver.h)(0x5E612935)
 I (../Drivers/BSP/X-NUCLEO-IHMxx/x_nucleo_ihmxx.h)(0x5AD5C059)
 I (../Drivers/BSP/Components/Common/motor.h)(0x5E5544DD)
 I (../Drivers/BSP/Components\l6474/l6474.h)(0x5AAFDF81)
 I (../Drivers/BSP/Components\l6474/l6474_target_config.h)(0x5AAF7390)
-I (../Inc/SolenoidDriver.h)(0x5E5EB8D3)
+I (../Inc/SolenoidDriver.h)(0x5E612944)
 I (../Inc/Coordination.h)(0x5E5EB8D3)
 F (../Src/freertos.c)(0x5E5E949E)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Drivers/BSP/Components/Common -I ../Drivers/BSP/Components\l6474 -I ../Drivers/BSP/STM32H7xx_Nucleo -I ../Drivers/BSP/X-NUCLEO-IHMxx-I.\RTE\_BraidyBunch-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include"-I"C:\Users\MSI LAPTOP\AppData\Local\Arm\Packs\Keil\STM32H7xx_DFP\2.3.1\Drivers\CMSIS\Device\ST\STM32H7xx\Include"-D__UVISION_VERSION="527" -D_RTE_ -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx-o braidybunch\freertos.o --omf_browse braidybunch\freertos.crf --depend braidybunch\freertos.d)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x5DCE43AB)
