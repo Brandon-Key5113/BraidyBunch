@@ -110,9 +110,6 @@ void HandleIndexData(uint8_t* data, uint16_t size){
     MTR_MVMNT mtrMvmnt;
     SOL_MVMNT solMvmnt;
     
-    bool ParseMtrPacket(PACKET_MTR *pckt, uint8_t* mtr, MTR_MVMNT* mvmnt);
-    bool ParseSolPacket(PACKET_SOL *pckt, uint8_t* sol, SOL_MVMNT* mvmnt);
-    
     while(index < size){
          vTaskDelay(10);
          pcktType = ParseIndexType( &data[index]);
@@ -123,12 +120,14 @@ void HandleIndexData(uint8_t* data, uint16_t size){
              if (!cmdSuc){
                  MSG_Printf("Could not parse stepper command\r\n");
                  ReportError(INVALID_STEPPER_CMD);
+                 return;
              }
              // Register the movement
              cmdSuc = StepperAddMovement(objNum, mtrMvmnt);
              if (!cmdSuc){
                  MSG_Printf("Could not add stepper command\r\n");
                  ReportError(INVALID_STEPPER_CMD);
+                 return;
              }
              MSG_Printf("Added Stepper Movement\r\n");
              // Bump up the index approprietly
@@ -140,12 +139,14 @@ void HandleIndexData(uint8_t* data, uint16_t size){
              if (!cmdSuc){
                  MSG_Printf("Could not parse solenoid command\r\n");
                  ReportError(INVALID_SOLENOID_CMD);
+                 return;
              }
              // Register the movement
              cmdSuc = SolenoidAddMovement(objNum, solMvmnt);
              if (!cmdSuc){
                  MSG_Printf("Could not add solenoid command\r\n");
                  ReportError(INVALID_SOLENOID_CMD);
+                 return;
              }
              MSG_Printf("Added Solenoid Movement\r\n");
              // Bump up the index approprietly
@@ -167,7 +168,7 @@ void ReportError(ERROR_TYPE e){
     MSG_Printf("Error: %d \r\n", e);
     
     // Block
-    while(1){};
+    //while(1){};
 }
 
 bool AddMovements( INDEX_MVMNT index ){

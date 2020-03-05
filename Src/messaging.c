@@ -61,11 +61,23 @@ void MessageRxTask(void* params){
         memset(RxBuf, 0, RX_BUF_SIZE);
         RxBufI = 0;
         
+        MSG_Printf("Waiting for packet\r\n");
+        
         // Wait for start of transmission character
         status = HAL_TIMEOUT;
         while (status != HAL_OK){
+            HAL_UART_AbortReceive(&huart3);
             vTaskDelay(100);
             status = HAL_UART_Receive(&huart3, &RxBuf[RxBufI], 1, 100);
+            if (status == HAL_ERROR){
+                MSG_Printf("Hal Error");
+                // The USART or HAL gets in a bad state when it can't read, so kill the opperation
+                //HAL_UART_AbortReceive(&huart3);
+            } else if (status == HAL_BUSY){
+                MSG_Printf("Hal Busy");
+                // The USART or HAL gets in a bad state when it can't read, so kill the opperation
+                //HAL_UART_AbortReceive(&huart3);
+            }
         }
         
         //MSG_Printf("Recieved Message\r\n");
@@ -84,6 +96,9 @@ void MessageRxTask(void* params){
         if (status != HAL_OK){
             // TODO handle error
             MSG_Printf("Could not read packet header\r\n");
+            // The USART or HAL gets in a bad state when it can't read, so kill the opperation
+            HAL_UART_AbortReceive(&huart3);
+            continue;
         }
         //vTaskDelay(10);
         // Get packet type and size
@@ -101,6 +116,8 @@ void MessageRxTask(void* params){
         if (status != HAL_OK){
             // TODO handle error
             MSG_Printf("Could not read packet data %d \r\n", status);
+            // The USART or HAL gets in a bad state when it can't read, so kill the opperation
+            HAL_UART_AbortReceive(&huart3);
             continue;
         }
         //vTaskDelay(10);
@@ -116,6 +133,10 @@ void MessageRxTask(void* params){
         //HandleIndexData(&RxBuf[RxBufI], DataSize);
         (*PacketHandlers[RxPacketType])(&RxBuf[RxBufI], DataSize);
         //vTaskDelay(10);
+    }
+    
+    while (1){
+        vTaskDelay(100);
     }
     
     // close task
