@@ -1,6 +1,19 @@
 #ifndef __led_task_H    // header files should include guards
 #define __led_task_H
 
+/*******************************************************************************
+ * File: led_task.h
+ * Author: Brandon Key
+ * Created: 01/01/2020
+ * 
+ * Purpose:
+ * Interface and tasks to control LEDs.
+ * Just flashes lights at different rates.
+ * Not really flushed out. Usefull for detecting hard faults, or FreeRTOS tasks
+ * issues. 
+ * NOTE: Will have pin conflicts with Ethernet
+*******************************************************************************/
+
 #include "cmsis_os.h"
 #include "stm32h743xx.h"
 

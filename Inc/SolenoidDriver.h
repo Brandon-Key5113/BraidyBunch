@@ -1,6 +1,17 @@
 #ifndef __SOLENOID_DRIVER_H    // header files should include guards
 #define __SOLENOID_DRIVER_H
 
+/*******************************************************************************
+ * File: SolenoidDriver.h
+ * Author: Brandon Key
+ * Created: 01/01/2020
+ * 
+ * Purpose:
+ * Controls Solenoids.
+ * 
+ * Solenoids should be de-energized when not needed. They get too hot
+*******************************************************************************/
+
 #include "cmsis_os.h"
 #include "stm32h743xx.h"
 #include <stdbool.h>

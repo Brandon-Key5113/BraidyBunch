@@ -3,6 +3,7 @@
 #include <string.h> // For memory operations
 #include <stdio.h> // sprintf
 
+// For converting between string and int
 uint16_t hex2int(char *hex);
 
 bool PacketStart(uint8_t* dataStart, uint16_t* dataPtr){

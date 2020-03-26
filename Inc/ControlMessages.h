@@ -1,6 +1,19 @@
 #ifndef __CONTORL_MESSAGES_H
 #define __CONTORL_MESSAGES_H
 
+/*******************************************************************************
+ * File: ControlMessages.h
+ * Author: Brandon Key
+ * Created: 01/01/2020
+ * 
+ * Purpose:
+ * Defines packet structures for communication. 
+ * Makes communication independent of medium
+ * 
+ * Current communication is human readable for debugging purposes. This could 
+ * be modified if the network is a bottleneck.
+*******************************************************************************/
+
 #include <stdbool.h>
 #include <stdint.h>
 
@@ -76,15 +89,20 @@ typedef struct __attribute__((__packed__)){
 /**
   * Series of functions to put packet data into a buffer.
   * \param dataStart[In] - Start of buffer 
-  * \param dataPtr[In/Out] - Reference to index into buffer
-  * \
+  * \param dataPtr[In/Out] - Reference to index into buffer Updated in function
+  * 
+  * Buffers should be created before calling these functions.
 **/
 bool PacketStart(uint8_t* dataStart, uint16_t* dataPtr);
 bool PacketAddMtrMvmnt(uint8_t* dataStart, uint16_t* dataPtr, MTR_MVMNT Mvmnt, uint8_t mtr);
 bool PacketAddSolMvmnt(uint8_t* dataStart, uint16_t* dataPtr, SOL_MVMNT Mvmnt, uint8_t sol);
 bool PacketTerm(uint8_t* dataStart, uint16_t* dataPtr);
-    
-// Packet Parsing Functions
+
+/**
+  * Packet Parsing Functions
+  * Used to interpret data being read.
+  *
+**/    
 bool ParsePacketHeader(uint8_t* dataStart, uint16_t* dataPtr, PCKT_TYPE *packetType, uint16_t* size);
 PCKT_INDEX_TYPE ParseIndexType(uint8_t* dataStart);
 bool ParseMtrPacket(PACKET_MTR *pckt, uint8_t* mtr, MTR_MVMNT* mvmnt);

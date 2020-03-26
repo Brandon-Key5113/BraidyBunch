@@ -1,5 +1,19 @@
-#ifndef __COORDINATION_H    // header files should include guards
+#ifndef __COORDINATION_H    
 #define __COORDINATION_H
+
+/*******************************************************************************
+ * File: Coordination.h
+ * Author: Brandon Key
+ * Created: 01/01/2020
+ * 
+ * Purpose:
+ * Provides a common point between solenoids and steppers.
+ * Tells the Solenoid and Stepper task when to move
+ * Waits for movements to finish
+ * 
+ * Needs to have additional communication for reporting back to main uC when all
+ * movements are finished
+*******************************************************************************/
 
 #include "cmsis_os.h"
 #include "stm32h743xx.h"
