@@ -1,10 +1,10 @@
+import os
 
+cwd = os.getcwd()
+print(cwd)
 
-file = open(“DummyPacket”,”w”) 
+file = open(cwd+"\DummyPacket","wb") 
  
-file.write(“Hello World”) 
-file.write(“This is our new text file”) 
-file.write(“and this is another line.”) 
-file.write(“Why? Because we can.”) 
- 
+file.write("Hello World")
+
 file.close() 

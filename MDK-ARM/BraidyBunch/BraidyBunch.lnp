@@ -5,6 +5,7 @@
 "braidybunch\stepperdriver.o"
 "braidybunch\solenoiddriver.o"
 "braidybunch\coordination.o"
+"braidybunch\controlmessages.o"
 "braidybunch\main.o"
 "braidybunch\freertos.o"
 "braidybunch\stm32h7xx_it.o"

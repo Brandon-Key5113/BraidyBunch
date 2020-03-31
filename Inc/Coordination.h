@@ -1,5 +1,19 @@
-#ifndef __COORDINATION_H    // header files should include guards
+#ifndef __COORDINATION_H    
 #define __COORDINATION_H
+
+/*******************************************************************************
+ * File: Coordination.h
+ * Author: Brandon Key
+ * Created: 01/01/2020
+ * 
+ * Purpose:
+ * Provides a common point between solenoids and steppers.
+ * Tells the Solenoid and Stepper task when to move
+ * Waits for movements to finish
+ * 
+ * Needs to have additional communication for reporting back to main uC when all
+ * movements are finished
+*******************************************************************************/
 
 #include "cmsis_os.h"
 #include "stm32h743xx.h"
@@ -23,7 +37,8 @@ typedef enum {
     STALL,
     INVALID_STEPPER_CMD,
     INVALID_SOLENOID_CMD,
-    
+    COMM_TIMEOUT,
+    COMM_INVAID_SYNTAX,
     
 } ERROR_TYPE;
 
@@ -34,7 +49,7 @@ void ReportError(ERROR_TYPE e);
 
 // Task Related functions
 void CoordinationTask(void *parameters);
-void CoordinationTaskInit();
+void CoordinationTaskInit(void);
 
 // Private Functions
 bool AddMovements( INDEX_MVMNT index );

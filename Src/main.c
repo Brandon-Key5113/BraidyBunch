@@ -138,7 +138,7 @@ int main(void)
   //HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
   //HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_3);
   
-  StepperTaskInit(0);
+  StepperTaskInit();
   SolenoidTaskInit();
   CoordinationTaskInit();
 
@@ -488,7 +488,7 @@ static void MX_USART3_UART_Init(void)
   {
     Error_Handler();
   }
-  if (HAL_UARTEx_SetRxFifoThreshold(&huart3, UART_RXFIFO_THRESHOLD_1_8) != HAL_OK)
+  if (HAL_UARTEx_SetRxFifoThreshold(&huart3, UART_RXFIFO_THRESHOLD_1_2) != HAL_OK)
   {
     Error_Handler();
   }
