@@ -27,15 +27,16 @@ static void MyFlagInterruptHandler(void);
 
 /* Private functions ---------------------------------------------------------*/
 
+// Came from the example project for the BSP
 L6474_Init_t gL6474InitParams =
 {
     4000,                               /// Acceleration rate in step/s2. Range: (0..+inf).
-    4000,                               /// Deceleration rate in step/s2. Range: (0..+inf). 
+    4000,                               /// Deceleration rate in step/s2. Range: (0..+inf).
     2000,                              /// Maximum speed in step/s. Range: (30..10000].
     2,                               ///Minimum speed in step/s. Range: [30..10000).
     1000,                               ///Torque regulation current in mA. (TVAL register) Range: 31.25mA to 4000mA.
     3000,                               ///Overcurrent threshold (OCD_TH register). Range: 375mA to 6000mA.
-    L6474_CONFIG_OC_SD_ENABLE,         ///Overcurrent shutwdown (OC_SD field of CONFIG register). 
+    L6474_CONFIG_OC_SD_ENABLE,         ///Overcurrent shutwdown (OC_SD field of CONFIG register).
     L6474_CONFIG_EN_TQREG_TVAL_USED,   /// Torque regulation method (EN_TQREG field of CONFIG register).
     L6474_STEP_SEL_1_16,               /// Step selection (STEP_SEL field of STEP_MODE register).
     L6474_SYNC_SEL_1_2,                /// Sync selection (SYNC_SEL field of STEP_MODE register).
@@ -55,17 +56,18 @@ L6474_Init_t gL6474InitParams =
 };
 
 void StepperTask(void *parameters){
-    
+
     MSG_Printf("Start of Stepper Task");
 
-    //----- Init of the Motor control library 
+    //----- Init of the Motor control library
     /* Set the L6474 library to use 1 device */
     BSP_MotorControl_SetNbDevices(BSP_MOTOR_CONTROL_BOARD_ID_L6474, 3);
-    
+
     extern TIM_HandleTypeDef htim1;
-    
+    // Artifact from trying to debug PWM issues
     HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_3);
-    
+
+    // Reset the board ?gracefully?
     vTaskDelay(1);
     BSP_MotorControl_Reset(0);
     BSP_MotorControl_Reset(1);
@@ -83,19 +85,19 @@ void StepperTask(void *parameters){
     BSP_MotorControl_ReleaseReset(1);
     BSP_MotorControl_ReleaseReset(2);
     vTaskDelay(1);
-    
+
     MSG_Printf("Num Devices Set\r\n");
-    
+
     /* Attach the function MyFlagInterruptHandler (defined below) to the flag interrupt */
     BSP_MotorControl_AttachFlagInterrupt(MyFlagInterruptHandler);
-    
+
     MSG_Printf("Flag Handler Attached\r\n");
 
     /* Attach the function Error_Handler (defined below) to the error Handler*/
     BSP_MotorControl_AttachErrorHandler(Stepper_Error_Handler);
 
     MSG_Printf("Error Handler Attached\r\n");
-    
+
     /* When BSP_MotorControl_Init is called with NULL pointer,                  */
     /* the L6474 registers and parameters are set with the predefined values from file   */
     /* l6474_target_config.h, otherwise the registers are set using the   */
@@ -118,13 +120,14 @@ void StepperTask(void *parameters){
         //BSP_MotorControl_SoftStop(i);
         BSP_MotorControl_HardStop(i);
         BSP_MotorControl_WaitWhileActive(i);
-        // Couldn't find a way to just engauge motors without movement. This 
+        // Couldn't find a way to just engauge motors without movement. This
         // seems to work. There's probably a better way.
         BSP_MotorControl_Move(i, FORWARD, 0);
         BSP_MotorControl_WaitWhileActive(i);
-        
+
     }
-    
+
+    // Set speed parameters. Should be set in the struct above, but these fns exsist
     BSP_MotorControl_SetMinSpeed(0,5);
     BSP_MotorControl_SetMaxSpeed(0,2000);
     BSP_MotorControl_SetAcceleration(0,4000);
@@ -135,15 +138,15 @@ void StepperTask(void *parameters){
     StepperMvmntActive = false;
     while (1){
         if (StepperMvmntActive){
-            
+
             vTaskDelay(10);
-            
+
             BSP_MotorControl_WaitWhileActive(0);
             BSP_MotorControl_WaitWhileActive(1);
             BSP_MotorControl_WaitWhileActive(2);
-            
+
             StepperMvmntActive = false;
-            
+
         }
         vTaskDelay(100);
     }
@@ -160,13 +163,13 @@ bool StepperAddMovement(uint8_t stepper, MTR_MVMNT mvmnt){
     if (stepper >= STEPPER_NUM){
         return false;
     }
-    
+
     //only add new command it there isn't once already for that position.
     if (mtrMovements[stepper] == MTR_MVMNT_NONE){
         mtrMovements[stepper] = mvmnt;
         return true;
     }
-    
+
     return false;
 }
 
@@ -179,7 +182,7 @@ bool StepperMvmntStart(){
     if (StepperMvmntActive){
         return false;
     }
-    
+
     for (int i = 0; i < STEPPER_NUM; i++){
         // Start movement for each motor
         if (mtrMovements[i] == MTR_MVMNT_FWD){
@@ -190,7 +193,7 @@ bool StepperMvmntStart(){
             // Nothing
         }
     }
-    
+
     StepperMvmntActive = true;
     return true;
 }
@@ -220,13 +223,13 @@ void MyFlagInterruptHandler(void)
         if ((statusRegister & L6474_STATUS_DIR) == L6474_STATUS_DIR)
         {
            	// Forward direction is set
-           	// Action to be customized  
+           	// Action to be customized
            	//MSG_Printf("FWD Dir Set\r\n");
         }
         else
         {
            	// Backward direction is set
-           	// Action to be customized    
+           	// Action to be customized
            	//MSG_Printf("REV Dir Set\r\n");
         }
 
@@ -236,7 +239,7 @@ void MyFlagInterruptHandler(void)
         if ((statusRegister & L6474_STATUS_NOTPERF_CMD) == L6474_STATUS_NOTPERF_CMD)
         {
            	// Command received by SPI can't be performed
-           	// Action to be customized    
+           	// Action to be customized
 
             MSG_Printf("Stepper %d: Bad CMD\r\n", i);
         }
@@ -244,16 +247,16 @@ void MyFlagInterruptHandler(void)
         /*Check WRONG_CMD flag: if set, the command does not exist */
         if ((statusRegister & L6474_STATUS_WRONG_CMD) == L6474_STATUS_WRONG_CMD)
         {
-           	//command received by SPI does not exist 
-           	// Action to be customized      
+           	//command received by SPI does not exist
+           	// Action to be customized
             MSG_Printf("Stepper %d: CMD DNE\r\n", i);
         }
 
         /*Check UVLO flag: if not set, there is an undervoltage lock-out */
         if ((statusRegister & L6474_STATUS_UVLO) == 0)
         {
-           	//undervoltage lock-out 
-           	// Action to be customized      
+           	//undervoltage lock-out
+           	// Action to be customized
             MSG_Printf("Stepper %d: UVLO\r\n", i);
         }
 
@@ -261,22 +264,22 @@ void MyFlagInterruptHandler(void)
         if ((statusRegister & L6474_STATUS_TH_WRN) == 0)
         {
            	//thermal warning threshold is reached
-           	// Action to be customized    
+           	// Action to be customized
             MSG_Printf("Stepper %d: TH_WRN\r\n", i);
         }
 
         /*Check TH_SHD flag: if not set, the thermal shut down threshold is reached */
         if ((statusRegister & L6474_STATUS_TH_SD) == 0)
         {
-           	//thermal shut down threshold is reached 
-           	// Action to be customized    
+           	//thermal shut down threshold is reached
+           	// Action to be customized
             MSG_Printf("Stepper %d: Thermal Shutdown \r\n", i);
         }
 
         /*Check OCD  flag: if not set, there is an overcurrent detection */
         if ((statusRegister & L6474_STATUS_OCD) == 0)
         {
-           	//overcurrent detection 
+           	//overcurrent detection
            	// Action to be customized
             MSG_Printf("Stepper %d: OCD\r\n", i);
         }
@@ -292,7 +295,7 @@ void Stepper_Error_Handler(uint16_t error)
 {
   /* Backup error number */
   gLastError = error;
-  
+
   /* Infinite loop */
   while(1)
   {
@@ -303,11 +306,11 @@ void StepperTaskInit(void){
     // Retrieve pointer to the correct set of parameters
     STEPPER_PARAMS_t *p = &STEPPER_PARAMS[0];
     p->id = 0;
-    
+
     // Configure Task name
     char taskName[configMAX_TASK_NAME_LEN];
     sprintf(taskName, STEPPER_TASK_FORMAT, 0 );
-    
+
     // Create the task
-    xTaskCreate( StepperTask, taskName, STEPPER_TASK_STACK, (void *)p, STEPPER_TASK_PRIORITY, &p->handle); 
+    xTaskCreate( StepperTask, taskName, STEPPER_TASK_STACK, (void *)p, STEPPER_TASK_PRIORITY, &p->handle);
 }

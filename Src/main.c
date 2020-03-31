@@ -93,7 +93,7 @@ int main(void)
   /* USER CODE BEGIN 1 */
 
   /* USER CODE END 1 */
-  
+
 
   /* Enable I-Cache---------------------------------------------------------*/
   SCB_EnableICache();
@@ -126,18 +126,22 @@ int main(void)
   MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
   char buf[100];
-  
+
+  // Print out a friendly message.
+  // NOTE: Use this before the messaging task is started, otherwise, use that
   sprintf(buf, "Startup\n\r");
   HAL_UART_Transmit(&huart3, (uint8_t *)buf, strlen(buf), 1000);
-  
+
   MessagingTaskInit();
   led_task_init(LED_GREEN);
   led_task_init(LED_ORANGE);
   led_task_init(LED_RED);
-  
+
+  // Code to help figure out why PWM doesn't work
   //HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
   //HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_3);
-  
+
+
   StepperTaskInit();
   SolenoidTaskInit();
   CoordinationTaskInit();
@@ -171,7 +175,7 @@ int main(void)
 
   /* Start scheduler */
   osKernelStart();
-  
+
   /* We should never get here as control is now taken by the scheduler */
 
   /* Infinite loop */
@@ -195,15 +199,15 @@ void SystemClock_Config(void)
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
   RCC_PeriphCLKInitTypeDef PeriphClkInitStruct = {0};
 
-  /** Supply configuration update enable 
+  /** Supply configuration update enable
   */
   HAL_PWREx_ConfigSupply(PWR_LDO_SUPPLY);
-  /** Configure the main internal regulator output voltage 
+  /** Configure the main internal regulator output voltage
   */
   __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE0);
 
   while(!__HAL_PWR_GET_FLAG(PWR_FLAG_VOSRDY)) {}
-  /** Initializes the CPU, AHB and APB busses clocks 
+  /** Initializes the CPU, AHB and APB busses clocks
   */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
   RCC_OscInitStruct.HSIState = RCC_HSI_DIV1;
@@ -222,7 +226,7 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
-  /** Initializes the CPU, AHB and APB busses clocks 
+  /** Initializes the CPU, AHB and APB busses clocks
   */
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2
@@ -521,7 +525,7 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOD_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOE, SOL0_DIR_Pin|DIR3_Pin|SOL0_EN_Pin|DIR2_Pin 
+  HAL_GPIO_WritePin(GPIOE, SOL0_DIR_Pin|DIR3_Pin|SOL0_EN_Pin|DIR2_Pin
                           |SOL1_EN_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
@@ -542,9 +546,9 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_SET);
 
-  /*Configure GPIO pins : SOL0_DIR_Pin DIR3_Pin SOL0_EN_Pin DIR2_Pin 
+  /*Configure GPIO pins : SOL0_DIR_Pin DIR3_Pin SOL0_EN_Pin DIR2_Pin
                            SOL1_EN_Pin LD2_Pin */
-  GPIO_InitStruct.Pin = SOL0_DIR_Pin|DIR3_Pin|SOL0_EN_Pin|DIR2_Pin 
+  GPIO_InitStruct.Pin = SOL0_DIR_Pin|DIR3_Pin|SOL0_EN_Pin|DIR2_Pin
                           |SOL1_EN_Pin|LD2_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
@@ -659,7 +663,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
             BSP_MotorControl_FlagInterruptHandler();
             break;
         default:
-            
+
             break;
     }
 
@@ -669,7 +673,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
 /* USER CODE BEGIN Header_StartDefaultTask */
 /**
   * @brief  Function implementing the defaultTask thread.
-  * @param  argument: Not used 
+  * @param  argument: Not used
   * @retval None
   */
 /* USER CODE END Header_StartDefaultTask */
@@ -681,7 +685,7 @@ void StartDefaultTask(void const * argument)
   {
     osDelay(1);
   }
-  /* USER CODE END 5 */ 
+  /* USER CODE END 5 */
 }
 
 /**
@@ -726,7 +730,7 @@ void Error_Handler(void)
   * @retval None
   */
 void assert_failed(uint8_t *file, uint32_t line)
-{ 
+{
   /* USER CODE BEGIN 6 */
   /* User can add his own implementation to report the file name and line number,
      tex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */

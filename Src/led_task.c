@@ -16,7 +16,7 @@ const char* LED_NAMES[LED_MAX] = {"GREEN", "ORANGE", "RED"};
 
 
 /*****************************************
-led_toggle() toggles the indentified LED 
+led_toggle() toggles the indentified LED
 inputs
   int id - 0 or 1 identifies which LED to blink
 outputs
@@ -24,7 +24,7 @@ outputs
 *******************************************/
 char buf[100];
 void led_toggle(int id) {
-    
+
     switch (id){
         case 0:
             HAL_GPIO_TogglePin(LD1_GPIO_PORT , LD1_GPIO_PIN);
@@ -51,25 +51,16 @@ outputs
 void led_task(void *parameters)
 {
     LED_PARAMS_t *p = (LED_PARAMS_t *)parameters;
-    
+
     MSG_Printf("Task Startup %d\n\r", p->id);
-    
+
     while(1) {
         HAL_GPIO_TogglePin(p->GPIOx , p->GPIO_Pin);
         vTaskDelay(p->togglePeriod_ms);
     }
 }
 
-/*****************************************
-led_task_init() initializes the led_params control block and creates a task.
-inputs
-  int id - 0 or 1, used to differentiate task instance
-  char *name - a unique human readable name for the task
-  int base_ms - a base amount of time to blink an LED
-  int max_jitter_ms - max variability in the blink time
-outputs
-  none
-*******************************************/
+
 void led_task_init(enum LED led)
 {
     LED_PARAMS_t *p = &led_params[led];
@@ -100,5 +91,5 @@ void led_task_init(enum LED led)
     }
 
 
-    xTaskCreate( led_task, LED_NAMES[led], 64, (void *)p, 6, &p->handle); 
+    xTaskCreate( led_task, LED_NAMES[led], 64, (void *)p, 6, &p->handle);
 }

@@ -22,29 +22,29 @@ TaskHandle_t handle;
 
 
 void SolenoidTask(void *parameters){
-    
+
     MSG_Printf("Start of Solenoid Task");
 
     SolenoidMvmntActive = false;
     while (1){
         if (SolenoidMvmntActive){
-            
+
             // Wait for movement to start
-        
+
             // Move solenoids
-            
+
             // De-energize if applicable
-            
+
             // wait
-            
+
             vTaskDelay(500);
-            
+
             SolenoidMvmntActive = false;
-            
+
         }
         vTaskDelay(100);
     }
-    
+
 }
 
 
@@ -74,7 +74,7 @@ void SolenoidOut(uint8_t solenoid){
             // TODO Error
             break;
     }
-    
+
 }
 
 void SolenoidEnable(uint8_t solenoid){
@@ -89,7 +89,7 @@ void SolenoidEnable(uint8_t solenoid){
             // TODO Error
             break;
     }
-    
+
 }
 
 void SolenoidDisable(uint8_t solenoid){
@@ -104,7 +104,7 @@ void SolenoidDisable(uint8_t solenoid){
             // TODO Error
             break;
     }
-    
+
 }
 
 void SolenoidClearMovements(void){
@@ -117,13 +117,13 @@ bool SolenoidAddMovement(uint8_t sol, SOL_MVMNT mvmnt){
     if (sol >= SOLENOID_NUM){
         return false;
     }
-    
+
     //only add new command it there isn't once already for that position.
     if (solMovements[sol] == SOL_MVMNT_NONE){
         solMovements[sol] = mvmnt;
         return true;
     }
-    
+
     return false;
 }
 
@@ -136,9 +136,10 @@ bool SolenoidMvmntStart(){
     if (SolenoidMvmntActive){
         return false;
     }
-    
+
     for (int i = 0; i < SOLENOID_NUM; i++){
         // Start movement for each motor
+        // TODO work for disabling once done...
         if (solMovements[i] == SOL_MVMNT_IN){
             SolenoidIn(i);
             SolenoidEnable(i);
@@ -149,7 +150,7 @@ bool SolenoidMvmntStart(){
             // Nothing
         }
     }
-    
+
     SolenoidMvmntActive = true;
     return true;
 }
@@ -157,7 +158,7 @@ bool SolenoidMvmntStart(){
 
 void SolenoidTaskInit(void){
     SolenoidClearMovements();
-    
+
     // Create the task
-    xTaskCreate( SolenoidTask, SOLENOID_TASK_NAME, SOLENOID_TASK_STACK, (void *) NULL, SOLENOID_TASK_PRIORITY, &handle); 
+    xTaskCreate( SolenoidTask, SOLENOID_TASK_NAME, SOLENOID_TASK_STACK, (void *) NULL, SOLENOID_TASK_PRIORITY, &handle);
 }
